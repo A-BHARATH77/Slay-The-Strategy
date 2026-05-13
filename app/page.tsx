@@ -11,6 +11,7 @@ import SelectedWork from '../components/SelectedWork';
 import Clients from '../components/Clients';
 import Footer from '../components/Footer';
 import BodyScripts from '../components/BodyScripts';
+import LenisSetup from '../components/LenisSetup';
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
         </div>
       </div>
       <BodyScripts />
+      <LenisSetup />
     </>
   );
 }

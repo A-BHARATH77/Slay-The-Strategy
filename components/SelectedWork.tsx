@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function SelectedWork() {
   return (
-    <section className="section_selected-work">
+    <section className="section_selected-work" style={{ backgroundColor: '#516856', color: '#f7f2e6' }}>
   <div className="section-padding-96px">
     <div className="padding-global">
       <div className="container-col-12">

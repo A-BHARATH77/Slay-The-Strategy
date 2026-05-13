@@ -25,11 +25,10 @@ export default function BodyScripts() {
 
         let lenis;
 
-        if (Webflow.env("editor") === undefined) {
-            // Add the destroy attribute to disable functionality
-            const shouldDestroyLenis = document.body.hasAttribute("data-lenis-destroy");
+        // Initialize Lenis unconditionally in React
+        const shouldDestroyLenis = document.body.hasAttribute("data-lenis-destroy");
 
-            if (!shouldDestroyLenis) {
+        if (!shouldDestroyLenis) {
                 // add the infinite attribute to enable infinite scroll functionality
                 const isInfiniteScrollPage = document.body.hasAttribute("data-lenis-infinite");
 
@@ -82,7 +81,6 @@ export default function BodyScripts() {
                 // Uncomment this if using GSAP ScrollTrigger
                 connectToScrollTrigger();
             }
-        }
     </script>
 <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -149,6 +147,7 @@ export default function BodyScripts() {
         window.addEventListener("DOMContentLoaded", () => {
 
             const content = document.querySelector('.mwg_effect008 .container')
+            if (!content) return;
 
             // 🔁 DUPLICATE ALL CMS-CARDS FOR INFINITE SCROLL EFFECT
             const originalCards = Array.from(content.children)
@@ -493,7 +492,8 @@ export default function BodyScripts() {
     </script>
 <script>
         const root = document.querySelector('.mwg_effect020')
-        const images = []
+        if (root) {
+            const images = []
         root.querySelectorAll('.medias img').forEach(image => {
             images.push(image.getAttribute('src'))
         })
@@ -529,6 +529,7 @@ export default function BodyScripts() {
                 oldIncrX = valX
                 oldIncrY = valY
             })
+        }
         })
 
 
@@ -624,6 +625,7 @@ export default function BodyScripts() {
         window.addEventListener("DOMContentLoaded", () => {
 
             const container = document.querySelector('.mwg_effect025 .container')
+            if (!container) return;
             const containerW = container.clientWidth
 
             const cards = document.querySelectorAll('.results-card')

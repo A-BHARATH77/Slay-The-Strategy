@@ -1,13 +1,41 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --background: #f7f2e6;
+  --foreground: #516856;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Webflow overrides for light mode */
+  --color-mode-light--background: #f7f2e6 !important;
+  --color-mode-light--body-text: #516856 !important;
+  --color-mode-light--heading: #516856 !important;
+  --color-mode-light--button-bg: #516856 !important;
+  --color-mode-light--button-text: #f7f2e6 !important;
+  --color-mode-light--button-outline: #516856 !important;
+  
+  /* Webflow overrides for dark mode (alternate) */
+  --color-mode-dark--background: #516856 !important;
+  --color-mode-dark--body-text: #f7f2e6 !important;
+  --color-mode-dark--heading: #f7f2e6 !important;
+  --color-mode-dark--button-bg: #f7f2e6 !important;
+  --color-mode-dark--button-text: #516856 !important;
+  --color-mode-dark--button-outline: #f7f2e6 !important;
+
+  /* Primary colors */
+  --black: #516856 !important;
+  --white: #f7f2e6 !important;
+  --base-color-black: #516856 !important;
+  --base-color-white: #f7f2e6 !important;
+
+  /* Webflow Brand Colors (for SelectedWork cards etc) */
+  --_colors---brand-colors--red: #f7f2e6 !important;
+  --_colors---brand-colors--red-400: #516856 !important;
+  
+  --_colors---brand-colors--blue: #516856 !important;
+  --_colors---brand-colors--blue-500: #f7f2e6 !important;
+  
+  --_colors---brand-colors--green: #f7f2e6 !important;
+  --_colors---brand-colors--green-300: #516856 !important;
+  
+  --_colors---brand-colors--pink: #f7f2e6 !important;
+  --_colors---brand-colors--pink-500: #516856 !important;
 }
 
 html {
@@ -24,8 +52,8 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--foreground) !important;
+  background: var(--background) !important;
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

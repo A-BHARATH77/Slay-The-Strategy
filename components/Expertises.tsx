@@ -12,13 +12,13 @@ export default function Expertises() {
             <div role="listitem" className="expertises-item w-dyn-item">
               <div className="expertise-slide">
                 <div className="expertise-wrap">
-                  <div className="expertise-content theme-white">
+                  <div className="expertise-content theme-white" style={{ backgroundColor: '#516856', color: '#e4e1d6' }}>
                     <div className="expertise-content_top">
-                      <div className="label">
-                        <div className="paragraph-m">Expertise</div>
+                      <div className="label" style={{ background: 'none', padding: 0 }}>
+                        <div className="paragraph-m" style={{ color: '#e4e1d6' }}>Expertise</div>
                       </div>
                       <h2 className="expertise-content_heading">Social strategy</h2>
-                      <div className="expertise-content_number">
+                      <div className="expertise-content_number" style={{ color: '#e4e1d6' }}>
                         <div className="expertise-content_heading">0</div>
                         <div className="expertise-content_heading">1</div>
                       </div>
@@ -43,13 +43,13 @@ export default function Expertises() {
             <div role="listitem" className="expertises-item w-dyn-item">
               <div className="expertise-slide">
                 <div className="expertise-wrap">
-                  <div className="expertise-content theme-pink">
+                  <div className="expertise-content theme-pink" style={{ backgroundColor: '#e4e1d6', color: '#516856' }}>
                     <div className="expertise-content_top">
-                      <div className="label">
-                        <div className="paragraph-m">Expertise</div>
+                      <div className="label" style={{ background: 'none', padding: 0 }}>
+                        <div className="paragraph-m" style={{ color: '#516856' }}>Expertise</div>
                       </div>
                       <h2 className="expertise-content_heading">Content creation</h2>
-                      <div className="expertise-content_number">
+                      <div className="expertise-content_number" style={{ color: '#516856' }}>
                         <div className="expertise-content_heading">0</div>
                         <div className="expertise-content_heading">2</div>
                       </div>
@@ -74,13 +74,13 @@ export default function Expertises() {
             <div role="listitem" className="expertises-item w-dyn-item">
               <div className="expertise-slide">
                 <div className="expertise-wrap">
-                  <div className="expertise-content theme-green">
+                  <div className="expertise-content theme-green" style={{ backgroundColor: '#516856', color: '#e4e1d6' }}>
                     <div className="expertise-content_top">
-                      <div className="label">
-                        <div className="paragraph-m">Expertise</div>
+                      <div className="label" style={{ background: 'none', padding: 0 }}>
+                        <div className="paragraph-m" style={{ color: '#e4e1d6' }}>Expertise</div>
                       </div>
                       <h2 className="expertise-content_heading">Activation</h2>
-                      <div className="expertise-content_number">
+                      <div className="expertise-content_number" style={{ color: '#e4e1d6' }}>
                         <div className="expertise-content_heading">0</div>
                         <div className="expertise-content_heading">3</div>
                       </div>
@@ -105,13 +105,13 @@ export default function Expertises() {
             <div role="listitem" className="expertises-item w-dyn-item">
               <div className="expertise-slide">
                 <div className="expertise-wrap">
-                  <div className="expertise-content theme-blue">
+                  <div className="expertise-content theme-blue" style={{ backgroundColor: '#e4e1d6', color: '#516856' }}>
                     <div className="expertise-content_top">
-                      <div className="label">
-                        <div className="paragraph-m">Expertise</div>
+                      <div className="label" style={{ background: 'none', padding: 0 }}>
+                        <div className="paragraph-m" style={{ color: '#516856' }}>Expertise</div>
                       </div>
                       <h2 className="expertise-content_heading">Data</h2>
-                      <div className="expertise-content_number">
+                      <div className="expertise-content_number" style={{ color: '#516856' }}>
                         <div className="expertise-content_heading">0</div>
                         <div className="expertise-content_heading">4</div>
                       </div>
