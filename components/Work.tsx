@@ -169,7 +169,7 @@ export default function Work() {
 
         /* Hero Section */
         .work-hero {
-          padding: 1.5rem 2.5rem 0;  /* FIX: bottom padding set to 0 to eliminate gap */
+          padding: 0 2.5rem 0;  /* REMOVED top padding to pull title up, kept bottom at 0 */
           max-width: 100%;
           margin: 0 auto;
           position: relative;
@@ -181,13 +181,13 @@ export default function Work() {
           align-items: baseline;
           justify-content: space-between;
           padding-bottom: 0;
-          margin-bottom: 0;
+          margin-bottom: -4vw; /* Pulls subsequent elements up to close the visual gap */
         }
 
         .hero-title {
           font-size: 16vw;
           font-weight: 900;
-          line-height: 0.75;      /* FIX: tightened line-height to remove internal descender spacing */
+          line-height: 0.62;      /* FURTHER TIGHTENED: to pull the baseline down and remove extra bottom space */
           letter-spacing: -0.04em;
           margin: 0;
           display: flex;
@@ -243,7 +243,7 @@ export default function Work() {
         /* Filter Panel */
         .filter-panel {
           max-width: 1600px;
-          margin: 0 auto 2rem;
+          margin: 0 auto 1rem;
           padding: 1rem 2.5rem;
           display: flex;
           gap: 1.5rem;
@@ -270,7 +270,7 @@ export default function Work() {
         /* Work Grid */
         .work-grid {
           width: 100%;
-          margin: 0;              /* FIX: removed "0 auto 0" → plain 0 to eliminate any top gap */
+          margin: 0;
           display: grid;
           grid-template-columns: repeat(12, 1fr);
           gap: 0;

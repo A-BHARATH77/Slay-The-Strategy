@@ -15,17 +15,21 @@ export default function Footer() {
           background-color: #516856;
           color: #e4e1d6;
           font-family: inherit;
-          padding-top: 6rem;
-          padding-bottom: 3rem;
+          padding-top: 4rem;
+          padding-bottom: 2rem;
           overflow: hidden;
           position: relative;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
         }
         .footer-marquee-container {
           display: flex;
           width: 200%;
           animation: marqueeRightToLeft 20s linear infinite;
           white-space: nowrap;
-          font-size: 15vw;
+          font-size: 16vw;
           font-family: 'Times New Roman', Times, serif;
           letter-spacing: -0.02em;
           line-height: 1;
@@ -34,8 +38,8 @@ export default function Footer() {
         }
         @media (max-width: 768px) {
           .footer-marquee-container {
-            font-size: 20vw;
-            margin-bottom: 5rem;
+            font-size: 18vw;
+            margin-bottom: 3rem;
           }
         }
         .footer-marquee-item {
@@ -43,11 +47,15 @@ export default function Footer() {
         }
         .footer-grid {
           display: grid;
-          grid-template-columns: 2fr 1fr 1fr;
-          gap: 4rem;
+          grid-template-columns: 1fr auto auto;
+          justify-content: space-between;
+          gap: 6rem;
           max-width: 1400px;
           margin: 0 auto;
           padding: 0 3rem;
+          flex-grow: 1;
+          align-items: start;
+          width: 100%;
         }
         @media (max-width: 1024px) {
           .footer-grid {
@@ -65,6 +73,7 @@ export default function Footer() {
         .footer-col-left h2 {
           font-size: 3.5rem;
           font-family: 'Times New Roman', Times, serif;
+          margin-top: 0;
           margin-bottom: 1rem;
           font-weight: normal;
           line-height: 1.1;
@@ -79,12 +88,12 @@ export default function Footer() {
           text-decoration: none;
           color: #e4e1d6;
           display: inline-block;
-          margin-bottom: 4rem;
+          margin-bottom: 2rem;
           transition: opacity 0.2s ease;
         }
         @media (max-width: 680px) {
           .footer-col-left .phone-link {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
           }
         }
         .footer-col-left .phone-link:hover {
@@ -101,10 +110,12 @@ export default function Footer() {
           letter-spacing: 0.15em;
           text-transform: uppercase;
           opacity: 0.7;
+          margin-top: 0;
           margin-bottom: 0.75rem;
         }
         .footer-col-meta .meta-val {
-          font-size: 1.1rem;
+          font-size: 1.25rem;
+          font-family: 'Times New Roman', Times, serif;
           margin-bottom: 2.5rem;
           text-decoration: none;
           color: #e4e1d6;
@@ -115,7 +126,8 @@ export default function Footer() {
           opacity: 0.8;
         }
         .footer-col-links .quick-link {
-          font-size: 1.1rem;
+          font-size: 1.25rem;
+          font-family: 'Times New Roman', Times, serif;
           margin-bottom: 1.25rem;
           text-decoration: none;
           color: #e4e1d6;
@@ -127,7 +139,8 @@ export default function Footer() {
         }
         .footer-bottom {
           max-width: 1400px;
-          margin: 8rem auto 0;
+          margin: 0 auto;
+          width: 100%;
           padding: 2.5rem 3rem 0;
           border-top: 1px solid rgba(228, 225, 214, 0.2);
           display: flex;
@@ -138,7 +151,7 @@ export default function Footer() {
         }
         @media (max-width: 768px) {
           .footer-bottom {
-            margin-top: 5rem;
+            margin-top: 3rem;
             padding: 2rem 1.5rem 0;
             flex-direction: column;
             gap: 2rem;
@@ -160,15 +173,21 @@ export default function Footer() {
           opacity: 0.8;
         }
         .back-to-top-dot {
-          width: 24px;
-          height: 24px;
-          background-color: #e4e1d6;
+          width: 32px;
+          height: 32px;
+          background-color: #111;
+          color: #e4e1d6;
           border-radius: 50%;
           cursor: pointer;
           transition: transform 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.8rem;
+          font-weight: bold;
         }
         .back-to-top-dot:hover {
-          transform: scale(1.2);
+          transform: scale(1.1);
         }
       `}} />
 
@@ -182,34 +201,36 @@ export default function Footer() {
 
         <div className="footer-grid">
           <div className="footer-col-left">
-            <h2>Let&apos;s build an empire.</h2>
-            <a href="tel:+916364281117" className="phone-link">+91 63642 81117 &rarr;</a>
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h2 style={{ color: '#e4e1d6' }}>Lets build an empire</h2>
+              <a href="tel:+916364281117" className="phone-link" style={{ marginBottom: 0 }}>+91 63642 81117 &rarr;</a>
+            </div>
             <div className="based-in">BASED IN INDIA</div>
           </div>
 
-          <div className="footer-col-meta">
-            <div className="meta-label">EMAIL</div>
-            <a href="mailto:dipani@slaywithstrategy.com" className="meta-val">dipani@slaywithstrategy.com</a>
-
-            <div className="meta-label">SOCIALS</div>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="meta-val">Instagram &nearr;</a>
+          <div className="footer-col-meta" style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+            <div>
+              <div className="meta-label">EMAIL</div>
+              <a href="mailto:dipani@slaywithstrategy.com" className="meta-val">dipani@slaywithstrategy.com</a>
+            </div>
+            <div>
+              <div className="meta-label">SOCIALS</div>
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="meta-val" style={{ marginBottom: 0 }}>Instagram &nearr;</a>
+            </div>
           </div>
 
-          <div className="footer-col-links">
-            <div className="meta-label">QUICK LINKS</div>
-            <a href="/expertises" className="quick-link">Services</a>
-            <a href="/work" className="quick-link">Studio</a>
-            <a href="/about" className="quick-link">Insights</a>
+          <div className="footer-col-links" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            <div className="meta-label" style={{ marginBottom: '0.5rem' }}>QUICK LINKS</div>
+            <a href="/expertises" className="quick-link" style={{ marginBottom: 0 }}>Services</a>
+            <a href="/work" className="quick-link" style={{ marginBottom: 0 }}>Studio</a>
+            <a href="/about" className="quick-link" style={{ marginBottom: 0 }}>Insights</a>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <div>&copy; 2026 Slay The Strategy&trade; All rights reserved. <a href="#">Website by Raghav &nearr;</a></div>
-          <div
-            className="back-to-top-dot"
-            title="Back to top"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+            <div>&copy; 2026 Slay The Strategy&trade; All rights reserved.</div>
+          </div>
           <div>
             <a href="#">Terms &amp; Conditions</a>
             <a href="#">Privacy Policy</a>

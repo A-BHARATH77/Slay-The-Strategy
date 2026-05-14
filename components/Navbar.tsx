@@ -1,25 +1,47 @@
 'use client';
 // @ts-nocheck
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      // Show navbar if scrolling up or at the top
+      if (currentScrollY < lastScrollY.current || currentScrollY <= 50) {
+        setIsVisible(true);
+      } 
+      // Hide navbar if scrolling down and passed a threshold
+      else if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setIsVisible(false);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav className="nav" style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 9999, backgroundColor: 'transparent' }}>
+    <nav className={`nav ${isVisible ? '' : 'nav--hidden'}`} style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 9999, backgroundColor: 'transparent' }}>
       <style dangerouslySetInnerHTML={{
         __html: `
         /* Override Webflow's scroll animation and background */
         .nav {
-          transform: none !important;
-          transition: none !important;
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
           background-color: transparent !important;
           pointer-events: none; /* Let clicks pass through empty areas */
         }
         
+        .nav.nav--hidden {
+          transform: translateY(-100%) !important;
+        }
+        
         .navbar {
-          transform: none !important;
           opacity: 1 !important;
           visibility: visible !important;
           display: flex !important;
@@ -30,7 +52,7 @@ export default function Navbar() {
           width: 100% !important;
           max-width: 1400px;
           margin: 0 auto;
-          padding: 1.5rem 2rem;
+          padding: -1rem 2rem;
           pointer-events: auto; /* Re-enable clicks for navbar content */
         }
         
@@ -40,7 +62,6 @@ export default function Navbar() {
           z-index: 10;
         }
 
-        /* Center the 4 options perfectly */
         .navbar_menu {
           display: flex !important;
           justify-content: center !important;
@@ -52,18 +73,26 @@ export default function Navbar() {
           background-color: transparent !important;
           width: auto !important;
           height: auto !important;
+          gap: 3rem;
         }
         
-        .navbar_menu .button-color-swoosh.is-menu {
-          padding-left: 2.5rem;
-          padding-right: 2.5rem;
+        .nav_link {
           font-size: 1.1rem;
-          margin: 0 !important;
-          background-color: transparent !important;
+          color: var(--foreground, #516856) !important;
+          text-decoration: none;
+          transition: opacity 0.3s ease;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
         }
 
-        .navbar_menu .button-color-swoosh_text {
-          color: var(--foreground, #000000) !important;
+        .nav_link:hover {
+          opacity: 0.7;
+        }
+
+        .nav_link.w--current {
+          opacity: 0.5;
+          pointer-events: none;
         }
 
         /* Hide mobile triggers and backgrounds */
@@ -80,11 +109,8 @@ export default function Navbar() {
             transform: none !important;
             flex-wrap: wrap;
             justify-content: flex-end !important;
-          }
-          .navbar_menu .button-color-swoosh.is-menu {
-            padding-left: 1rem;
-            padding-right: 1rem;
-            font-size: 1rem;
+            gap: 1.5rem;
+            margin-top: 1rem;
           }
         }
       `}} />
@@ -93,41 +119,17 @@ export default function Navbar() {
           <img draggable="false" src="/logo.png" alt="SWS Logo" style={{ height: '50px', width: 'auto' }} />
         </a>
         <div className="navbar_menu">
-          <a aria-label="Expertises link" role="Link" href="/" className={`button-color-swoosh is-menu w-inline-block ${pathname === '/' ? 'w--current' : ''}`}>
-            <span className="button-color-swoosh_bg">
-              <span style={{ '--index': 0 } as React.CSSProperties} className="button-color-swoosh_bg-inner is-first" />
-              <span style={{ '--index': 1 } as React.CSSProperties} className="button-color-swoosh_bg-inner is-second" />
-            </span>
-            <span data-text="Home" className="button-color-swoosh_inner">
-              <span className="button-color-swoosh_text">Home</span>
-            </span>
+          <a aria-label="Home link" href="/" className={`nav_link ${pathname === '/' ? 'w--current' : ''}`}>
+            Home
           </a>
-          <a aria-label="Work link" role="Link" href="/work" className={`button-color-swoosh is-menu w-inline-block ${pathname === '/work' ? 'w--current' : ''}`}>
-            <span className="button-color-swoosh_bg">
-              <span style={{ '--index': 0 } as React.CSSProperties} className="button-color-swoosh_bg-inner is-first" />
-              <span style={{ '--index': 1 } as React.CSSProperties} className="button-color-swoosh_bg-inner is-second" />
-            </span>
-            <span data-text="Work" className="button-color-swoosh_inner">
-              <span className="button-color-swoosh_text">Work</span>
-            </span>
+          <a aria-label="Work link" href="/work" className={`nav_link ${pathname === '/work' ? 'w--current' : ''}`}>
+            Work
           </a>
-          <a aria-label="Studio link" role="Link" href="/studio" className={`button-color-swoosh is-menu w-inline-block ${pathname === '/studio' ? 'w--current' : ''}`}>
-            <span className="button-color-swoosh_bg">
-              <span style={{ '--index': 0 } as React.CSSProperties} className="button-color-swoosh_bg-inner is-first" />
-              <span style={{ '--index': 1 } as React.CSSProperties} className="button-color-swoosh_bg-inner is-second" />
-            </span>
-            <span data-text="Studio" className="button-color-swoosh_inner">
-              <span className="button-color-swoosh_text">Studio</span>
-            </span>
+          <a aria-label="Studio link" href="/studio" className={`nav_link ${pathname === '/studio' ? 'w--current' : ''}`}>
+            Studio
           </a>
-          <a aria-label="Contact link" role="Link" href="/contact" className={`button-color-swoosh is-menu w-inline-block ${pathname === '/contact' ? 'w--current' : ''}`}>
-            <span className="button-color-swoosh_bg">
-              <span style={{ '--index': 0 } as React.CSSProperties} className="button-color-swoosh_bg-inner is-first" />
-              <span style={{ '--index': 1 } as React.CSSProperties} className="button-color-swoosh_bg-inner is-second" />
-            </span>
-            <span data-text="Contact" className="button-color-swoosh_inner">
-              <span className="button-color-swoosh_text">Contact</span>
-            </span>
+          <a aria-label="Contact link" href="/contact" className={`nav_link ${pathname === '/contact' ? 'w--current' : ''}`}>
+            Contact
           </a>
         </div>
       </div>

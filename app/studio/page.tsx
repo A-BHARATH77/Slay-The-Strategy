@@ -3,15 +3,23 @@ import Navbar from '@/components/Navbar';
 import LenisSetup from '@/components/LenisSetup';
 import BodyScripts from '@/components/BodyScripts';
 import GlobalStyles from '@/components/GlobalStyles';
+import Preloader from '@/components/Preloader';
+import ModalContact from '@/components/ModalContact';
 
 export default function StudioPage() {
   return (
-    <main>
-      <Navbar />
-      <GlobalStyles />
-      <StudioContent />
-      <LenisSetup />
+    <>
+      <div className="page-wrapper">
+        <Preloader />
+        <GlobalStyles />
+        <ModalContact />
+        <Navbar />
+        <div className="main-wrapper">
+          <StudioContent />
+        </div>
+      </div>
       <BodyScripts />
-    </main>
+      <LenisSetup />
+    </>
   );
 }

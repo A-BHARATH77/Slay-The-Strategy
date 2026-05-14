@@ -86,3 +86,8 @@ a {
 .main-wrapper {
   padding-top: 0 !important;
 }
+
+/* Fix GSAP ScrollTrigger pinning on mobile devices by avoiding overflow: hidden */
+.mwg_effect031 {
+  overflow: visible !important;
+}

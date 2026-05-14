@@ -736,52 +736,61 @@ export default function BodyScripts() {
         function initExpertiseScrollEffect() {
             gsap.registerPlugin(ScrollTrigger);
 
-            gsap.to('.scroll', {
-                autoAlpha: 0,
-                duration: 0.2,
-                scrollTrigger: {
-                    trigger: '.mwg_effect031',
-                    start: 'top top',
-                    end: 'top top-=1',
-                    toggleActions: "play none reverse none"
-                }
-            });
+            const scrollEl = document.querySelector('.scroll');
+            if (scrollEl) {
+                gsap.to(scrollEl, {
+                    autoAlpha: 0,
+                    duration: 0.2,
+                    scrollTrigger: {
+                        trigger: '.mwg_effect031',
+                        start: 'top top',
+                        end: 'top top-=1',
+                        toggleActions: "play none reverse none"
+                    }
+                });
+            }
 
             const slides = document.querySelectorAll('.mwg_effect031 .expertise-slide');
 
-            slides.forEach((slide, index) => {
-                const isLast = index === slides.length - 1;
-                const contentWrapper = slide.querySelector('.expertise-wrap');
-                const content = slide.querySelector('.expertise-content');
+            // Use matchMedia to ensure responsive behavior on all devices
+            let mm = gsap.matchMedia();
 
-                if (!isLast) {
-                    gsap.to(content, {
-                        rotationZ: (Math.random() - 0.5) * 10,
-                        scale: 0.7,
-                        rotationX: 40,
-                        ease: 'power1.in',
-                        scrollTrigger: {
-                            pin: contentWrapper,
-                            trigger: slide,
-                            start: 'top top',
-                            end: '+=' + window.innerHeight,
-                            scrub: true
-                        }
-                    });
+            mm.add("(min-width: 0px)", () => {
+                slides.forEach((slide, index) => {
+                    const isLast = index === slides.length - 1;
+                    const contentWrapper = slide.querySelector('.expertise-wrap');
+                    const content = slide.querySelector('.expertise-content');
 
-                    const pinDuration = window.innerHeight;
+                    if (!isLast) {
+                        gsap.to(content, {
+                            rotationZ: (Math.random() - 0.5) * 10,
+                            scale: 0.7,
+                            rotationX: 40,
+                            ease: 'power1.in',
+                            scrollTrigger: {
+                                pin: contentWrapper,
+                                trigger: slide,
+                                start: 'top top',
+                                end: () => '+=' + window.innerHeight,
+                                scrub: true,
+                                invalidateOnRefresh: true,
+                                pinType: 'fixed'
+                            }
+                        });
 
-                    gsap.to(content, {
-                        autoAlpha: 0,
-                        ease: 'power1.inOut',
-                        scrollTrigger: {
-                            trigger: slide,
-                            start: \`top+=\${pinDuration * 0.75} top\`,
-                            end: \`top+=\${pinDuration} top\`,
-                            scrub: true
-                        }
-                    });
-                }
+                        gsap.to(content, {
+                            autoAlpha: 0,
+                            ease: 'power1.inOut',
+                            scrollTrigger: {
+                                trigger: slide,
+                                start: () => 'top+=' + (window.innerHeight * 0.75) + ' top',
+                                end: () => 'top+=' + window.innerHeight + ' top',
+                                scrub: true,
+                                invalidateOnRefresh: true
+                            }
+                        });
+                    }
+                });
             });
         }
 
@@ -803,9 +812,10 @@ export default function BodyScripts() {
 
                     items.forEach((item, index) => {
                         let targetY;
-                        if (index === 0) targetY = "0em";
-                        if (index === 1) targetY = "-12em";
-                        if (index === 2) targetY = "-24em";
+                        const modIndex = index % 3;
+                        if (modIndex === 0) targetY = "0em";
+                        if (modIndex === 1) targetY = "-12em";
+                        if (modIndex === 2) targetY = "-24em";
 
                         if (targetY !== undefined) {
                             gsap.fromTo(item, {
@@ -814,7 +824,7 @@ export default function BodyScripts() {
                                 y: targetY,
                                 ease: "none",
                                 scrollTrigger: {
-                                    trigger: section,
+                                    trigger: item,
                                     start: "top bottom",
                                     end: "bottom top",
                                     scrub: true,

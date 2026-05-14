@@ -3,31 +3,40 @@ import React from 'react';
 
 export default function Hero() {
   return (
-    <header id="section_hero" className="section_hero" style={{ backgroundColor: '#516856', padding: '8rem 2rem 6rem', overflow: 'hidden' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'left', paddingBottom: '5rem' }}>
-        <h1 style={{ 
-          fontFamily: 'Georgia, "Times New Roman", serif', 
-          fontSize: '4.5rem', 
-          lineHeight: '1.1', 
-          color: '#f7f2e6', 
+    <header id="section_hero" className="section_hero" style={{
+      backgroundColor: '#f7f2e6',
+      padding: '7rem 3rem 0',
+      overflow: 'hidden',
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center'
+    }}>
+      <div style={{ maxWidth: '1200px', width: '100%', margin: '0 auto', textAlign: 'left', paddingBottom: '3rem' }}>
+        <h1 style={{
+          fontFamily: 'Georgia, "Times New Roman", serif',
+          fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
+          lineHeight: '1.1',
+          color: '#516856',
           margin: '0 0 1rem 0',
           fontWeight: 'normal',
           maxWidth: '800px'
         }}>
           A members-only<br />home sharing community
         </h1>
-        <p style={{ 
-          fontSize: '1.25rem', 
-          color: '#f7f2e6', 
-          margin: 0 
+        <p style={{
+          fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+          color: '#516856',
+          margin: 0
         }}>
           Stay in curated homes for a fraction of the cost.
         </p>
       </div>
 
       {/* Marquee Section */}
-      <div style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', overflow: 'hidden', height: '400px' }}>
-        <style dangerouslySetInnerHTML={{__html: `
+      <div style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', overflow: 'hidden', height: '50vh', minHeight: '350px' }}>
+        <style dangerouslySetInnerHTML={{
+          __html: `
           @keyframes marqueeLeftToRight {
             0% { transform: translateX(-50%); }
             100% { transform: translateX(0%); }
@@ -42,7 +51,8 @@ export default function Hero() {
           .marquee-item {
             flex: 0 0 auto;
             width: 300px;
-            height: 400px;
+            height: 50vh;
+            min-height: 350px;
             border-radius: 12px;
             overflow: hidden;
             background-color: #e0e0e0;
