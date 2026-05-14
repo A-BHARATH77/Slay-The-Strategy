@@ -24,7 +24,7 @@ export default function Expertises() {
                       </div>
                     </div>
                     <div className="expertise-content_img">
-                      <div className="medium-image"><img src="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6870f59d419ece22b50be1ae_visual.webp" loading="lazy" alt="" className="image w-condition-invisible w-dyn-bind-empty" /><video muted loop webkit-playsinline="true" playsInline src="https://gethyped.b-cdn.net/MD/MD%20Loop%20Schaken.mp4" autoPlay className="video" /></div>
+                      <div className="medium-image"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6870f59d419ece22b50be1ae_visual.webp" loading="lazy" alt="" className="image w-condition-invisible w-dyn-bind-empty" /><video muted loop webkit-playsinline="true" playsInline src="https://gethyped.b-cdn.net/MD/MD%20Loop%20Schaken.mp4" autoPlay className="video" /></div>
                     </div>
                     <div className="expertise-content_bottom">
                       <h3 className="heading-xs">Slimme strategie. Sterke start.</h3>
@@ -55,7 +55,7 @@ export default function Expertises() {
                       </div>
                     </div>
                     <div className="expertise-content_img">
-                      <div className="medium-image"><img src="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6870f59d419ece22b50be1ae_visual.webp" loading="lazy" alt="" className="image w-condition-invisible w-dyn-bind-empty" /><video muted loop webkit-playsinline="true" playsInline src="https://gethyped.b-cdn.net/Expertises/Loop%20BTS%20comp.mp4" autoPlay className="video" /></div>
+                      <div className="medium-image"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6870f59d419ece22b50be1ae_visual.webp" loading="lazy" alt="" className="image w-condition-invisible w-dyn-bind-empty" /><video muted loop webkit-playsinline="true" playsInline src="https://gethyped.b-cdn.net/Expertises/Loop%20BTS%20comp.mp4" autoPlay className="video" /></div>
                     </div>
                     <div className="expertise-content_bottom">
                       <h3 className="heading-xs">Content die opvalt en raakt.</h3>
@@ -86,7 +86,7 @@ export default function Expertises() {
                       </div>
                     </div>
                     <div className="expertise-content_img">
-                      <div className="medium-image"><img src="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6870f59d419ece22b50be1ae_visual.webp" loading="lazy" alt="" className="image w-condition-invisible w-dyn-bind-empty" /><video muted loop webkit-playsinline="true" playsInline src="https://gethyped.b-cdn.net/Over%20de%20Top/overdetop-loop.mp4" autoPlay className="video" /></div>
+                      <div className="medium-image"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6870f59d419ece22b50be1ae_visual.webp" loading="lazy" alt="" className="image w-condition-invisible w-dyn-bind-empty" /><video muted loop webkit-playsinline="true" playsInline src="https://gethyped.b-cdn.net/Over%20de%20Top/overdetop-loop.mp4" autoPlay className="video" /></div>
                     </div>
                     <div className="expertise-content_bottom">
                       <h3 className="heading-xs">Zichtbaar waar en wanneer het telt.</h3>
@@ -117,7 +117,7 @@ export default function Expertises() {
                       </div>
                     </div>
                     <div className="expertise-content_img">
-                      <div className="medium-image"><img src="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6870f59d419ece22b50be1ae_visual.webp" loading="lazy" alt="" className="image w-condition-invisible w-dyn-bind-empty" /><video muted loop webkit-playsinline="true" playsInline src="https://gethyped.b-cdn.net/Expertises/Data%20comp.mp4" autoPlay className="video" /></div>
+                      <div className="medium-image"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6870f59d419ece22b50be1ae_visual.webp" loading="lazy" alt="" className="image w-condition-invisible w-dyn-bind-empty" /><video muted loop webkit-playsinline="true" playsInline src="https://gethyped.b-cdn.net/Expertises/Data%20comp.mp4" autoPlay className="video" /></div>
                     </div>
                     <div className="expertise-content_bottom">
                       <h3 className="heading-xs">Inzichten die impact maken.</h3>

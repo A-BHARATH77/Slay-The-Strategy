@@ -3,11 +3,11 @@ import React from 'react';
 
 export default function ModalContact() {
   return (
-    <div data-splittext="false" className="modal is-contact">
-  <div className="modal-contact">
+    <div data-splittext="false" className="modal is-contact" suppressHydrationWarning>
+  <div className="modal-contact" suppressHydrationWarning>
     <h4 className="heading-m">Leave us a message</h4>
-    <div data-form-validate className="form-group w-form">
-      <form id="wf-form-Default-Form" name="wf-form-Default-Form" data-name="Default Form" method="get" className="form" data-wf-page-id="686baabfd0c79e5623544b6d" data-wf-element-id="9d5d044d-178d-b861-f646-d637dcef4afc" data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e">
+    <div data-form-validate className="form-group w-form" suppressHydrationWarning>
+      <form id="wf-form-Default-Form" name="wf-form-Default-Form" data-name="Default Form" method="get" className="form" data-wf-page-id="686baabfd0c79e5623544b6d" data-wf-element-id="9d5d044d-178d-b861-f646-d637dcef4afc" data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e" suppressHydrationWarning>
         <div className="form-row">
           <div data-validate className="form-field-group"><label htmlFor="name" className="form-label">Voor- en achternaam *</label>
             <div className="form-field"><input className="form-input-field w-input" maxLength={256} name="Naam" data-name="Naam" min={1} placeholder="Wie ben je?" type="text" id="Naam" required />
@@ -52,7 +52,7 @@ export default function ModalContact() {
         <div className="form-row is-submit">
           <div className="form-field-group is-submit">
             <div className="form-field is-submit">
-              <div data-submit tabIndex={0} className="form-submit-btn"><input type="submit" data-wait="Please wait..." className="form-submit w-button" defaultValue="Submit" />
+              <div data-submit tabIndex={0} className="form-submit-btn"><input type="submit" data-wait="Please wait..." className="form-submit w-button" defaultValue="Submit" suppressHydrationWarning />
                 <a href="#" className="button-default is-form w-inline-block">
                   <div className="button-default__inner"><span className="button-default__background" /><span className="button-default__text">Verstuur bericht</span>
                     <div className="button-default__icon"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 31 31" fill="none" className="icon-18px"><g clipPath="url(#clip0_10010_1223)"><path d="M27.6895 2.93927L13.9395 16.6893" stroke="currentColor" strokeWidth="1.875" strokeMiterlimit={10} /><path d="M27.6895 2.93927L18.9395 27.9393L13.9395 16.6893L2.68945 11.6893L27.6895 2.93927Z" stroke="currentColor" strokeWidth="2.5" strokeMiterlimit={10} /></g><defs><clipPath id="clip0_10010_1223"><rect width={30} height={30} fill="currentColor" transform="translate(0.189453 0.43927)" /></clipPath></defs></svg></div>
@@ -64,7 +64,7 @@ export default function ModalContact() {
           <div className="paragraph-regular text-weight-bold">Of bel <a href="tel:+31615337496" className="text-style-link">+31 6 1533 7496</a></div>
         </div>
       </form>
-      <div className="form-notifcation w-form-done">
+      <div className="form-notifcation w-form-done" suppressHydrationWarning>
         <div className="form-notifcation_wrapper">
           <div className="max-width-448px">
             <h3 className="heading-style-64px-2">Thanks voor je bericht!</h3>
@@ -75,7 +75,7 @@ export default function ModalContact() {
           <div className="form-notification-icon is-success"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none"><path d="M11.25 14.25L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /><path d="M15 10.5L11.25 14.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /><path d="M3 12C3 16.9706 7.02943 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02943 16.9706 3 12 3C7.02943 3 3 7.02943 3 12Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
         </div>
       </div>
-      <div className="form-notifcation is--error w-form-fail">
+      <div className="form-notifcation is--error w-form-fail" suppressHydrationWarning>
         <div className="form-notifcation_wrapper">
           <div className="form-notification-bg" />
           <div className="form-notification-p">Something went wrong while submitting.</div>

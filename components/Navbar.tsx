@@ -90,10 +90,10 @@ export default function Navbar() {
       `}} />
       <div className="navbar">
         <a aria-label="Home link" role="Link" href="/" aria-current="page" className={`nav_logo w-inline-block ${pathname === '/' ? 'w--current' : ''}`}>
-          <img src="/logo.png" alt="SWS Logo" style={{ height: '50px', width: 'auto' }} />
+          <img draggable="false" src="/logo.png" alt="SWS Logo" style={{ height: '50px', width: 'auto' }} />
         </a>
         <div className="navbar_menu">
-          <a aria-label="Expertises link" role="Link" href="/" className={`button-color-swoosh is-menu w-inline-block ${pathname === '/expertises' ? 'w--current' : ''}`}>
+          <a aria-label="Expertises link" role="Link" href="/" className={`button-color-swoosh is-menu w-inline-block ${pathname === '/' ? 'w--current' : ''}`}>
             <span className="button-color-swoosh_bg">
               <span style={{ '--index': 0 } as React.CSSProperties} className="button-color-swoosh_bg-inner is-first" />
               <span style={{ '--index': 1 } as React.CSSProperties} className="button-color-swoosh_bg-inner is-second" />

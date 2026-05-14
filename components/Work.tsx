@@ -502,7 +502,7 @@ export default function Work() {
           {filteredProjects.map((p) => (
             <div key={p.id} className={`project-tile span-${p.span}`}>
               <div className="tile-image-container">
-                <img src={p.image} alt={p.title} className="tile-image" loading="lazy" draggable={false} />
+                <img draggable="false" src={p.image} alt={p.title} className="tile-image" loading="lazy" draggable={false} />
               </div>
               <div className="tile-header">
                 <h3 className="tile-title">{p.title}</h3>
@@ -546,7 +546,7 @@ export default function Work() {
         <div className="archived-strip">
           {archivedProjects.map((ap) => (
             <div key={ap.id} className="archived-tile">
-              <img src={ap.image} alt={ap.title} className="archived-img" loading="lazy" draggable={false} />
+              <img draggable="false" src={ap.image} alt={ap.title} className="archived-img" loading="lazy" draggable={false} />
               <div className="archived-title">{ap.title}</div>
             </div>
           ))}

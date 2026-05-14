@@ -786,9 +786,9 @@ export default function BodyScripts() {
         }
 
         if ('requestIdleCallback' in window) {
-            requestIdleCallback(initExpertiseScrollEffect);
+            setTimeout(initExpertiseScrollEffect, 1000);
         } else {
-            setTimeout(initExpertiseScrollEffect, 500);
+            setTimeout(initExpertiseScrollEffect, 1000);
         }
     </script>
 <script>
@@ -827,9 +827,9 @@ export default function BodyScripts() {
         }
 
         if ('requestIdleCallback' in window) {
-            requestIdleCallback(initSelectedWorkScroll);
+            setTimeout(initSelectedWorkScroll, 1000);
         } else {
-            setTimeout(initSelectedWorkScroll, 500);
+            setTimeout(initSelectedWorkScroll, 1000);
         }
     </script>
 <script src="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498%2F66fd0e5033110309ff70869f%2F68c2c0d045b511f00b10d2cd%2Fleadinfo_trackingcode-1.1.1.js" type="text/javascript"></script>

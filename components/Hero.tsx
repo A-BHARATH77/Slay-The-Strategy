@@ -58,19 +58,19 @@ export default function Hero() {
           {[1, 2].map((group) => (
             <React.Fragment key={group}>
               <div className="marquee-item">
-                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=400&h=600" alt="Home 1" />
+                <img draggable="false" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=400&h=600" alt="Home 1" />
               </div>
               <div className="marquee-item">
-                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=400&h=600" alt="Home 2" />
+                <img draggable="false" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=400&h=600" alt="Home 2" />
               </div>
               <div className="marquee-item">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=400&h=600" alt="Home 3" />
+                <img draggable="false" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=400&h=600" alt="Home 3" />
               </div>
               <div className="marquee-item">
-                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=400&h=600" alt="Home 4" />
+                <img draggable="false" src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=400&h=600" alt="Home 4" />
               </div>
               <div className="marquee-item">
-                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=400&h=600" alt="Home 5" />
+                <img draggable="false" src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=400&h=600" alt="Home 5" />
               </div>
             </React.Fragment>
           ))}

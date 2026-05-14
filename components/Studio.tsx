@@ -199,7 +199,7 @@ function StudioAbout() {
                     <div className="flex-[2] pl-8 py-8 flex items-center">
                         <div className="sa-img w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '4/3' }}>
                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
+                            <img draggable="false"
                                 src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
                                 alt="Concept"
                                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 hover:scale-100"
@@ -214,7 +214,7 @@ function StudioAbout() {
                     <div className="flex-[2] pr-8 py-8 flex items-center border-r border-[#FDF8EC]/10">
                         <div className="sa-img w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '3/4' }}>
                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
+                            <img draggable="false"
                                 src="https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?w=800&q=80"
                                 alt="Visual Culture"
                                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 hover:scale-100"
@@ -253,7 +253,7 @@ function StudioAbout() {
                     <div className="flex-[2] pl-8 py-8 flex items-center">
                         <div className="sa-img w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '4/3' }}>
                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
+                            <img draggable="false"
                                 src="https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&q=80"
                                 alt="Found Online"
                                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 hover:scale-100"
@@ -466,7 +466,7 @@ function StudioTeam() {
                     >
                         <div className="sws-card-img">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img src={m.img} alt={m.name} />
+                            <img draggable="false" src={m.img} alt={m.name} />
                         </div>
                         <div className="sws-card-body">
                             <div>
@@ -519,7 +519,7 @@ function StudioTeam() {
                     >
                         <div style={{ width: '100%', height: '240px', overflow: 'hidden' }}>
                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img src={m.img} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            <img draggable="false" src={m.img} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
                         <div style={{ padding: '1.25rem', color: '#FDF8EC', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                             <p style={{ fontFamily: 'var(--font-display), serif', fontSize: '1.5rem', fontWeight: 400 }}>{m.name}</p>
@@ -566,7 +566,7 @@ function LogoCell({ client, rowIndex, itemIndex }: { client: typeof CLIENT_LOGOS
         >
             {client.img ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img
+                <img draggable="false"
                     src={client.img}
                     alt={client.name}
                     className="w-full h-full object-contain transition-all duration-500 ease-out hover:scale-110 cursor-pointer mix-blend-multiply"
