@@ -3,7 +3,7 @@ import "./webflow.css";
 import "./globals.css";
 
 export const metadata = {
-  title: "Get Hyped | Social-first content agency voor merken",
+  title: "Slay the Strategy",
   description: "Klaar met content die niets oplevert? Get Hyped helpt merken groeien met slimme content, sterke formats en inzichten uit data.",
 };
 
@@ -21,7 +21,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-        
+
         <meta name="description" content={metadata.description} />
       </head>
       <body suppressHydrationWarning>
