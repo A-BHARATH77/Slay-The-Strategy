@@ -5,6 +5,9 @@ import "./globals.css";
 export const metadata = {
   title: "Slay the Strategy",
   description: "Klaar met content die niets oplevert? Get Hyped helpt merken groeien met slimme content, sterke formats en inzichten uit data.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -23,6 +26,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
         <meta name="description" content={metadata.description} />
+        <link rel="icon" href="/logo.png" />
       </head>
       <body suppressHydrationWarning>
         {children}

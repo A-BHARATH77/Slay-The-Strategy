@@ -1,9 +1,15 @@
-import FurnishingForm from "@/components/Contact";
+import Contact from "@/components/Contact";
+import Navbar from "@/components/Navbar";
+import LenisSetup from "@/components/LenisSetup";
+import GlobalStyles from "@/components/GlobalStyles";
 
-export default function Home() {
+export default function ContactPage() {
   return (
-    <main className="min-h-screen">
-      <FurnishingForm />
+    <main className="h-screen overflow-hidden">
+      <Navbar />
+      <GlobalStyles />
+      <Contact />
+      <LenisSetup />
     </main>
   );
 }
