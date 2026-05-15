@@ -181,13 +181,14 @@ export default function Work() {
           align-items: baseline;
           justify-content: space-between;
           padding-bottom: 0;
-          margin-bottom: -4vw; /* Pulls subsequent elements up to close the visual gap */
+          padding-top:150px;
+          margin-bottom: -27vw; /* Pulls subsequent elements up to close the visual gap */
         }
 
         .hero-title {
           font-size: 16vw;
           font-weight: 900;
-          line-height: 0.62;      /* FURTHER TIGHTENED: to pull the baseline down and remove extra bottom space */
+          line-height: 0.4;      /* FURTHER TIGHTENED: to pull the baseline down and remove extra bottom space */
           letter-spacing: -0.04em;
           margin: 0;
           display: flex;
@@ -271,6 +272,7 @@ export default function Work() {
         .work-grid {
           width: 100%;
           margin: 0;
+          margin-top: -5vw !important;
           display: grid;
           grid-template-columns: repeat(12, 1fr);
           gap: 0;
@@ -502,7 +504,7 @@ export default function Work() {
           {filteredProjects.map((p) => (
             <div key={p.id} className={`project-tile span-${p.span}`}>
               <div className="tile-image-container">
-                <img draggable="false" src={p.image} alt={p.title} className="tile-image" loading="lazy" draggable={false} />
+                <img draggable="false" src={p.image} alt={p.title} className="tile-image" loading="lazy" />
               </div>
               <div className="tile-header">
                 <h3 className="tile-title">{p.title}</h3>
@@ -533,7 +535,7 @@ export default function Work() {
       {/* Location Banner */}
       <section className="location-banner">
         <div className="flank-plus">+</div>
-        <h2 className="location-banner-text">(LA, CA)</h2>
+        <h2 className="location-banner-text">Slay the Strategy</h2>
         <div className="flank-plus">+</div>
       </section>
 
@@ -546,7 +548,7 @@ export default function Work() {
         <div className="archived-strip">
           {archivedProjects.map((ap) => (
             <div key={ap.id} className="archived-tile">
-              <img draggable="false" src={ap.image} alt={ap.title} className="archived-img" loading="lazy" draggable={false} />
+              <img draggable="false" src={ap.image} alt={ap.title} className="archived-img" loading="lazy" />
               <div className="archived-title">{ap.title}</div>
             </div>
           ))}
