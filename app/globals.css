@@ -54,7 +54,7 @@ body {
   flex-direction: column;
   color: var(--foreground) !important;
   background: var(--background) !important;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -63,6 +63,7 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 a {
@@ -91,4 +92,13 @@ a {
 /* Fix GSAP ScrollTrigger pinning on mobile devices by avoiding overflow: hidden */
 .mwg_effect031 {
   overflow: visible !important;
+}
+
+/* Studio row image override — prevent Webflow max-width: 100% from breaking grid layout */
+.studio-row-img {
+  max-width: 340px !important;
+  width: 100% !important;
+  height: 240px !important;
+  object-fit: cover !important;
+  border-radius: 1.5rem !important;
 }

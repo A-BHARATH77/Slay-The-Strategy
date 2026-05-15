@@ -30,7 +30,7 @@ export default function Footer() {
           animation: marqueeRightToLeft 20s linear infinite;
           white-space: nowrap;
           font-size: 16vw;
-          font-family: 'Times New Roman', Times, serif;
+          font-family: 'Montserrat', sans-serif;
           letter-spacing: -0.02em;
           line-height: 1;
           margin-bottom: 8rem;
@@ -72,7 +72,7 @@ export default function Footer() {
         }
         .footer-col-left h2 {
           font-size: 3.5rem;
-          font-family: 'Times New Roman', Times, serif;
+          font-family: 'Montserrat', sans-serif;
           margin-top: 0;
           margin-bottom: 1rem;
           font-weight: normal;
@@ -115,7 +115,7 @@ export default function Footer() {
         }
         .footer-col-meta .meta-val {
           font-size: 1.25rem;
-          font-family: 'Times New Roman', Times, serif;
+          font-family: 'Montserrat', sans-serif;
           margin-bottom: 2.5rem;
           text-decoration: none;
           color: #e4e1d6;

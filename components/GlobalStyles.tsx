@@ -75,7 +75,7 @@ export default function GlobalStyles() {
     <style dangerouslySetInnerHTML={{__html: `
 /* Variables: Automatically set all headings to the variable heading font */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--typography--heading-style);
+  font-family: 'Montserrat', sans-serif !important;
   font-weight: 500 !important;
   color: 	var(--color-mode-default--heading);
   line-height: 1;
@@ -83,7 +83,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* Variables: Auto change all classes with 'heading-style' */
 [class*="heading-style-"] {
-  font-family: var(--typography--heading-style) !important;
+  font-family: 'Montserrat', sans-serif !important;
   font-weight: 500 !important;
 	color: 	var(--color-mode-default--heading);
 	line-height: 1;

@@ -1,19 +1,35 @@
 'use client';
-import React from 'react';
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 export default function Contact() {
+  const contactRef = useRef(null);
+
+  useGSAP(() => {
+    gsap.from('.contact-reveal-word', {
+      y: '100%',
+      duration: 1,
+      ease: 'power4.out',
+      stagger: 0.1,
+    });
+  }, { scope: contactRef });
+
   return (
-    <section className="bg-[#f7f2e6] min-h-screen px-10 md:px-32 flex flex-col items-start text-[#516856] w-full overflow-hidden relative" style={{ paddingTop: '100px', paddingLeft: '60px' }}>
-
-
+    <section ref={contactRef} className="bg-[#f7f2e6] min-h-screen px-10 md:px-32 flex flex-col items-start text-[#516856] w-full overflow-hidden relative" style={{ paddingTop: '100px', paddingLeft: '60px' }}>
 
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '4rem', width: '100%', minHeight: '100%', position: 'relative', zIndex: 10 }}>
 
         {/* LEFT HALF */}
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '3rem', fontFamily: 'serif' }}>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '3rem', fontFamily: "'Montserrat', sans-serif" }}>
 
-          <h1 style={{ fontSize: '9rem', fontWeight: 'bold', lineHeight: '0.85', letterSpacing: '-0.05em', margin: 0 }}>
-            Let's talk.
+          <h1 style={{ fontSize: '9rem', fontWeight: 'bold', lineHeight: '0.85', letterSpacing: '-0.05em', margin: 0, display: 'flex', flexWrap: 'wrap', gap: '0.2em' }}>
+            <span style={{ overflow: 'hidden', display: 'inline-block', paddingBottom: '0.1em', marginBottom: '-0.1em' }}>
+              <span className="contact-reveal-word" style={{ display: 'inline-block', willChange: 'transform' }}>Let's</span>
+            </span>
+            <span style={{ overflow: 'hidden', display: 'inline-block', paddingBottom: '0.1em', marginBottom: '-0.1em' }}>
+              <span className="contact-reveal-word" style={{ display: 'inline-block', willChange: 'transform' }}>talk.</span>
+            </span>
           </h1>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -64,7 +80,7 @@ export default function Contact() {
                   border: 'none',
                   outline: 'none',
                   fontSize: '2.2rem',
-                  fontFamily: 'serif',
+                  fontFamily: "'Montserrat', sans-serif",
                   color: '#516856',
                   padding: '12px',
                   paddingLeft:'20px'
@@ -83,7 +99,7 @@ export default function Contact() {
                   border: 'none',
                   outline: 'none',
                   fontSize: '2.2rem',
-                  fontFamily: 'serif',
+                  fontFamily: "'Montserrat', sans-serif",
                   color: '#516856',
                   padding: '12px',
                   paddingLeft:'20px'
@@ -102,7 +118,7 @@ export default function Contact() {
                   border: 'none',
                   outline: 'none',
                   fontSize: '2.2rem',
-                  fontFamily: 'serif',
+                  fontFamily: "'Montserrat', sans-serif",
                   color: '#516856',
                   resize: 'none',
                   paddingLeft:'22px',

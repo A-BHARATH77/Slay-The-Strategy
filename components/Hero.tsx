@@ -1,5 +1,5 @@
-// @ts-nocheck
 import React from 'react';
+import TextReveal from './TextReveal';
 
 export default function Hero() {
   return (
@@ -13,24 +13,29 @@ export default function Hero() {
       justifyContent: 'center'
     }}>
       <div style={{ maxWidth: '1200px', width: '100%', margin: '0 auto', textAlign: 'left', paddingBottom: '3rem' }}>
-        <h1 style={{
-          fontFamily: 'Georgia, "Times New Roman", serif',
-          fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
-          lineHeight: '1.1',
-          color: '#516856',
-          margin: '0 0 1rem 0',
-          fontWeight: 'normal',
-          maxWidth: '800px'
-        }}>
-          Slay The Strategy
-        </h1>
-        <p style={{
-          fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-          color: '#516856',
-          margin: 0
-        }}>
-          Where Aesthetic Obession Meets Ruthless Strategy
-        </p>
+        <TextReveal 
+          tagName="h1"
+          text="Slay The Strategy"
+          style={{
+            fontFamily: 'Georgia, "Times New Roman", serif',
+            fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
+            lineHeight: '1.1',
+            color: '#516856',
+            margin: '0 0 1rem 0',
+            fontWeight: 'normal',
+            maxWidth: '800px'
+          }}
+        />
+        <TextReveal 
+          tagName="p"
+          text="Where Aesthetic Obession Meets Ruthless Strategy"
+          delay={0.5}
+          style={{
+            fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+            color: '#516856',
+            margin: 0
+          }}
+        />
       </div>
 
       {/* Marquee Section */}

@@ -1,99 +1,166 @@
+"use client";
 // @ts-nocheck
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+
+const CLIENT_LOGOS = [
+  { name: 'Avarna', img: '/Clients/avarna.png' },
+  { name: 'Acyuta', img: '/Clients/acyuta.png' },
+  { name: 'Cellexa', img: '/Clients/cellexa.png' },
+  { name: 'Ginni Parmar', img: '/Clients/ginni_parmar.png' },
+  { name: 'Infamous Talents', img: '/Clients/infamous_talents.png' },
+  { name: 'Maple', img: '/Clients/maple.png' },
+  { name: 'Mahru Stories', img: '/Clients/mahru_stories.png' },
+  { name: 'Perspective Studio', img: '/Clients/perspective_studio.png' },
+  { name: 'Claw Nails', img: '/Clients/claw_nails.png' },
+  { name: 'Kapoma', img: '/Clients/kapoma.jpg' },
+  { name: 'Luxx Spas', img: '/Clients/luxx_spas.png' },
+  { name: 'Orange', img: '/Clients/orange.png' },
+  { name: 'Orient', img: '/Clients/orient.png' },
+  { name: 'Blue Modern', img: '/Clients/blue_modern.png' },
+  { name: 'Wallora', img: '/Clients/wallora.png' }
+];
+
+function LogoCell({ client }: { client: typeof CLIENT_LOGOS[0] }) {
+  return (
+    <div
+      style={{
+        flexShrink: 0,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 'clamp(280px, 35vw, 450px)',
+        height: 'clamp(150px, 18vw, 250px)',
+        padding: '0 2rem'
+      }}
+    >
+      <img
+        src={client.img}
+        alt={client.name}
+        style={{ 
+          width: '100%',
+          height: '100%',
+          objectFit: 'contain',
+          transition: 'all 500ms ease-out',
+          cursor: 'pointer',
+          transform: 'scale(1.2)',
+          mixBlendMode: 'multiply'
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.3)'}
+        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1.2)'}
+      />
+    </div>
+  );
+}
+
+function LogoMarqueeRow({ reverse = false }: { reverse?: boolean }) {
+  const rowRef = useRef<HTMLDivElement>(null);
+  const copies = Array.from({ length: 6 }, (_, ci) =>
+    CLIENT_LOGOS.map((cl, li) => ({ ...cl, key: `${ci}-${li}` }))
+  ).flat();
+
+  useEffect(() => {
+    const row = rowRef.current;
+    if (!row) return;
+
+    const BASE = 0.6;
+    const MAX_BOOST = BASE * 10;
+    const BOOST_SCALE = 0.055;
+    const IDLE_MS = 95;
+    const RAMP_SPEED = 10.5;
+    const KICK_EPS = 0.02;
+    const KICK_LERP = 0.65;
+    const dir = reverse ? 1 : -1;
+
+    let x = 0;
+    let currentBoost = BASE;
+    let targetBoost = BASE;
+    let lastChangeAt = performance.now();
+    let lastTickAt = performance.now();
+    let rafId: number;
+
+    const power3Out = (t: number) => 1 - Math.pow(1 - t, 3);
+
+    const tick = () => {
+      const now = performance.now();
+      const dt = Math.min((now - lastTickAt) / 1000, 0.05);
+      lastTickAt = now;
+
+      if (now - lastChangeAt > IDLE_MS) targetBoost = BASE;
+
+      const t = Math.min(1, dt * RAMP_SPEED);
+      const eased = power3Out(t);
+      currentBoost += (targetBoost - currentBoost) * eased;
+      currentBoost = Math.max(BASE, Math.min(MAX_BOOST, currentBoost));
+
+      x += dir * currentBoost;
+      const half = row.scrollWidth / 2;
+      if (Math.abs(x) >= half) x = reverse ? -half + 1 : 0;
+      row.style.transform = `translateX(${x}px)`;
+      rafId = requestAnimationFrame(tick);
+    };
+    rafId = requestAnimationFrame(tick);
+
+    const onWheel = (e: WheelEvent) => {
+      const now = performance.now();
+      const rawDelta = Math.abs(e.deltaY) || Math.abs(e.deltaX);
+      const delta = Math.min(rawDelta, 120);
+      const desired = Math.min(BASE + delta * BOOST_SCALE, MAX_BOOST);
+      targetBoost = desired;
+      lastChangeAt = now;
+      if (Math.abs(currentBoost - BASE) < KICK_EPS) {
+        currentBoost = BASE + (desired - BASE) * KICK_LERP;
+      }
+      lastTickAt = now;
+    };
+
+    window.addEventListener('wheel', onWheel, { passive: true });
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener('wheel', onWheel);
+    };
+  }, [reverse]);
+
+  return (
+    <div style={{ width: '100%', overflow: 'hidden' }}>
+      <div 
+        ref={rowRef} 
+        style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          width: 'max-content', 
+          willChange: 'transform',
+          gap: '0' 
+        }}
+      >
+        {copies.map((cl) => (
+          <LogoCell key={cl.key} client={cl} />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Clients() {
   return (
-    <section className="section_clients">
-  <div className="section-padding-128px">
-    <div className="padding-global">
-      <div className="w-layout-blockcontainer container-col-12 w-container">
-        <div className="padding-bottom padding-72px">
-          <div className="max-width-640px">
-            <h2 className="heading-m">These brands got slayed.</h2>
-          </div>
-        </div>
-        <div className="mwg_effect008 w-dyn-list">
-          <div role="list" className="container is-clients-marquee w-dyn-items" suppressHydrationWarning>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/69241146b4df63c4ca966552_Bullit%20Digital.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
+    <section className="section_clients" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', backgroundColor: '#FDF8EC', overflow: 'hidden' }}>
+      <div className="padding-global">
+        <div className="w-layout-blockcontainer container-col-12 w-container">
+          <div className="padding-bottom padding-72px" style={{ marginBottom: '4rem', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-end', gap: '6rem', flexWrap: 'wrap' }}>
+            <div style={{ flex: '0 1 auto', minWidth: '300px', paddingLeft: '4rem' }}>
+              <h2 className="heading-m" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)', color: '#516856', margin: 0, lineHeight: '0.9' }}>These brands <br /> got slayed.</h2>
             </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/68c194e6d1b186563459b107_morssinkhof.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/6849d88f755388cc2c74ecff_salontopper.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/6849d880bed5996600cbc586_seesing-flex.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/6849d86cd6ba384af3c14e58_graafschap-college.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/6849d85341bf0d7476e56a8c_fides.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/6849d838fc5735f090bd9843_SRHK.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/6849d81e72e08110e3fd1a17_knltb.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/684b062ebc242028ca4b3ea1_tho.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/684c05642bf8f5cea7384403_de-talententuin.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/68c1952f22281ee50d3620b5_zclv.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-
-            {/* Duplicated for seamless marquee */}
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/69241146b4df63c4ca966552_Bullit%20Digital.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/68c194e6d1b186563459b107_morssinkhof.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/6849d88f755388cc2c74ecff_salontopper.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/6849d880bed5996600cbc586_seesing-flex.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/6849d86cd6ba384af3c14e58_graafschap-college.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/6849d85341bf0d7476e56a8c_fides.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/6849d838fc5735f090bd9843_SRHK.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/6849d81e72e08110e3fd1a17_knltb.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/684b062ebc242028ca4b3ea1_tho.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/684c05642bf8f5cea7384403_de-talententuin.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
-            </div>
-            <div role="listitem" className="card w-dyn-item">
-              <div className="client-card"><img draggable="false" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b74a9/68c1952f22281ee50d3620b5_zclv.svg" loading="lazy" alt="" className="image" draggable={false} /></div>
+            <div style={{ flex: '1 1 auto', minWidth: '300px', maxWidth: '55ch' }}>
+              <p style={{ fontSize: '1rem', color: '#516856', opacity: 0.7, lineHeight: '1.6', margin: 0 }}>
+                Over the years we have built lasting relationships with clients across fashion, technology, culture, and commerce. We don't just deliver work — we deliver work that performs, persists, and gets remembered.
+              </p>
             </div>
           </div>
-        </div>
-        <div className="w-embed">
-          <style dangerouslySetInnerHTML={{__html: "\n                            @keyframes clientsMarquee {\n                                0% { transform: translateX(0); }\n                                100% { transform: translateX(-50%); }\n                            }\n                            .mwg_effect008 {\n                                overflow: hidden;\n                                width: 100%;\n                            }\n                            .mwg_effect008 .container {\n                                width: max-content;\n                                white-space: nowrap;\n                                display: flex;\n                                gap: 4rem;\n                                padding: 0;\n                                user-select: none;\n                                animation: clientsMarquee 30s linear infinite;\n                            }\n                            .mwg_effect008 .container:hover {\n                                animation-play-state: paused;\n                            }\n                        " }} />
+          
+          <div className="clients-marquee-wrapper" style={{ width: '100%', overflow: 'hidden' }}>
+            <LogoMarqueeRow />
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div className="padding-global">
-    <div className="section-divider" />
-  </div>
-</section>
-
+    </section>
   );
 }

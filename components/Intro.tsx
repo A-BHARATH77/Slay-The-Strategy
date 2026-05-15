@@ -13,7 +13,7 @@ export default function Intro() {
           </div>
           <div data-video="playpause" id="w-node-faa2305a-1600-624b-3553-a5629475cb14-23544b6d" className="small-image" style={{ width: '22rem', height: 'auto', justifySelf: 'center', alignSelf: 'start', gridColumn: '1 / 7', gridRow: '1 / 3', marginTop: 0, paddingTop: 0 }}>
             <div className="show-mobile"><video muted loop webkit-playsinline="true" playsInline src="https://gethyped.b-cdn.net/New%20Reach/new-reach-loop.mp4" autoPlay className="video" /></div>
-            <div className="hide-mobile"><img draggable="false" sizes="(max-width: 960px) 100vw, 960px" srcSet="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6894757aa6dd3f84f6e463a2_Anniek%20Bril-p-500.webp 500w, https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6894757aa6dd3f84f6e463a2_Anniek%20Bril-p-800.webp 800w, https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6894757aa6dd3f84f6e463a2_Anniek%20Bril.webp 960w" alt="" loading="lazy" src="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6894757aa6dd3f84f6e463a2_Anniek%20Bril.webp" className="image" /></div>
+            <div className="hide-mobile"><img draggable="false" src="/founder.png" alt="Dipani" loading="lazy" className="image" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} /></div>
           </div>
           <div className="show-mobile">
             <div className="padding-bottom padding-96px" />

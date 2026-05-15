@@ -1,5 +1,7 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 interface Project {
   id: number;
@@ -152,6 +154,17 @@ export default function Work() {
     ? projects.filter(p => p.category === filterCategory)
     : projects;
 
+  const heroRef = useRef(null);
+
+  useGSAP(() => {
+    gsap.from('.work-reveal-word', {
+      y: '100%',
+      duration: 1,
+      ease: 'power4.out',
+      stagger: 0.1,
+    });
+  }, { scope: heroRef });
+
   return (
     <div className="work-root">
       <style dangerouslySetInnerHTML={{
@@ -159,7 +172,7 @@ export default function Work() {
         .work-root {
           background-color: #f7f2e6;
           color: #516856;
-          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          font-family: 'Montserrat', sans-serif;
           min-height: 100vh;
           padding-bottom: 8rem;
           padding-top:88px;   
@@ -188,11 +201,24 @@ export default function Work() {
         .hero-title {
           font-size: 16vw;
           font-weight: 900;
-          line-height: 0.4;      /* FURTHER TIGHTENED: to pull the baseline down and remove extra bottom space */
+          line-height: 0.6;      /* Adjusted from 0.4 to prevent clipping */
           letter-spacing: -0.04em;
           margin: 0;
           display: flex;
           align-items: flex-start;
+        }
+
+        .work-reveal-wrap {
+          overflow: hidden;
+          display: inline-block;
+          padding-top: 0.2em;
+          padding-bottom: 0.2em;
+          margin-top: -0.2em;
+          margin-bottom: -0.2em;
+        }
+        .work-reveal-word {
+          display: inline-block;
+          will-change: transform;
         }
 
         .hero-sup {
@@ -473,9 +499,14 @@ export default function Work() {
       `}} />
 
       {/* Hero Section */}
-      <section className="work-hero">
+      <section className="work-hero" ref={heroRef}>
         <div className="hero-title-container">
-          <h1 className="hero-title">Work <span className="hero-sup"></span></h1>
+          <h1 className="hero-title">
+            <span className="work-reveal-wrap">
+              <span className="work-reveal-word">Work</span>
+            </span>
+            <span className="hero-sup"></span>
+          </h1>
           <div className="view-toggle">
             Views <span className={view === 'grid' ? 'active' : ''} onClick={() => setView('grid')}>1</span>|
             <span className={view === 'list' ? 'active' : ''} onClick={() => setView('list')}>2</span>

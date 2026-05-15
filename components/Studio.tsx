@@ -1,5 +1,5 @@
 'use client';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, Fragment } from 'react';
 import { motion, useInView } from 'framer-motion';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -79,228 +79,85 @@ const CARD_TRANSFORMS: [number[], number[]][] = [
 // ─── hero ──────────────────────────────────────────────────────────────────
 
 function StudioHero() {
-    return (
-<section
-      className="relative w-full h-screen flex flex-col overflow-hidden"
-      style={{ background: '#FDF8EC' }}
-    >  
-      <style dangerouslySetInnerHTML={{ __html: `
-        .studio-hero-center {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          pointer-events: none;
-          z-index: 10;
-        }
-        .studio-hero-heading {
-          font-family: var(--font-display), serif;
-          font-weight: 800 !important;
-          line-height: 0.85;
-          text-align: center;
-          margin: 0 !important;
-          color: #516856;
-          font-size: clamp(5rem, 15vw, 15rem);
-        }
-      `}} />
-
-      {/* Spacer to offset the fixed navbar */}
-      <div style={{ height: '100px', width: '100%' }} />
-
-      {/* giant type - centered in the remaining space */}
-      <div className="studio-hero-center">
-        <h1 className="studio-hero-heading">
-          Slay <span className="italic">Bold</span>
-        </h1>
-      </div>
-
-        {/* Bottom footer row */}
-        <div className="absolute bottom-0 left-0 w-full flex justify-between items-end p-8 md:p-12 text-[#516856] opacity-40">
-            <div className="flex flex-col gap-1">
-            <p className="font-sans text-[10px] uppercase tracking-widest">Slay The Strategy</p>
-            <p className="font-sans text-[10px] uppercase tracking-widest">Strategy / Creative</p>
-            </div>
-            <p className="font-sans text-[10px] uppercase tracking-widest">Est. 2026</p>
-        </div>
-
-        </section>
-    );
-}
-
-// ─── about ─────────────────────────────────────────────────────────────────
-
-function StudioAbout() {
-    const sectionRef = useRef<HTMLElement>(null);
+    const heroRef = useRef(null);
 
     useGSAP(() => {
-        if (!sectionRef.current) return;
-
-        // ── Headings: clip-path reveal ──────────────────────────────────────
-        const lines = sectionRef.current.querySelectorAll<HTMLElement>('.sa-line');
-        gsap.set(lines, { clipPath: 'inset(0 100% 0 0)', opacity: 0 });
-        lines.forEach((line) => {
-            gsap.to(line, {
-                clipPath: 'inset(0 0% 0 0)',
-                opacity: 1,
-                duration: 1.1,
-                ease: 'power3.out',
-                scrollTrigger: { trigger: line, start: 'top 85%' },
-            });
+        gsap.from('.studio-reveal-word', {
+            y: '100%',
+            duration: 1,
+            ease: 'power4.out',
+            stagger: 0.1,
         });
-
-        // ── Images: clip-path + scale reveal ───────────────────────────────
-        const imgWrappers = sectionRef.current.querySelectorAll<HTMLElement>('.sa-img');
-        gsap.set(imgWrappers, { clipPath: 'inset(100% 0 0 0)' });
-        imgWrappers.forEach((wrap) => {
-            const img = wrap.querySelector('img');
-            if (img) gsap.set(img, { scale: 1.2 });
-            const tl = gsap.timeline({
-                scrollTrigger: { trigger: wrap, start: 'top 85%' },
-            });
-            tl.to(wrap, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'power3.inOut' });
-            if (img) tl.to(img, { scale: 1, duration: 1.2, ease: 'power3.inOut' }, 0);
-        });
-
-        // ── Body text: slide up ─────────────────────────────────────────────
-        const bodies = sectionRef.current.querySelectorAll<HTMLElement>('.sa-body-inner');
-        gsap.set(bodies, { y: '110%' });
-        bodies.forEach((el) => {
-            gsap.to(el, {
-                y: '0%',
-                duration: 1,
-                ease: 'power3.out',
-                scrollTrigger: { trigger: el, start: 'top 92%' },
-            });
-        });
-
-    }, { scope: sectionRef });
+    }, { scope: heroRef });
 
     return (
-        <section ref={sectionRef} className="relative w-full" style={{ background: '#516856', color: '#FDF8EC' }}>
+        <section className="studio-hero" ref={heroRef}>
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                .studio-hero {  
+                    padding: 0 2.5rem;
+                    width: 100%;
+                    margin: 0 auto;
+                    position: relative;
+                    z-index: 10;
+                    background-color: #f7f2e6;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
 
-            <style>{`
-                .sa-line        { clip-path: inset(0 100% 0 0); opacity: 0; }
-                .sa-img         { clip-path: inset(100% 0 0 0); }
-                .sa-img img     { transform: scale(1.2); }
-                .sa-body-inner  { transform: translateY(110%); }
-            `}</style>
+                .studio-title-container {
+                    display: flex;
+                    align-items: baseline;
+                    justify-content: space-between;
+                    padding-bottom: 0;
+                    padding-top: 200px; 
+                    margin-bottom: 0; 
+                    width: 100%;
+                }
 
-            <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex flex-col">
+                .studio-divider {
+                    width: 100%;
+                    margin-top: 4rem;
+                }
 
-                {/* ── ROW 1: Content Left | Image Right ── */}
-                <div className="flex flex-col md:flex-row items-stretch border-b border-[#FDF8EC]/10">
-                    {/* Left: Heading */}
-                    <div className="flex-1 md:pr-8 py-12 md:py-16 flex items-center md:border-r border-[#FDF8EC]/10">
-                        <h2
-                            className="sa-line font-display font-normal leading-[0.9]"
-                            style={{ fontSize: 'clamp(2.5rem,6vw,6rem)' }}
-                        >
-                            Concept Driven
-                        </h2>
-                    </div>
+                .studio-title {
+                    font-size: 16vw;
+                    font-weight: 900;
+                    line-height: 0.6;
+                    letter-spacing: -0.04em;
+                    margin: 0;
+                    display: flex;
+                    align-items: flex-start;
+                    color: #516856;
+                    font-family: 'Montserrat', sans-serif;
+                }
 
-                    {/* Right: Image */}
-                    <div className="flex-1 md:pl-8 py-8 flex items-center">
-                        <div className="sa-img w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '4/3' }}>
-                            <img
-                                draggable="false"
-                                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
-                                alt="Team Collaboration"
-                                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                            />
-                        </div>
-                    </div>
-                </div>
-
-                {/* ── ROW 2: Image Left | Content Right ── */}
-                <div className="flex flex-col md:flex-row items-stretch border-b border-[#FDF8EC]/10">
-                    {/* Left: Image */}
-                    <div className="flex-1 md:pr-8 py-8 flex items-center md:border-r border-[#FDF8EC]/10 order-2 md:order-1">
-                        <div className="sa-img w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '3/4' }}>
-                            <img
-                                draggable="false"
-                                src="https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?w=800&q=80"
-                                alt="Visual Culture"
-                                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                            />
-                        </div>
-                    </div>
-
-                    {/* Right: Content */}
-                    <div className="flex-1 md:pl-8 py-12 md:py-16 flex flex-col justify-center gap-10 order-1 md:order-2">
-                        <h2
-                            className="sa-line font-display font-normal leading-[0.9]"
-                            style={{ fontSize: 'clamp(2.5rem,6vw,6rem)' }}
-                        >
-                            Visual Culture
-                        </h2>
-                        <div className="overflow-hidden pb-[0.15em]">
-                            <p className="sa-body-inner font-body text-[#FDF8EC]/60 leading-relaxed text-sm md:text-base max-w-[36ch]">
-                                Slay The Strategy is a creative agency rooted in ambition and working everywhere
-                                that matters. We believe great social media is not decoration — it is infrastructure.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* ── ROW 3: Content Left | Image Right ── */}
-                <div className="flex flex-col md:flex-row items-stretch">
-                    {/* Left: Content */}
-                    <div className="flex-1 md:pr-8 py-12 md:py-16 flex flex-col justify-center gap-10 md:border-r border-[#FDF8EC]/10">
-                        <h2
-                            className="sa-line font-display font-normal leading-[0.9]"
-                            style={{ fontSize: 'clamp(2.5rem,6vw,6rem)' }}
-                        >
-                            Found Online
-                        </h2>
-                        <div className="overflow-hidden pb-[0.15em]">
-                            <p className="sa-body-inner font-body text-[#FDF8EC]/60 leading-relaxed text-sm md:text-base max-w-[42ch]">
-                                From brand strategy to the final reel, we handle it in-house. Clients range from
-                                early-stage founders to established names ready to own their digital presence.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Right: Image */}
-                    <div className="flex-1 md:pl-8 py-8 flex items-center">
-                        <div className="sa-img w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '4/3' }}>
-                            <img
-                                draggable="false"
-                                src="https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&q=80"
-                                alt="Found Online"
-                                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                            />
-                        </div>
-                    </div>
-                </div>
-
+                .studio-reveal-wrap {
+                    overflow: hidden;
+                    display: inline-block;
+                    padding-top: 0.2em;
+                    padding-bottom: 0.2em;
+                    margin-top: -0.2em;
+                    margin-bottom: -0.2em;
+                }
+                .studio-reveal-word {
+                    display: inline-block;
+                    will-change: transform;
+                }
+                `
+            }} />
+            <div className="studio-title-container">
+                <h1 className="studio-title">
+                    <span className="studio-reveal-wrap">
+                        <span className="studio-reveal-word">Studio</span>
+                    </span>
+                </h1>
             </div>
-
-            {/* ── IDEAS IN MOTION banner ── */}
-            <div
-                className="relative w-full overflow-hidden flex items-center justify-center"
-                style={{ height: '40vw', maxHeight: '520px', minHeight: '220px', background: '#3d5040' }}
-            >
-                <div
-                    className="absolute inset-0 opacity-10 pointer-events-none"
-                    style={{
-                        backgroundImage: `radial-gradient(circle at 30% 50%, #FDF8EC 0%, transparent 60%),
-                                          radial-gradient(circle at 75% 60%, #8aad8e 0%, transparent 55%)`,
-                    }}
-                />
-                <h2
-                    className="relative z-10 font-display font-normal text-center leading-[0.85] select-none"
-                    style={{ fontSize: 'clamp(3rem,10vw,9rem)', color: '#FDF8EC' }}
-                >
-                    <WordSlide text="Ideas In Motion" />
-                </h2>
-            </div>
+            <div className="studio-divider" />
         </section>
     );
 }
-
 // ─── team cards ────────────────────────────────────────────────────────────
 
 function StudioTeam() {
@@ -417,7 +274,7 @@ function StudioTeam() {
                     ref={headerRef}
                     style={{ position: 'relative', display: 'flex', alignItems: 'center', width: '290vw', height: '100svh', willChange: 'transform' }}
                 >
-                    <h2 style={{ margin: '2.5% 0 0 0', fontSize: '50vw', lineHeight: '100%', fontFamily: 'var(--font-display), serif', fontWeight: 400, color: '#516856', whiteSpace: 'nowrap', userSelect: 'none' }}>
+                    <h2 style={{ margin: '2.5% 0 0 0', fontSize: '50vw', lineHeight: '100%', fontFamily: "'Montserrat', sans-serif", fontWeight: 400, color: '#516856', whiteSpace: 'nowrap', userSelect: 'none' }}>
                         Meet The Obsessives
                     </h2>
                 </div>
@@ -430,11 +287,11 @@ function StudioTeam() {
                         </div>
                         <div className="sws-card-body">
                             <div>
-                                <p style={{ fontFamily: 'var(--font-display), serif', fontSize: '1.75rem', fontWeight: 400, lineHeight: 1.1 }}>{m.name}</p>
-                                <p style={{ fontFamily: 'var(--font-body), sans-serif', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5, marginTop: '0.25rem' }}>{m.role}</p>
+                                <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '1.75rem', fontWeight: 400, lineHeight: 1.1 }}>{m.name}</p>
+                                <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5, marginTop: '0.25rem' }}>{m.role}</p>
                             </div>
-                            <p style={{ fontFamily: 'var(--font-body), sans-serif', fontSize: '0.8rem', lineHeight: 1.6, opacity: 0.7 }}>{m.bio}</p>
-                            <Link href="/contact" style={{ fontFamily: 'var(--font-body), sans-serif', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5, display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#FDF8EC', textDecoration: 'none' }}>
+                            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '0.8rem', lineHeight: 1.6, opacity: 0.7 }}>{m.bio}</p>
+                            <Link href="/contact" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5, display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#FDF8EC', textDecoration: 'none' }}>
                                 Work With Us →
                             </Link>
                         </div>
@@ -444,7 +301,7 @@ function StudioTeam() {
 
             {/* MOBILE */}
             <div className="sws-team-mobile" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%', padding: '6rem 1.5rem', background: '#FDF8EC' }}>
-                <h2 style={{ fontFamily: 'var(--font-display), serif', fontSize: 'clamp(2.5rem,10vw,4rem)', fontWeight: 400, color: '#516856', marginBottom: '1rem', lineHeight: 0.95 }}>
+                <h2 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 'clamp(2.5rem,10vw,4rem)', fontWeight: 400, color: '#516856', marginBottom: '1rem', lineHeight: 0.95 }}>
                     Minds at Work
                 </h2>
                 {team.map((m) => (
@@ -454,9 +311,9 @@ function StudioTeam() {
                             <img draggable="false" src={m.img} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
                         <div style={{ padding: '1.25rem', color: '#FDF8EC', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                            <p style={{ fontFamily: 'var(--font-display), serif', fontSize: '1.5rem', fontWeight: 400 }}>{m.name}</p>
-                            <p style={{ fontFamily: 'var(--font-body), sans-serif', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5 }}>{m.role}</p>
-                            <p style={{ fontFamily: 'var(--font-body), sans-serif', fontSize: '0.85rem', lineHeight: 1.6, opacity: 0.7 }}>{m.bio}</p>
+                            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '1.5rem', fontWeight: 400 }}>{m.name}</p>
+                            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5 }}>{m.role}</p>
+                            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '0.85rem', lineHeight: 1.6, opacity: 0.7 }}>{m.bio}</p>
                         </div>
                     </div>
                 ))}
@@ -465,135 +322,227 @@ function StudioTeam() {
     );
 }
 
-// ─── clients ───────────────────────────────────────────────────────────────
+type StudioRowItem = {
+    name: string;
+    image: string;
+    recognitions: string[];
+};
 
-const CLIENT_LOGOS = [
-    { name: 'Avarna',              img: '/logo/avarna.png' },
-    { name: 'Acyuta',              img: '/logo/acyuta.png' },
-    { name: 'Cellexa',             img: '/logo/cellexa.png' },
-    { name: 'Ginni Parmar',        img: '/logo/ginni_parmar.png' },
-    { name: 'Infamous Talents',    img: '/logo/infamous_talents.png' },
-    { name: 'Maple',               img: '/logo/maple.png' },
-    { name: 'Mahru Stories',       img: '/logo/mahru_stories.png' },
-    { name: 'Perspective Studio',  img: '/logo/perspective_studio.png' },
-    { name: 'Claw Nails',          img: '/logo/claw_nails.png' },
-    { name: 'Kapoma',              img: '/logo/kapoma.jpg' },
-    { name: 'Luxx Spas',           img: '/logo/luxx_spas.png' },
-    { name: 'Orange',              img: '/logo/orange.png' },
-    { name: 'Orient',              img: '/logo/orient.png' },
-];
-
-function LogoMarqueeRow({ reverse = false }: { reverse?: boolean }) {
-    const rowRef = useRef<HTMLDivElement>(null);
-    const copies = Array.from({ length: 6 }, (_, ci) =>
-        CLIENT_LOGOS.map((cl, li) => ({ ...cl, key: `${ci}-${li}` }))
-    ).flat();
-
-    useEffect(() => {
-        const row = rowRef.current;
-        if (!row) return;
-
-        const BASE = 0.6, MAX_BOOST = BASE * 10, BOOST_SCALE = 0.055;
-        const IDLE_MS = 95, RAMP_SPEED = 10.5, KICK_EPS = 0.02, KICK_LERP = 0.65;
-        const dir = reverse ? 1 : -1;
-
-        let x = 0, currentBoost = BASE, targetBoost = BASE;
-        let lastChangeAt = performance.now(), lastTickAt = performance.now();
-        let rafId: number;
-
-        const p3 = (t: number) => 1 - Math.pow(1 - t, 3);
-
-        const tick = () => {
-            const now = performance.now();
-            const dt = Math.min((now - lastTickAt) / 1000, 0.05);
-            lastTickAt = now;
-            if (now - lastChangeAt > IDLE_MS) targetBoost = BASE;
-            currentBoost += (targetBoost - currentBoost) * p3(Math.min(1, dt * RAMP_SPEED));
-            currentBoost = Math.max(BASE, Math.min(MAX_BOOST, currentBoost));
-            x += dir * currentBoost;
-            const half = row.scrollWidth / 2;
-            if (Math.abs(x) >= half) x = reverse ? -half + 1 : 0;
-            row.style.transform = `translateX(${x}px)`;
-            rafId = requestAnimationFrame(tick);
-        };
-        rafId = requestAnimationFrame(tick);
-
-        const onWheel = (e: WheelEvent) => {
-            const now = performance.now();
-            const delta = Math.min(Math.abs(e.deltaY) || Math.abs(e.deltaX), 120);
-            const desired = Math.min(BASE + delta * BOOST_SCALE, MAX_BOOST);
-            targetBoost = desired;
-            lastChangeAt = now;
-            if (Math.abs(currentBoost - BASE) < KICK_EPS) currentBoost = BASE + (desired - BASE) * KICK_LERP;
-            lastTickAt = now;
-        };
-        window.addEventListener('wheel', onWheel, { passive: true });
-        return () => { cancelAnimationFrame(rafId); window.removeEventListener('wheel', onWheel); };
-    }, [reverse]);
-
+function StudioRow({ item, isLast }: { item: StudioRowItem; isLast?: boolean }) {
     return (
-        <div className="w-full overflow-hidden">
-            <div ref={rowRef} className="flex items-center w-max will-change-transform">
-                {copies.map((cl) => (
-                    <div
-                        key={cl.key}
-                        className="flex-shrink-0 flex items-center justify-center"
-                        style={{ width: 'clamp(280px,35vw,450px)', height: 'clamp(150px,18vw,250px)', padding: '1rem 2rem' }}
-                    >
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                            draggable="false"
-                            src={cl.img}
-                            alt={cl.name}
-                            className="w-full h-full object-contain transition-all duration-500 hover:scale-110 cursor-pointer mix-blend-multiply"
-                        />
+        <div className="studio-row">
+            {/* Top border divider */}
+            <div className="studio-row-divider" />
+
+            <div className="studio-row-inner">
+
+                {/* LEFT — index + category + large name */}
+                <div className="studio-row-left">
+                    <p className="studio-row-name">{item.name}</p>
+                </div>
+
+                {/* CENTER — portrait image */}
+                <div className="studio-row-center">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                        draggable="false"
+                        src={item.image}
+                        alt={item.name}
+                        className="studio-row-img"
+                    />
+                </div>
+
+                {/* RIGHT — two columns: recognitions + scope */}
+                <div className="studio-row-left">
+                    <div className="studio-row-col">
+                        {item.recognitions.map((r, i) => (
+                            <p key={i} className="studio-row-col-item">{r}</p>
+                        ))}
                     </div>
-                ))}
+
+                </div>
             </div>
+
+            {/* Bottom border on last row */}
+            {isLast && <div className="studio-row-divider" />}
         </div>
     );
 }
 
-function StudioClients() {
+const STUDIO_DATA: StudioRowItem[] = [
+    {
+        name: 'Concept Driven',
+        image: '/studio/studio1.jpg',
+        recognitions: [''],
+    },
+    {
+        name: 'Visual Culture',
+        image: '/studio/studio2.jpg',
+        recognitions: ['Slay The Strategy is a creative agency rooted in', 'ambition and working everywhere that matters.', 'We believe great social media is not decoration','— it is infrastructure.'],
+    },
+    {
+        name: 'Found Online ',
+        image: '/studio/studio3.jpg',
+        recognitions: ['From brand strategy to the final reel, we handle', 'it in-house. Our clients range from early-stage', 'founders to established names ready to own','their digital presence.'],
+    },
+];
+
+function StudioInfoRow() {
     return (
-        <section className="relative w-full py-24 overflow-hidden" style={{ background: '#FDF8EC', color: '#516856' }}>
-            <div className="max-w-[1400px] mx-auto px-6 md:px-10 mb-16">
-                <div className="flex flex-col md:flex-row items-stretch">
-                    {/* Left Side: Label + Heading */}
-                    <div className="flex-1 md:pr-8 py-4 md:border-r border-[#516856]/10">
-                        <p className="font-body text-[10px] uppercase tracking-widest text-[#516856]/50 mb-4">Clients</p>
-                        <h2 className="font-display font-normal leading-[0.9]" style={{ fontSize: 'clamp(2.5rem,6vw,6rem)' }}>
-                            <WordSlide text="Brands We Have Shaped" />
-                        </h2>
-                    </div>
-                    {/* Right Side: Body Text aligned to bottom */}
-                    <div className="flex-1 md:pl-8 py-4 flex items-end">
-                        <p className="font-body text-sm text-[#516856]/70 leading-relaxed max-w-[42ch]">
-                            Over the years we have built lasting relationships with clients across fashion,
-                            technology, culture, and commerce. We don&apos;t just deliver work — we deliver work
-                            that performs, persists, and gets remembered.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div className="flex flex-col">
-                <LogoMarqueeRow reverse={false} />
-                <LogoMarqueeRow reverse={true} />
-            </div>
-        </section>
+        <div className="studio-info-section">
+            <style dangerouslySetInnerHTML={{ __html: `
+                .studio-info-section {
+                    width: 100%;
+                    padding: 0 2.5rem;
+                    background: #f7f2e6;
+                }
+
+                .studio-row {
+                    width: 100%;
+                }
+
+                .studio-row-divider {
+                    width: 100%;
+                    height: 1px;
+                    background-color: #516856;
+                    opacity: 0.35;
+                }
+
+                .studio-row-inner {
+                    display: grid;
+                    grid-template-columns: 2fr 1.4fr 1.6fr;
+                    align-items: center;
+                    gap: 0;
+                    padding: 3rem 0;
+                }
+
+                /* LEFT */
+                .studio-row-left {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    gap: 2.5rem;
+                    padding-right: 2rem;
+                }
+
+                .studio-row-meta {
+                    display: flex;
+                    align-items: center;
+                    gap: 1.5rem;
+                }
+
+                .studio-row-index {
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 0.75rem;
+                    font-weight: 500;
+                    letter-spacing: 0.08em;
+                    color: #516856;
+                    opacity: 0.5;
+                }
+
+                .studio-row-category {
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 0.7rem;
+                    font-weight: 500;
+                    letter-spacing: 0.12em;
+                    text-transform: uppercase;
+                    color: #516856;
+                    opacity: 0.45;
+                }
+
+                .studio-row-name {
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: clamp(2.2rem, 4.5vw, 5rem);
+                    font-weight: 400;
+                    line-height: 0.95;
+                    color: #516856;
+                    letter-spacing: -0.03em;
+                    margin: 0;
+                }
+
+                /* CENTER */
+                .studio-row-center {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .studio-row-img {
+                    width: 100%;
+                    max-width: 340px;
+                    height: 240px;
+                    object-fit: cover;
+                    display: block;
+                    border-radius: 1.5rem;
+                }
+
+                /* RIGHT */
+                .studio-row-right {
+                    display: flex;
+                    gap: 2rem;
+                    justify-content: flex-end;
+                    align-items: flex-start;
+                    padding-left: 2rem;
+                }
+
+                .studio-row-col {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.4rem;
+                    min-width: 140px;
+                }
+
+                .studio-row-col-label {
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 0.6rem;
+                    font-weight: 600;
+                    letter-spacing: 0.14em;
+                    text-transform: uppercase;
+                    color: #516856;
+                    opacity: 0.4;
+                    margin-bottom: 0.5rem;
+                }
+
+                .studio-row-col-item {
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    color: #516856;
+                    opacity: 1;
+                    line-height: 1.5;
+                }
+
+                @media (max-width: 900px) {
+                    .studio-info-section { padding: 0 1.25rem; }
+                    .studio-row-inner {
+                        grid-template-columns: 1fr;
+                        gap: 1.5rem;
+                        padding: 2rem 0;
+                    }
+                    .studio-row-name { font-size: clamp(2rem, 8vw, 3rem); }
+                    .studio-row-img { max-width: 100%; height: 200px; }
+                    .studio-row-right { justify-content: flex-start; }
+                }
+            ` }} />
+            {STUDIO_DATA.map((row, index) => (
+                <StudioRow
+                    key={index}
+                    item={row}
+                    isLast={index === STUDIO_DATA.length - 1}
+                />
+            ))}
+        </div>
     );
 }
-
 // ─── page root ─────────────────────────────────────────────────────────────
 
 export function StudioContent() {
     return (
-        <div className="bg-[#516856] min-h-screen">
-            <div className="relative z-10 w-full bg-[#516856] rounded-b-[2.5rem] shadow-2xl">
+        <div className="bg-[#FDF8EC] min-h-screen">
+            <div className="relative z-10 w-full bg-[#FDF8EC]">
                 <StudioHero />
-                <StudioAbout />
+                <StudioInfoRow />
                 <StudioTeam />
-                <StudioClients />
             </div>
             <Footer />
         </div>

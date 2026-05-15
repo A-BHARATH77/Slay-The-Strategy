@@ -10,9 +10,7 @@ export default function StudioPage() {
   return (
     <>
       <div className="page-wrapper">
-        <Preloader />
         <GlobalStyles />
-        <ModalContact />
         <Navbar />
         <div className="main-wrapper">
           <StudioContent />
