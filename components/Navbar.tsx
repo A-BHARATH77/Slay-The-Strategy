@@ -52,7 +52,7 @@ export default function Navbar() {
           width: 100% !important;
           max-width: 1400px;
           margin: 0 auto;
-          padding: -1rem 2rem;
+          padding: 0rem 2rem;
           pointer-events: auto; /* Re-enable clicks for navbar content */
         }
         
@@ -91,7 +91,10 @@ export default function Navbar() {
         }
 
         .nav_link.w--current {
-          opacity: 0.5;
+          opacity: 1 !important;
+          text-decoration: underline !important;
+          text-underline-offset: 8px !important;
+          text-decoration-thickness: 1px !important;
           pointer-events: none;
         }
 

@@ -11,7 +11,7 @@ export default function SelectedWork() {
           <div className="container-col-10">
             <div className="max-width-col-06">
               <div className="content-wrap">
-                <h2 className="heading-xl" style={{ color: '#f7f2e6' }}><strong>Content dat scoort.</strong></h2>
+                <h2 className="heading-xl" style={{ color: '#f7f2e6' }}><strong>Recent Works.</strong></h2>
               </div>
                 </div>
               </div>

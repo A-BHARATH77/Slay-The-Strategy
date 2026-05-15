@@ -211,7 +211,7 @@ export default function Footer() {
           <div className="footer-col-meta" style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
             <div>
               <div className="meta-label">EMAIL</div>
-              <a href="mailto:dipani@slaywithstrategy.com" className="meta-val">dipani@slaywithstrategy.com</a>
+              <a href="mailto:dipani@slaywithstrategy.com" className="meta-val" style={{ marginBottom: 0 }}>dipani@slaywithstrategy.com</a>
             </div>
             <div>
               <div className="meta-label">SOCIALS</div>

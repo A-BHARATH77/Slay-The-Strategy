@@ -22,14 +22,14 @@ export default function Hero() {
           fontWeight: 'normal',
           maxWidth: '800px'
         }}>
-          A members-only<br />home sharing community
+          Slay The Strategy
         </h1>
         <p style={{
           fontSize: 'clamp(1rem, 2vw, 1.25rem)',
           color: '#516856',
           margin: 0
         }}>
-          Stay in curated homes for a fraction of the cost.
+          Where Aesthetic Obession Meets Ruthless Strategy
         </p>
       </div>
 
