@@ -41,17 +41,16 @@
 
 html {
   height: 100%;
+  /* Do NOT add overflow-x: hidden here — iOS Safari treats it as overflow: hidden
+     and kills the native vertical scroll context after a fixed overlay disappears. */
 }
 
-html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
   min-height: 100%;
   flex-direction: column;
+  /* overflow-x containment on body alone is safe on iOS Safari */
+  overflow-x: hidden;
   color: var(--foreground) !important;
   background: var(--background) !important;
   font-family: 'Montserrat', sans-serif !important;
@@ -82,6 +81,12 @@ a {
 .main-wrapper {
   padding-top: 0 !important;
   margin-top: 0 !important;
+}
+
+/* Contain horizontal overflow at wrapper level (safe on mobile — does not affect
+   the document scroll container the way html/body overflow rules do on iOS Safari) */
+.page-wrapper {
+  overflow-x: hidden;
 }
 
 /* Override Webflow nav height offset if navbar is fixed/sticky */
