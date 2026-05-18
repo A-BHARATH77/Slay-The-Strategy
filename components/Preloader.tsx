@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Preloader() {
   return (
-    <div className="preloader">
+    <div className="preloader" style={{ pointerEvents: 'none' }}>
   <div className="preloader_content">
     <div className="preloader_line" />
     <div className="preloader__shapes">

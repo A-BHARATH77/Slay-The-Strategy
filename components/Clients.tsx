@@ -177,7 +177,7 @@ export default function Clients() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="section_clients" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', backgroundColor: '#FDF8EC', overflow: 'hidden' }}>
+    <section ref={containerRef} className="section_clients" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', backgroundColor: '#FDF8EC', overflow: 'clip' }}>
       <div className="padding-global">
         <div className="w-layout-blockcontainer container-col-12 w-container">
           <div className="padding-bottom padding-72px" style={{ marginBottom: '4rem', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-end', gap: '6rem', flexWrap: 'wrap' }}>

@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <header id="section_hero" className="section_hero hero-layout-container" style={{
       backgroundColor: '#f7f2e6',
-      overflow: 'hidden',
+      overflow: 'clip',
       height: '100vh',
       display: 'flex',
       flexDirection: 'column',

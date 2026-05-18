@@ -32,6 +32,12 @@ export default function BodyScripts() {
                 // add the infinite attribute to enable infinite scroll functionality
                 const isInfiniteScrollPage = document.body.hasAttribute("data-lenis-infinite");
 
+                // Disable Lenis on touch devices (mobile) to completely prevent touch-scroll locking bugs
+                const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth <= 991;
+                if (isTouch) {
+                    return; // Allow native scrolling entirely
+                }
+
                 // Initialize Lenis with appropriate settings
                 lenis = new Lenis({
                     lerp: 0.1,
