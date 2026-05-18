@@ -42,16 +42,16 @@ export default function Intro() {
     <section id="intro-home" ref={containerRef} className="section_intro">
       <style dangerouslySetInnerHTML={{ __html: `
         @media (min-width: 992px) {
-          .intro-heading-container { grid-row: 1; }
-          .intro-image-container { grid-column: 1 / 7; grid-row: 1 / 3; width: 22rem; }
-          .intro-content-container { grid-row: 2; border-left: 1px solid #516856; padding-left: 3rem; }
+          .intro-heading-container { grid-row: 1 !important; }
+          .intro-image-container { grid-column: 1 / 7 !important; grid-row: 1 / 3 !important; width: 22rem !important; margin-top: 3.5rem !important; }
+          .intro-content-container { grid-row: 2 !important; border-left: 1px solid #516856 !important; padding-left: 3rem !important; }
         }
         @media (max-width: 991px) {
           .intro-heading-container, .intro-image-container, .intro-content-container {
-            grid-column: 1 / -1;
+            grid-column: 1 / -1 !important;
           }
-          .intro-image-container { width: 100%; max-width: 22rem; margin: 2rem auto 0; }
-          .intro-content-container { border-left: none; padding-left: 0; }
+          .intro-image-container { width: 100% !important; max-width: 22rem !important; margin: 2rem auto 0 !important; }
+          .intro-content-container { border-left: none !important; padding-left: 0 !important; }
         }
       ` }} />
       <div className="section-padding-96px">
