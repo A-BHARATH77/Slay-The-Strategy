@@ -540,6 +540,91 @@ export default function Work() {
 
         /* Archived Section */
 
+        /* ── Mobile responsive ── */
+        @media (max-width: 768px) {
+          .work-root {
+            padding-top: 70px;
+            padding-bottom: 4rem;
+          }
+
+          .work-hero {
+            padding: 0 1.2rem 0;
+          }
+
+          .hero-title-container {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+            padding-top: 60px;
+            margin-bottom: 0;       /* remove the large negative pull — not needed on mobile */
+          }
+
+          .hero-title {
+            font-size: 22vw;        /* readable on small screens */
+            line-height: 0.85;
+          }
+
+          .view-toggle {
+            position: static;       /* remove absolute positioning so it doesn't overlap */
+            margin-top: 0.5rem;
+          }
+
+          .filter-row {
+            position: static;
+            margin-top: 0.8rem;
+            justify-content: flex-start;
+          }
+
+          .work-grid {
+            margin-top: 2rem !important;   /* remove the negative-margin trick on mobile */
+          }
+
+          .filter-panel {
+            flex-wrap: wrap;
+            padding: 1rem 1.2rem;
+          }
+
+          .tile-title {
+            font-size: 1.1rem;
+          }
+
+          .list-title {
+            font-size: 1.4rem;
+          }
+
+          .list-meta {
+            flex-direction: column;
+            gap: 0.3rem;
+            font-size: 0.75rem;
+          }
+
+          .list-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.4rem;
+          }
+
+          .work-list {
+            padding: 0 1.2rem 4rem;
+          }
+
+          .location-banner {
+            flex-direction: column;
+            gap: 1rem;
+            padding: 2rem 1.2rem;
+            margin-bottom: 4rem;
+          }
+
+          .location-banner-text {
+            font-size: 15vw;
+            text-align: center;
+          }
+
+          .flank-plus {
+            display: none;
+          }
+        }
+
       `}} />
 
       {/* Hero Section */}

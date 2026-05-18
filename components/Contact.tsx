@@ -83,7 +83,7 @@ export default function Contact() {
           .contact-section {
             padding-left: 20px !important;
             padding-right: 20px !important;
-            padding-top: 80px !important;
+            padding-top: 120px !important;
           }
         }
       ` }} />
