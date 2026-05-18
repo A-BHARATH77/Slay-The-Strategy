@@ -651,15 +651,6 @@ export default function Work() {
             </span>
             <span className="hero-sup"></span>
           </h1>
-          <div className="view-toggle text">
-            Views <span className={view === 'grid' ? 'active' : ''} onClick={() => setView('grid')}>1</span>|
-            <span className={view === 'list' ? 'active' : ''} onClick={() => setView('list')}>2</span>
-          </div>
-        </div>
-        <div className="filter-row text">
-          <div className="filter-btn" onClick={() => setShowFilters(!showFilters)}>
-            Filters {showFilters ? '-' : '+'}
-          </div>
         </div>
       </section>
 
