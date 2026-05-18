@@ -47,6 +47,9 @@ export default function Intro() {
           .intro-content-container { grid-row: 2; border-left: 1px solid #516856; padding-left: 3rem; }
         }
         @media (max-width: 991px) {
+          .intro-heading-container, .intro-image-container, .intro-content-container {
+            grid-column: 1 / -1;
+          }
           .intro-image-container { width: 100%; max-width: 22rem; margin: 2rem auto 0; }
           .intro-content-container { border-left: none; padding-left: 0; }
         }
