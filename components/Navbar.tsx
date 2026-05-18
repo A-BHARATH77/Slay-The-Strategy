@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 export default function Navbar() {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -115,30 +116,74 @@ export default function Navbar() {
           color: var(--foreground, #516856);
         }
 
+        .mobile-menu-btn {
+          display: none;
+          background: none;
+          border: none;
+          font-size: 1.8rem;
+          color: var(--foreground, #516856);
+          cursor: pointer;
+          padding: 0;
+          line-height: 1;
+        }
+
         /* Responsive adjustments */
         @media (max-width: 991px) {
-          .navbar_menu {
-            position: static !important;
-            transform: none !important;
-            flex-wrap: wrap;
-            justify-content: center !important;
-            gap: 1.5rem;
-            margin-top: 1rem;
-            width: 100% !important;
-          }
           .navbar {
-            flex-direction: column;
+            flex-direction: row;
+            justify-content: space-between !important;
             padding: 1rem 1.5rem;
+          }
+          .navbar_menu {
+            display: none !important; /* Hide by default on mobile */
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            background-color: #f7f2e6 !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 3rem !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            box-shadow: none !important;
+            transform: none !important;
+            z-index: -1 !important; /* Stays behind logo and button */
+          }
+          .navbar.menu-open .navbar_menu {
+            display: flex !important; /* Show when open */
+          }
+          .mobile-menu-btn {
+            display: block;
+            position: relative;
+            z-index: 10;
+          }
+          .nav_logo {
+            position: relative !important;
+            z-index: 10 !important;
           }
           .navbar_right-text {
             display: none !important;
           }
+          .nav_link {
+            font-size: 2rem;
+          }
         }
       `}} />
-      <div className="navbar">
+      <div className={`navbar ${isMobileMenuOpen ? 'menu-open' : ''}`}>
         <a aria-label="Home link" role="Link" href="/" aria-current="page" className={`nav_logo w-inline-block ${pathname === '/' ? 'w--current' : ''}`}>
           <img draggable="false" src="/logo.png" alt="SWS Logo" style={{ height: '50px', width: 'auto' }} />
         </a>
+        
+        <button 
+          className="mobile-menu-btn"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? '✕' : '☰'}
+        </button>
+
         <div className="navbar_menu">
           <a aria-label="Home link" href="/" className={`nav_link ${pathname === '/' ? 'w--current' : ''}`}>
             Home

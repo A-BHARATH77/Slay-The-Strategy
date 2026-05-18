@@ -13,24 +13,35 @@ export default function QuoteAnimation() {
     document.body.style.overflow = '';
     document.documentElement.style.overscrollBehavior = '';
     document.body.style.overscrollBehavior = '';
-    // Re-start Lenis if it was stopped (both possible instances)
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.width = '';
+    
+    // Dispatch a synthetic scroll event so ScrollTrigger recalculates
     if (typeof window !== 'undefined') {
-      if ((window as any).lenis && typeof (window as any).lenis.start === 'function') {
-        (window as any).lenis.start();
-      }
-      // Dispatch a synthetic scroll event so ScrollTrigger recalculates
       window.dispatchEvent(new Event('scroll'));
       window.dispatchEvent(new Event('resize'));
     }
   }, []);
 
   useEffect(() => {
+    // Bulletproof scroll disable on mount (since this is at top of page)
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = '0';
+    document.body.style.left = '0';
+    document.body.style.width = '100%';
+
     // Quote fades out after 3 seconds
     const quoteTimer = setTimeout(() => setShowQuote(false), 3000);
     // Overlay fades out after 4.5 seconds
     const overlayTimer = setTimeout(() => setShowOverlay(false), 4500);
     // Restore scroll after overlay is fully gone (4.5s fade-out + 1s exit animation + buffer)
-    const scrollRestoreTimer = setTimeout(restoreScroll, 5700);
+    const scrollRestoreTimer = setTimeout(() => {
+      restoreScroll();
+    }, 5700);
 
     return () => {
       clearTimeout(quoteTimer);
