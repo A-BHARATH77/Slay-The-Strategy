@@ -12,6 +12,12 @@ export default function LenisSetup() {
     script.async = true;
     script.onload = () => {
       if (window.Lenis) {
+        // Disable Lenis on touch devices (mobile) to completely prevent touch-scroll locking bugs
+        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth <= 991;
+        if (isTouch) {
+          return; // Allow native scrolling entirely
+        }
+
         const lenis = new window.Lenis({
           lerp: 0.1,
           wheelMultiplier: 0.7,
@@ -20,12 +26,6 @@ export default function LenisSetup() {
           normalizeWheel: false,
           smoothTouch: false
         });
-
-        function raf(time) {
-          lenis.raf(time);
-          requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
 
         // Sync NPM GSAP
         lenis.on("scroll", ScrollTrigger.update);
