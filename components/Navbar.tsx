@@ -105,6 +105,16 @@ export default function Navbar() {
           display: none !important;
         }
 
+        .navbar_right-text {
+          text-align: right;
+          line-height: 1.1;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          font-weight: 500;
+          font-size: 1.1rem;
+          color: var(--foreground, #516856);
+        }
+
         /* Responsive adjustments */
         @media (max-width: 991px) {
           .navbar_menu {
@@ -134,6 +144,10 @@ export default function Navbar() {
           <a aria-label="Contact link" href="/contact" className={`nav_link ${pathname === '/contact' ? 'w--current' : ''}`}>
             Contact
           </a>
+        </div>
+        <div className="navbar_right-text">
+          <div>Slay</div>
+          <div style={{ fontSize: '0.85em', opacity: 0.8 }}>the Strategy</div>
         </div>
       </div>
     </nav>

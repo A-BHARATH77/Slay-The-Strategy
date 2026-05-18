@@ -1,6 +1,7 @@
 // @ts-nocheck
 import React from 'react';
 import Preloader from '../components/Preloader';
+import QuoteAnimation from '../components/QuoteAnimation';
 import GlobalStyles from '../components/GlobalStyles';
 import ModalContact from '../components/ModalContact';
 import Navbar from '../components/Navbar';
@@ -17,6 +18,7 @@ export default function Home() {
   return (
     <>
       <div className="page-wrapper">
+        <QuoteAnimation />
         <Preloader />
         <GlobalStyles />
         <ModalContact />

@@ -13,7 +13,7 @@ export default function Hero() {
       justifyContent: 'center'
     }}>
       <div style={{ maxWidth: '1200px', width: '100%', margin: '0 auto', textAlign: 'left', paddingBottom: '3rem' }}>
-        <TextReveal 
+        <TextReveal
           tagName="h1"
           text="Slay The Strategy"
           style={{
@@ -26,7 +26,7 @@ export default function Hero() {
             maxWidth: '800px'
           }}
         />
-        <TextReveal 
+        <TextReveal
           tagName="p"
           text="Where Aesthetic Obession Meets Ruthless Strategy"
           delay={0.5}
@@ -72,21 +72,18 @@ export default function Hero() {
         <div className="marquee-container">
           {[1, 2].map((group) => (
             <React.Fragment key={group}>
-              <div className="marquee-item">
-                <img draggable="false" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=400&h=600" alt="Home 1" />
-              </div>
-              <div className="marquee-item">
-                <img draggable="false" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=400&h=600" alt="Home 2" />
-              </div>
-              <div className="marquee-item">
-                <img draggable="false" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=400&h=600" alt="Home 3" />
-              </div>
-              <div className="marquee-item">
-                <img draggable="false" src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=400&h=600" alt="Home 4" />
-              </div>
-              <div className="marquee-item">
-                <img draggable="false" src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=400&h=600" alt="Home 5" />
-              </div>
+              {[
+                '/HomeCaroussel/first.jpg',
+                '/HomeCaroussel/carousel_01.jpg',
+                '/HomeCaroussel/painting_03.jpg',
+                '/HomeCaroussel/painting_04.jpg',
+                '/HomeCaroussel/painting_05.jpg',
+                '/HomeCaroussel/painting_06.jpg'
+              ].map((src, idx) => (
+                <div className="marquee-item" key={`${group}-${idx}`}>
+                  <img draggable="false" src={src} alt={`Home ${idx + 1}`} />
+                </div>
+              ))}
             </React.Fragment>
           ))}
         </div>

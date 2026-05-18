@@ -56,6 +56,8 @@ export default function Footer() {
           flex-grow: 1;
           align-items: start;
           width: 100%;
+          position: relative;
+          z-index: 10;
         }
         @media (max-width: 1024px) {
           .footer-grid {
@@ -148,6 +150,8 @@ export default function Footer() {
           align-items: center;
           font-size: 0.85rem;
           opacity: 0.8;
+          position: relative;
+          z-index: 10;
         }
         @media (max-width: 768px) {
           .footer-bottom {
@@ -203,7 +207,7 @@ export default function Footer() {
           <div className="footer-col-left">
             <div style={{ marginBottom: '1.5rem' }}>
               <h2 style={{ color: '#e4e1d6' }}>Lets build an empire</h2>
-              <a href="tel:+916364281117" className="phone-link" style={{ marginBottom: 0 }}>+91 63642 81117 &rarr;</a>
+              <a href="https://wa.me/916364281117?text=I'm%20ready%20to%20build%20something%20legendary%20with%20you." className="phone-link" style={{ marginBottom: 0 }}>+91 63642 81117 &rarr;</a>
             </div>
             <div className="based-in">BASED IN INDIA</div>
           </div>
@@ -215,15 +219,15 @@ export default function Footer() {
             </div>
             <div>
               <div className="meta-label">SOCIALS</div>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="meta-val" style={{ marginBottom: 0 }}>Instagram &nearr;</a>
+              <a href="https://www.instagram.com/slaywithdipani" target="_blank" rel="noreferrer" className="meta-val" style={{ marginBottom: 0 }}>Instagram &nearr;</a>
             </div>
           </div>
 
           <div className="footer-col-links" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             <div className="meta-label" style={{ marginBottom: '0.5rem' }}>QUICK LINKS</div>
-            <a href="/expertises" className="quick-link" style={{ marginBottom: 0 }}>Services</a>
-            <a href="/work" className="quick-link" style={{ marginBottom: 0 }}>Studio</a>
-            <a href="/about" className="quick-link" style={{ marginBottom: 0 }}>Insights</a>
+            <a href="/work" className="quick-link" style={{ marginBottom: 0   }}>Work</a>
+            <a href="/studio" className="quick-link" style={{ marginBottom: 0 }}>Studio</a>
+            <a href="/contact" className="quick-link" style={{ marginBottom: 0 }}>Contact</a>
           </div>
         </div>
 

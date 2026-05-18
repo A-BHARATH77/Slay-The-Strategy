@@ -1,6 +1,11 @@
 "use client";
 // @ts-nocheck
 import React, { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const CLIENT_LOGOS = [
   { name: 'Avarna', img: '/Clients/avarna.png' },
@@ -19,6 +24,20 @@ const CLIENT_LOGOS = [
   { name: 'Blue Modern', img: '/Clients/blue_modern.png' },
   { name: 'Wallora', img: '/Clients/wallora.png' }
 ];
+
+function RevealWords({ text }: { text: string }) {
+  return (
+    <span style={{ display: 'inline-flex', flexWrap: 'wrap', rowGap: '0.2em', columnGap: '0.25em' }}>
+      {text.split(' ').map((word, i) => (
+        <span key={i} style={{ overflow: 'hidden', display: 'inline-block', paddingBottom: '0.1em', marginBottom: '-0.1em' }}>
+          <span className="clients-reveal-word" style={{ display: 'inline-block', willChange: 'transform' }}>
+            {word}
+          </span>
+        </span>
+      ))}
+    </span>
+  );
+}
 
 function LogoCell({ client }: { client: typeof CLIENT_LOGOS[0] }) {
   return (
@@ -141,17 +160,36 @@ function LogoMarqueeRow({ reverse = false }: { reverse?: boolean }) {
 }
 
 export default function Clients() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.from('.clients-reveal-word', {
+      y: '120%',
+      duration: 1,
+      ease: 'power4.out',
+      stagger: 0.015,
+      scrollTrigger: {
+        trigger: '.section_clients',
+        start: 'top 80%',
+        toggleActions: 'play none none none',
+      }
+    });
+  }, { scope: containerRef });
+
   return (
-    <section className="section_clients" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', backgroundColor: '#FDF8EC', overflow: 'hidden' }}>
+    <section ref={containerRef} className="section_clients" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', backgroundColor: '#FDF8EC', overflow: 'hidden' }}>
       <div className="padding-global">
         <div className="w-layout-blockcontainer container-col-12 w-container">
           <div className="padding-bottom padding-72px" style={{ marginBottom: '4rem', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-end', gap: '6rem', flexWrap: 'wrap' }}>
             <div style={{ flex: '0 1 auto', minWidth: '300px', paddingLeft: '4rem' }}>
-              <h2 className="heading-m" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)', color: '#516856', margin: 0, lineHeight: '0.9' }}>These brands <br /> got slayed.</h2>
+              <h2 className="heading-m" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)', color: '#516856', margin: 0, lineHeight: '0.9', display: 'flex', flexDirection: 'column', gap: '0.2em' }}>
+                <RevealWords text="These brands" />
+                <RevealWords text="got slayed." />
+              </h2>
             </div>
             <div style={{ flex: '1 1 auto', minWidth: '300px', maxWidth: '55ch' }}>
               <p style={{ fontSize: '1rem', color: '#516856', opacity: 0.7, lineHeight: '1.6', margin: 0 }}>
-                Over the years we have built lasting relationships with clients across fashion, technology, culture, and commerce. We don't just deliver work — we deliver work that performs, persists, and gets remembered.
+                <RevealWords text="Over the years we have built lasting relationships with clients across fashion, technology, culture, and commerce. We don't just deliver work — we deliver work that performs, persists, and gets remembered." />
               </p>
             </div>
           </div>

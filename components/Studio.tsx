@@ -82,8 +82,8 @@ function StudioHero() {
     const heroRef = useRef(null);
 
     useGSAP(() => {
-        gsap.from('.studio-reveal-word', {
-            y: '100%',
+        gsap.to('.studio-reveal-word', {
+            y: '0%',
             duration: 1,
             ease: 'power4.out',
             stagger: 0.1,
@@ -144,6 +144,7 @@ function StudioHero() {
                 .studio-reveal-word {
                     display: inline-block;
                     will-change: transform;
+                    transform: translateY(100%);
                 }
                 `
             }} />
@@ -240,6 +241,23 @@ function StudioTeam() {
         mm.add('(max-width: 999px)', () => {
             gsap.set(header, { clearProps: 'all' });
             gsap.set(cards, { clearProps: 'all', opacity: 1 });
+
+            // Animate mobile stacked cards text on scroll
+            const mobileCards = document.querySelectorAll('.sws-team-mobile > div');
+            mobileCards.forEach((card) => {
+                const txt = card.querySelectorAll('.text');
+                gsap.to(txt, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none',
+                    }
+                });
+            });
             ScrollTrigger.refresh();
         });
     }, { scope: sectionRef });
@@ -249,6 +267,10 @@ function StudioTeam() {
             <style>{`
                 @media (max-width: 999px)  { .sws-team-desktop { display: none !important; } }
                 @media (min-width: 1000px) { .sws-team-mobile  { display: none !important; } }
+                .sws-team-mobile .text {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
                 .sws-card {
                     position: absolute; top: 10%; left: 100%; z-index: 2;
                     width: 325px; height: 500px; padding: 0.75rem;
@@ -287,11 +309,11 @@ function StudioTeam() {
                         </div>
                         <div className="sws-card-body">
                             <div>
-                                <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '1.75rem', fontWeight: 400, lineHeight: 1.1 }}>{m.name}</p>
-                                <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5, marginTop: '0.25rem' }}>{m.role}</p>
+                                <p className="text" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '1.75rem', fontWeight: 400, lineHeight: 1.1 }}>{m.name}</p>
+                                <p className="text" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5, marginTop: '0.25rem' }}>{m.role}</p>
                             </div>
-                            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '0.8rem', lineHeight: 1.6, opacity: 0.7 }}>{m.bio}</p>
-                            <Link href="/contact" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5, display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#FDF8EC', textDecoration: 'none' }}>
+                            <p className="text" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '0.8rem', lineHeight: 1.6, opacity: 0.7 }}>{m.bio}</p>
+                            <Link className="text" href="/contact" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5, display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#FDF8EC', textDecoration: 'none' }}>
                                 Work With Us →
                             </Link>
                         </div>
@@ -311,9 +333,9 @@ function StudioTeam() {
                             <img draggable="false" src={m.img} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
                         <div style={{ padding: '1.25rem', color: '#FDF8EC', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '1.5rem', fontWeight: 400 }}>{m.name}</p>
-                            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5 }}>{m.role}</p>
-                            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '0.85rem', lineHeight: 1.6, opacity: 0.7 }}>{m.bio}</p>
+                            <p className="text" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '1.5rem', fontWeight: 400 }}>{m.name}</p>
+                            <p className="text" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.5 }}>{m.role}</p>
+                            <p className="text" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '0.85rem', lineHeight: 1.6, opacity: 0.7 }}>{m.bio}</p>
                         </div>
                     </div>
                 ))}
@@ -338,7 +360,7 @@ function StudioRow({ item, isLast }: { item: StudioRowItem; isLast?: boolean }) 
 
                 {/* LEFT — index + category + large name */}
                 <div className="studio-row-left">
-                    <p className="studio-row-name">{item.name}</p>
+                    <p className="studio-row-name text">{item.name}</p>
                 </div>
 
                 {/* CENTER — portrait image */}
@@ -356,7 +378,7 @@ function StudioRow({ item, isLast }: { item: StudioRowItem; isLast?: boolean }) 
                 <div className="studio-row-left">
                     <div className="studio-row-col">
                         {item.recognitions.map((r, i) => (
-                            <p key={i} className="studio-row-col-item">{r}</p>
+                            <p key={i} className="studio-row-col-item text">{r}</p>
                         ))}
                     </div>
 
@@ -388,8 +410,29 @@ const STUDIO_DATA: StudioRowItem[] = [
 ];
 
 function StudioInfoRow() {
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useGSAP(() => {
+        if (!containerRef.current) return;
+        const rows = containerRef.current.querySelectorAll('.studio-row');
+        rows.forEach((row) => {
+            const textElements = row.querySelectorAll('.text');
+            gsap.to(textElements, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: row,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none',
+                }
+            });
+        });
+    }, { scope: containerRef });
+
     return (
-        <div className="studio-info-section">
+        <div ref={containerRef} className="studio-info-section">
             <style dangerouslySetInnerHTML={{ __html: `
                 .studio-info-section {
                     width: 100%;
@@ -399,6 +442,11 @@ function StudioInfoRow() {
 
                 .studio-row {
                     width: 100%;
+                }
+
+                .studio-row .text {
+                    opacity: 0;
+                    transform: translateY(30px);
                 }
 
                 .studio-row-divider {

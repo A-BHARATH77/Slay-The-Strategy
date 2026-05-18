@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -12,6 +12,8 @@ interface Project {
   platform: string;
   image: string;
   span?: number;
+  portrait?: boolean;
+  video?: string;
 }
 
 const projects: Project[] = [
@@ -22,7 +24,7 @@ const projects: Project[] = [
     director: "Lucia Aniello",
     company: "Universal TV",
     platform: "Max",
-    image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=1200",
+    image: "/Work1/painting_03.jpg",
     span: 6
   },
   {
@@ -32,7 +34,7 @@ const projects: Project[] = [
     director: "David Gelb",
     company: "Boardwalk Pictures",
     platform: "Netflix",
-    image: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=800",
+    image: "/Work1/painting_01.jpg",
     span: 6
   },
   {
@@ -42,8 +44,9 @@ const projects: Project[] = [
     director: "James Ponsoldt",
     company: "Big Beach",
     platform: "Facebook Watch",
-    image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=800",
-    span: 4
+    image: "/Work2/mahru_01.jpg",
+    span: 3,
+    portrait: true
   },
   {
     id: 4,
@@ -52,8 +55,9 @@ const projects: Project[] = [
     director: "Tony Yacenda",
     company: "CBS Studios",
     platform: "Netflix",
-    image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80&w=1200",
-    span: 4
+    image: "/Work2/mahru_02.jpg",
+    span: 3,
+    portrait: true
   },
   {
     id: 5,
@@ -62,8 +66,20 @@ const projects: Project[] = [
     director: "Brian Crano",
     company: "Ball & Chain",
     platform: "Tribeca",
-    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800",
-    span: 4
+    image: "/Work2/mahru_03.jpg",
+    span: 3,
+    portrait: true
+  },
+  {
+    id: 13,
+    title: "Alayah",
+    category: "Narrative",
+    director: "Aniqah",
+    company: "Slay",
+    platform: "Campaign",
+    image: "/Work2/mahru_04.jpg",
+    span: 3,
+    portrait: true
   },
   {
     id: 6,
@@ -72,7 +88,7 @@ const projects: Project[] = [
     director: "Autumn de Wilde",
     company: "Anonymous Content",
     platform: "Broadcast",
-    image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=800",
+    image: "/Work3/work_06.png",
     span: 4
   },
   {
@@ -82,7 +98,7 @@ const projects: Project[] = [
     director: "Wayne McClammy",
     company: "O Positive",
     platform: "Broadcast",
-    image: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&q=80&w=800",
+    image: "/Work3/nails.jpg",
     span: 8
   },
   {
@@ -93,7 +109,9 @@ const projects: Project[] = [
     company: "RadicalMedia",
     platform: "Web",
     image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=1200",
-    span: 4
+    span: 3,
+    video: "/Work4/reel_01.mp4",
+    portrait: true
   },
   {
     id: 9,
@@ -103,7 +121,9 @@ const projects: Project[] = [
     company: "Dummy",
     platform: "Broadcast",
     image: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&q=80&w=800",
-    span: 4
+    span: 3,
+    video: "/Work4/reel_02.mp4",
+    portrait: true
   },
   {
     id: 10,
@@ -113,7 +133,21 @@ const projects: Project[] = [
     company: "The Directors Bureau",
     platform: "Global",
     image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&q=80&w=800",
-    span: 4
+    span: 3,
+    video: "/Work4/reel_03.mp4",
+    portrait: true
+  },
+  {
+    id: 14,
+    title: "Nike",
+    category: "Commercial",
+    director: "Autumn de Wilde",
+    company: "RadicalMedia",
+    platform: "Web",
+    image: "/Work4/reel_03.mp4",
+    span: 3,
+    video: "/Work4/reel_04.mp4",
+    portrait: true
   },
   {
     id: 11,
@@ -122,7 +156,7 @@ const projects: Project[] = [
     director: "Brian Crano",
     company: "Sundance",
     platform: "Short",
-    image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=1200",
+    image: "Work5/carousel_01.jpg",
     span: 6
   },
   {
@@ -132,17 +166,45 @@ const projects: Project[] = [
     director: "BenDavid Grabinski",
     company: "Saban Films",
     platform: "VOD",
-    image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=800",
+    image: "Work5/first-copy.jpg",
     span: 6
+  },
+  {
+    id: 15,
+    title: "Campaign 01",
+    category: "Commercial",
+    director: "Slay",
+    company: "Strategy",
+    platform: "Reel",
+    image: "",
+    video: "/CampaignReels/campaign_01.mp4",
+    span: 4,
+    portrait: true
+  },
+  {
+    id: 16,
+    title: "Campaign 02",
+    category: "Commercial",
+    director: "Slay",
+    company: "Strategy",
+    platform: "Reel",
+    image: "",
+    video: "/CampaignReels/campaign_02.mp4",
+    span: 4,
+    portrait: true
+  },
+  {
+    id: 17,
+    title: "Campaign 03",
+    category: "Commercial",
+    director: "Slay",
+    company: "Strategy",
+    platform: "Reel",
+    image: "",
+    video: "/CampaignReels/campaign_03.mp4",
+    span: 4,
+    portrait: true
   }
-];
-
-const archivedProjects = [
-  { id: 101, title: "Nike Air", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=400" },
-  { id: 102, title: "Audi Motion", image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=400" },
-  { id: 103, title: "Apple Beats", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=400" },
-  { id: 104, title: "Vogue Cover", image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=400" },
-  { id: 105, title: "Sony Vision", image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&q=80&w=400" }
 ];
 
 export default function Work() {
@@ -157,13 +219,26 @@ export default function Work() {
   const heroRef = useRef(null);
 
   useGSAP(() => {
-    gsap.from('.work-reveal-word', {
-      y: '100%',
-      duration: 1,
+    gsap.to('.work-reveal-word', {
+      y: '0%',
+      opacity: 1,
+      duration: 1.2,
       ease: 'power4.out',
       stagger: 0.1,
     });
-  }, { scope: heroRef });
+    gsap.fromTo(".text", 
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+    );
+  });
+
+  useEffect(() => {
+    // Re-run the fade-in for dynamic list/grid elements when state changes
+    gsap.fromTo(".text", 
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+    );
+  }, [view, filterCategory]);
 
   return (
     <div className="work-root">
@@ -218,7 +293,14 @@ export default function Work() {
         }
         .work-reveal-word {
           display: inline-block;
-          will-change: transform;
+          will-change: transform, opacity;
+          transform: translateY(150%);
+          opacity: 0;
+        }
+
+        .text {
+          opacity: 0;
+          transform: translateY(30px);
         }
 
         .hero-sup {
@@ -315,25 +397,25 @@ export default function Work() {
         .project-tile {
           display: flex;
           flex-direction: column;
-          cursor: pointer;
           border-right: 1px solid #516856;
           border-bottom: 1px solid #516856;
         }
 
         .project-tile:nth-child(2),
-        .project-tile:nth-child(5),
-        .project-tile:nth-child(7),
-        .project-tile:nth-child(10),
-        .project-tile:nth-child(12) {
+        .project-tile:nth-child(6),
+        .project-tile:nth-child(8),
+        .project-tile:nth-child(12),
+        .project-tile:nth-child(14) {
           border-right: none;
         }
 
+        .project-tile.span-3 { grid-column: span 3; }
         .project-tile.span-4 { grid-column: span 4; }
         .project-tile.span-6 { grid-column: span 6; }
         .project-tile.span-8 { grid-column: span 8; }
 
         @media (max-width: 1024px) {
-          .project-tile.span-4, .project-tile.span-6, .project-tile.span-8 {
+          .project-tile.span-3, .project-tile.span-4, .project-tile.span-6, .project-tile.span-8 {
             grid-column: span 1;
             border-right: none;
           }
@@ -347,11 +429,17 @@ export default function Work() {
           position: relative;
         }
 
+        @keyframes smoothImageReveal {
+          from { opacity: 0; transform: scale(1.05); filter: blur(5px); }
+          to { opacity: 1; transform: scale(1); filter: blur(0px); }
+        }
+
         .tile-image {
           width: 100%;
           height: 100%;
           object-fit: cover;
           transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+          animation: smoothImageReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .project-tile:hover .tile-image {
@@ -404,7 +492,6 @@ export default function Work() {
           align-items: center;
           padding: 1.5rem 0;
           border-bottom: 1px solid rgba(0,0,0,0.1);
-          cursor: pointer;
         }
 
         .list-title {
@@ -452,50 +539,7 @@ export default function Work() {
         }
 
         /* Archived Section */
-        .archived-section {
-          max-width: 1600px;
-          margin: 0 auto;
-          padding: 0 2.5rem;
-        }
 
-        .archived-header {
-          display: flex;
-          justify-content: space-between;
-          text-transform: uppercase;
-          font-size: 0.8rem;
-          letter-spacing: 0.05em;
-          font-weight: 700;
-          margin-bottom: 2rem;
-        }
-
-        .archived-strip {
-          display: flex;
-          gap: 2rem;
-          overflow-x: auto;
-          padding-bottom: 1rem;
-        }
-
-        .archived-tile {
-          flex: 0 0 280px;
-          cursor: pointer;
-        }
-
-        .archived-img {
-          width: 100%;
-          aspect-ratio: 16 / 10;
-          object-fit: cover;
-          margin-bottom: 0.5rem;
-          transition: opacity 0.3s;
-        }
-
-        .archived-tile:hover .archived-img {
-          opacity: 0.8;
-        }
-
-        .archived-title {
-          font-size: 0.9rem;
-          font-weight: 600;
-        }
       `}} />
 
       {/* Hero Section */}
@@ -507,12 +551,12 @@ export default function Work() {
             </span>
             <span className="hero-sup"></span>
           </h1>
-          <div className="view-toggle">
+          <div className="view-toggle text">
             Views <span className={view === 'grid' ? 'active' : ''} onClick={() => setView('grid')}>1</span>|
             <span className={view === 'list' ? 'active' : ''} onClick={() => setView('list')}>2</span>
           </div>
         </div>
-        <div className="filter-row">
+        <div className="filter-row text">
           <div className="filter-btn" onClick={() => setShowFilters(!showFilters)}>
             Filters {showFilters ? '-' : '+'}
           </div>
@@ -521,7 +565,7 @@ export default function Work() {
 
       {/* Filter Panel */}
       {showFilters && (
-        <div className="filter-panel">
+        <div className="filter-panel text">
           <button className={`filter-pill ${filterCategory === null ? 'active' : ''}`} onClick={() => setFilterCategory(null)}>All</button>
           <button className={`filter-pill ${filterCategory === 'Narrative' ? 'active' : ''}`} onClick={() => setFilterCategory('Narrative')}>Narrative</button>
           <button className={`filter-pill ${filterCategory === 'Commercial' ? 'active' : ''}`} onClick={() => setFilterCategory('Commercial')}>Commercial</button>
@@ -534,14 +578,65 @@ export default function Work() {
         <section className="work-grid">
           {filteredProjects.map((p) => (
             <div key={p.id} className={`project-tile span-${p.span}`}>
-              <div className="tile-image-container">
-                <img draggable="false" src={p.image} alt={p.title} className="tile-image" loading="lazy" />
+              <div className="tile-image-container" style={
+                [15, 16, 17].includes(p.id)
+                  ? { height: 'calc(100vh - 120px)', backgroundColor: 'transparent' }
+                  : p.portrait || p.id === 7 || p.id === 6
+                    ? { aspectRatio: p.id === 7 ? '16 / 10' : p.id === 6 ? '4 / 5' : '3 / 4', backgroundColor: 'transparent' }
+                    : {}
+              }>
+                {p.video ? (
+                  <video
+                    muted
+                    loop
+                    webkit-playsinline="true"
+                    playsInline
+                    src={p.video}
+                    autoPlay
+                    className="tile-image"
+                    style={p.portrait ? { objectFit: 'cover' } : { objectFit: 'cover' }}
+                  />
+                ) : (
+                  <>
+                    {p.id === 7 && (
+                      <img
+                        draggable="false"
+                        src={p.image}
+                        alt=""
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          filter: 'blur(12px) brightness(0.8)',
+                          transform: 'scale(1.1)',
+                          opacity: 0.8
+                        }}
+                      />
+                    )}
+                    <img
+                      draggable="false"
+                      src={p.image}
+                      alt={p.title}
+                      className="tile-image"
+                      loading="lazy"
+                      style={p.portrait || p.id === 7 ? {
+                        objectFit: 'contain',
+                        padding: p.id === 7 ? '1.5rem' : undefined,
+                        position: p.id === 7 ? 'relative' : undefined,
+                        zIndex: p.id === 7 ? 2 : undefined
+                      } : {}}
+                    />
+                  </>
+                )}
               </div>
-              <div className="tile-header">
+              <div className="tile-header text">
                 <h3 className="tile-title">{p.title}</h3>
                 <span className="tile-category">{p.category}</span>
               </div>
-              <div className="tile-meta">
+              <div className="tile-meta text">
                 <span>Created by: {p.director}</span>
                 <span>Streamer: {p.platform}</span>
               </div>
@@ -552,8 +647,8 @@ export default function Work() {
         <section className="work-list">
           {filteredProjects.map((p) => (
             <div key={p.id} className="list-item">
-              <h3 className="list-title">{p.title}</h3>
-              <div className="list-meta">
+              <h3 className="list-title text">{p.title}</h3>
+              <div className="list-meta text">
                 <span>{p.category}</span>
                 <span>{p.director}</span>
                 <span>{p.platform}</span>
@@ -563,28 +658,6 @@ export default function Work() {
         </section>
       )}
 
-      {/* Location Banner */}
-      <section className="location-banner">
-        <div className="flank-plus">+</div>
-        <h2 className="location-banner-text">Slay the Strategy</h2>
-        <div className="flank-plus">+</div>
-      </section>
-
-      {/* Archived Section */}
-      <section className="archived-section">
-        <div className="archived-header">
-          <div>Archived</div>
-          <div>Works</div>
-        </div>
-        <div className="archived-strip">
-          {archivedProjects.map((ap) => (
-            <div key={ap.id} className="archived-tile">
-              <img draggable="false" src={ap.image} alt={ap.title} className="archived-img" loading="lazy" />
-              <div className="archived-title">{ap.title}</div>
-            </div>
-          ))}
-        </div>
-      </section>
     </div>
   );
 }
