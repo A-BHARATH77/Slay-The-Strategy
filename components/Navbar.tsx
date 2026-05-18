@@ -121,9 +121,17 @@ export default function Navbar() {
             position: static !important;
             transform: none !important;
             flex-wrap: wrap;
-            justify-content: flex-end !important;
+            justify-content: center !important;
             gap: 1.5rem;
             margin-top: 1rem;
+            width: 100% !important;
+          }
+          .navbar {
+            flex-direction: column;
+            padding: 1rem 1.5rem;
+          }
+          .navbar_right-text {
+            display: none !important;
           }
         }
       `}} />

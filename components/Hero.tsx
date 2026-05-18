@@ -3,15 +3,26 @@ import TextReveal from './TextReveal';
 
 export default function Hero() {
   return (
-    <header id="section_hero" className="section_hero" style={{
+    <header id="section_hero" className="section_hero hero-layout-container" style={{
       backgroundColor: '#f7f2e6',
-      padding: '7rem 3rem 0',
       overflow: 'hidden',
       height: '100vh',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center'
     }}>
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        .hero-layout-container {
+          padding: 7rem 3rem 0;
+        }
+        @media (max-width: 768px) {
+          .hero-layout-container {
+            padding: 4rem 1.5rem 0;
+          }
+        }
+        `
+      }} />
       <div style={{ maxWidth: '1200px', width: '100%', margin: '0 auto', textAlign: 'left', paddingBottom: '3rem' }}>
         <TextReveal
           tagName="h1"

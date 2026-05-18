@@ -20,7 +20,7 @@ export default function Contact() {
   }, { scope: contactRef });
 
   return (
-    <section ref={contactRef} className="bg-[#f7f2e6] min-h-screen px-10 md:px-32 flex flex-col items-start text-[#516856] w-full overflow-hidden relative" style={{ paddingTop: '100px', paddingLeft: '60px' }}>
+    <section ref={contactRef} className="bg-[#f7f2e6] min-h-screen px-10 md:px-32 flex flex-col items-start text-[#516856] w-full overflow-hidden relative contact-section">
       <style dangerouslySetInnerHTML={{ __html: `
         .contact-reveal-word {
           transform: translateY(100%);
@@ -33,14 +33,67 @@ export default function Contact() {
         .text:hover {
           transition: opacity 0.2s ease !important;
         }
+
+        .contact-wrapper {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          gap: 4rem;
+          width: 100%;
+          min-height: 100%;
+          position: relative;
+          z-index: 10;
+        }
+        .contact-left {
+          flex: 1;
+        }
+        .contact-right {
+          width: 55%;
+        }
+        .contact-divider {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 1px;
+          height: 900vh;
+          background-color: #516856;
+        }
+        .contact-heading {
+          font-size: 9rem;
+        }
+        .contact-section {
+          padding-top: 100px;
+          padding-left: 60px;
+        }
+
+        @media (max-width: 992px) {
+          .contact-wrapper {
+            flex-direction: column;
+            gap: 2rem;
+          }
+          .contact-right {
+            width: 100%;
+          }
+          .contact-divider {
+            display: none;
+          }
+          .contact-heading {
+            font-size: 5rem;
+          }
+          .contact-section {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            padding-top: 80px !important;
+          }
+        }
       ` }} />
 
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '4rem', width: '100%', minHeight: '100%', position: 'relative', zIndex: 10 }}>
+      <div className="contact-wrapper">
 
         {/* LEFT HALF */}
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '3rem', fontFamily: "'Montserrat', sans-serif" }}>
+        <div className="contact-left" style={{ display: 'flex', flexDirection: 'column', gap: '3rem', fontFamily: "'Montserrat', sans-serif" }}>
 
-          <h1 style={{ fontSize: '9rem', fontWeight: 'bold', lineHeight: '0.85', letterSpacing: '-0.05em', margin: 0, display: 'flex', flexWrap: 'wrap', gap: '0.2em' }}>
+          <h1 className="contact-heading" style={{ fontWeight: 'bold', lineHeight: '0.85', letterSpacing: '-0.05em', margin: 0, display: 'flex', flexWrap: 'wrap', gap: '0.2em' }}>
             <span style={{ overflow: 'hidden', display: 'inline-block', paddingBottom: '0.1em', marginBottom: '-0.1em' ,paddingRight:'1rem'}}>
               <span className="contact-reveal-word" style={{ display: 'inline-block', willChange: 'transform' }}>Let's</span>
             </span>
@@ -69,18 +122,9 @@ export default function Contact() {
 
         </div>
         {/* RIGHT HALF */}
-        <div style={{ width: '55%', display: 'flex', flexDirection: 'column', position: 'relative', minHeight: '100vh' }}>
+        <div className="contact-right" style={{ display: 'flex', flexDirection: 'column', position: 'relative', minHeight: '100vh' }}>
           {/* Vertical Line */}
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '1px',
-              height: '900vh',
-              backgroundColor: '#516856',
-            }}
-          />
+          <div className="contact-divider" />
           {/* Form Header / Top Line */}
           <div style={{ width: '100%', height: '1px', backgroundColor: '#516856', marginBottom: '3rem' }} />
 
