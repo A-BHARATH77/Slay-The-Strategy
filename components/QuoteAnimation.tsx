@@ -1,30 +1,59 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function QuoteAnimation() {
   const [showQuote, setShowQuote] = useState(true);
   const [showOverlay, setShowOverlay] = useState(true);
 
+  // Restore scroll once the overlay is fully gone
+  const restoreScroll = useCallback(() => {
+    // Re-enable native scroll on html/body (iOS Safari safety net)
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    document.documentElement.style.overscrollBehavior = '';
+    document.body.style.overscrollBehavior = '';
+    // Re-start Lenis if it was stopped (both possible instances)
+    if (typeof window !== 'undefined') {
+      if ((window as any).lenis && typeof (window as any).lenis.start === 'function') {
+        (window as any).lenis.start();
+      }
+      // Dispatch a synthetic scroll event so ScrollTrigger recalculates
+      window.dispatchEvent(new Event('scroll'));
+      window.dispatchEvent(new Event('resize'));
+    }
+  }, []);
+
   useEffect(() => {
     // Quote fades out after 3 seconds
     const quoteTimer = setTimeout(() => setShowQuote(false), 3000);
     // Overlay fades out after 4.5 seconds
     const overlayTimer = setTimeout(() => setShowOverlay(false), 4500);
+    // Restore scroll after overlay is fully gone (4.5s fade-out + 1s exit animation + buffer)
+    const scrollRestoreTimer = setTimeout(restoreScroll, 5700);
 
     return () => {
       clearTimeout(quoteTimer);
       clearTimeout(overlayTimer);
+      clearTimeout(scrollRestoreTimer);
+      // Safety: also restore on unmount (e.g. fast navigation)
+      restoreScroll();
     };
-  }, []);
+  }, [restoreScroll]);
 
   return (
     <AnimatePresence>
       {showOverlay && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          exit={{ opacity: 0, pointerEvents: 'none' as const }}
           transition={{ duration: 1 }}
+          onAnimationComplete={(definition: any) => {
+            // Called when exit animation finishes — restore scroll immediately
+            if (definition === 'exit' || (definition && definition.opacity === 0)) {
+              restoreScroll();
+            }
+          }}
           style={{
             position: 'fixed',
             inset: 0,
