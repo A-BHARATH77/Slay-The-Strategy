@@ -755,7 +755,7 @@ export default function BodyScripts() {
             // Use matchMedia to ensure responsive behavior on all devices
             let mm = gsap.matchMedia();
 
-            mm.add("(min-width: 0px)", () => {
+            mm.add("(min-width: 992px)", () => {
                 slides.forEach((slide, index) => {
                     const isLast = index === slides.length - 1;
                     const contentWrapper = slide.querySelector('.expertise-wrap');

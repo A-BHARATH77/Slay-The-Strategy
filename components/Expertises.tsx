@@ -45,6 +45,40 @@ export default function Expertises() {
 
   return (
     <section id="expertises" ref={containerRef} className="section_expertises">
+      <style dangerouslySetInnerHTML={{ __html: `
+        .expertise-content_bottom {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-items: flex-start;
+          gap: 2rem;
+          width: 100%;
+        }
+        .expertise-content-left {
+          width: 85%;
+          flex: 0 0 85%;
+        }
+        .expertise-content-right {
+          flex: 1;
+        }
+
+        @media (max-width: 991px) {
+          .expertise-content_bottom {
+            flex-direction: column;
+            gap: 1.5rem;
+          }
+          .expertise-content-left, .expertise-content-right {
+            width: 100%;
+            flex: 0 0 100%;
+          }
+          .expertise-content_heading {
+            font-size: 2.5rem !important; /* Make heading smaller on mobile to save height */
+          }
+          .expertise-content_img {
+            display: none; /* Hide images on mobile if they take too much height, to ensure card fits in viewport */
+          }
+        }
+      ` }} />
       <div className="padding-global">
         <div className="container-col-12">
           <div className="mwg_effect031">
@@ -73,13 +107,13 @@ export default function Expertises() {
                             <img draggable="false" src="/Enterprise/strategy.png" loading="lazy" alt="Brand strategy" className="video" />
                           </div>
                         </div>
-                        <div className="expertise-content_bottom" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'flex-start', gap: '2rem', width: '100%' }}>
-                          <div style={{ width: '85%', flex: '0 0 85%' }}>
+                        <div className="expertise-content_bottom">
+                          <div className="expertise-content-left">
                             <p className="paragraph-m" style={{ color: '#e4e1d6', margin: 0 }}>
                               <RevealWords text="Your brand is not your logo — it is your reputation. We dig into positioning, voice, and values to build a foundation that every piece of content stands on." />
                             </p>
                           </div>
-                          <div style={{ width: '55%', flex: '0 0 55%' }}>
+                          <div className="expertise-content-right">
                             <div className="paragraph-m" style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', color: '#e4e1d6' }}>
                               <div><RevealWords text="Brand Positioning" /></div>
                               <div><RevealWords text="Tone of Voice" /></div>
@@ -116,13 +150,13 @@ export default function Expertises() {
                             <img draggable="false" src="/Enterprise/second.jpg" loading="lazy" alt="Content Systems" className="video" />
                           </div>
                         </div>
-                        <div className="expertise-content_bottom" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'flex-start', gap: '2rem', width: '100%' }}>
-                          <div style={{ width: '85%', flex: '0 0 85%' }}>
+                        <div className="expertise-content_bottom">
+                          <div className="expertise-content-left">
                             <p className="paragraph-m" style={{ color: '#516856', margin: 0 }}>
                               <RevealWords text="Consistency is the real algorithm. We build content pillars, calendars, and creative frameworks that make showing up every day effortless and on-brand." />
                             </p>
                           </div>
-                          <div style={{ width: '55%', flex: '0 0 55%' }}>
+                          <div className="expertise-content-right">
                             <div className="paragraph-m" style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', color: '#516856' }}>
                               <div><RevealWords text="Content Strategy" /></div>
                               <div><RevealWords text="Visual Identity" /></div>
@@ -159,13 +193,13 @@ export default function Expertises() {
                             <img draggable="false" src="/Enterprise/social.jpg" loading="lazy" alt="Social Management" className="video" />
                           </div>
                         </div>
-                        <div className="expertise-content_bottom" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'flex-start', gap: '2rem', width: '100%' }}>
-                          <div style={{ width: '85%', flex: '0 0 85%' }}>
+                        <div className="expertise-content_bottom">
+                          <div className="expertise-content-left">
                             <p className="paragraph-m" style={{ color: '#e4e1d6', margin: 0 }}>
                               <RevealWords text="We handle the posting, the captions, the DMs, and the analytics — so you can stay focused on building the business your audience is watching." />
                             </p>
                           </div>
-                          <div style={{ width: '65%', flex: '0 0 65%' }}>
+                          <div className="expertise-content-right">
                             <div className="paragraph-m" style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', color: '#e4e1d6' }}>
                               <div><RevealWords text="Community Management" /></div>
                               <div><RevealWords text="Content Scheduling" /></div>
@@ -202,13 +236,13 @@ export default function Expertises() {
                             <img draggable="false" src="/Enterprise/growth.png" loading="lazy" alt="Paid & Growth" className="video" />
                           </div>
                         </div>
-                        <div className="expertise-content_bottom" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'flex-start', gap: '2rem', width: '100%' }}>
-                          <div style={{ width: '85%', flex: '0 0 85%' }}>
+                        <div className="expertise-content_bottom">
+                          <div className="expertise-content-left">
                             <p className="paragraph-m" style={{ color: '#516856', margin: 0 }}>
                               <RevealWords text="Organic builds trust. Paid scales it. Our performance layer amplifies what is already working so your brand compounds — not just grows." />
                             </p>
                           </div>
-                          <div style={{ width: '65%', flex: '0 0 65%' }}>
+                          <div className="expertise-content-right">
                             <div className="paragraph-m" style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', color: '#516856' }}>
                               <div><RevealWords text="Meta & TikTok Ads" /></div>
                               <div><RevealWords text="Campaign Strategy" /></div>
