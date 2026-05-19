@@ -20,7 +20,7 @@ const PRELOAD_IMAGES = [
 ];
 
 export default function QuoteAnimation() {
-  const [showQuote, setShowQuote] = useState(false);
+  const [showQuote, setShowQuote] = useState(true);
   const [showOverlay, setShowOverlay] = useState(true);
 
   // Restore scroll once the overlay is fully gone
@@ -49,36 +49,20 @@ export default function QuoteAnimation() {
     document.body.style.left = '0';
     document.body.style.width = '100%';
 
-    // Kick off image preloading immediately in the background
+    // Kick off image preloading in the background
     PRELOAD_IMAGES.forEach((src) => {
       const img = new Image();
       img.src = src;
     });
 
-    let quoteTimer: ReturnType<typeof setTimeout>;
-    let overlayTimer: ReturnType<typeof setTimeout>;
-
-    const startSequence = () => {
-      // Show quote immediately once page has fully loaded
-      setShowQuote(true);
-      // Quote fades out after 3 seconds
-      quoteTimer = setTimeout(() => setShowQuote(false), 3000);
-      // Overlay fades out after 4.5 seconds
-      overlayTimer = setTimeout(() => setShowOverlay(false), 4500);
-    };
-
-    if (document.readyState === 'complete') {
-      // Already fully loaded (cached / fast connection)
-      startSequence();
-    } else {
-      // Wait for ALL resources (images, fonts, scripts) to finish
-      window.addEventListener('load', startSequence, { once: true });
-    }
+    // Quote fades out after 3 seconds
+    const quoteTimer = setTimeout(() => setShowQuote(false), 3000);
+    // Overlay fades out after 4.5 seconds
+    const overlayTimer = setTimeout(() => setShowOverlay(false), 4500);
 
     return () => {
       clearTimeout(quoteTimer);
       clearTimeout(overlayTimer);
-      window.removeEventListener('load', startSequence);
       restoreScroll();
     };
   }, [restoreScroll]);
