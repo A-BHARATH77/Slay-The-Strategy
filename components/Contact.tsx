@@ -1,10 +1,47 @@
 'use client';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 export default function Contact() {
   const contactRef = useRef(null);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const message = formData.get('message');
+    const privacy = formData.get('privacy');
+
+    if (!privacy) {
+      alert("Please accept the privacy policy.");
+      return;
+    }
+
+    setStatus('loading');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message })
+      });
+
+      if (res.ok) {
+        setStatus('success');
+        (e.target as HTMLFormElement).reset();
+        setTimeout(() => setStatus('idle'), 3000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 3000);
+      }
+    } catch (err) {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 3000);
+    }
+  };
 
   useGSAP(() => {
     gsap.to('.contact-reveal-word', {
@@ -128,12 +165,14 @@ export default function Contact() {
           {/* Form Header / Top Line */}
           <div style={{ width: '100%', height: '1px', backgroundColor: '#516856', marginBottom: '3rem' }} />
 
-          <form style={{ display: 'flex', flexDirection: 'column', gap: '2rem', width: '100%' }}>
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem', width: '100%' }}>
 
             {/* Name Field */}
             <div style={{ borderBottom: '1px solid #516856', paddingBottom: '1rem' }}>
               <input
                 type="text"
+                name="name"
+                required
                 placeholder="Name"
                 className="text"
                 style={{
@@ -154,6 +193,8 @@ export default function Contact() {
             <div style={{ borderBottom: '1px solid #516856', paddingBottom: '1rem' }}>
               <input
                 type="email"
+                name="email"
+                required
                 placeholder="Email Address"
                 className="text"
                 style={{
@@ -173,6 +214,8 @@ export default function Contact() {
             {/* Message Field */}
             <div style={{ borderBottom: '1px solid #516856', paddingBottom: '1rem' }}>
               <textarea
+                name="message"
+                required
                 placeholder="Tell us about your project"
                 rows={2}
                 className="text"
@@ -217,6 +260,7 @@ export default function Contact() {
               `}</style>
               <input 
                 type="checkbox" 
+                name="privacy"
                 id="privacy" 
                 required
                 className="custom-checkbox"
@@ -239,6 +283,7 @@ export default function Contact() {
             <button
               type="submit"
               className="text"
+              disabled={status === 'loading'}
               style={{
                 alignSelf: 'center',
                 backgroundColor: '#516856',
@@ -249,13 +294,14 @@ export default function Contact() {
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
                 fontWeight: 'bold',
-                cursor: 'pointer',
+                cursor: status === 'loading' ? 'not-allowed' : 'pointer',
                 marginTop: '1rem',
+                opacity: status === 'loading' ? 0.7 : 1,
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.8')}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+              onMouseEnter={(e) => { if(status !== 'loading') e.currentTarget.style.opacity = '0.8' }}
+              onMouseLeave={(e) => { if(status !== 'loading') e.currentTarget.style.opacity = '1' }}
             >
-              Send Message
+              {status === 'loading' ? 'Sending...' : status === 'success' ? 'Sent!' : status === 'error' ? 'Error. Try Again' : 'Send Message'}
             </button>
 
           </form>

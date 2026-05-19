@@ -219,7 +219,7 @@ export default function Footer() {
             </div>
             <div>
               <div className="meta-label">SOCIALS</div>
-              <a href="https://www.instagram.com/slaywithdipani" target="_blank" rel="noreferrer" className="meta-val" style={{ marginBottom: 0 }}>Instagram &nearr;</a>
+              <a href="https://www.instagram.com/slaywithdipani" target="_blank" rel="noreferrer" className="meta-val" style={{ marginBottom: 0 }}>Instagram</a>
             </div>
           </div>
 
