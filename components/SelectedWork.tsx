@@ -25,17 +25,20 @@ export default function SelectedWork() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    gsap.from('.sw-reveal-word', {
-      y: '120%',
-      duration: 1,
-      ease: 'power4.out',
-      stagger: 0.05,
-      scrollTrigger: {
-        trigger: '.section_selected-work',
-        start: 'top 80%',
-        toggleActions: 'play none none none',
+    gsap.fromTo('.sw-reveal-word', 
+      { y: '120%' },
+      {
+        y: '0%',
+        duration: 1,
+        ease: 'power4.out',
+        stagger: 0.05,
+        scrollTrigger: {
+          trigger: '.section_selected-work',
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        }
       }
-    });
+    );
   }, { scope: containerRef });
 
   return (
@@ -58,52 +61,46 @@ export default function SelectedWork() {
                 <div className="sw-collection w-dyn-list">
                   <div role="list" className="sw-list w-dyn-items">
                     <div role="listitem" className="sw-item w-dyn-item">
-                      <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/bullit" className="sw-card w-inline-block">
+                      <div data-video-on-hover="not-active" className="sw-card w-inline-block">
                         <div className="sw-card_video">
-                          <img draggable="false" alt="Recent Work" loading="lazy" src="/RecentWorks/work_01.png" className="video-card_placeholder" />
+                          <img draggable="false" alt="Recent Work" loading="eager" src="/RecentWorks/work_01.png" className="video-card_placeholder" />
                         </div>
-                      </a>
-                      <link rel="prefetch" href="/work/bullit" />
+                      </div>
                     </div>
                     <div role="listitem" className="sw-item w-dyn-item">
-                      <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/roasta" className="sw-card w-inline-block">
+                      <div data-video-on-hover="not-active" className="sw-card w-inline-block">
                         <div className="sw-card_video">
-                          <img draggable="false" alt="Recent Work" loading="lazy" src="/RecentWorks/work_02.png" className="video-card_placeholder" />
+                          <img draggable="false" alt="Recent Work" loading="eager" src="/RecentWorks/work_02.png" className="video-card_placeholder" />
                         </div>
-                      </a>
-                      <link rel="prefetch" href="/work/roasta" />
+                      </div>
                     </div>
                     <div role="listitem" className="sw-item w-dyn-item">
-                      <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/loco-loco" className="sw-card w-inline-block">
+                      <div data-video-on-hover="not-active" className="sw-card w-inline-block">
                         <div className="sw-card_video">
-                          <img draggable="false" alt="Recent Work" loading="lazy" src="/RecentWorks/work_03.png" className="video-card_placeholder" />
+                          <img draggable="false" alt="Recent Work" loading="eager" src="/RecentWorks/work_03.png" className="video-card_placeholder" />
                         </div>
-                      </a>
-                      <link rel="prefetch" href="/work/loco-loco" />
+                      </div>
                     </div>
                     <div role="listitem" className="sw-item w-dyn-item">
-                      <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/bullit" className="sw-card w-inline-block">
+                      <div data-video-on-hover="not-active" className="sw-card w-inline-block">
                         <div className="sw-card_video">
-                          <img draggable="false" alt="Recent Work" loading="lazy" src="/RecentWorks/work_04.png" className="video-card_placeholder" />
+                          <img draggable="false" alt="Recent Work" loading="eager" src="/RecentWorks/work_04.png" className="video-card_placeholder" />
                         </div>
-                      </a>
-                      <link rel="prefetch" href="/work/bullit" />
+                      </div>
                     </div>
                     <div role="listitem" className="sw-item w-dyn-item">
-                      <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/roasta" className="sw-card w-inline-block">
+                      <div data-video-on-hover="not-active" className="sw-card w-inline-block">
                         <div className="sw-card_video">
-                          <img draggable="false" alt="Recent Work" loading="lazy" src="/RecentWorks/work_05.png" className="video-card_placeholder" />
+                          <img draggable="false" alt="Recent Work" loading="eager" src="/RecentWorks/work_05.png" className="video-card_placeholder" />
                         </div>
-                      </a>
-                      <link rel="prefetch" href="/work/roasta" />
+                      </div>
                     </div>
                     <div role="listitem" className="sw-item w-dyn-item">
-                      <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/loco-loco" className="sw-card w-inline-block">
+                      <div data-video-on-hover="not-active" className="sw-card w-inline-block">
                         <div className="sw-card_video">
-                          <img draggable="false" alt="Recent Work" loading="lazy" src="/RecentWorks/work_09.png" className="video-card_placeholder" />
+                          <img draggable="false" alt="Recent Work" loading="eager" src="/RecentWorks/work_09.png" className="video-card_placeholder" />
                         </div>
-                      </a>
-                      <link rel="prefetch" href="/work/loco-loco" />
+                      </div>
                     </div>
                   </div>
                 </div>

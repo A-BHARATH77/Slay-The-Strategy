@@ -227,14 +227,10 @@ function StudioTeam() {
 
             const onRefreshInit = () => measure();
             ScrollTrigger.addEventListener('refreshInit', onRefreshInit);
-            const onResize = () => { measure(); ScrollTrigger.refresh(); };
-            window.addEventListener('resize', onResize, { passive: true });
-            ScrollTrigger.refresh();
 
             return () => {
                 st.kill();
                 ScrollTrigger.removeEventListener('refreshInit', onRefreshInit);
-                window.removeEventListener('resize', onResize);
             };
         });
 
@@ -258,7 +254,6 @@ function StudioTeam() {
                     }
                 });
             });
-            ScrollTrigger.refresh();
         });
     }, { scope: sectionRef });
 
@@ -305,7 +300,7 @@ function StudioTeam() {
                     <div key={m.name} className="sws-card" ref={el => { cardRefs.current[i] = el; }}>
                         <div className="sws-card-img">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img draggable="false" src={m.img} alt={m.name} />
+                            <img draggable="false" loading="eager" src={m.img} alt={m.name} />
                         </div>
                         <div className="sws-card-body">
                             <div>
@@ -330,7 +325,7 @@ function StudioTeam() {
                     <div key={m.name} style={{ background: '#3d5040', borderRadius: '1rem', overflow: 'hidden' }}>
                         <div style={{ width: '100%', height: '240px', overflow: 'hidden' }}>
                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img draggable="false" src={m.img} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            <img draggable="false" loading="eager" src={m.img} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
                         <div style={{ padding: '1.25rem', color: '#FDF8EC', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                             <p className="text" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '1.5rem', fontWeight: 400 }}>{m.name}</p>
@@ -365,9 +360,9 @@ function StudioRow({ item, isLast }: { item: StudioRowItem; isLast?: boolean }) 
 
                 {/* CENTER — portrait image */}
                 <div className="studio-row-center">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                         draggable="false"
+                        loading="eager"
                         src={item.image}
                         alt={item.name}
                         className="studio-row-img"

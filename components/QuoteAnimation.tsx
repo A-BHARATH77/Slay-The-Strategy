@@ -38,15 +38,10 @@ export default function QuoteAnimation() {
     const quoteTimer = setTimeout(() => setShowQuote(false), 3000);
     // Overlay fades out after 4.5 seconds
     const overlayTimer = setTimeout(() => setShowOverlay(false), 4500);
-    // Restore scroll after overlay is fully gone (4.5s fade-out + 1s exit animation + buffer)
-    const scrollRestoreTimer = setTimeout(() => {
-      restoreScroll();
-    }, 5700);
 
     return () => {
       clearTimeout(quoteTimer);
       clearTimeout(overlayTimer);
-      clearTimeout(scrollRestoreTimer);
       // Safety: also restore on unmount (e.g. fast navigation)
       restoreScroll();
     };

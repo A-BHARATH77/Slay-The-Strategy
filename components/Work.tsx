@@ -692,6 +692,7 @@ export default function Work() {
                     {p.id === 7 && (
                       <img
                         draggable="false"
+                        loading="eager"
                         src={p.image}
                         alt=""
                         style={{
@@ -712,7 +713,7 @@ export default function Work() {
                       src={p.image}
                       alt={p.title}
                       className="tile-image"
-                      loading="lazy"
+                      loading="eager"
                       style={p.portrait || p.id === 7 ? {
                         objectFit: 'contain',
                         padding: p.id === 7 ? '1.5rem' : undefined,

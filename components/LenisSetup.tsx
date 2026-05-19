@@ -21,11 +21,11 @@ export default function LenisSetup() {
           smoothTouch: false
         });
 
-        function raf(time) {
-          lenis.raf(time);
-          requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
+        // function raf(time) {
+        //   lenis.raf(time);
+        //   requestAnimationFrame(raf);
+        // }
+        // requestAnimationFrame(raf);
 
         // Sync NPM GSAP
         lenis.on("scroll", ScrollTrigger.update);

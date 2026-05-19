@@ -2,6 +2,7 @@
 // @ts-nocheck
 import React, { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -173,9 +174,9 @@ export default function Navbar() {
         }
       `}} />
       <div className={`navbar ${isMobileMenuOpen ? 'menu-open' : ''}`}>
-        <a aria-label="Home link" role="Link" href="/" aria-current="page" className={`nav_logo w-inline-block ${pathname === '/' ? 'w--current' : ''}`}>
+        <Link aria-label="Home link" href="/" aria-current="page" className={`nav_logo w-inline-block ${pathname === '/' ? 'w--current' : ''}`}>
           <img draggable="false" src="/logo.png" alt="SWS Logo" style={{ height: '50px', width: 'auto' }} />
-        </a>
+        </Link>
         
         <button 
           className="mobile-menu-btn"
@@ -185,18 +186,18 @@ export default function Navbar() {
         </button>
 
         <div className="navbar_menu">
-          <a aria-label="Home link" href="/" className={`nav_link ${pathname === '/' ? 'w--current' : ''}`}>
+          <Link aria-label="Home link" href="/" className={`nav_link ${pathname === '/' ? 'w--current' : ''}`}>
             Home
-          </a>
-          <a aria-label="Work link" href="/work" className={`nav_link ${pathname === '/work' ? 'w--current' : ''}`}>
+          </Link>
+          <Link aria-label="Work link" href="/work" className={`nav_link ${pathname === '/work' ? 'w--current' : ''}`}>
             Work
-          </a>
-          <a aria-label="Studio link" href="/studio" className={`nav_link ${pathname === '/studio' ? 'w--current' : ''}`}>
+          </Link>
+          <Link aria-label="Studio link" href="/studio" className={`nav_link ${pathname === '/studio' ? 'w--current' : ''}`}>
             Studio
-          </a>
-          <a aria-label="Contact link" href="/contact" className={`nav_link ${pathname === '/contact' ? 'w--current' : ''}`}>
+          </Link>
+          <Link aria-label="Contact link" href="/contact" className={`nav_link ${pathname === '/contact' ? 'w--current' : ''}`}>
             Contact
-          </a>
+          </Link>
         </div>
         <div className="navbar_right-text">
           <div>Slay</div>
