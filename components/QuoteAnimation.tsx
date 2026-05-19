@@ -2,9 +2,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// All critical above-the-fold images to preload while overlay is showing
-const PRELOAD_IMAGES = [
-  '/logo.png',
+// All critical images that must be loaded before the overlay dismisses
+const CRITICAL_IMAGES = [
   '/RecentWorks/work_01.png',
   '/RecentWorks/work_02.png',
   '/RecentWorks/work_03.png',
@@ -19,11 +18,23 @@ const PRELOAD_IMAGES = [
   '/HomeCaroussel/painting_06.jpg',
 ];
 
+function preloadImages(srcs: string[]): Promise<void> {
+  const promises = srcs.map(
+    (src) =>
+      new Promise<void>((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve();
+        img.onerror = () => resolve(); // resolve even on error — don't block forever
+        img.src = src;
+      })
+  );
+  return Promise.all(promises).then(() => undefined);
+}
+
 export default function QuoteAnimation() {
   const [showQuote, setShowQuote] = useState(true);
   const [showOverlay, setShowOverlay] = useState(true);
 
-  // Restore scroll once the overlay is fully gone
   const restoreScroll = useCallback(() => {
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
@@ -49,20 +60,25 @@ export default function QuoteAnimation() {
     document.body.style.left = '0';
     document.body.style.width = '100%';
 
-    // Kick off image preloading in the background
-    PRELOAD_IMAGES.forEach((src) => {
-      const img = new Image();
-      img.src = src;
+    // Quote fades out after 3 seconds (fixed, always)
+    const quoteTimer = setTimeout(() => setShowQuote(false), 3000);
+
+    // Overlay dismisses only when BOTH conditions are true:
+    // 1. Minimum 4.5 seconds have passed
+    // 2. All critical images are loaded
+    const minDelayPromise = new Promise<void>((resolve) =>
+      setTimeout(resolve, 4500)
+    );
+    const imagesLoadedPromise = preloadImages(CRITICAL_IMAGES);
+
+    let cancelled = false;
+    Promise.all([minDelayPromise, imagesLoadedPromise]).then(() => {
+      if (!cancelled) setShowOverlay(false);
     });
 
-    // Quote fades out after 3 seconds
-    const quoteTimer = setTimeout(() => setShowQuote(false), 3000);
-    // Overlay fades out after 4.5 seconds
-    const overlayTimer = setTimeout(() => setShowOverlay(false), 4500);
-
     return () => {
+      cancelled = true;
       clearTimeout(quoteTimer);
-      clearTimeout(overlayTimer);
       restoreScroll();
     };
   }, [restoreScroll]);
