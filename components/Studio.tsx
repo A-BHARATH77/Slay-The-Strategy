@@ -394,17 +394,17 @@ function StudioRow({ item, isLast }: { item: StudioRowItem; isLast?: boolean }) 
 const STUDIO_DATA: StudioRowItem[] = [
     {
         name: 'Concept Driven',
-        image: '/Studio/studio1.jpg',
+        image: '/Studio/studio1.webp',
         recognitions: [''],
     },
     {
         name: 'Visual Culture',
-        image: '/Studio/studio2.jpg',
+        image: '/Studio/studio2.webp',
         recognitions: ['Slay The Strategy is a creative agency rooted in', 'ambition and working everywhere that matters.', 'We believe great social media is not decoration','— it is infrastructure.'],
     },
     {
         name: 'Found Online ',
-        image: '/Studio/studio3.jpg',
+        image: '/Studio/studio3.webp',
         recognitions: ['From brand strategy to the final reel, we handle', 'it in-house. Our clients range from early-stage', 'founders to established names ready to own','their digital presence.'],
     },
 ];

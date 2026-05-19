@@ -70,7 +70,7 @@ export default function Expertises() {
                         </div>
                         <div className="expertise-content_img">
                           <div className="medium-image">
-                            <img draggable="false" src="/Enterprise/strategy.png" loading="lazy" alt="Brand strategy" className="video" />
+                            <img draggable="false" src="/Enterprise/strategy.webp" loading="lazy" alt="Brand strategy" className="video" />
                           </div>
                         </div>
                         <div className="expertise-content_bottom" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'flex-start', gap: '2rem', width: '100%' }}>
@@ -113,7 +113,7 @@ export default function Expertises() {
                         </div>
                         <div className="expertise-content_img">
                           <div className="medium-image">
-                            <img draggable="false" src="/Enterprise/second.jpg" loading="lazy" alt="Content Systems" className="video" />
+                            <img draggable="false" src="/Enterprise/second.webp" loading="lazy" alt="Content Systems" className="video" />
                           </div>
                         </div>
                         <div className="expertise-content_bottom" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'flex-start', gap: '2rem', width: '100%' }}>
@@ -156,7 +156,7 @@ export default function Expertises() {
                         </div>
                         <div className="expertise-content_img">
                           <div className="medium-image">
-                            <img draggable="false" src="/Enterprise/social.jpg" loading="lazy" alt="Social Management" className="video" />
+                            <img draggable="false" src="/Enterprise/social.webp" loading="lazy" alt="Social Management" className="video" />
                           </div>
                         </div>
                         <div className="expertise-content_bottom" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'flex-start', gap: '2rem', width: '100%' }}>
@@ -199,7 +199,7 @@ export default function Expertises() {
                         </div>
                         <div className="expertise-content_img">
                           <div className="medium-image">
-                            <img draggable="false" src="/Enterprise/growth.png" loading="lazy" alt="Paid & Growth" className="video" />
+                            <img draggable="false" src="/Enterprise/growth.webp" loading="lazy" alt="Paid & Growth" className="video" />
                           </div>
                         </div>
                         <div className="expertise-content_bottom" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'flex-start', gap: '2rem', width: '100%' }}>

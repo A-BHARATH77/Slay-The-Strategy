@@ -61,7 +61,7 @@ export default function SelectedWork() {
                     <div role="listitem" className="sw-item w-dyn-item">
                       <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/bullit" className="sw-card w-inline-block">
                         <div className="sw-card_video" style={{ position: 'relative' }}>
-                          <Image priority fill src="/RecentWorks/work_01.png" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
+                          <Image priority fill src="/RecentWorks/work_01.webp" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
                         </div>
                       </a>
                       <link rel="prefetch" href="/work/bullit" />
@@ -69,7 +69,7 @@ export default function SelectedWork() {
                     <div role="listitem" className="sw-item w-dyn-item">
                       <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/roasta" className="sw-card w-inline-block">
                         <div className="sw-card_video" style={{ position: 'relative' }}>
-                          <Image priority fill src="/RecentWorks/work_02.png" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
+                          <Image priority fill src="/RecentWorks/work_02.webp" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
                         </div>
                       </a>
                       <link rel="prefetch" href="/work/roasta" />
@@ -77,7 +77,7 @@ export default function SelectedWork() {
                     <div role="listitem" className="sw-item w-dyn-item">
                       <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/loco-loco" className="sw-card w-inline-block">
                         <div className="sw-card_video" style={{ position: 'relative' }}>
-                          <Image priority fill src="/RecentWorks/work_03.png" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
+                          <Image priority fill src="/RecentWorks/work_03.webp" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
                         </div>
                       </a>
                       <link rel="prefetch" href="/work/loco-loco" />
@@ -85,7 +85,7 @@ export default function SelectedWork() {
                     <div role="listitem" className="sw-item w-dyn-item">
                       <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/bullit" className="sw-card w-inline-block">
                         <div className="sw-card_video" style={{ position: 'relative' }}>
-                          <Image priority fill src="/RecentWorks/work_04.png" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
+                          <Image priority fill src="/RecentWorks/work_04.webp" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
                         </div>
                       </a>
                       <link rel="prefetch" href="/work/bullit" />
@@ -93,7 +93,7 @@ export default function SelectedWork() {
                     <div role="listitem" className="sw-item w-dyn-item">
                       <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/roasta" className="sw-card w-inline-block">
                         <div className="sw-card_video" style={{ position: 'relative' }}>
-                          <Image priority fill src="/RecentWorks/work_05.png" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
+                          <Image priority fill src="/RecentWorks/work_05.webp" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
                         </div>
                       </a>
                       <link rel="prefetch" href="/work/roasta" />
@@ -101,7 +101,7 @@ export default function SelectedWork() {
                     <div role="listitem" className="sw-item w-dyn-item">
                       <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/loco-loco" className="sw-card w-inline-block">
                         <div className="sw-card_video" style={{ position: 'relative' }}>
-                          <Image priority fill src="/RecentWorks/work_09.png" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
+                          <Image priority fill src="/RecentWorks/work_09.webp" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
                         </div>
                       </a>
                       <link rel="prefetch" href="/work/loco-loco" />

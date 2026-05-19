@@ -25,7 +25,7 @@ const projects: Project[] = [
     director: "Lucia Aniello",
     company: "Universal TV",
     platform: "Max",
-    image: "/Work1/painting_03.jpg",
+    image: "/Work1/painting_03.webp",
     span: 6
   },
   {
@@ -35,7 +35,7 @@ const projects: Project[] = [
     director: "David Gelb",
     company: "Boardwalk Pictures",
     platform: "Netflix",
-    image: "/Work1/painting_01.jpg",
+    image: "/Work1/painting_01.webp",
     span: 6
   },
   {
@@ -45,7 +45,7 @@ const projects: Project[] = [
     director: "James Ponsoldt",
     company: "Big Beach",
     platform: "Facebook Watch",
-    image: "/Work2/mahru_01.jpg",
+    image: "/Work2/mahru_01.webp",
     span: 3,
     portrait: true
   },
@@ -56,7 +56,7 @@ const projects: Project[] = [
     director: "Tony Yacenda",
     company: "CBS Studios",
     platform: "Netflix",
-    image: "/Work2/mahru_02.jpg",
+    image: "/Work2/mahru_02.webp",
     span: 3,
     portrait: true
   },
@@ -67,7 +67,7 @@ const projects: Project[] = [
     director: "Brian Crano",
     company: "Ball & Chain",
     platform: "Tribeca",
-    image: "/Work2/mahru_03.jpg",
+    image: "/Work2/mahru_03.webp",
     span: 3,
     portrait: true
   },
@@ -78,7 +78,7 @@ const projects: Project[] = [
     director: "Aniqah",
     company: "Slay",
     platform: "Campaign",
-    image: "/Work2/mahru_04.jpg",
+    image: "/Work2/mahru_04.webp",
     span: 3,
     portrait: true
   },
@@ -89,7 +89,7 @@ const projects: Project[] = [
     director: "Autumn de Wilde",
     company: "Anonymous Content",
     platform: "Broadcast",
-    image: "/Work3/work_06.png",
+    image: "/Work3/work_06.webp",
     span: 4
   },
   {
@@ -99,7 +99,7 @@ const projects: Project[] = [
     director: "Wayne McClammy",
     company: "O Positive",
     platform: "Broadcast",
-    image: "/Work3/nails.jpg",
+    image: "/Work3/nails.webp",
     span: 8
   },
   {
@@ -157,7 +157,7 @@ const projects: Project[] = [
     director: "Brian Crano",
     company: "Sundance",
     platform: "Short",
-    image: "/Work5/carousel_01.jpg",
+    image: "/Work5/carousel_01.webp",
     span: 6
   },
   {
@@ -167,7 +167,7 @@ const projects: Project[] = [
     director: "BenDavid Grabinski",
     company: "Saban Films",
     platform: "VOD",
-    image: "/Work5/first-copy.jpg",
+    image: "/Work5/first-copy.webp",
     span: 6
   },
   {

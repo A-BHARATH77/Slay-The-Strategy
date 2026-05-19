@@ -9,21 +9,21 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const CLIENT_LOGOS = [
-  { name: 'Avarna', img: '/Clients/avarna.png' },
-  { name: 'Acyuta', img: '/Clients/acyuta.png' },
-  { name: 'Cellexa', img: '/Clients/cellexa.png' },
-  { name: 'Ginni Parmar', img: '/Clients/ginni_parmar.png' },
-  { name: 'Infamous Talents', img: '/Clients/infamous_talents.png' },
-  { name: 'Maple', img: '/Clients/maple.png' },
-  { name: 'Mahru Stories', img: '/Clients/mahru_stories.png' },
-  { name: 'Perspective Studio', img: '/Clients/perspective_studio.png' },
-  { name: 'Claw Nails', img: '/Clients/claw_nails.png' },
-  { name: 'Kapoma', img: '/Clients/kapoma.jpg' },
-  { name: 'Luxx Spas', img: '/Clients/luxx_spas.png' },
-  { name: 'Orange', img: '/Clients/orange.png' },
-  { name: 'Orient', img: '/Clients/orient.png' },
+  { name: 'Avarna', img: '/Clients/avarna.webp' },
+  { name: 'Acyuta', img: '/Clients/acyuta.webp' },
+  { name: 'Cellexa', img: '/Clients/cellexa.webp' },
+  { name: 'Ginni Parmar', img: '/Clients/ginni_parmar.webp' },
+  { name: 'Infamous Talents', img: '/Clients/infamous_talents.webp' },
+  { name: 'Maple', img: '/Clients/maple.webp' },
+  { name: 'Mahru Stories', img: '/Clients/mahru_stories.webp' },
+  { name: 'Perspective Studio', img: '/Clients/perspective_studio.webp' },
+  { name: 'Claw Nails', img: '/Clients/claw_nails.webp' },
+  { name: 'Kapoma', img: '/Clients/kapoma.webp' },
+  { name: 'Luxx Spas', img: '/Clients/luxx_spas.webp' },
+  { name: 'Orange', img: '/Clients/orange.webp' },
+  { name: 'Orient', img: '/Clients/orient.webp' },
   { name: 'Blue Modern', img: '/Clients/blue_modern.png' },
-  { name: 'Wallora', img: '/Clients/wallora.png' }
+  { name: 'Wallora', img: '/Clients/wallora.webp' }
 ];
 
 function RevealWords({ text }: { text: string }) {

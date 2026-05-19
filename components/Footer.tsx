@@ -247,10 +247,10 @@ export default function Footer() {
           <style dangerouslySetInnerHTML={{ __html: "\n                .mwg_effect020 img {\n                    width: 15vw;\n                    position: absolute;\n                    object-fit: cover;\n                    z-index: 5;\n                    pointer-events: none;\n                }\n\n                .mwg_effect020 .medias img {\n                    width: 1px;\n                    height: 1px;\n                    top: 0;\n                    left: 0;\n                    position: absolute;\n                    visibility: hidden;\n                    pointer-events: none;\n                }\n            " }} />
         </div>
         <div className="medias">
-          <img draggable="false" src="/logo.jpeg" loading="lazy" alt="SWS logo" style={{ height: '80px', width: 'auto' }} />
-          <img draggable="false" src="/logo.jpeg" loading="lazy" alt="SWS logo" style={{ height: '80px', width: 'auto' }} />
-          <img draggable="false" src="/logo.jpeg" loading="lazy" alt="SWS logo" style={{ height: '80px', width: 'auto' }} />
-          <img draggable="false" src="/logo.jpeg" loading="lazy" alt="SWS logo" style={{ height: '80px', width: 'auto' }} />
+          <img draggable="false" src="/logo.webp" loading="lazy" alt="SWS logo" style={{ height: '80px', width: 'auto' }} />
+          <img draggable="false" src="/logo.webp" loading="lazy" alt="SWS logo" style={{ height: '80px', width: 'auto' }} />
+          <img draggable="false" src="/logo.webp" loading="lazy" alt="SWS logo" style={{ height: '80px', width: 'auto' }} />
+          <img draggable="false" src="/logo.webp" loading="lazy" alt="SWS logo" style={{ height: '80px', width: 'auto' }} />
         </div>
       </section>
     </div>

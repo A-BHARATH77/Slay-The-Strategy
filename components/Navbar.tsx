@@ -174,7 +174,7 @@ export default function Navbar() {
       `}} />
       <div className={`navbar ${isMobileMenuOpen ? 'menu-open' : ''}`}>
         <a aria-label="Home link" role="Link" href="/" aria-current="page" className={`nav_logo w-inline-block ${pathname === '/' ? 'w--current' : ''}`}>
-          <img draggable="false" src="/logo.png" alt="SWS Logo" style={{ height: '50px', width: 'auto' }} />
+          <img draggable="false" src="/logo.webp" alt="SWS Logo" style={{ height: '50px', width: 'auto' }} />
         </a>
         
         <button 

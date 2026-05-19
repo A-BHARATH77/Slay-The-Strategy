@@ -86,12 +86,12 @@ export default function Hero() {
           {[1, 2].map((group) => (
             <React.Fragment key={group}>
               {[
-                '/HomeCaroussel/first.jpg',
-                '/HomeCaroussel/carousel_01.jpg',
-                '/HomeCaroussel/painting_03.jpg',
-                '/HomeCaroussel/painting_04.jpg',
-                '/HomeCaroussel/painting_05.jpg',
-                '/HomeCaroussel/painting_06.jpg'
+                '/HomeCaroussel/first.webp',
+                '/HomeCaroussel/carousel_01.webp',
+                '/HomeCaroussel/painting_03.webp',
+                '/HomeCaroussel/painting_04.webp',
+                '/HomeCaroussel/painting_05.webp',
+                '/HomeCaroussel/painting_06.webp'
               ].map((src, idx) => (
                 <div className="marquee-item" key={`${group}-${idx}`}>
                   <Image
