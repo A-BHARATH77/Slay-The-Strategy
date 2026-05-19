@@ -2,38 +2,23 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// All images used across the page — preloaded eagerly during the quote animation
-// so they're in the browser cache before the overlay lifts.
-const PAGE_IMAGES = [
-  '/HomeCaroussel/first.jpg',
-  '/HomeCaroussel/carousel_01.jpg',
-  '/HomeCaroussel/painting_03.jpg',
-  '/HomeCaroussel/painting_04.jpg',
-  '/HomeCaroussel/painting_05.jpg',
-  '/HomeCaroussel/painting_06.jpg',
-  '/RecentWorks/work_01.png',
-  '/RecentWorks/work_02.png',
-  '/RecentWorks/work_03.png',
-  '/RecentWorks/work_04.png',
-  '/RecentWorks/work_05.png',
-  '/RecentWorks/work_09.png',
-  '/founder.png',
-];
 
 export default function QuoteAnimation() {
   const [showQuote, setShowQuote] = useState(true);
   const [showOverlay, setShowOverlay] = useState(true);
 
-  // Tracks whether the minimum display time has passed
-  const minTimePassed = useRef(false);
-  // Tracks whether window has fully loaded (all resources)
-  const windowLoaded = useRef(false);
-  // Refs for timers so we can clear them
-  const quoteTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const overlayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const scrollRestoreTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Condition flags
+  const minTimePassed  = useRef(false);
+  const imagesReady    = useRef(false);
+  const dismissCalled  = useRef(false);
 
-  // Restore scroll once the overlay is fully gone
+  // Timer / interval refs for cleanup
+  const quoteTimerRef        = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const overlayTimerRef      = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const scrollRestoreRef     = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pollIntervalRef      = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Restore scroll once overlay is fully gone
   const restoreScroll = useCallback(() => {
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
@@ -43,25 +28,33 @@ export default function QuoteAnimation() {
     document.body.style.top = '';
     document.body.style.left = '';
     document.body.style.width = '';
-
     if (typeof window !== 'undefined') {
       window.dispatchEvent(new Event('scroll'));
       window.dispatchEvent(new Event('resize'));
     }
   }, []);
 
-  // Dismiss the overlay — only called once both conditions are satisfied
+  // Called once both conditions (min time + images ready) are true
   const startDismiss = useCallback(() => {
-    // Quote text fades out 1.5s before the overlay
+    if (dismissCalled.current) return; // guard against double-call
+    dismissCalled.current = true;
+    // Quote text fades out immediately
     quoteTimerRef.current = setTimeout(() => setShowQuote(false), 0);
-    // Overlay itself fades out 1.5s later
+    // Overlay fades out 1.5s later
     overlayTimerRef.current = setTimeout(() => setShowOverlay(false), 1500);
-    // Restore scroll after overlay fade-out animation completes (1.5s + 1s exit)
-    scrollRestoreTimerRef.current = setTimeout(() => restoreScroll(), 2700);
+    // Restore scroll after overlay exit animation (1.5s + 1s framer exit + buffer)
+    scrollRestoreRef.current = setTimeout(() => restoreScroll(), 2700);
   }, [restoreScroll]);
 
+  // Attempt dismiss — only fires if BOTH gates are open
+  const tryDismiss = useCallback(() => {
+    if (minTimePassed.current && imagesReady.current) {
+      startDismiss();
+    }
+  }, [startDismiss]);
+
   useEffect(() => {
-    // Lock scroll while overlay is showing
+    // Lock scroll immediately while the overlay is showing
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
     document.body.style.position = 'fixed';
@@ -69,54 +62,47 @@ export default function QuoteAnimation() {
     document.body.style.left = '0';
     document.body.style.width = '100%';
 
-    // ── 1. Eagerly preload all page images right now ──────────────────────────
-    PAGE_IMAGES.forEach((src) => {
-      const img = new window.Image();
-      img.src = src;
-    });
-
-    // ── 2. Condition A: minimum quote display time (3 seconds) ───────────────
+    // ── Gate A: minimum quote display time (3 seconds) ────────────────────────
     const minTimer = setTimeout(() => {
       minTimePassed.current = true;
-      // If the window already loaded while we were waiting, dismiss now
-      if (windowLoaded.current) {
-        startDismiss();
-      }
+      tryDismiss();
     }, 3000);
 
-    // ── 3. Condition B: all resources finished loading ────────────────────────
-    const onWindowLoad = () => {
-      windowLoaded.current = true;
-      // Only dismiss if the minimum display time has also passed
-      if (minTimePassed.current) {
-        startDismiss();
-      }
-    };
+    // ── Gate B: poll DOM <img> elements until all are complete ────────────────
+    // Start after 1s so React has time to render all page components and their
+    // <img> tags into the DOM. next/image renders real <img> elements so
+    // img.complete correctly reflects their load state.
+    const pollStartTimer = setTimeout(() => {
+      pollIntervalRef.current = setInterval(() => {
+        const imgs = Array.from(document.querySelectorAll('img'));
+        // Need at least some images to exist; every one must be decoded
+        const allDone = imgs.length > 0 && imgs.every(img => img.complete);
+        if (allDone) {
+          if (pollIntervalRef.current) clearInterval(pollIntervalRef.current);
+          imagesReady.current = true;
+          tryDismiss();
+        }
+      }, 300);
+    }, 1000);
 
-    if (document.readyState === 'complete') {
-      // Already loaded (e.g. navigated back via cache)
-      onWindowLoad();
-    } else {
-      window.addEventListener('load', onWindowLoad);
-    }
-
-    // ── 4. Safety fallback: dismiss after 10s no matter what ─────────────────
+    // ── Safety fallback: force-dismiss after 12s no matter what ───────────────
     const safetyTimer = setTimeout(() => {
-      if (showOverlay) {
-        startDismiss();
-      }
-    }, 10000);
+      imagesReady.current = true;
+      minTimePassed.current = true;
+      tryDismiss();
+    }, 12000);
 
     return () => {
       clearTimeout(minTimer);
+      clearTimeout(pollStartTimer);
       clearTimeout(safetyTimer);
+      if (pollIntervalRef.current) clearInterval(pollIntervalRef.current);
       if (quoteTimerRef.current) clearTimeout(quoteTimerRef.current);
       if (overlayTimerRef.current) clearTimeout(overlayTimerRef.current);
-      if (scrollRestoreTimerRef.current) clearTimeout(scrollRestoreTimerRef.current);
-      window.removeEventListener('load', onWindowLoad);
+      if (scrollRestoreRef.current) clearTimeout(scrollRestoreRef.current);
       restoreScroll();
     };
-  }, [restoreScroll, startDismiss]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [restoreScroll, tryDismiss]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <AnimatePresence>
