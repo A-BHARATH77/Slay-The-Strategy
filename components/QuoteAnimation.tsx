@@ -2,13 +2,29 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// All critical above-the-fold images to preload while overlay is showing
+const PRELOAD_IMAGES = [
+  '/logo.png',
+  '/RecentWorks/work_01.png',
+  '/RecentWorks/work_02.png',
+  '/RecentWorks/work_03.png',
+  '/RecentWorks/work_04.png',
+  '/RecentWorks/work_05.png',
+  '/RecentWorks/work_09.png',
+  '/HomeCaroussel/carousel_01.jpg',
+  '/HomeCaroussel/first.jpg',
+  '/HomeCaroussel/painting_03.jpg',
+  '/HomeCaroussel/painting_04.jpg',
+  '/HomeCaroussel/painting_05.jpg',
+  '/HomeCaroussel/painting_06.jpg',
+];
+
 export default function QuoteAnimation() {
-  const [showQuote, setShowQuote] = useState(true);
+  const [showQuote, setShowQuote] = useState(false);
   const [showOverlay, setShowOverlay] = useState(true);
 
   // Restore scroll once the overlay is fully gone
   const restoreScroll = useCallback(() => {
-    // Re-enable native scroll on html/body (iOS Safari safety net)
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
     document.documentElement.style.overscrollBehavior = '';
@@ -17,8 +33,7 @@ export default function QuoteAnimation() {
     document.body.style.top = '';
     document.body.style.left = '';
     document.body.style.width = '';
-    
-    // Dispatch a synthetic scroll event so ScrollTrigger recalculates
+
     if (typeof window !== 'undefined') {
       window.dispatchEvent(new Event('scroll'));
       window.dispatchEvent(new Event('resize'));
@@ -26,7 +41,7 @@ export default function QuoteAnimation() {
   }, []);
 
   useEffect(() => {
-    // Bulletproof scroll disable on mount (since this is at top of page)
+    // Lock scroll immediately
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
     document.body.style.position = 'fixed';
@@ -34,15 +49,36 @@ export default function QuoteAnimation() {
     document.body.style.left = '0';
     document.body.style.width = '100%';
 
-    // Quote fades out after 3 seconds
-    const quoteTimer = setTimeout(() => setShowQuote(false), 3000);
-    // Overlay fades out after 4.5 seconds
-    const overlayTimer = setTimeout(() => setShowOverlay(false), 4500);
+    // Kick off image preloading immediately in the background
+    PRELOAD_IMAGES.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+
+    let quoteTimer: ReturnType<typeof setTimeout>;
+    let overlayTimer: ReturnType<typeof setTimeout>;
+
+    const startSequence = () => {
+      // Show quote immediately once page has fully loaded
+      setShowQuote(true);
+      // Quote fades out after 3 seconds
+      quoteTimer = setTimeout(() => setShowQuote(false), 3000);
+      // Overlay fades out after 4.5 seconds
+      overlayTimer = setTimeout(() => setShowOverlay(false), 4500);
+    };
+
+    if (document.readyState === 'complete') {
+      // Already fully loaded (cached / fast connection)
+      startSequence();
+    } else {
+      // Wait for ALL resources (images, fonts, scripts) to finish
+      window.addEventListener('load', startSequence, { once: true });
+    }
 
     return () => {
       clearTimeout(quoteTimer);
       clearTimeout(overlayTimer);
-      // Safety: also restore on unmount (e.g. fast navigation)
+      window.removeEventListener('load', startSequence);
       restoreScroll();
     };
   }, [restoreScroll]);
@@ -55,7 +91,6 @@ export default function QuoteAnimation() {
           exit={{ opacity: 0, pointerEvents: 'none' as const }}
           transition={{ duration: 1 }}
           onAnimationComplete={(definition: any) => {
-            // Called when exit animation finishes — restore scroll immediately
             if (definition === 'exit' || (definition && definition.opacity === 0)) {
               restoreScroll();
             }
@@ -63,7 +98,7 @@ export default function QuoteAnimation() {
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: '#f7f2e6', // matching hero background
+            backgroundColor: '#f7f2e6',
             zIndex: 9999,
             display: 'flex',
             alignItems: 'center',
@@ -81,7 +116,7 @@ export default function QuoteAnimation() {
                 style={{
                   fontFamily: 'Georgia, "Times New Roman", serif',
                   fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
-                  color: '#516856', // matching hero text color
+                  color: '#516856',
                   textAlign: 'center',
                   maxWidth: '800px',
                   lineHeight: '1.4'

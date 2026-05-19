@@ -27,6 +27,15 @@ export default function RootLayout({
 
         <meta name="description" content={metadata.description} />
         <link rel="icon" href="/logo.png" />
+
+        {/* Preload critical above-the-fold images at highest browser priority */}
+        <link rel="preload" as="image" href="/logo.png" />
+        <link rel="preload" as="image" href="/RecentWorks/work_01.png" />
+        <link rel="preload" as="image" href="/RecentWorks/work_02.png" />
+        <link rel="preload" as="image" href="/RecentWorks/work_03.png" />
+        <link rel="preload" as="image" href="/HomeCaroussel/carousel_01.jpg" />
+        <link rel="preload" as="image" href="/HomeCaroussel/first.jpg" />
+        <link rel="preload" as="image" href="/HomeCaroussel/painting_03.jpg" />
       </head>
       <body suppressHydrationWarning>
         {children}
