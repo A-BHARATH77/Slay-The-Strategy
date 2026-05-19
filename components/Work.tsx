@@ -178,7 +178,7 @@ const projects: Project[] = [
     company: "Strategy",
     platform: "Reel",
     image: "",
-    video: "/CampaignReels/campaign_01.mp4",
+    video: "/CampaignReels/campaign_01.webm",
     span: 4,
     portrait: true
   },
@@ -190,7 +190,7 @@ const projects: Project[] = [
     company: "Strategy",
     platform: "Reel",
     image: "",
-    video: "/CampaignReels/campaign_02.mp4",
+    video: "/CampaignReels/campaign_02.webm",
     span: 4,
     portrait: true
   },
@@ -202,7 +202,7 @@ const projects: Project[] = [
     company: "Strategy",
     platform: "Reel",
     image: "",
-    video: "/CampaignReels/campaign_03.mp4",
+    video: "/CampaignReels/campaign_03.webm",
     span: 4,
     portrait: true
   }

@@ -62,11 +62,11 @@ export default function QuoteAnimation() {
     document.body.style.left = '0';
     document.body.style.width = '100%';
 
-    // ── Gate A: minimum quote display time (3 seconds) ────────────────────────
+    // ── Gate A: minimum quote display time (1.5 seconds) ──────────────────────
     const minTimer = setTimeout(() => {
       minTimePassed.current = true;
       tryDismiss();
-    }, 3000);
+    }, 1000);
 
     // ── Gate B: poll DOM <img> elements until all are complete ────────────────
     // Start after 1s so React has time to render all page components and their
@@ -153,4 +153,4 @@ export default function QuoteAnimation() {
       )}
     </AnimatePresence>
   );
-}
+}
