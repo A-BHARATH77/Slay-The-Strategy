@@ -111,7 +111,7 @@ const projects: Project[] = [
     platform: "Web",
     image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=1200",
     span: 3,
-    video: "/Work4/reel_01.mp4",
+    video: "/Work4/reel_01.webm",
     portrait: true
   },
   {
