@@ -1,6 +1,7 @@
 'use client';
 // @ts-nocheck
 import React, { useRef } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -59,48 +60,48 @@ export default function SelectedWork() {
                   <div role="list" className="sw-list w-dyn-items">
                     <div role="listitem" className="sw-item w-dyn-item">
                       <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/bullit" className="sw-card w-inline-block">
-                        <div className="sw-card_video">
-                          <img draggable="false" alt="Recent Work" loading="lazy" src="/RecentWorks/work_01.png" className="video-card_placeholder" />
+                        <div className="sw-card_video" style={{ position: 'relative' }}>
+                          <Image fill src="/RecentWorks/work_01.png" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
                         </div>
                       </a>
                       <link rel="prefetch" href="/work/bullit" />
                     </div>
                     <div role="listitem" className="sw-item w-dyn-item">
                       <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/roasta" className="sw-card w-inline-block">
-                        <div className="sw-card_video">
-                          <img draggable="false" alt="Recent Work" loading="lazy" src="/RecentWorks/work_02.png" className="video-card_placeholder" />
+                        <div className="sw-card_video" style={{ position: 'relative' }}>
+                          <Image fill src="/RecentWorks/work_02.png" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
                         </div>
                       </a>
                       <link rel="prefetch" href="/work/roasta" />
                     </div>
                     <div role="listitem" className="sw-item w-dyn-item">
                       <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/loco-loco" className="sw-card w-inline-block">
-                        <div className="sw-card_video">
-                          <img draggable="false" alt="Recent Work" loading="lazy" src="/RecentWorks/work_03.png" className="video-card_placeholder" />
+                        <div className="sw-card_video" style={{ position: 'relative' }}>
+                          <Image fill src="/RecentWorks/work_03.png" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
                         </div>
                       </a>
                       <link rel="prefetch" href="/work/loco-loco" />
                     </div>
                     <div role="listitem" className="sw-item w-dyn-item">
                       <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/bullit" className="sw-card w-inline-block">
-                        <div className="sw-card_video">
-                          <img draggable="false" alt="Recent Work" loading="lazy" src="/RecentWorks/work_04.png" className="video-card_placeholder" />
+                        <div className="sw-card_video" style={{ position: 'relative' }}>
+                          <Image fill src="/RecentWorks/work_04.png" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
                         </div>
                       </a>
                       <link rel="prefetch" href="/work/bullit" />
                     </div>
                     <div role="listitem" className="sw-item w-dyn-item">
                       <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/roasta" className="sw-card w-inline-block">
-                        <div className="sw-card_video">
-                          <img draggable="false" alt="Recent Work" loading="lazy" src="/RecentWorks/work_05.png" className="video-card_placeholder" />
+                        <div className="sw-card_video" style={{ position: 'relative' }}>
+                          <Image fill src="/RecentWorks/work_05.png" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
                         </div>
                       </a>
                       <link rel="prefetch" href="/work/roasta" />
                     </div>
                     <div role="listitem" className="sw-item w-dyn-item">
                       <a aria-label="Case link" data-video-on-hover="not-active" role="Link" href="/work/loco-loco" className="sw-card w-inline-block">
-                        <div className="sw-card_video">
-                          <img draggable="false" alt="Recent Work" loading="lazy" src="/RecentWorks/work_09.png" className="video-card_placeholder" />
+                        <div className="sw-card_video" style={{ position: 'relative' }}>
+                          <Image fill src="/RecentWorks/work_09.png" alt="Recent Work" className="video-card_placeholder" style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" />
                         </div>
                       </a>
                       <link rel="prefetch" href="/work/loco-loco" />

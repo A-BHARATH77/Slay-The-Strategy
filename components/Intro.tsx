@@ -1,6 +1,7 @@
 'use client';
 // @ts-nocheck
 import React, { useRef } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -66,10 +67,10 @@ export default function Intro() {
               </div>
               <div data-video="playpause" id="w-node-faa2305a-1600-624b-3553-a5629475cb14-23544b6d" className="small-image intro-image-container" style={{ height: 'auto', justifySelf: 'center', alignSelf: 'start', marginTop: 0, paddingTop: 0 }}>
                 <div className="show-mobile">
-                  <img draggable="false" src="/founder.png" alt="Dipani" loading="lazy" className="image" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
+                  <Image src="/founder.png" alt="Dipani" width={800} height={1000} draggable={false} className="image" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
                 </div>
                 <div className="hide-mobile">
-                  <img draggable="false" src="/founder.png" alt="Dipani" loading="lazy" className="image" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
+                  <Image src="/founder.png" alt="Dipani" width={800} height={1000} draggable={false} className="image" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
                 </div>
               </div>
               <div className="show-mobile">

@@ -1,6 +1,7 @@
 "use client";
 // @ts-nocheck
 import React, { useRef, useEffect } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -49,23 +50,24 @@ function LogoCell({ client }: { client: typeof CLIENT_LOGOS[0] }) {
         justifyContent: 'center',
         width: 'clamp(280px, 35vw, 450px)',
         height: 'clamp(150px, 18vw, 250px)',
-        padding: '0 2rem'
+        padding: '0 2rem',
+        position: 'relative',
       }}
     >
-      <img
+      <Image
         src={client.img}
         alt={client.name}
-        style={{ 
-          width: '100%',
-          height: '100%',
+        fill
+        style={{
           objectFit: 'contain',
           transition: 'all 500ms ease-out',
           cursor: 'pointer',
           transform: 'scale(1.2)',
-          mixBlendMode: 'multiply'
+          mixBlendMode: 'multiply',
         }}
-        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.3)'}
-        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1.2)'}
+        sizes="clamp(280px, 35vw, 450px)"
+        onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.3)')}
+        onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1.2)')}
       />
     </div>
   );

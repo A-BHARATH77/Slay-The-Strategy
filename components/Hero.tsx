@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import TextReveal from './TextReveal';
 
 export default function Hero() {
@@ -72,6 +73,7 @@ export default function Hero() {
             border-radius: 12px;
             overflow: hidden;
             background-color: #e0e0e0;
+            position: relative;
           }
           .marquee-item img {
             width: 100%;
@@ -92,7 +94,15 @@ export default function Hero() {
                 '/HomeCaroussel/painting_06.jpg'
               ].map((src, idx) => (
                 <div className="marquee-item" key={`${group}-${idx}`}>
-                  <img draggable="false" src={src} alt={`Home ${idx + 1}`} />
+                  <Image
+                    src={src}
+                    alt={`Home ${idx + 1}`}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    sizes="300px"
+                    priority={group === 1 && idx === 0}
+                    draggable={false}
+                  />
                 </div>
               ))}
             </React.Fragment>
