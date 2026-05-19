@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -156,7 +157,7 @@ const projects: Project[] = [
     director: "Brian Crano",
     company: "Sundance",
     platform: "Short",
-    image: "Work5/carousel_01.jpg",
+    image: "/Work5/carousel_01.jpg",
     span: 6
   },
   {
@@ -166,7 +167,7 @@ const projects: Project[] = [
     director: "BenDavid Grabinski",
     company: "Saban Films",
     platform: "VOD",
-    image: "Work5/first-copy.jpg",
+    image: "/Work5/first-copy.jpg",
     span: 6
   },
   {
@@ -690,16 +691,13 @@ export default function Work() {
                 ) : (
                   <>
                     {p.id === 7 && (
-                      <img
+                      <Image
                         draggable="false"
                         src={p.image}
                         alt=""
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
                         style={{
-                          position: 'absolute',
-                          top: 0,
-                          left: 0,
-                          width: '100%',
-                          height: '100%',
                           objectFit: 'cover',
                           filter: 'blur(12px) brightness(0.8)',
                           transform: 'scale(1.1)',
@@ -707,16 +705,16 @@ export default function Work() {
                         }}
                       />
                     )}
-                    <img
+                    <Image
                       draggable="false"
                       src={p.image}
                       alt={p.title}
                       className="tile-image"
-                      loading="lazy"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                       style={p.portrait || p.id === 7 ? {
                         objectFit: 'contain',
                         padding: p.id === 7 ? '1.5rem' : undefined,
-                        position: p.id === 7 ? 'relative' : undefined,
                         zIndex: p.id === 7 ? 2 : undefined
                       } : {}}
                     />
