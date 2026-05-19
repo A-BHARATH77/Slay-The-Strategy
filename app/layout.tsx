@@ -1,12 +1,13 @@
 // @ts-nocheck
 import "./webflow.css";
 import "./globals.css";
+import { NavigationLoaderProvider } from "@/components/NavigationLoader";
 
 export const metadata = {
   title: "Slay the Strategy",
   description: "Klaar met content die niets oplevert? Get Hyped helpt merken groeien met slimme content, sterke formats en inzichten uit data.",
   icons: {
-    icon: "/logo.png",
+    icon: "/logo.webp",
   },
 };
 
@@ -26,10 +27,12 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
         <meta name="description" content={metadata.description} />
-        <link rel="icon" href="/logo.png" />
+        <link rel="icon" href="/logo.webp" />
       </head>
       <body suppressHydrationWarning>
-        {children}
+        <NavigationLoaderProvider>
+          {children}
+        </NavigationLoaderProvider>
       </body>
     </html>
   );

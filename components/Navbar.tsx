@@ -2,12 +2,19 @@
 // @ts-nocheck
 import React, { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
+import { useNavigationLoader } from '@/components/NavigationLoader';
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { navigateTo, isLoading } = useNavigationLoader();
   const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
+
+  const handleNavClick = (path: string) => {
+    setIsMobileMenuOpen(false);
+    navigateTo(path);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -85,6 +92,13 @@ export default function Navbar() {
           font-weight: 500;
           text-transform: uppercase;
           letter-spacing: 0.05em;
+          background: none;
+          border: none;
+          padding: 0;
+          margin: 0;
+          cursor: pointer;
+          font-family: inherit;
+          line-height: inherit;
         }
 
         .nav_link:hover {
@@ -188,15 +202,30 @@ export default function Navbar() {
           <a aria-label="Home link" href="/" className={`nav_link ${pathname === '/' ? 'w--current' : ''}`}>
             Home
           </a>
-          <a aria-label="Work link" href="/work" className={`nav_link ${pathname === '/work' ? 'w--current' : ''}`}>
+          <button
+            aria-label="Work link"
+            onClick={() => handleNavClick('/work')}
+            disabled={isLoading}
+            className={`nav_link ${pathname === '/work' ? 'w--current' : ''}`}
+          >
             Work
-          </a>
-          <a aria-label="Studio link" href="/studio" className={`nav_link ${pathname === '/studio' ? 'w--current' : ''}`}>
+          </button>
+          <button
+            aria-label="Studio link"
+            onClick={() => handleNavClick('/studio')}
+            disabled={isLoading}
+            className={`nav_link ${pathname === '/studio' ? 'w--current' : ''}`}
+          >
             Studio
-          </a>
-          <a aria-label="Contact link" href="/contact" className={`nav_link ${pathname === '/contact' ? 'w--current' : ''}`}>
+          </button>
+          <button
+            aria-label="Contact link"
+            onClick={() => handleNavClick('/contact')}
+            disabled={isLoading}
+            className={`nav_link ${pathname === '/contact' ? 'w--current' : ''}`}
+          >
             Contact
-          </a>
+          </button>
         </div>
         <div className="navbar_right-text">
           <div>Slay</div>
