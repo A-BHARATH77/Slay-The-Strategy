@@ -46,7 +46,7 @@ export default function Navbar() {
   const pathname = usePathname();
   
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-transparent z-50">
+    <nav className="fixed top-0 left-0 right-0 bg-[#f7f2e6] z-50">
       <div className="grid grid-cols-5 items-center h-16 px-6 max-w-7xl mx-auto">
         {navItems.map((item) => {
           // Handle the logo item differently with increased size

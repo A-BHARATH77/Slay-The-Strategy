@@ -276,7 +276,7 @@ export default function About() {
                   {/* Niches Section */}
                   <div className="relative z-10 mb-20">
                     <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">
-                      Niches <span className="relative inline-block">
+                      Niches<span className="relative inline-block">
                         <span className="text-[#526855] italic">Worked In</span>
                       </span>
                     </h2>

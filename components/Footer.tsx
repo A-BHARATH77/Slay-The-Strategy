@@ -64,7 +64,7 @@ export default function Footer() {
         <div className="w-full max-w-2xl grid grid-cols-3 gap-8 mt-16">
           {/* Navigation */}
           <div>
-            <p className="text-[#516856]/50 text-xs font-medium uppercase tracking-widest mb-4 font-['Gilda_Display']">
+            <p className="text-[#516856]/90 text-xs font-bold uppercase tracking-widest mb-4 font-['Gilda_Display']">
               Navigation
             </p>
             <ul className="flex flex-col gap-2.5">
@@ -77,7 +77,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-[#516856]/75 hover:text-[#516856] text-sm font-['Gilda_Display'] underline-offset-2 hover:underline transition-colors"
+                    className="text-[#516856]/75 hover:text-[#516856] text-sm font-bold font-['Gilda_Display'] underline-offset-2 hover:underline transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -88,7 +88,7 @@ export default function Footer() {
 
           {/* Connect */}
           <div>
-            <p className="text-[#516856]/50 text-xs font-medium uppercase tracking-widest mb-4 font-['Gilda_Display']">
+            <p className="text-[#516856]/90 text-xs font-bold uppercase tracking-widest mb-4 font-['Gilda_Display']">
               Connect
             </p>
             <ul className="flex flex-col gap-2.5">
@@ -102,7 +102,7 @@ export default function Footer() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#516856]/75 hover:text-[#516856] text-sm font-['Gilda_Display'] underline-offset-2 hover:underline transition-colors"
+                    className="text-[#516856]/75 hover:text-[#516856] text-sm font-bold font-['Gilda_Display'] underline-offset-2 hover:underline transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -113,7 +113,7 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <p className="text-[#516856]/50 text-xs font-medium uppercase tracking-widest mb-4 font-['Gilda_Display']">
+            <p className="text-[#516856]/90 text-xs font-bold uppercase tracking-widest mb-4 font-['Gilda_Display']">
               Legal
             </p>
             <ul className="flex flex-col gap-2.5">
@@ -124,7 +124,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-[#516856]/75 hover:text-[#516856] text-sm font-['Gilda_Display'] underline-offset-2 hover:underline transition-colors"
+                    className="text-[#516856]/75 hover:text-[#516856] text-sm font-bold font-['Gilda_Display'] underline-offset-2 hover:underline transition-colors"
                   >
                     {item.label}
                   </Link>

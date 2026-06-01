@@ -2,12 +2,13 @@
 import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, SetStateAction, useState } from "react";
 import { Instagram, Linkedin, Facebook, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import Expertise from "@/components/Expertise";
 
 
 const socialLinks = [
   { id: 1, title: "Instagram", href: " https://www.instagram.com/slaythestrategy.agency/", icon: <Instagram size={20} /> },
-  { id: 2, title: "LinkedIn", href: " https://www.linkedin.com/in/dipani-handa-a7460066/", icon: <Linkedin size={20} /> },
+  { id: 2, title: "LinkedIn", href: "  https://www.linkedin.com/in/dipani-handa-a7460066/", icon: <Linkedin size={20} /> },
   { id: 3, title: "Facebook", href: "https://www.facebook.com/profile.php?id=61586631632667", icon: <Facebook size={20} /> },
 
 ];
@@ -253,17 +254,11 @@ export default function About() {
 
       <Expertise />
 
-      {/* Social Links Section */}
-        <div className="pt-12 border-t border-gray-800 relative z-10">
-          <h2 className="text-2xl font-normal mb-6 text-center font-['Gilda_Display'] text-[#526855] opacity-100">
-            Connect With Us
-          </h2>
-        </div>
 
         {/* About the Founder Section Header */}
-        <div className="relative z-10 bg-transparent pb-0 overflow-hidden">
+        <div className="relative z-10 bg-transparent pt-10 pb-0 overflow-hidden">
           <div className="container mx-auto px-6 relative">
-            <h2 className="text-4xl md:text-5xl lg:text-7xl mb-6 text-center font-['Gilda_Display'] text-[#526855]">
+            <h2 className="text-4xl md:text-5xl lg:text-7xl mb-0 text-center font-['Gilda_Display'] text-[#526855]">
               Behind <span className="text-[#526855] relative italic">
                 Slay the Strategy
               </span>
@@ -298,7 +293,7 @@ export default function About() {
             </div>
 
             {/* Bio paragraph */}
-            <p className="text-[#526855]/75 text-base font-light font-['Gilda_Display'] leading-relaxed">
+            <p className="text-[#526855] text-base font-light font-['Gilda_Display'] leading-relaxed">
               I started Slay the Strategy to help ambitious brands cut through the noise. We combine data-backed marketing strategies with scroll-stopping creative content to build digital footprints that actually matter.
             </p>
 
@@ -317,6 +312,16 @@ export default function About() {
                 </a>
               ))}
             </div>
+
+            {/* Know More Button */}
+            <div className="pt-8 flex justify-center md:justify-start lg:justify-start xl:justify-start">
+              <Link
+                href="/about"
+                className="px-8 py-3 rounded-full bg-[#526855] text-[#f7f2e6] hover:bg-[#3f5444] transition-colors duration-300 font-['Gilda_Display'] text-sm font-medium"
+              >
+                Know More
+              </Link>
+            </div>
           </div>
 
         </div>
@@ -326,7 +331,7 @@ export default function About() {
       {/* Niches Section */}
       <div className="relative z-10 mb-20">
         <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">
-          Niches <span className="relative inline-block">
+          Niches<span className="relative inline-block">
             <span className="text-[#526855] italic">Worked In</span>
           </span>
         </h2>

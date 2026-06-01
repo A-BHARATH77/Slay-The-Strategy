@@ -59,7 +59,7 @@ export default function Expertise() {
         {/* Left: badge + big heading */}
         <div className="flex flex-col gap-4 max-w-[560px]">
           <div className="inline-flex">
-            <span className="px-3 py-1 text-xs font-medium text-[#526855] border border-[#516856]/30 rounded-full font-['Gilda_Display']">
+            <span className="px-3 py-1 text-sm font-medium text-[#526855] border border-[#516856]/20 rounded-full font-['Gilda_Display']">
               Our Services
             </span>
           </div>
