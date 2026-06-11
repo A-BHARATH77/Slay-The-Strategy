@@ -44,9 +44,9 @@ const navItems = [
 
 export default function Navbar() {
   const pathname = usePathname();
-  
+
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-[#f7f2e6] z-50">
+    <nav className="fixed top-0 left-0 right-0 bg-[#f7f2e6]/70 backdrop-blur-sm z-50 shadow-sm">
       <div className="grid grid-cols-5 items-center h-16 px-6 max-w-7xl mx-auto">
         {navItems.map((item) => {
           // Handle the logo item differently with increased size
@@ -67,11 +67,11 @@ export default function Navbar() {
               </div>
             );
           }
-          
+
           // Regular nav items with smaller text
           const isActive = pathname === item.href;
           const IconComponent = item.icon;
-          
+
           return (
             <div key={item.id} className="flex justify-center">
               <Link
@@ -81,9 +81,8 @@ export default function Navbar() {
                 <motion.div
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.9 }}
-                  className={`flex items-center px-2 py-1 ${
-                    isActive ? "text-[#526855]" : "text-[#526855]/70 hover:text-[#526855]"
-                  }`}
+                  className={`flex items-center px-2 py-1 ${isActive ? "text-[#526855]/90" : "text-[#526855]/70 hover:text-[#526855]"
+                    }`}
                 >
                   {IconComponent && <IconComponent size={16} className="mr-1" />}
                   <span className="font-medium text-xs">{item.title}</span>
