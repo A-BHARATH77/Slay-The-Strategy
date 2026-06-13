@@ -31,7 +31,13 @@ export default function About() {
   return (
     <>
       <section className="w-full bg-[#f7f2e6] py-32 px-8 sm:px-12 lg:px-16 relative overflow-hidden">
-        {/* Refined background elements with reduced opacity */}
+        {/* Visible Ambient Background Bubbles */}
+        <div className="absolute top-[10%] left-[5%] w-64 h-64 bg-[#526855]/20 rounded-full blur-[80px] z-0 pointer-events-none"></div>
+        <div className="absolute bottom-[20%] right-[10%] w-80 h-80 bg-[#526855]/25 rounded-full blur-[100px] z-0 pointer-events-none"></div>
+        <div className="absolute top-[40%] right-[5%] w-72 h-72 bg-[#4a5d4d]/20 rounded-full blur-[90px] z-0 pointer-events-none"></div>
+        <div className="absolute bottom-[5%] left-[10%] w-96 h-96 bg-[#526855]/20 rounded-full blur-[120px] z-0 pointer-events-none"></div>
+        
+        {/* Header Section - Added more vertical spacing */}
 
         {/* Header Section - Added more vertical spacing */}
         <div className="text-center max-w-4xl mx-auto relative z-10 mb-16">
@@ -53,13 +59,13 @@ export default function About() {
           <div className="mt-16 flex flex-wrap justify-center gap-8">
             <Link
               href="/contact"
-              className="px-10 py-4 bg-[#526855] text-[#f7f2e6] font-light rounded-full hover:shadow-lg hover:translate-y-px transition-all duration-300 flex items-center gap-2 font-['Gilda_Display']"
+              className="relative inline-flex items-center gap-2 px-10 py-4 bg-[#526855] text-[#f7f2e6] font-light rounded-full !shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:!shadow-[0_25px_50px_rgba(0,0,0,0.5)] hover:!-translate-y-2 hover:scale-[1.02] transform transition-all duration-500 ease-out font-['Gilda_Display'] z-20"
             >
               Start a Project <ChevronRight size={16} />
             </Link>
             <Link
               href="/services"
-              className="px-10 py-4 bg-[#526855] text-[#f7f2e6] opacity-100 font-light rounded-full hover:bg-gray-600 transition-all duration-300 border border-gray-800 shadow-sm font-['Gilda_Display']"
+              className="relative inline-flex items-center justify-center px-10 py-4 bg-[#526855] text-[#f7f2e6] opacity-100 font-light rounded-full !shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:!shadow-[0_25px_50px_rgba(0,0,0,0.5)] hover:!-translate-y-2 hover:scale-[1.02] transform transition-all duration-500 ease-out border border-gray-800 font-['Gilda_Display'] z-20"
             >
               Explore Services
             </Link>

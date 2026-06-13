@@ -1,5 +1,5 @@
 "use client";
-import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, SetStateAction, useState } from "react";
+import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, SetStateAction, useState, useEffect, useRef } from "react";
 import { Instagram, Linkedin, Facebook, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -160,6 +160,349 @@ const nicheData = [
   }
 ];
 
+// ─── ServicesSection: ported from services.html ──────────────────────────────
+const serviceItems = [
+  {
+    num: "(001)",
+    title: "Web Design",
+    desc: "Modern, responsive, and user-friendly websites designed to engage visitors and drive conversions.",
+    img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4fa1_Scene%20%239.webp",
+  },
+  {
+    num: "(002)",
+    title: "Social Media",
+    desc: "We create scroll-stopping social content designed to build brand presence and drive engagement.",
+    img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4f9b_Scene%20%235.webp",
+  },
+  {
+    num: "(003)",
+    title: "Development",
+    desc: "Modern, responsive, and user-friendly websites designed to engage visitors and drive conversions.",
+    img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4f99_Scene%20%2310%20(Light).webp",
+  },
+  {
+    num: "(004)",
+    title: "Brand Identity",
+    desc: "We craft cohesive brand identities that communicate purpose, personality, and credibility.",
+    img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4fbf_Scene%20%238.webp",
+  },
+  {
+    num: "(005)",
+    title: "Marketing",
+    desc: "We develop strategic marketing assets that amplify brand reach and support growth.",
+    img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4f9a_Scene%2018.webp",
+  },
+];
+
+const ServicesSection = () => {
+  const [activeIdx, setActiveIdx] = useState<number>(0);
+  const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      let closestIdx = 0;
+      let minDistance = Infinity;
+      const centerY = window.innerHeight / 2;
+
+      rowRefs.current.forEach((ref, index) => {
+        if (ref) {
+          const rect = ref.getBoundingClientRect();
+          const elementCenter = rect.top + rect.height / 2;
+          const distance = Math.abs(elementCenter - centerY);
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestIdx = index;
+          }
+        }
+      });
+
+      setActiveIdx((prevIdx) => (prevIdx !== closestIdx ? closestIdx : prevIdx));
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Trigger immediately on mount to set initial active item
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <>
+      <style>{`
+        /* ── PP Neue Montreal import ── */
+        @import url("https://fonts.cdnfonts.com/css/pp-neue-montreal");
+
+        /* ── Services section wrapper ── */
+        .svc-section {
+          background-color: #f7f2e6;
+          color: #576E47;
+          width: 100%;
+          padding: 0 6% 160px;
+          box-sizing: border-box;
+          position: relative;
+          z-index: 1;
+        }
+
+        /* ── Top bar: (Services) label + dot + CTA ── */
+        .svc-top-bar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-top: 80px;
+          padding-bottom: 60px;
+          border-bottom: 1px solid rgba(87,110,71,0.2);
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+        .svc-top-label {
+          font-family: "PP Neue Montreal", sans-serif;
+          font-size: 0.85rem;
+          font-weight: 500;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #576E47;
+          opacity: 0.7;
+          line-height: 1;
+        }
+        .svc-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background-color: #576E47;
+          flex-shrink: 0;
+        }
+        .svc-cta-btn {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          overflow: hidden;
+          padding: 0.7rem 2rem;
+          border-radius: 999px;
+          font-family: "PP Neue Montreal", sans-serif;
+          font-size: 0.85rem;
+          font-weight: 500;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: #f7f2e6;
+          background-color: #576E47;
+          text-decoration: none;
+          transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+          cursor: pointer;
+        }
+        .svc-cta-btn:hover {
+          background-color: #3d5234;
+          transform: translateY(-2px);
+          box-shadow: 0 12px 28px rgba(87,110,71,0.3);
+        }
+
+        /* ── Service Grid: left list + right sticky image ── */
+        .svc-grid {
+          display: flex;
+          align-items: flex-start;
+          gap: 0;
+          margin-top: 0;
+        }
+
+        /* LEFT: list of service rows */
+        .svc-list {
+          flex: 1 1 0%;
+          min-width: 0;
+        }
+
+        /* RIGHT: sticky image + description panel */
+        .svc-media {
+          width: 38%;
+          flex-shrink: 0;
+          position: sticky;
+          top: 12vh;
+          padding-top: 10rem;
+          padding-left: 6%;
+          box-sizing: border-box;
+        }
+        .svc-media-img-wrap {
+          width: 100%;
+          aspect-ratio: 4/3;
+          border-radius: 1rem;
+          overflow: hidden;
+          background: rgba(87,110,71,0.08);
+        }
+        .svc-media-img-wrap img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: opacity 0.45s ease, transform 0.55s cubic-bezier(0.25,1,0.5,1);
+          transform: scale(1.04);
+        }
+        .svc-media-img-wrap img.svc-img-in {
+          opacity: 1;
+          transform: scale(1);
+        }
+        .svc-media-img-wrap img.svc-img-out {
+          opacity: 0;
+          transform: scale(1.08);
+        }
+        .svc-media-desc {
+          margin-top: 2.5rem;
+          font-family: "PP Neue Montreal", sans-serif;
+          font-size: 1rem;
+          font-weight: 500;
+          line-height: 1.55;
+          color: #576E47;
+          opacity: 0.85;
+          transition: opacity 0.3s ease;
+        }
+
+        /* Each service row */
+        .svc-row {
+          display: flex;
+          align-items: center;
+          padding: 2rem 0;
+          border-bottom: 1px solid rgba(87,110,71,0.2);
+          cursor: pointer;
+          position: relative;
+          transition: padding 0.35s cubic-bezier(0.25,1,0.5,1);
+        }
+        .svc-row:first-child {
+          border-top: 1px solid rgba(87,110,71,0.2);
+        }
+        .svc-row:hover,
+        .svc-row.svc-row--active {
+          padding: 2.5rem 0;
+        }
+
+        .svc-row-num {
+          font-family: "PP Neue Montreal", sans-serif;
+          font-size: 0.75rem;
+          font-weight: 500;
+          letter-spacing: 0.1em;
+          color: #576E47;
+          opacity: 0.55;
+          width: 4.5rem;
+          flex-shrink: 0;
+          transition: opacity 0.25s ease;
+        }
+        .svc-row:hover .svc-row-num,
+        .svc-row.svc-row--active .svc-row-num {
+          opacity: 1;
+        }
+
+        .svc-row-title {
+          flex: 1;
+          font-family: "PP Neue Montreal", sans-serif;
+          font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+          font-weight: 500;
+          letter-spacing: -0.02em;
+          line-height: 1.05;
+          color: #576E47;
+          opacity: 0.45;
+          transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.25,1,0.5,1);
+        }
+        .svc-row:hover .svc-row-title,
+        .svc-row.svc-row--active .svc-row-title {
+          opacity: 1;
+          transform: translateX(0.5rem);
+        }
+
+
+
+        /* Mobile layout */
+        @media (max-width: 768px) {
+          .svc-section {
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-bottom: 80px;
+          }
+          .svc-grid {
+            flex-direction: column;
+          }
+          .svc-media {
+            width: 100%;
+            position: relative;
+            top: auto;
+            padding-left: 0;
+            padding-top: 2rem;
+            order: -1;
+          }
+          .svc-row-title {
+            font-size: clamp(1.4rem, 6vw, 2rem);
+          }
+          .svc-top-bar {
+            padding-top: 48px;
+            padding-bottom: 40px;
+          }
+        }
+      `}</style>
+
+      <div className="svc-section">
+        {/* Top bar */}
+        <div className="svc-top-bar">
+          <p className="svc-top-label">(Services)</p>
+          <div className="svc-dot" />
+          <a href="/contact" className="svc-cta-btn">
+            Get started
+          </a>
+        </div>
+
+        {/* Grid: list left, media right */}
+        <div className="svc-grid">
+          {/* LEFT — service rows */}
+          <div className="svc-list">
+            {serviceItems.map((item, idx) => (
+              <div
+                key={idx}
+                ref={(el) => { rowRefs.current[idx] = el; }}
+                className={`svc-row${activeIdx === idx ? " svc-row--active" : ""}`}
+              >
+                <span className="svc-row-num">{item.num}</span>
+                <span className="svc-row-title">{item.title}</span>
+
+              </div>
+            ))}
+          </div>
+
+          {/* RIGHT — sticky image + desc */}
+          <div className="svc-media" style={{ display: "flex", flexDirection: "column" }}>
+            <div className="svc-media-img-wrap" style={{ order: activeIdx === 0 ? 2 : 1 }}>
+              {serviceItems.map((item, idx) => (
+                <img
+                  key={idx}
+                  src={item.img}
+                  alt={item.title}
+                  className={activeIdx === idx ? "svc-img-in" : "svc-img-out"}
+                  style={{
+                    position: idx === 0 ? "relative" : "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: idx === 0 ? "cover" : "contain",
+                    transition: "opacity 0.45s ease, transform 0.55s cubic-bezier(0.25,1,0.5,1)",
+                    opacity: activeIdx === idx ? 1 : 0,
+                    transform: activeIdx === idx ? (idx === 0 ? "scale(1)" : "scale(0.85)") : "scale(1.08)",
+                  }}
+                />
+              ))}
+            </div>
+            <p
+              className="svc-media-desc"
+              style={{
+                order: activeIdx === 0 ? 1 : 2,
+                marginTop: activeIdx === 0 ? 0 : "2.5rem",
+                marginBottom: activeIdx === 0 ? "2.5rem" : 0
+              }}
+            >
+              {serviceItems[activeIdx].desc}
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+// ─────────────────────────────────────────────────────────────────────────────
+
 // ServicePopup component for showing bulletins
 const ServicePopup = ({ service, isOpen, onClose }: { service: any, isOpen: boolean, onClose: () => void }) => {
   if (!isOpen) return null;
@@ -217,54 +560,75 @@ export default function About() {
 
   return (
     <section className="w-full bg-[#f7f2e6] py-32 px-8 sm:px-12 lg:px-16 relative overflow-hidden">
-      {/* Refined background elements with reduced opacity */}
+      {/* Visible Ambient Background Bubbles */}
+      <div className="absolute top-[10%] left-[5%] w-64 h-64 bg-[#526855]/20 rounded-full blur-[80px] z-0 pointer-events-none"></div>
+      <div className="absolute bottom-[20%] right-[10%] w-80 h-80 bg-[#526855]/25 rounded-full blur-[100px] z-0 pointer-events-none"></div>
+      <div className="absolute top-[40%] right-[5%] w-72 h-72 bg-[#4a5d4d]/20 rounded-full blur-[90px] z-0 pointer-events-none"></div>
+      <div className="absolute bottom-[5%] left-[10%] w-96 h-96 bg-[#526855]/20 rounded-full blur-[120px] z-0 pointer-events-none"></div>
+
+      {/* Random Static Green Bubbles (Spaced out to prevent overlap) */}
+      <div className="absolute top-[30%] left-[5%] w-32 h-32 bg-[#526855]/40 rounded-full z-0 pointer-events-none"></div>
+      <div className="absolute top-[45%] right-[10%] w-20 h-20 bg-[#526855]/50 rounded-full z-0 pointer-events-none"></div>
+      <div className="absolute top-[60%] left-[15%] w-12 h-12 bg-[#526855]/60 rounded-full z-0 pointer-events-none"></div>
+      <div className="absolute top-[75%] right-[20%] w-40 h-40 bg-[#526855]/30 rounded-full z-0 pointer-events-none"></div>
+      <div className="absolute top-[85%] left-[30%] w-16 h-16 bg-[#526855]/50 rounded-full z-0 pointer-events-none"></div>
+      <div className="absolute bottom-[5%] right-[40%] w-14 h-14 bg-[#526855]/40 rounded-full z-0 pointer-events-none"></div>
 
       {/* Header Section - Reduced vertical spacing */}
       <div className="text-center max-w-4xl mx-auto relative z-10 mb-12">
-        <div className="mb-12">
+        {/* Header-Specific Random Bubbles (Strictly non-overlapping) */}
+        <div className="absolute -top-24 -left-32 w-48 h-48 bg-[#526855]/30 rounded-full z-[-1] pointer-events-none"></div>
+        <div className="absolute -top-12 -right-24 w-20 h-20 bg-[#526855]/40 rounded-full z-[-1] pointer-events-none"></div>
+        <div className="absolute top-1/2 -left-48 w-20 h-20 bg-[#526855]/50 rounded-full z-[-1] pointer-events-none"></div>
+        <div className="absolute top-1/3 -right-48 w-24 h-24 bg-[#526855]/45 rounded-full z-[-1] pointer-events-none"></div>
+        <div className="absolute -bottom-20 -left-16 w-28 h-28 bg-[#526855]/35 rounded-full z-[-1] pointer-events-none"></div>
+        <div className="absolute -bottom-16 -right-32 w-56 h-56 bg-[#526855]/25 rounded-full z-[-1] pointer-events-none"></div>
+
+        {/*<div className="mb-12">
           <span className="px-6 py-2 bg-[#f7f2e6] tracking-tight font-bold rounded-full text-sm text-[#526855] opacity-100 border border-gray-800 uppercase">
             Elevate Your Digital Presence
           </span>
-        </div>
+        </div>*/}
 
-        <h1 className="font-['Gilda_Display'] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal mb-12 tracking-tight leading-tight text-[#526855] opacity-100 text-center">
+        <h1 className="font-['Gilda_Display'] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal mb-12 tracking-tight leading-tight text-[#526855] opacity-100 text-center relative z-10">
           Welcome to
           <span className="block sm:inline text-[#526855] italic"> Slay the Strategy</span>
         </h1>
 
-        <p className="text-[#526855] opacity-100 text-2xl max-w-2xl mx-auto font-light leading-relaxed mt-6 font-['Gilda_Display']">
+        <p className="text-[#526855] opacity-100 text-2xl max-w-2xl mx-auto text-left font-light leading-relaxed mt-6 font-['Gilda_Display'] relative z-10">
           We craft bespoke social media strategies, visual identities, optimization solutions, and forward-thinking digital strategies that elevate your brand's presence.
         </p>
 
-        <div className="mt-16 flex flex-wrap justify-center gap-8">
+        <div className="mt-16 flex flex-wrap justify-center gap-8 relative z-10">
           <a
             href="/contact"
-            className="px-10 py-4 bg-[#526855] text-[#f7f2e6] font-light rounded-full hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-2 group font-['Gilda_Display']"
+            className="relative inline-flex items-center gap-2 px-10 py-4 bg-[#526855] text-[#f7f2e6] font-light rounded-full !shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:!shadow-[0_25px_50px_rgba(0,0,0,0.5)] hover:!-translate-y-2 hover:scale-[1.02] transform transition-all duration-500 ease-out group font-['Gilda_Display']"
           >
             Start a Project <ChevronRight size={16} className="transform group-hover:translate-x-1 transition-transform duration-300" />
           </a>
           <a
             href="/services"
-            className="px-10 py-4 bg-[#526855] text-[#f7f2e6] opacity-100 font-light rounded-full hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-800 shadow-sm group font-['Gilda_Display']"
+            className="relative inline-flex items-center gap-2 px-10 py-4 bg-[#526855] text-[#f7f2e6] font-light rounded-full !shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:!shadow-[0_25px_50px_rgba(0,0,0,0.5)] hover:!-translate-y-2 hover:scale-[1.02] transform transition-all duration-500 ease-out group font-['Gilda_Display']"
           >
-            Explore Services
+            Explore Service
           </a>
         </div>
       </div>
 
-      <Expertise />
+      {/*Services section here*/}
+      <ServicesSection />
 
 
-        {/* About the Founder Section Header */}
-        <div className="relative z-10 bg-transparent pt-10 pb-0 overflow-hidden">
-          <div className="container mx-auto px-6 relative">
-            <h2 className="text-4xl md:text-5xl lg:text-7xl mb-0 text-center font-['Gilda_Display'] text-[#526855]">
-              Behind <span className="text-[#526855] relative italic">
-                Slay the Strategy
-              </span>
-            </h2>
-          </div>
+      {/* About the Founder Section Header */}
+      <div className="relative z-10 bg-transparent pt-10 pb-0 overflow-hidden">
+        <div className="container mx-auto px-6 relative">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl mb-0 text-center font-['Gilda_Display'] text-[#526855]">
+            Behind <span className="text-[#526855] relative italic">
+              Slay the Strategy
+            </span>
+          </h2>
         </div>
+      </div>
 
       {/* Founder Section — image left, text right */}
       <div className="relative z-10 py-20">
@@ -317,7 +681,7 @@ export default function About() {
             <div className="pt-8 flex justify-center md:justify-start lg:justify-start xl:justify-start">
               <Link
                 href="/about"
-                className="px-8 py-3 rounded-full bg-[#526855] text-[#f7f2e6] hover:bg-[#3f5444] transition-colors duration-300 font-['Gilda_Display'] text-sm font-medium"
+                className="relative inline-flex items-center gap-2 px-10 py-4 bg-[#526855] text-[#f7f2e6] font-light rounded-full !shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:!shadow-[0_25px_50px_rgba(0,0,0,0.5)] hover:!-translate-y-2 hover:scale-[1.02] transform transition-all duration-500 ease-out group font-['Gilda_Display']"
               >
                 Know More
               </Link>

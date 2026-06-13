@@ -1,83 +1,81 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="relative w-full overflow-hidden" style={{ minHeight: "520px" }}>
-      {/* Background image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/footer.png"
-          alt="Footer background"
-          fill
-          className="object-cover object-center"
-          priority
-        />
-        {/* Light overlay so text is readable */}
-        <div className="absolute inset-0 bg-[#f7f2e6]/70" />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-between h-full px-6 md:px-12 pt-20 pb-8" style={{ minHeight: "520px" }}>
-
-        {/* ── Center CTA block ── */}
-        <div className="flex flex-col items-center text-center gap-6 max-w-[600px]">
-          {/* Logo row */}
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 relative">
-              <Image src="/logo.webp" alt="Slay the Strategy" fill className="object-contain" />
-            </div>
-            <span className="text-[#516856] text-sm font-medium font-['Gilda_Display'] tracking-wide">
-              Slay the Strategy
-            </span>
-          </div>
-
-          {/* Heading */}
-          <h2 className="text-5xl md:text-6xl font-normal leading-[1.1] tracking-tight text-[#516856] font-['Gilda_Display']">
-            Let&apos;s move forward<br />
-            with <span className="text-[#516856]">clarity.</span>
+    <footer
+      className="relative w-full overflow-hidden flex flex-col"
+      style={{ backgroundColor: "#526855", height: "100vh" }}
+    >
+      {/* ── Top section ── */}
+      <div className="flex items-start justify-between px-16 pt-24 pb-4 flex-shrink-0 mx-6 mt-6">
+        {/* ── LEFT column ── */}
+        <div className="flex flex-col gap-5 max-w-xs">
+          {/* Main heading */}
+          <h2
+            className="text-[#e8e0c8] font-bold leading-tight"
+            style={{ fontSize: "clamp(1.4rem, 2.5vw, 2rem)", fontFamily: "sans-serif" }}
+          >
+            Build it once. Build it right™
           </h2>
 
-          {/* Subtitle */}
-          <p className="text-[#516856]/65 text-base leading-relaxed font-['Gilda_Display'] max-w-sm">
-            Share your goals, and we&apos;ll help shape the direction and guide your brand forward with clarity and care.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex items-center gap-3 mt-2">
-            <Link
-              href="/contact"
-              className="px-7 py-3 rounded-full bg-[#516856] text-[#f7f2e6] text-sm font-medium font-['Gilda_Display'] hover:bg-[#3f5444] transition-colors duration-200"
+          {/* New Business email */}
+          <div>
+            <p
+              className="text-[#e8e0c8] text-xs font-semibold mb-1"
+              style={{ fontFamily: "sans-serif" }}
             >
-              Book a Call
+              New Business:
+            </p>
+            <Link
+              href="mailto:hello@slaystrategy.com"
+              className="text-[#e8e0c8] text-sm font-medium hover:underline"
+              style={{ fontFamily: "sans-serif" }}
+            >
+              hello@slaystrategy.com
+            </Link>
+          </div>
+
+          {/* Legal links */}
+          <div className="flex flex-col gap-1">
+            <Link
+              href="/privacy-policy"
+              className="text-[#c8c0a8] text-xs hover:text-[#e8e0c8] transition-colors"
+              style={{ fontFamily: "sans-serif" }}
+            >
+              Privacy Policy
             </Link>
             <Link
-              href="mailto:hello@slaythestrategy.com"
-              className="px-7 py-3 rounded-full bg-[#f7f2e6]/80 border border-[#516856]/30 text-[#516856] text-sm font-medium font-['Gilda_Display'] hover:bg-[#f7f2e6] transition-colors duration-200"
+              href="/terms-of-service"
+              className="text-[#c8c0a8] text-xs hover:text-[#e8e0c8] transition-colors"
+              style={{ fontFamily: "sans-serif" }}
             >
-              Email Us
+              Terms and Conditions
             </Link>
           </div>
         </div>
 
-        {/* ── Link columns ── */}
-        <div className="w-full max-w-2xl grid grid-cols-3 gap-8 mt-16">
-          {/* Navigation */}
+        {/* ── RIGHT column ── */}
+        <div className="flex gap-10 items-start">
+          {/* Quick Links */}
           <div>
-            <p className="text-[#516856]/90 text-xs font-bold uppercase tracking-widest mb-4 font-['Gilda_Display']">
-              Navigation
+            <p
+              className="text-[#e8e0c8] text-xs font-semibold mb-3"
+              style={{ fontFamily: "sans-serif" }}
+            >
+              Quick Links:
             </p>
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-col gap-2">
               {[
                 { label: "Home", href: "/" },
-                { label: "Works", href: "/works" },
-                { label: "About Us", href: "/about" },
+                { label: "About", href: "/about" },
+                { label: "Work", href: "/works" },
                 { label: "Contact", href: "/contact" },
               ].map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-[#516856]/75 hover:text-[#516856] text-sm font-bold font-['Gilda_Display'] underline-offset-2 hover:underline transition-colors"
+                    className="text-[#c8c0a8] text-sm hover:text-[#e8e0c8] transition-colors"
+                    style={{ fontFamily: "sans-serif" }}
                   >
                     {item.label}
                   </Link>
@@ -86,64 +84,114 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Connect */}
-          <div>
-            <p className="text-[#516856]/90 text-xs font-bold uppercase tracking-widest mb-4 font-['Gilda_Display']">
-              Connect
-            </p>
-            <ul className="flex flex-col gap-2.5">
-              {[
-                { label: "Instagram", href: "https://www.instagram.com/slaythestrategy.agency/" },
-                { label: "LinkedIn", href: "https://www.linkedin.com/company/slay-the-strategy/" },
-                { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61586631632667" },
-              ].map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#516856]/75 hover:text-[#516856] text-sm font-bold font-['Gilda_Display'] underline-offset-2 hover:underline transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Social Icons */}
+          <div className="flex flex-col gap-3 mt-6">
+            {/* Facebook */}
+            <Link
+              href="https://www.facebook.com/profile.php?id=61586631632667"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="flex items-center justify-center rounded-lg transition-opacity hover:opacity-75"
+              style={{ width: "36px", height: "36px", backgroundColor: "#435845" }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#e8e0c8">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </Link>
 
-          {/* Legal */}
-          <div>
-            <p className="text-[#516856]/90 text-xs font-bold uppercase tracking-widest mb-4 font-['Gilda_Display']">
-              Legal
-            </p>
-            <ul className="flex flex-col gap-2.5">
-              {[
-                { label: "Privacy Policy", href: "/privacy-policy" },
-                { label: "Terms of Service", href: "/terms-of-service" },
-              ].map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-[#516856]/75 hover:text-[#516856] text-sm font-bold font-['Gilda_Display'] underline-offset-2 hover:underline transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+            {/* Instagram */}
+            <Link
+              href="https://www.instagram.com/slaythestrategy.agency/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="flex items-center justify-center rounded-lg transition-opacity hover:opacity-75"
+              style={{ width: "36px", height: "36px", backgroundColor: "#435845" }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8e0c8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="0.5" fill="#e8e0c8" stroke="none" />
+              </svg>
+            </Link>
 
-        {/* ── Bottom bar ── */}
-        <div className="w-full flex items-center justify-between mt-10 pt-4 border-t border-[#516856]/15">
-          <p className="text-[#516856]/50 text-xs font-['Gilda_Display']">
-            © Slay the Strategy 2025. All rights reserved.
-          </p>
-          <p className="text-[#516856]/50 text-xs font-['Gilda_Display']">
-            Crafted with intention.
-          </p>
+            {/* LinkedIn */}
+            <Link
+              href="https://www.linkedin.com/company/slay-the-strategy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="flex items-center justify-center rounded-lg transition-opacity hover:opacity-75"
+              style={{ width: "36px", height: "36px", backgroundColor: "#435845" }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#e8e0c8">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
+
+      {/* ── Phone ── */}
+      <div className="px-16 pb-6 flex justify-end flex-shrink-0 mx-6">
+        <div>
+          <p
+            className="text-[#e8e0c8] text-xs font-semibold mb-1"
+            style={{ fontFamily: "sans-serif" }}
+          >
+            Phone:
+          </p>
+          <Link
+            href="tel:+919036383777"
+            className="text-[#e8e0c8] text-sm font-medium hover:underline"
+            style={{ fontFamily: "sans-serif" }}
+          >
+            +91 90363 83777
+          </Link>
+        </div>
+      </div>
+
+      {/* ── Giant scrolling marquee ── fills remaining space ── */}
+      <div className="relative overflow-hidden flex-1 flex items-end">
+        <div
+          className="flex items-end whitespace-nowrap w-full"
+          style={{ animation: "footerMarquee 18s linear infinite" }}
+        >
+          {[0, 1].map((i) => (
+            <span
+              key={i}
+              className="inline-block"
+              style={{
+                fontFamily: "'Arial Black', 'Helvetica Neue', sans-serif",
+                fontSize: "clamp(80px, 16vw, 200px)",
+                fontWeight: 900,
+                color: "#e8e0c8",
+                letterSpacing: "-0.02em",
+                lineHeight: 1,
+                paddingRight: "4rem",
+                opacity: 0.92,
+              }}
+            >
+              SLAY THE STRATEGY &nbsp;&nbsp;
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Marquee keyframes */}
+      <style jsx>{`
+        @keyframes footerMarquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+      `}</style>
     </footer>
   );
 }

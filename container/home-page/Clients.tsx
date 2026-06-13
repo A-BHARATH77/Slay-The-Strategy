@@ -52,6 +52,14 @@ const testimonials = [
     img: "https://img.freepik.com/premium-photo/woman-wearing-glasses-yellow-shirt_911060-133057.jpg",
     rating: 5,
   },
+  {
+    name: "Chill House Interiors",
+    role: "Owner, Chill House Interiors",
+    description:
+      "We came for content support and stayed for the energy, professionalism, and genuine passion. Vishishta's strategies are sharp and rooted in what actually works.",
+    img: "https://img.freepik.com/premium-photo/woman-wearing-glasses-yellow-shirt_911060-133057.jpg",
+    rating: 5,
+  },
 ];
 
 // ── Star rating component ──
@@ -96,51 +104,6 @@ const ReviewCard = ({ name, role, description, img, rating }: any) => (
   </figure>
 );
 
-// ── Marquee ──
-interface MarqueeProps {
-  className?: string;
-  reverse?: boolean;
-  pauseOnHover?: boolean;
-  children?: React.ReactNode;
-  repeat?: number;
-  [key: string]: any;
-}
-
-function Marquee({
-  className,
-  reverse,
-  pauseOnHover = false,
-  children,
-  repeat = 3,
-  ...props
-}: MarqueeProps) {
-  return (
-    <div
-      {...props}
-      className={cn(
-        "group flex overflow-hidden [--duration:40s] [--gap:0rem] [gap:var(--gap)]",
-        "flex-row",
-        className
-      )}
-    >
-      {Array(repeat)
-        .fill(0)
-        .map((_, i) => (
-          <div
-            key={i}
-            className={cn("flex shrink-0 justify-around [gap:var(--gap)]", {
-              "animate-marquee flex-row": true,
-              "group-hover:[animation-play-state:paused]": pauseOnHover,
-              "[animation-direction:reverse]": reverse,
-            })}
-          >
-            {children}
-          </div>
-        ))}
-    </div>
-  );
-}
-
 // ── Main component ──
 export default function Clients() {
   return (
@@ -157,25 +120,13 @@ export default function Clients() {
         </h2>
       </div>
 
-      {/* Scrolling cards row — fade edges */}
-      <div className="relative">
-        <div
-          className="pointer-events-none absolute inset-y-0 left-0 w-32 z-10"
-          style={{
-            background: "linear-gradient(to right, #526855, transparent)",
-          }}
-        />
-        <div
-          className="pointer-events-none absolute inset-y-0 right-0 w-32 z-10"
-          style={{
-            background: "linear-gradient(to left, #526855, transparent)",
-          }}
-        />
-        <Marquee pauseOnHover>
-          {testimonials.map((t) => (
-            <ReviewCard key={t.name} {...t} />
-          ))}
-        </Marquee>
+      {/* Static cards row */}
+      <div className="flex overflow-x-auto py-4 w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        {testimonials.map((t, index) => (
+          <div key={t.name} className={index === 0 ? "pl-4 sm:pl-8 md:pl-16 lg:pl-24" : ""}>
+            <ReviewCard {...t} />
+          </div>
+        ))}
       </div>
 
       {/* Bottom stat */}
