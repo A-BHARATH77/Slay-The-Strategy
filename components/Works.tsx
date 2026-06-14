@@ -123,7 +123,7 @@ export const Card: React.FC<CardProps> = ({
         }}
         className={`flex flex-col relative -top-[25%] h-[600px] w-[95%] max-w-[1400px] rounded-md lg:p-10 sm:p-4 p-2 origin-top`}
       >
-        <h2 className='text-2xl text-center font-semibold text-[#526855]'>{title}</h2>
+        <h2 className='text-2xl text-left font-semibold text-[#526855] pt-6'>{title}</h2>
         <div className={`flex h-full mt-5 gap-10`}>
           <div className={`w-[40%] relative top-[10%] text-[#526855]`}>
             <p className='text-lg md:text-xl font-medium leading-relaxed'>{description}</p>

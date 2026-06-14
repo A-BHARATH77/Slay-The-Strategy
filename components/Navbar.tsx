@@ -52,9 +52,9 @@ export default function Navbar() {
           // Handle the logo item differently with increased size
           if (item.id === "logo") {
             return (
-              <div key={item.id} className="flex justify-center pt-2">
+              <div key={item.id} className="flex justify-center">
                 <Link href="/" className="flex items-center">
-                  <div className="w-14 h-20 relative">
+                  <div className="w-12 h-16 relative">
                     <Image
                       src="/logo.webp"
                       alt="Logo"
