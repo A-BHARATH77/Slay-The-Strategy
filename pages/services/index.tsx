@@ -4,6 +4,7 @@ import { Instagram, Linkedin, ChevronRight, Facebook } from "lucide-react";
 import Link from "next/link";
 import Expertise from "@/components/Expertise";
 import { Clients } from "@/container";
+import { ServicesSection } from "@/components/ServicesSection";
 
 const socialLinks = [
   { id: 1, title: "Instagram", href: " https://www.instagram.com/slaythestrategy.agency/", icon: <Instagram size={20} /> },
@@ -30,50 +31,64 @@ export default function About() {
 
   return (
     <>
-      <section className="w-full bg-[#f7f2e6] py-32 px-8 sm:px-12 lg:px-16 relative overflow-hidden">
+      <section className="w-full bg-[#f7f2e6] pt-48 pb-32 px-8 sm:px-12 lg:px-16 relative overflow-hidden">
         {/* Visible Ambient Background Bubbles */}
         <div className="absolute top-[10%] left-[5%] w-64 h-64 bg-[#526855]/20 rounded-full blur-[80px] z-0 pointer-events-none"></div>
         <div className="absolute bottom-[20%] right-[10%] w-80 h-80 bg-[#526855]/25 rounded-full blur-[100px] z-0 pointer-events-none"></div>
         <div className="absolute top-[40%] right-[5%] w-72 h-72 bg-[#4a5d4d]/20 rounded-full blur-[90px] z-0 pointer-events-none"></div>
         <div className="absolute bottom-[5%] left-[10%] w-96 h-96 bg-[#526855]/20 rounded-full blur-[120px] z-0 pointer-events-none"></div>
         
-        {/* Header Section - Added more vertical spacing */}
+        {/* Random Static Green Bubbles (Spaced out to prevent overlap) */}
+        <div className="absolute top-[30%] left-[5%] w-32 h-32 bg-[#526855]/40 rounded-full z-0 pointer-events-none"></div>
+        <div className="absolute top-[45%] right-[10%] w-20 h-20 bg-[#526855]/50 rounded-full z-0 pointer-events-none"></div>
+        <div className="absolute top-[60%] left-[15%] w-12 h-12 bg-[#526855]/60 rounded-full z-0 pointer-events-none"></div>
+        <div className="absolute top-[75%] right-[20%] w-40 h-40 bg-[#526855]/30 rounded-full z-0 pointer-events-none"></div>
+        <div className="absolute top-[85%] left-[30%] w-16 h-16 bg-[#526855]/50 rounded-full z-0 pointer-events-none"></div>
+        <div className="absolute bottom-[5%] right-[40%] w-14 h-14 bg-[#526855]/40 rounded-full z-0 pointer-events-none"></div>
 
-        {/* Header Section - Added more vertical spacing */}
-        <div className="text-center max-w-4xl mx-auto relative z-10 mb-16">
-        <div className="mb-12">
-          <span className="px-6 py-2 bg-[#f7f2e6] tracking-tight font-bold rounded-full text-sm text-[#526855] opacity-100 border border-gray-800 uppercase">
-            Elevate Your Digital Presence
-          </span>
-        </div>
+        {/* Header Section - Reduced vertical spacing */}
+        <div className="text-center max-w-4xl mx-auto relative z-10 mb-12">
+          {/* Header-Specific Random Bubbles (Strictly non-overlapping) */}
+          <div className="absolute -top-24 -left-32 w-48 h-48 bg-[#526855]/30 rounded-full z-[-1] pointer-events-none"></div>
+          <div className="absolute -top-12 -right-24 w-20 h-20 bg-[#526855]/40 rounded-full z-[-1] pointer-events-none"></div>
+          <div className="absolute top-1/2 -left-48 w-20 h-20 bg-[#526855]/50 rounded-full z-[-1] pointer-events-none"></div>
+          <div className="absolute top-1/3 -right-48 w-24 h-24 bg-[#526855]/45 rounded-full z-[-1] pointer-events-none"></div>
+          <div className="absolute -bottom-20 -left-16 w-28 h-28 bg-[#526855]/35 rounded-full z-[-1] pointer-events-none"></div>
+          <div className="absolute -bottom-16 -right-32 w-56 h-56 bg-[#526855]/25 rounded-full z-[-1] pointer-events-none"></div>
 
-        <h1 className="font-['Gilda_Display'] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal mb-12 tracking-tight leading-tight text-[#526855] opacity-100 text-center">
+          {/*<div className="mb-12">
+            <span className="px-6 py-2 bg-[#f7f2e6] tracking-tight font-bold rounded-full text-sm text-[#526855] opacity-100 border border-gray-800 uppercase">
+              Elevate Your Digital Presence
+            </span>
+          </div>*/}
+
+          <h1 className="font-['Gilda_Display'] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal mb-12 tracking-tight leading-tight text-[#526855] opacity-100 text-center relative z-10">
             Welcome to
-            <span className="block sm:inline text-[#526855]"> Slay The Strategy</span>
+            <span className="block sm:inline text-[#526855] italic"> Slay the Strategy</span>
           </h1>
 
-          <p className="text-[#526855] opacity-100 text-2xl max-w-2xl mx-auto font-light leading-relaxed mt-6 font-['Gilda_Display']">
+          <p className="text-[#526855] opacity-100 text-2xl max-w-2xl mx-auto text-left font-light leading-relaxed mt-6 font-['Gilda_Display'] relative z-10">
             We craft bespoke social media strategies, visual identities, optimization solutions, and forward-thinking digital strategies that elevate your brand&apos;s presence.
           </p>
 
-          <div className="mt-16 flex flex-wrap justify-center gap-8">
+          <div className="mt-16 flex flex-wrap justify-center gap-8 relative z-10">
             <Link
               href="/contact"
-              className="relative inline-flex items-center gap-2 px-10 py-4 bg-[#526855] text-[#f7f2e6] font-light rounded-full !shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:!shadow-[0_25px_50px_rgba(0,0,0,0.5)] hover:!-translate-y-2 hover:scale-[1.02] transform transition-all duration-500 ease-out font-['Gilda_Display'] z-20"
+              className="relative inline-flex items-center gap-2 px-10 py-4 bg-[#526855] text-[#f7f2e6] font-light rounded-full !shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:!shadow-[0_25px_50px_rgba(0,0,0,0.5)] hover:!-translate-y-2 hover:scale-[1.02] transform transition-all duration-500 ease-out group font-['Gilda_Display']"
             >
-              Start a Project <ChevronRight size={16} />
+              Start a Project <ChevronRight size={16} className="transform group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
             <Link
               href="/services"
-              className="relative inline-flex items-center justify-center px-10 py-4 bg-[#526855] text-[#f7f2e6] opacity-100 font-light rounded-full !shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:!shadow-[0_25px_50px_rgba(0,0,0,0.5)] hover:!-translate-y-2 hover:scale-[1.02] transform transition-all duration-500 ease-out border border-gray-800 font-['Gilda_Display'] z-20"
+              className="relative inline-flex items-center gap-2 px-10 py-4 bg-[#526855] text-[#f7f2e6] font-light rounded-full !shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:!shadow-[0_25px_50px_rgba(0,0,0,0.5)] hover:!-translate-y-2 hover:scale-[1.02] transform transition-all duration-500 ease-out group font-['Gilda_Display']"
             >
-              Explore Services
+              Explore Service
             </Link>
           </div>
         </div>
 
         {/* Services Section */}
-        <Expertise />
+        <ServicesSection />
 
         {/* Added Testimonial Section */}
         <div className="relative z-10 mb-40 -mx-8 sm:-mx-12 lg:-mx-16">
@@ -81,7 +96,7 @@ export default function About() {
         </div>
 
         {/* Social Links Section - More elegant spacing */}
-        <div className="pt-24 border-t border-gray-400 relative z-10">
+        <div className="pt-13 relative z-10">
           <h2 className="text-2xl font-normal mb-16 text-center font-['Gilda_Display'] text-[#526855] opacity-100">
             Connect With Us
           </h2>
