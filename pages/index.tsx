@@ -8,7 +8,7 @@ export default function Home() {
 
   return (
     <>
-      <div id="main" className="overflow-auto"> {/* Add overflow-auto for natural scrolling */}
+      <div id="main" className="overflow-visible"> {/* Use overflow-visible for natural scrolling */}
         <Curve backgroundColor={"#526855"}>
           <Hero />
           <About />

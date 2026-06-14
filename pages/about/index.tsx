@@ -336,20 +336,60 @@ export default function About() {
               </div>
 
               {/* Horizontal Stats Section with Custom Background */}
-              <section data-scroll-section className="py-16 bg-[#f7f2e6] text-[#526855]">
-                <div className="flex flex-col items-center justify-center">
-                  <h2 className="text-4xl md:text-5xl lg:text-7xl mb-16 text-center font-['Gilda_Display'] text-[#526855]">
-                    Our Strategies <span className="text-[#526855] relative">
-                      turnt brand into powerhouses
-                    </span>
-                  </h2>
-                  <p className="mt-4 text-center text-base text-[#526855]/75 md:text-xl max-w-2xl">
-                    Delivering measurable results through data-driven campaigns and strategic content solutions.
-                  </p>
-                </div>
+              <section data-scroll-section className="min-h-screen py-16 bg-[#f7f2e6] text-[#526855] flex flex-col justify-center">
+                <div className="w-full grid grid-cols-2">
+                  {/* Left half — intentionally empty */}
+                  <div></div>
+                  {/* Right half — stats */}
+                  <div className="pr-12 pl-4">
+                    {/* Label */}
+                    <p className="text-2xl font-bold text-[#526855] mb-12 tracking-wide font-sans">Stats</p>
 
-                {/* Stats Cards */}
-                <StatsSection />
+                    <div className="flex flex-col gap-12">
+                      {/* Stat Row 1 */}
+                      <div className="flex items-start gap-12">
+                        <div className="w-40 flex-shrink-0">
+                          <span className="text-[7.5rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
+                            30
+                          </span>
+                        </div>
+                        <div className="flex items-start pt-4">
+                          <p className="text-[15px] font-medium leading-relaxed text-[#526855] max-w-[280px] font-sans">
+                            A multidisciplinary team of designers, strategists, and developers dedicated to crafting exceptional digital experiences.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Stat Row 2 */}
+                      <div className="flex items-start gap-12">
+                        <div className="w-40 flex-shrink-0">
+                          <span className="text-[7.5rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
+                            80
+                          </span>
+                        </div>
+                        <div className="flex items-start pt-4">
+                          <p className="text-[15px] font-medium leading-relaxed text-[#526855] max-w-[280px] font-sans">
+                            From startups to established brands, we've delivered transformative projects across industries and markets worldwide.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Stat Row 3 */}
+                      <div className="flex items-start gap-12">
+                        <div className="w-40 flex-shrink-0">
+                          <span className="text-[7.5rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
+                            +7
+                          </span>
+                        </div>
+                        <div className="flex items-start pt-4">
+                          <p className="text-[15px] font-medium leading-relaxed text-[#526855] max-w-[280px] font-sans">
+                            Industry recognition for creativity, innovation, and performance-driven design that pushes boundaries.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </section>
             </div>
           </div>

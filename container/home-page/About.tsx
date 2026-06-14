@@ -4,6 +4,7 @@ import { Instagram, Linkedin, Facebook, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Expertise from "@/components/Expertise";
+import Works from "@/components/Works";
 
 
 const socialLinks = [
@@ -559,7 +560,7 @@ export default function About() {
   };
 
   return (
-    <section className="w-full bg-[#f7f2e6] py-32 px-8 sm:px-12 lg:px-16 relative overflow-hidden">
+    <section className="w-full bg-[#f7f2e6] py-32 px-8 sm:px-12 lg:px-16 relative overflow-visible">
       {/* Visible Ambient Background Bubbles */}
       <div className="absolute top-[10%] left-[5%] w-64 h-64 bg-[#526855]/20 rounded-full blur-[80px] z-0 pointer-events-none"></div>
       <div className="absolute bottom-[20%] right-[10%] w-80 h-80 bg-[#526855]/25 rounded-full blur-[100px] z-0 pointer-events-none"></div>
@@ -690,6 +691,9 @@ export default function About() {
 
         </div>
       </div>
+
+      {/* Works Section */}
+      <Works />
 
 
       {/* Niches Section */}
