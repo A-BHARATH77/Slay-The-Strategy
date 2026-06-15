@@ -6,6 +6,7 @@ import { Target, TrendingUp, Users, Zap, Instagram, Linkedin, Facebook } from "l
 import Image from "next/image";
 import Link from "next/link";
 import { Curve } from "@/components";
+import { ReactLenis } from 'lenis/react';
 
 import { cn } from "@/lib/utils";
 
@@ -217,12 +218,12 @@ export default function About() {
 
 
   return (
-    <>
+    <ReactLenis root>
       <Curve backgroundColor={"#f7f2e6"}>
         <div className="bg-[#f7f2e6]">
           <div className="w-full">
             <div className="w-full">
-              <div className="relative z-10 bg-[#f7f2e6] lg:py-32">
+              <div className="relative z-10 bg-[#f7f2e6] lg:py-32 overflow-clip">
                 {/* Decorative elements */}
                 <div className="absolute inset-0 opacity-10 pointer-events-none">
                   <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-red-600 blur-3xl"></div>
@@ -351,23 +352,23 @@ export default function About() {
 
               {/* Horizontal Stats Section with Custom Background */}
               <section data-scroll-section className="min-h-screen py-16 bg-[#f7f2e6] text-[#526855] flex flex-col justify-center">
-                <div className="w-full grid grid-cols-2">
+                <div className="w-full grid grid-cols-1 md:grid-cols-2">
                   {/* Left half — intentionally empty */}
-                  <div></div>
+                  <div className="hidden md:block"></div>
                   {/* Right half — stats */}
-                  <div className="pr-12 pl-4">
+                  <div className="px-6 md:pr-12 md:pl-4">
                     {/* Label */}
-                    <p className="text-2xl font-bold text-[#526855] mb-12 tracking-wide font-sans">Stats</p>
+                    <p className="text-2xl font-bold text-[#526855] mb-8 md:mb-12 tracking-wide font-sans">Stats</p>
 
-                    <div className="flex flex-col gap-12">
+                    <div className="flex flex-col gap-12 md:gap-12">
                       {/* Stat Row 1 */}
-                      <div className="flex items-start gap-12">
-                        <div className="w-40 flex-shrink-0">
-                          <span className="text-[7.5rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
+                      <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-12">
+                        <div className="w-auto sm:w-40 flex-shrink-0">
+                          <span className="text-7xl md:text-[7.5rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
                             30
                           </span>
                         </div>
-                        <div className="flex items-start pt-4">
+                        <div className="flex items-start pt-2 sm:pt-4">
                           <p className="text-[15px] font-medium leading-relaxed text-[#526855] max-w-[280px] font-sans">
                             A multidisciplinary team of designers, strategists, and developers dedicated to crafting exceptional digital experiences.
                           </p>
@@ -375,13 +376,13 @@ export default function About() {
                       </div>
 
                       {/* Stat Row 2 */}
-                      <div className="flex items-start gap-12">
-                        <div className="w-40 flex-shrink-0">
-                          <span className="text-[7.5rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
+                      <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-12">
+                        <div className="w-auto sm:w-40 flex-shrink-0">
+                          <span className="text-7xl md:text-[7.5rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
                             80
                           </span>
                         </div>
-                        <div className="flex items-start pt-4">
+                        <div className="flex items-start pt-2 sm:pt-4">
                           <p className="text-[15px] font-medium leading-relaxed text-[#526855] max-w-[280px] font-sans">
                             From startups to established brands, we've delivered transformative projects across industries and markets worldwide.
                           </p>
@@ -389,13 +390,13 @@ export default function About() {
                       </div>
 
                       {/* Stat Row 3 */}
-                      <div className="flex items-start gap-12">
-                        <div className="w-40 flex-shrink-0">
-                          <span className="text-[7.5rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
+                      <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-12">
+                        <div className="w-auto sm:w-40 flex-shrink-0">
+                          <span className="text-7xl md:text-[7.5rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
                             +7
                           </span>
                         </div>
-                        <div className="flex items-start pt-4">
+                        <div className="flex items-start pt-2 sm:pt-4">
                           <p className="text-[15px] font-medium leading-relaxed text-[#526855] max-w-[280px] font-sans">
                             Industry recognition for creativity, innovation, and performance-driven design that pushes boundaries.
                           </p>
@@ -409,6 +410,6 @@ export default function About() {
           </div>
         </div>
       </Curve>
-    </>
+    </ReactLenis>
   );
 }

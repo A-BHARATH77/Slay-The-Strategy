@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -18,12 +18,17 @@ export default function MobileNav() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   
+  // Close the menu when the route changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   return (
     <>
       {/* Mobile top bar - visible ONLY on small screens */}
       <div className="fixed top-0 left-0 right-0 h-20 px-6 flex justify-between items-center z-40 md:hidden">
         {/* Logo */}
-        <Link href="/" className="relative flex items-center mt-4" onClick={() => setIsOpen(false)}>
+        <Link href="/" className="relative flex items-center mt-4">
           <div className="w-14 h-14 relative">
             <Image
               src="/logo.webp"
@@ -65,7 +70,6 @@ export default function MobileNav() {
                   >
                     <Link
                       href={item.href}
-                      onClick={() => setIsOpen(false)}
                       className={`text-5xl font-['Gilda_Display'] transition-colors ${
                         isActive ? "text-[#f7f2e6] font-semibold" : "text-[#f7f2e6]/60 hover:text-[#f7f2e6]"
                       }`}

@@ -355,7 +355,7 @@ export default function About() {
   };
 
   return (
-    <section className="w-full bg-[#f7f2e6] py-32 px-8 sm:px-12 lg:px-16 relative overflow-visible">
+    <section className="w-full bg-[#f7f2e6] py-32 px-0 sm:px-12 lg:px-16 relative overflow-clip">
       {/* Visible Ambient Background Bubbles */}
       <div className="absolute top-[10%] left-[5%] w-64 h-64 bg-[#526855]/20 rounded-full blur-[80px] z-0 pointer-events-none"></div>
       <div className="absolute bottom-[20%] right-[10%] w-80 h-80 bg-[#526855]/25 rounded-full blur-[100px] z-0 pointer-events-none"></div>
@@ -371,7 +371,7 @@ export default function About() {
       <div className="absolute bottom-[5%] right-[40%] w-14 h-14 bg-[#526855]/40 rounded-full z-0 pointer-events-none"></div>
 
       {/* Header Section - Reduced vertical spacing */}
-      <div className="text-center max-w-4xl mx-auto relative z-10 mb-12">
+      <div className="text-center max-w-4xl mx-auto relative z-10 mb-12 px-6 sm:px-0">
         {/* Header-Specific Random Bubbles (Strictly non-overlapping) */}
         <div className="absolute -top-24 -left-32 w-48 h-48 bg-[#526855]/30 rounded-full z-[-1] pointer-events-none"></div>
         <div className="absolute -top-12 -right-24 w-20 h-20 bg-[#526855]/40 rounded-full z-[-1] pointer-events-none"></div>
@@ -470,7 +470,7 @@ export default function About() {
 
 
       {/* Niches Section */}
-      <div className="relative z-10 mb-20">
+      <div className="relative z-10 mb-20 pt-10 px-6 sm:px-0">
         <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">
           Niches<span className="relative inline-block">
             <span className="text-[#526855] italic">Worked In</span>
@@ -484,7 +484,8 @@ export default function About() {
       </div>
 
       {/* Improved Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 md:gap-8 max-w-7xl mx-auto">
+      <div className="px-6 sm:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 md:gap-8 max-w-7xl mx-auto">
         {nicheData.map((niche) => (
           <div
             key={niche.id}
@@ -526,6 +527,7 @@ export default function About() {
             </div>
           </div>
         ))}
+        </div>
       </div>
 
       {/* View All Button */}

@@ -7,7 +7,7 @@ export default function Footer() {
       style={{ backgroundColor: "#526855", height: "100vh" }}
     >
       {/* ── Top section ── */}
-      <div className="flex items-start justify-between px-16 pt-24 pb-4 flex-shrink-0 mx-6 mt-6">
+      <div className="flex flex-col md:flex-row items-start justify-between px-6 sm:px-8 md:px-16 pt-16 md:pt-24 pb-4 flex-shrink-0 mx-0 md:mx-6 mt-6 gap-12 md:gap-0">
         {/* ── LEFT column ── */}
         <div className="flex flex-col gap-5 max-w-xs">
           {/* Main heading */}
@@ -55,7 +55,7 @@ export default function Footer() {
         </div>
 
         {/* ── RIGHT column ── */}
-        <div className="flex gap-10 items-start">
+        <div className="flex flex-col sm:flex-row gap-12 sm:gap-10 items-start w-full md:w-auto">
           <div className="flex flex-col gap-6">
             {/* Quick Links */}
             <div>
@@ -105,7 +105,7 @@ export default function Footer() {
           </div>
 
           {/* Social Icons */}
-          <div className="flex flex-col gap-3 mt-6">
+          <div className="flex flex-row sm:flex-col gap-4 sm:gap-3 mt-0 sm:mt-6">
             {/* Facebook */}
             <Link
               href="https://www.facebook.com/profile.php?id=61586631632667"
