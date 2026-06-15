@@ -109,7 +109,16 @@ const WorksSection = () => {
   });
   return (
     <div className='bg-[#f7f2e6]' ref={container}>
-      <h1 className='text-center text-6xl md:text-8xl font-bold pt-20 pb-10 text-[#526855]'>Works</h1>
+      <div className="relative z-10 mb-20 pt-12">
+        <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">
+          Works
+        </h2>
+        <div className="mt-4 max-w-xl mx-auto px-6">
+          <p className="text-[#526855]/85 text-center text-sm md:text-base">
+            Real work, real impact—discover how we help brands stand out and grow.
+          </p>
+        </div>
+      </div>
       <section className='w-full'>
         {worksProjects.map((project, i) => {
           const targetScale = 1 - (worksProjects.length - i) * 0.05;
@@ -222,9 +231,9 @@ export default function About() {
 
                 <div className="container mx-auto px-6 relative">
                   {/* About the Founder Section Header */}
-                  <div className="relative z-10 bg-transparent pb-0 pt-24">
+                  <div className="relative z-10 bg-transparent pt-0 pb-0">
                     <div className="container mx-auto px-6 relative">
-                      <h2 className="text-4xl md:text-5xl lg:text-7xl mb-6 text-center font-['Gilda_Display'] text-[#526855]">
+                      <h2 className="text-4xl md:text-5xl lg:text-7xl mb-10 text-center font-['Gilda_Display'] text-[#526855] -mt-10">
                         Behind <span className="text-[#526855] relative italic">
                           Slay the Strategy
                         </span>
@@ -232,36 +241,15 @@ export default function About() {
                     </div>
                   </div>
 
-                  {/* Founder Section — image left, text right */}
-                  <div className="relative z-10 py-20">
-                    <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row lg:flex-row xl:flex-row items-center justify-center gap-10 md:gap-20 lg:gap-28 xl:gap-28">
+                  {/* Founder Section — text left, image right */}
+                  <div className="relative z-10 py-10">
+                    <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row lg:flex-row xl:flex-row items-start justify-between md:gap-32 lg:gap-48 xl:gap-64">
 
-                      {/* Left — image */}
-                      <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96">
-                        <img
-                          src="/founder.webp"
-                          alt="Dipani"
-                          className="w-full h-auto object-cover rounded-2xl shadow-xl"
-                        />
-                      </div>
-
-                      {/* Right — text content */}
+                      {/* Left — text content */}
                       <div className="flex flex-col gap-6 max-w-xl items-center text-center md:items-start md:text-left lg:items-start lg:text-left xl:items-start xl:text-left">
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal font-['Gilda_Display'] text-[#526855] leading-tight">
                           I am Dipani, a<br /><span className="italic">brand strategist</span>
                         </h2>
-
-                        {/* Quote block with left border */}
-                        <div className="border-l-0 md:border-l-4 lg:border-l-4 xl:border-l-4 border-[#526855] pl-0 md:pl-5 lg:pl-5 xl:pl-5">
-                          <p className="text-[#526855] text-lg font-semibold font-['Gilda_Display'] leading-snug">
-                            I build compelling social media presences that convert attention into unbreakable loyalty.
-                          </p>
-                        </div>
-
-                        {/* Bio paragraph */}
-                        <p className="text-[#526855]/75 text-base font-light font-['Gilda_Display'] leading-relaxed">
-                          I started Slay the Strategy to help ambitious brands cut through the noise. We combine data-backed marketing strategies with scroll-stopping creative content to build digital footprints that actually matter.
-                        </p>
 
                         {/* Social links */}
                         <div className="flex flex-wrap gap-6 pt-2 justify-center md:justify-start lg:justify-start xl:justify-start">
@@ -278,6 +266,15 @@ export default function About() {
                             </a>
                           ))}
                         </div>
+                      </div>
+
+                      {/* Right — image */}
+                      <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96">
+                        <img
+                          src="/founder.webp"
+                          alt="Dipani"
+                          className="w-full h-auto object-cover rounded-2xl shadow-xl"
+                        />
                       </div>
 
                     </div>

@@ -275,12 +275,13 @@ export const ServicesSection = () => {
 
       <div className="svc-section">
         {/* Top bar */}
-        <div className="svc-top-bar">
-          <p className="svc-top-label">(Services)</p>
-          <div className="svc-dot" />
-          <a href="/contact" className="relative inline-flex items-center gap-2 px-10 py-4 bg-[#526855] text-[#f7f2e6] font-light rounded-full !shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:!shadow-[0_25px_50px_rgba(0,0,0,0.5)] hover:!-translate-y-2 hover:scale-[1.02] transform transition-all duration-500 ease-out group font-['Gilda_Display']">
-            Get started
-          </a>
+        <div className="svc-top-bar flex flex-col items-center">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855] mt-12">Services</h2>
+          <div className="mt-4 max-w-xl mx-auto px-6">
+            <p className="text-[#526855]/85 text-center text-sm md:text-base">
+              Thoughtful strategies. Creative execution. Meaningful results.
+            </p>
+          </div>
         </div>
 
         {/* Grid: list left, media right */}

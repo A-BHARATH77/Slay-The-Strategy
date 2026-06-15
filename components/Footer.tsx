@@ -15,7 +15,7 @@ export default function Footer() {
             className="text-[#e8e0c8] font-bold leading-tight"
             style={{ fontSize: "clamp(1.4rem, 2.5vw, 2rem)", fontFamily: "sans-serif" }}
           >
-            Build it once. Build it right™
+            Build it once,<br />Build it right.
           </h2>
 
           {/* New Business email */}
@@ -56,32 +56,52 @@ export default function Footer() {
 
         {/* ── RIGHT column ── */}
         <div className="flex gap-10 items-start">
-          {/* Quick Links */}
-          <div>
-            <p
-              className="text-[#e8e0c8] text-xs font-semibold mb-3"
-              style={{ fontFamily: "sans-serif" }}
-            >
-              Quick Links:
-            </p>
-            <ul className="flex flex-col gap-2">
-              {[
-                { label: "Home", href: "/" },
-                { label: "About", href: "/about" },
-                { label: "Work", href: "/works" },
-                { label: "Contact", href: "/contact" },
-              ].map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-[#c8c0a8] text-sm hover:text-[#e8e0c8] transition-colors"
-                    style={{ fontFamily: "sans-serif" }}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <div className="flex flex-col gap-6">
+            {/* Quick Links */}
+            <div>
+              <p
+                className="text-[#e8e0c8] text-xs font-semibold mb-3"
+                style={{ fontFamily: "sans-serif" }}
+              >
+                Quick Links:
+              </p>
+              <ul className="flex flex-col gap-2">
+                {[
+                  { label: "Home", href: "/" },
+                  { label: "About", href: "/about" },
+                  { label: "Services", href: "/services" },
+                  { label: "Work", href: "/works" },
+                  { label: "Contact", href: "/contact" },
+                ].map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="text-[#c8c0a8] text-sm hover:text-[#e8e0c8] transition-colors"
+                      style={{ fontFamily: "sans-serif" }}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Phone */}
+            <div>
+              <p
+                className="text-[#e8e0c8] text-xs font-semibold mb-1"
+                style={{ fontFamily: "sans-serif" }}
+              >
+                Phone:
+              </p>
+              <Link
+                href="tel:+919036383777"
+                className="text-[#e8e0c8] text-sm font-medium hover:underline"
+                style={{ fontFamily: "sans-serif" }}
+              >
+                +91 90363 83777
+              </Link>
+            </div>
           </div>
 
           {/* Social Icons */}
@@ -135,24 +155,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* ── Phone ── */}
-      <div className="px-16 pb-6 flex justify-end flex-shrink-0 mx-6">
-        <div>
-          <p
-            className="text-[#e8e0c8] text-xs font-semibold mb-1"
-            style={{ fontFamily: "sans-serif" }}
-          >
-            Phone:
-          </p>
-          <Link
-            href="tel:+919036383777"
-            className="text-[#e8e0c8] text-sm font-medium hover:underline"
-            style={{ fontFamily: "sans-serif" }}
-          >
-            +91 90363 83777
-          </Link>
-        </div>
-      </div>
+
 
       {/* ── Giant scrolling marquee ── fills remaining space ── */}
       <div className="relative overflow-hidden flex-1 flex items-end">

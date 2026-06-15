@@ -55,7 +55,7 @@ export default function index(): JSX.Element {
   return (
     <ReactLenis root>
       <main className='bg-[#f7f2e6]' ref={container}>
-        <h1 className='text-center text-6xl md:text-8xl font-bold pt-20 pb-10 text-[#526855]'>Works</h1>
+                <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">Works</h2>
         <section className='w-full'>
           {projects.map((project, i) => {
             const targetScale = 1 - (projects.length - i) * 0.05;
