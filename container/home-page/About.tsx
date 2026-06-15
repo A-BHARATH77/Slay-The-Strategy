@@ -356,29 +356,10 @@ export default function About() {
 
   return (
     <section className="w-full bg-[#f7f2e6] py-32 px-0 sm:px-12 lg:px-16 relative overflow-clip">
-      {/* Visible Ambient Background Bubbles */}
-      <div className="absolute top-[10%] left-[5%] w-64 h-64 bg-[#526855]/20 rounded-full blur-[80px] z-0 pointer-events-none"></div>
-      <div className="absolute bottom-[20%] right-[10%] w-80 h-80 bg-[#526855]/25 rounded-full blur-[100px] z-0 pointer-events-none"></div>
-      <div className="absolute top-[40%] right-[5%] w-72 h-72 bg-[#4a5d4d]/20 rounded-full blur-[90px] z-0 pointer-events-none"></div>
-      <div className="absolute bottom-[5%] left-[10%] w-96 h-96 bg-[#526855]/20 rounded-full blur-[120px] z-0 pointer-events-none"></div>
-
-      {/* Random Static Green Bubbles (Spaced out to prevent overlap) */}
-      <div className="absolute top-[30%] left-[5%] w-32 h-32 bg-[#526855]/40 rounded-full z-0 pointer-events-none"></div>
-      <div className="absolute top-[45%] right-[10%] w-20 h-20 bg-[#526855]/50 rounded-full z-0 pointer-events-none"></div>
-      <div className="absolute top-[60%] left-[15%] w-12 h-12 bg-[#526855]/60 rounded-full z-0 pointer-events-none"></div>
-      <div className="absolute top-[75%] right-[20%] w-40 h-40 bg-[#526855]/30 rounded-full z-0 pointer-events-none"></div>
-      <div className="absolute top-[85%] left-[30%] w-16 h-16 bg-[#526855]/50 rounded-full z-0 pointer-events-none"></div>
-      <div className="absolute bottom-[5%] right-[40%] w-14 h-14 bg-[#526855]/40 rounded-full z-0 pointer-events-none"></div>
 
       {/* Header Section - Reduced vertical spacing */}
       <div className="text-center max-w-4xl mx-auto relative z-10 mb-12 px-6 sm:px-0">
-        {/* Header-Specific Random Bubbles (Strictly non-overlapping) */}
-        <div className="absolute -top-24 -left-32 w-48 h-48 bg-[#526855]/30 rounded-full z-[-1] pointer-events-none"></div>
-        <div className="absolute -top-12 -right-24 w-20 h-20 bg-[#526855]/40 rounded-full z-[-1] pointer-events-none"></div>
-        <div className="absolute top-1/2 -left-48 w-20 h-20 bg-[#526855]/50 rounded-full z-[-1] pointer-events-none"></div>
-        <div className="absolute top-1/3 -right-48 w-24 h-24 bg-[#526855]/45 rounded-full z-[-1] pointer-events-none"></div>
-        <div className="absolute -bottom-20 -left-16 w-28 h-28 bg-[#526855]/35 rounded-full z-[-1] pointer-events-none"></div>
-        <div className="absolute -bottom-16 -right-32 w-56 h-56 bg-[#526855]/25 rounded-full z-[-1] pointer-events-none"></div>
+
 
         {/*<div className="mb-12">
           <span className="px-6 py-2 bg-[#f7f2e6] tracking-tight font-bold rounded-full text-sm text-[#526855] opacity-100 border border-gray-800 uppercase">
@@ -467,73 +448,6 @@ export default function About() {
 
       {/* Works Section — inline stacking cards (no ReactLenis root, uses window scroll) */}
       <WorksSection />
-
-
-      {/* Niches Section */}
-      <div className="relative z-10 mb-20 pt-10 px-6 sm:px-0">
-        <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">
-          Niches<span className="relative inline-block">
-            <span className="text-[#526855] italic">Worked In</span>
-          </span>
-        </h2>
-        <div className="mt-4 max-w-xl mx-auto">
-          <p className="text-[#526855]/85 text-center text-sm md:text-base">
-            Specialized expertise across multiple industries with proven results
-          </p>
-        </div>
-      </div>
-
-      {/* Improved Grid Layout */}
-      <div className="px-6 sm:px-0">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 md:gap-8 max-w-7xl mx-auto">
-        {nicheData.map((niche) => (
-          <div
-            key={niche.id}
-            className="group bg-[#526855] rounded-xl overflow-hidden shadow-lg border border-[#526855]/50 hover:border-[#f7f2e6]/50 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
-          >
-            <div className="relative h-64 overflow-hidden">
-              <Image
-                src={niche.imageUrl}
-                alt={`${niche.title} niche`}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
-              <div className="absolute inset-0 group-hover:opacity-60 transition-opacity duration-300"></div>
-
-              {/* Hover indicator */}
-              <div className="absolute top-4 right-4 bg-[#f7f2e6] rounded-full p-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                <svg className="w-4 h-4 text-[#526855]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
-              </div>
-            </div>
-
-            <div className="p-6">
-              <h3 className="text-2xl font-bold text-[#f7f2e6] font-['Gilda_Display'] group-hover:text-[#f7f2e6]/90 transition-colors duration-300">
-                {niche.title}
-              </h3>
-
-              <div className="mt-6 flex items-center justify-between">
-                <div className="flex items-center space-x-1">
-                  <span className="text-xs text-[#f7f2e6]/70">Results-driven approach</span>
-                </div>
-                <div className="inline-flex items-center justify-center size-8 rounded-full bg-[#f7f2e6] text-[#526855] shadow-lg shadow-[#f7f2e6]/20">
-                  <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-        </div>
-      </div>
-
-      {/* View All Button */}
-      <div className="mt-12 text-center">
-
-      </div>
     </section>
   );
 }
