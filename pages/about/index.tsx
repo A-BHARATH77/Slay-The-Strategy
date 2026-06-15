@@ -109,7 +109,7 @@ const WorksSection = () => {
   });
   return (
     <div className='bg-[#f7f2e6]' ref={container}>
-      <div className="relative z-10 mb-20 pt-12">
+      <div className="relative z-10 mb-0 pt-20">
         <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">
           Works
         </h2>
@@ -231,9 +231,9 @@ export default function About() {
 
                 <div className="container mx-auto px-6 relative">
                   {/* About the Founder Section Header */}
-                  <div className="relative z-10 bg-transparent pt-0 pb-0">
+                  <div className="relative z-10 bg-transparent pt-40 pb-0">
                     <div className="container mx-auto px-6 relative">
-                      <h2 className="text-4xl md:text-5xl lg:text-7xl mb-10 text-center font-['Gilda_Display'] text-[#526855] -mt-10">
+                      <h2 className="text-4xl md:text-5xl lg:text-7xl mb-10 text-center font-['Gilda_Display'] text-[#526855]">
                         Behind <span className="text-[#526855] relative italic">
                           Slay the Strategy
                         </span>
