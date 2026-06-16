@@ -320,13 +320,6 @@ export default function Clients() {
           </motion.div>
         </div>
 
-        {/* Bottom stat */}
-        <div className="text-center absolute bottom-10 z-50 w-full px-6">
-          <p className="text-sm text-[#f7f2e6]/65 font-['Gilda_Display']">
-            <span className="text-[#f7f2e6] font-semibold">+200</span>{" "}
-            projects delivered across growing companies.
-          </p>
-        </div>
       </div>
     </section>
     </>
