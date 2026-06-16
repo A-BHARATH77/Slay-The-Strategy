@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useInView, useMotionValue, useSpring } from "framer-motion";
 import { useTransform, motion, useScroll, MotionValue } from "motion/react";
 import { Target, TrendingUp, Users, Zap, Instagram, Linkedin, Facebook } from "lucide-react";
@@ -84,12 +84,6 @@ const WorksCard: React.FC<WorksCardProps> = ({ i, title, description, src, url, 
         <div className='flex h-full mt-5 gap-10'>
           <div className='w-[40%] relative top-[10%] text-[#526855]'>
             <p className='text-lg md:text-xl font-medium leading-relaxed'>{description}</p>
-            <span className='flex items-center gap-2 pt-6'>
-              <a href={'#'} target='_blank' className='underline cursor-pointer text-lg'>See more</a>
-              <svg width='22' height='12' viewBox='0 0 22 12' fill='none' xmlns='http://www.w3.org/2000/svg'>
-                <path d='M21.5303 6.53033C21.8232 6.23744 21.8232 5.76256 21.5303 5.46967L16.7574 0.696699C16.4645 0.403806 15.9896 0.403806 15.6967 0.696699C15.4038 0.989592 15.4038 1.46447 15.6967 1.75736L19.9393 6L15.6967 10.2426C15.4038 10.5355 15.4038 11.0104 15.6967 11.3033C15.9896 11.5962 16.4645 11.5962 16.7574 11.3033L21.5303 6.53033ZM0 6.75L21 6.75V5.25L0 5.25L0 6.75Z' fill='black' />
-              </svg>
-            </span>
           </div>
           <div className='relative w-[60%] h-full rounded-lg overflow-hidden'>
             <motion.div className='w-full h-full' style={{ scale: imageScale }}>
@@ -203,6 +197,17 @@ const NumberTicker = ({
 
 // Main About Component
 export default function About() {
+  const [windowWidth, setWindowWidth] = useState(0);
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const safeWindowWidth = windowWidth || 1200;
+  const isMobilePhone = safeWindowWidth < 768;
+
   const nicheData = [
     { id: 1, title: "Automation", imageUrl: "/i1.jpg" },
     { id: 2, title: "Interior Design Houses", imageUrl: "/i2.jpg" },
@@ -351,20 +356,18 @@ export default function About() {
               </div>
 
               {/* Horizontal Stats Section with Custom Background */}
-              <section data-scroll-section className="min-h-screen py-16 bg-[#f7f2e6] text-[#526855] flex flex-col justify-center">
-                <div className="w-full grid grid-cols-1 md:grid-cols-2">
-                  {/* Left half — intentionally empty */}
-                  <div className="hidden md:block"></div>
-                  {/* Right half — stats */}
-                  <div className="px-6 md:pr-12 md:pl-4">
+              <section data-scroll-section className="pt-16 lg:pt-28 pb-24 lg:pb-24 bg-[#f7f2e6] text-[#526855] flex flex-col justify-start">
+                <div className={`w-full flex ${isMobilePhone ? "justify-start" : "justify-end"}`}>
+                  {/* Stats half */}
+                  <div className={`${isMobilePhone ? "w-full" : "w-1/2 min-w-[320px]"} px-6 md:pr-12 md:pl-4`}>
                     {/* Label */}
-                    <p className="text-2xl font-bold text-[#526855] mb-8 md:mb-12 tracking-wide font-sans">Stats</p>
+                    <p className="text-2xl font-bold text-[#526855] mb-4 lg:mb-8 tracking-wide font-sans">Stats</p>
 
-                    <div className="flex flex-col gap-12 md:gap-12">
+                    <div className="flex flex-col gap-12 lg:gap-40">
                       {/* Stat Row 1 */}
-                      <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-12">
-                        <div className="w-auto sm:w-40 flex-shrink-0">
-                          <span className="text-7xl md:text-[7.5rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
+                      <div className="flex flex-row items-center gap-6 md:gap-12">
+                        <div className="w-40 md:w-64 flex-shrink-0">
+                          <span className="text-[6rem] md:text-[9rem] lg:text-[10rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
                             30
                           </span>
                         </div>
@@ -376,9 +379,9 @@ export default function About() {
                       </div>
 
                       {/* Stat Row 2 */}
-                      <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-12">
-                        <div className="w-auto sm:w-40 flex-shrink-0">
-                          <span className="text-7xl md:text-[7.5rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
+                      <div className="flex flex-row items-center gap-6 md:gap-12">
+                        <div className="w-40 md:w-64 flex-shrink-0">
+                          <span className="text-[6rem] md:text-[9rem] lg:text-[10rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
                             80
                           </span>
                         </div>
@@ -390,9 +393,9 @@ export default function About() {
                       </div>
 
                       {/* Stat Row 3 */}
-                      <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-12">
-                        <div className="w-auto sm:w-40 flex-shrink-0">
-                          <span className="text-7xl md:text-[7.5rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
+                      <div className="flex flex-row items-center gap-6 md:gap-12">
+                        <div className="w-40 md:w-64 flex-shrink-0">
+                          <span className="text-[6rem] md:text-[9rem] lg:text-[10rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
                             +7
                           </span>
                         </div>

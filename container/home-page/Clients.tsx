@@ -104,7 +104,7 @@ const ReviewCard = ({ name, role, description, img, rating }: any) => (
   </figure>
 );
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useAnimation } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 // ── Animated Card (Row Element) ──
@@ -161,22 +161,144 @@ export default function Clients() {
   // last card reaches the right side of the screen.
   const containerX = useTransform(scrollYProgress, [0, 1], ["calc(0% - 0vw)", "calc(-100% + 100vw)"]);
 
+  const isMobilePhone = safeWindowWidth < 768;
+
+  const BrandCard = ({ children, isText = false, className }: any) => {
+    const controls = useAnimation();
+    
+    useEffect(() => {
+      if (isText) return; // Do not animate text components
+      
+      let isMounted = true;
+      
+      const startFlipping = async () => {
+        // Initial random wait before first flip (0 to 3 seconds)
+        const initialDelay = Math.random() * 3;
+        await new Promise(res => setTimeout(res, initialDelay * 1000));
+        
+        while (isMounted) {
+          // Perform the flip
+          await controls.start({ 
+            rotateY: [0, 360], 
+            transition: { duration: 1.2, ease: "easeInOut" } 
+          });
+          
+          // Wait before the next flip (2 to 6 seconds)
+          const waitTime = Math.random() * 4 + 2;
+          await new Promise(res => setTimeout(res, waitTime * 1000));
+        }
+      };
+      
+      startFlipping();
+      
+      return () => { isMounted = false; };
+    }, [controls, isText]);
+
+    if (isText) {
+      return (
+        <div className={cn("flex items-center p-4 md:p-6 h-40 md:h-48", className)}>
+          {children}
+        </div>
+      );
+    }
+    return (
+      <motion.div animate={controls} style={{ transformStyle: "preserve-3d" }} className={cn("flex items-center justify-center p-4 md:p-6 bg-[#fdfcf8] rounded-[2px] h-40 md:h-48", className)}>
+        {children}
+      </motion.div>
+    );
+  };
+
   return (
-    // Height determines how much scrolling is required to finish the animation
-    <section ref={containerRef} className="bg-[#526855] relative h-[300vh]">
-      {/* Sticky wrapper so the view stays pinned while scrolling down */}
+    <>
+      {/* Logo Grid Section */}
+      <section className="bg-[#f7f2e6] pt-24 pb-12 px-4 md:px-10 lg:px-20">
+        <div className="relative z-10 mb-12 w-full">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">
+            Clients
+          </h2>
+          <div className="mt-4 max-w-xl mx-auto px-6">
+            <p className="text-[#526855]/85 text-center text-sm md:text-base">
+              Partnering with visionary brands to create impactful experiences.
+            </p>
+          </div>
+        </div>
+        <div className="max-w-[1400px] mx-auto">
+          <div className={`grid gap-1 md:gap-[6px] ${isMobilePhone ? "grid-cols-2" : "grid-cols-4"}`}>
+            <BrandCard>
+              <div className="flex items-center gap-2">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+                  <path d="M12 2l8 5v10l-8 5-8-5V7z" />
+                  <path d="M12 22V12M12 12L4 7M12 12l8-5" />
+                </svg>
+                <span className="text-xl md:text-2xl font-medium tracking-tight text-black">acme</span>
+              </div>
+            </BrandCard>
+            
+            <BrandCard>
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+                <rect x="2" y="6" width="20" height="12" rx="6" />
+                <rect x="6" y="9" width="12" height="6" rx="3" />
+              </svg>
+            </BrandCard>
+            
+            <BrandCard>
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+                <path d="M12 15a3 3 0 0 0 3-3H9a3 3 0 0 0 3 3z" fill="currentColor" />
+                <path d="M12 9V4M9 9V5M15 9V5M6 9V6M18 9V6" strokeLinecap="round" />
+              </svg>
+            </BrandCard>
+            
+            <BrandCard>
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-black">
+                <path d="M4 7h12l4-2M4 12h14l4-2M4 17h16l4-2" strokeLinecap="round" />
+              </svg>
+            </BrandCard>
+            
+            <BrandCard>
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-black">
+                <path d="M8 8c-2.2 0-4 1.8-4 4s1.8 4 4 4c2.2 0 3-2 4-4s1.8-4 4-4c2.2 0 4 1.8 4 4s-1.8 4-4 4c-2.2 0-3-2-4-4s-1.8-4-4-4z" />
+              </svg>
+            </BrandCard>
+
+            <BrandCard isText className="col-span-1">
+              <span className="text-[#526855] font-['Gilda_Display'] text-sm md:text-base font-semibold leading-snug w-full text-center md:text-left md:pl-6">
+                Trusted by<br/>clients worldwide
+              </span>
+            </BrandCard>
+
+            <BrandCard>
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M6 12c2-2 4 2 6 0s4-2 6 0M8 8c1.5-1.5 3 1.5 4.5 0s3-1.5 4.5 0M8 16c1.5-1.5 3 1.5 4.5 0s3-1.5 4.5 0" strokeLinecap="round" />
+              </svg>
+            </BrandCard>
+
+            <BrandCard isText className="col-span-1">
+              <span className="text-[#526855] font-['Gilda_Display'] text-sm md:text-base font-semibold leading-snug w-full text-center md:text-left md:pl-6">
+                Testimonials
+              </span>
+            </BrandCard>
+
+
+          </div>
+        </div>
+      </section>
+
+      {/* Height determines how much scrolling is required to finish the animation */}
+      <section ref={containerRef} className="bg-[#526855] relative h-[300vh]">
+        {/* Sticky wrapper so the view stays pinned while scrolling down */}
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden">
         
         {/* Header */}
         <div className="text-center px-4 z-50 absolute top-20 w-full">
-          <div className="inline-flex mb-5">
-            <span className="px-4 py-1.5 text-xs font-medium text-[#f7f2e6] border border-[#516856]/30 rounded-full font-['Gilda_Display'] bg-[#526855]/50 backdrop-blur-sm">
-              Testimonials
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal text-[#f7f2e6] font-['Gilda_Display'] leading-tight max-w-xl mx-auto drop-shadow-md">
-            Trusted by teams who <span className="italic">value quality.</span>
+          <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#f7f2e6]">
+            Testimonials
           </h2>
+          <div className="mt-4 max-w-xl mx-auto px-6">
+            <p className="text-[#f7f2e6]/85 text-center text-sm md:text-base">
+              Trusted by teams who value quality.
+            </p>
+          </div>
         </div>
 
         {/* Carousel Area */}
@@ -207,5 +329,6 @@ export default function Clients() {
         </div>
       </div>
     </section>
+    </>
   );
 }

@@ -20,7 +20,7 @@ export default function About() {
     (async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
       const locomotiveScroll = new LocomotiveScroll({
-       
+
       });
       // Optionally, you can destroy the instance when the component unmounts
       return () => {
@@ -32,29 +32,11 @@ export default function About() {
   return (
     <>
       <section className="w-full bg-[#f7f2e6] pt-48 pb-32 px-8 sm:px-12 lg:px-16 relative overflow-hidden">
-        {/* Visible Ambient Background Bubbles */}
-        <div className="absolute top-[10%] left-[5%] w-64 h-64 bg-[#526855]/20 rounded-full blur-[80px] z-0 pointer-events-none"></div>
-        <div className="absolute bottom-[20%] right-[10%] w-80 h-80 bg-[#526855]/25 rounded-full blur-[100px] z-0 pointer-events-none"></div>
-        <div className="absolute top-[40%] right-[5%] w-72 h-72 bg-[#4a5d4d]/20 rounded-full blur-[90px] z-0 pointer-events-none"></div>
-        <div className="absolute bottom-[5%] left-[10%] w-96 h-96 bg-[#526855]/20 rounded-full blur-[120px] z-0 pointer-events-none"></div>
-        
-        {/* Random Static Green Bubbles (Spaced out to prevent overlap) */}
-        <div className="absolute top-[30%] left-[5%] w-32 h-32 bg-[#526855]/40 rounded-full z-0 pointer-events-none"></div>
-        <div className="absolute top-[45%] right-[10%] w-20 h-20 bg-[#526855]/50 rounded-full z-0 pointer-events-none"></div>
-        <div className="absolute top-[60%] left-[15%] w-12 h-12 bg-[#526855]/60 rounded-full z-0 pointer-events-none"></div>
-        <div className="absolute top-[75%] right-[20%] w-40 h-40 bg-[#526855]/30 rounded-full z-0 pointer-events-none"></div>
-        <div className="absolute top-[85%] left-[30%] w-16 h-16 bg-[#526855]/50 rounded-full z-0 pointer-events-none"></div>
-        <div className="absolute bottom-[5%] right-[40%] w-14 h-14 bg-[#526855]/40 rounded-full z-0 pointer-events-none"></div>
+
+
 
         {/* Header Section - Reduced vertical spacing */}
         <div className="text-center max-w-4xl mx-auto relative z-10 mb-12">
-          {/* Header-Specific Random Bubbles (Strictly non-overlapping) */}
-          <div className="absolute -top-24 -left-32 w-48 h-48 bg-[#526855]/30 rounded-full z-[-1] pointer-events-none"></div>
-          <div className="absolute -top-12 -right-24 w-20 h-20 bg-[#526855]/40 rounded-full z-[-1] pointer-events-none"></div>
-          <div className="absolute top-1/2 -left-48 w-20 h-20 bg-[#526855]/50 rounded-full z-[-1] pointer-events-none"></div>
-          <div className="absolute top-1/3 -right-48 w-24 h-24 bg-[#526855]/45 rounded-full z-[-1] pointer-events-none"></div>
-          <div className="absolute -bottom-20 -left-16 w-28 h-28 bg-[#526855]/35 rounded-full z-[-1] pointer-events-none"></div>
-          <div className="absolute -bottom-16 -right-32 w-56 h-56 bg-[#526855]/25 rounded-full z-[-1] pointer-events-none"></div>
 
           {/*<div className="mb-12">
             <span className="px-6 py-2 bg-[#f7f2e6] tracking-tight font-bold rounded-full text-sm text-[#526855] opacity-100 border border-gray-800 uppercase">
@@ -90,10 +72,6 @@ export default function About() {
         {/* Services Section */}
         <ServicesSection />
 
-        {/* Added Testimonial Section */}
-        <div className="relative z-10 mb-40 -mx-8 sm:-mx-12 lg:-mx-16">
-          <Clients />
-        </div>
 
         {/* Social Links Section - More elegant spacing */}
         <div className="pt-13 relative z-10">
@@ -117,9 +95,9 @@ export default function About() {
           </div>
         </div>
       </section>
-      <div>
 
-      </div>
+      {/* Testimonial Section — sticky horizontal scroll */}
+      <Clients />
     </>
   );
 }
