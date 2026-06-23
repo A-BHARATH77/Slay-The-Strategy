@@ -164,7 +164,7 @@ const nicheData = [
 // ─── WorksSection: inline stacking cards (no ReactLenis root) ───────────────
 const worksProjects = [
   {
-    title: 'Matthias Leidinger',
+    title: 'Aavarna',
     description:
       'Originally hailing from Austria, Berlin-based photographer Matthias Leindinger is a young creative brimming with talent and ideas.',
     src: 'rock.jpg',
@@ -172,7 +172,7 @@ const worksProjects = [
     color: '#f7f2e6',
   },
   {
-    title: 'Clément Chapillon',
+    title: 'Anvi Jain / Law in Heels ',
     description:
       'This is a story on the border between reality and imaginary, about the contradictory feelings that the insularity of a rocky, arid, and wild territory provokes—so French photographer Clément.',
     src: 'tree.jpg',
@@ -180,27 +180,11 @@ const worksProjects = [
     color: '#f7f2e6',
   },
   {
-    title: 'Zissou',
+    title: 'Mahru',
     description:
       "Though he views photography as a medium for storytelling, Zissou's images don't insist on a narrative. Both crisp and ethereal.",
     src: 'water.jpg',
     link: 'https://images.unsplash.com/photo-1605106901227-991bd663255c?w=500&auto=format&fit=crop',
-    color: '#f7f2e6',
-  },
-  {
-    title: 'Mathias Svold and Ulrik Hasemann',
-    description:
-      'The coastlines of Denmark are documented in tonal colors in a pensive new series by Danish photographers Ulrik Hasemann and Mathias Svold; an ongoing project investigating how humans interact with and disrupt the Danish coast.',
-    src: 'house.jpg',
-    link: 'https://images.unsplash.com/photo-1605106715994-18d3fecffb98?w=500&auto=format&fit=crop&q=60',
-    color: '#f7f2e6',
-  },
-  {
-    title: 'Mark Rammers',
-    description:
-      "Dutch photographer Mark Rammers has shared with IGNANT the first chapter of his latest photographic project, 'all over again'—captured while in residency at Hektor, an old farm in Los Valles, Lanzarote.",
-    src: 'cactus.jpg',
-    link: 'https://images.unsplash.com/photo-1506792006437-256b665541e2?w=500&auto=format&fit=crop',
     color: '#f7f2e6',
   },
 ];
@@ -255,14 +239,26 @@ const WorksSection = () => {
   });
   return (
     <div className='bg-[#f7f2e6]' ref={container}>
-      <div className="relative z-10 mb-0 pt-20">
-        <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">
-          Works
-        </h2>
-        <div className="mt-4 max-w-xl mx-auto px-6">
-          <p className="text-[#526855]/85 text-center text-sm md:text-base">
-            Real work, real impact—discover how we help brands stand out and grow.
-          </p>
+      <div className="relative z-10 mb-0 pt-20 flex flex-col items-center w-full px-8 sm:px-12 lg:px-16">
+        <div className="flex flex-col items-center">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">
+            A few things we have built
+          </h2>
+          <div className="mt-4 max-w-xl mx-auto px-6">
+            <p className="text-[#526855]/85 text-center text-sm md:text-base">
+             Real brands. Real results.
+            </p>
+          </div>
+        </div>
+
+        {/* Right aligned See All Work button */}
+        <div className="absolute right-[6%] top-1/2 -translate-y-1/2 mt-4">
+          <Link 
+            href="/works" 
+            className="relative inline-flex items-center overflow-hidden px-5 py-2 rounded-full font-sans text-xs font-medium tracking-wider uppercase text-[#f7f2e6] bg-[#576E47] hover:bg-[#3d5234] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(87,110,71,0.3)] transition-all duration-300 cursor-pointer whitespace-nowrap"
+          >
+            See All Work
+          </Link>
         </div>
       </div>
       <section className='w-full'>
@@ -344,15 +340,15 @@ export default function About() {
       {/* ScrollRevealParagraph Intro Header */}
       <ScrollRevealParagraph
         theme="light"
-        text="Slay the Strategy specializes in bespoke digital presence. We craft elegant social media strategies, unique visual identities, optimization solutions, and forward-thinking campaigns that elevate your brand's presence and build unshakeable trust."
+        text="Most brands show up online looking like everyone else. Same formats, same captions, same energy. We are the agency that fixes that. Slay the Strategy is a full service social media and digital marketing agency for founders and brands who want to be aesthetic, intentional, and impossible to scroll past. We do not do average. We do not do forgettable. We build things worth looking at"
         sectionLabel="/ Elevate Your Digital Presence"
         floatingImageSrc="/aboutImg.webp"
         floatingImageAlt="About Slay the Strategy"
         highlightWords={[]}
         chipAfter={{
-          "presence.": "/sms.png",
-          "identities,": "/vid.png",
-          "trust.": "/opt.png"
+          "energy.": "/sms.png",
+          "fixes": "/vid.png",
+          "forgettable.": "/opt.png"
         }}
       />
 

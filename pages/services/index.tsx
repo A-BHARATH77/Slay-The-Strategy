@@ -38,15 +38,15 @@ export default function About() {
         {/* ScrollRevealParagraph Intro Header */}
         <ScrollRevealParagraph
           theme="light"
-          text="Slay the Strategy specializes in bespoke digital presence. We craft elegant social media strategies, unique visual identities, optimization solutions, and forward-thinking campaigns that elevate your brand's presence and build unshakeable trust."
+          text="Most brands show up online looking like everyone else. Same formats, same captions, same energy. We are the agency that fixes that. Slay the Strategy is a full service social media and digital marketing agency for founders and brands who want to be aesthetic, intentional, and impossible to scroll past. We do not do average. We do not do forgettable. We build things worth looking at"
           sectionLabel="/ Elevate Your Digital Presence"
           floatingImageSrc="/aboutImg.webp"
           floatingImageAlt="About Slay the Strategy"
           highlightWords={[]}
           chipAfter={{
-            "presence.": "/sms.png",
-            "identities,": "/vid.png",
-            "trust.": "/opt.png"
+            "energy.": "/sms.png",
+            "fixes": "/vid.png",
+            "forgettable.": "/opt.png"
           }}
         />
 
@@ -78,7 +78,7 @@ export default function About() {
       </section>
 
       {/* Testimonial Section — sticky horizontal scroll */}
-      <Clients />
+      <Clients isServicesPage={true} />
     </>
   );
 }

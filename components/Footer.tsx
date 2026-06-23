@@ -28,14 +28,20 @@ export default function Footer() {
         }
       >
         {/* ── LEFT column ── */}
-        <div className="flex flex-col gap-5 max-w-xs">
+        <div className="flex flex-col gap-5 max-w-lg">
           {/* Main heading */}
           <h2
-            className="text-[#e8e0c8] font-bold leading-tight"
+            className="text-[#e8e0c8] font-bold leading-tight whitespace-nowrap"
             style={{ fontSize: "clamp(1.4rem, 2.5vw, 2rem)", fontFamily: "sans-serif" }}
           >
-            Build it once,<br />Build it right.
+            Build it once, Build it right.
           </h2>
+          <p
+            className="text-[#c8c0a8] text-sm leading-relaxed"
+            style={{ fontFamily: "sans-serif", maxWidth: "320px" }}
+          >
+            If you are ready to show up online the way your brand actually deserves, let us talk.
+          </p>
 
           {/* New Business email */}
           <div>
@@ -69,6 +75,17 @@ export default function Footer() {
               style={{ fontFamily: "sans-serif" }}
             >
               Terms and Conditions
+            </Link>
+          </div>
+
+          {/* CTA Button */}
+          <div className="mt-4">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#e8e0c8] text-[#526855] hover:bg-[#dcd4bd] hover:-translate-y-0.5 transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer whitespace-nowrap"
+              style={{ fontFamily: "sans-serif" }}
+            >
+              Start a Conversation
             </Link>
           </div>
         </div>

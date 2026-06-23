@@ -5,82 +5,68 @@ import Image from "next/image";
 
 const testimonials = [
   {
-    name: "Prassana",
-    role: "Founder, Prassana Brands",
+    name: "Bineet",
+    role: "Founder, Mahru",
     description:
-      "Working with Slay the Strategy was seamless. Their process is structured, focused, and respectful of time, which made collaboration easy and effective.",
+      "Dipani is hands-on and hardworking. I chose to work with her because of her clear vision and strong knowledge. Within just one month she understood the deliverables and went beyond the initial requirements by continuously improving on the ask. She is easy to work with, proactive, and brings a thoughtful approach to her work.",
     img: "https://img.freepik.com/free-photo/brunette-girl-posing_23-2148108748.jpg",
     rating: 5,
   },
   {
-    name: "JZ Lake View",
-    role: "Manager, JZ Lake View",
+    name: "Binod Kumar",
+    role: "Manager,Orient Polyfilms",
     description:
-      "Slay the Strategy brought a level of clarity to our project that made the entire process feel smooth and well organised. Every stage was handled with care.",
+      "Dipani supported us with social media planning and execution including content direction, posting, and performance tracking. Her approach was structured and thoughtful with a clear understanding of brand positioning and audience behaviour. Communication was smooth, timelines were respected, and the work consistently reflected what we were aiming to build.",
     img: "https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg",
     rating: 5,
   },
   {
-    name: "Yogita Dalvi",
-    role: "Director, KDBS",
+    name: "Ritu and Manav",
+    role: "Maple Bear Canadian Preschool",
     description:
-      "From strategy to execution, everything was handled with precision and care. The final product feels refined and built to last.",
+      "You handled our work with professionalism and clear understanding. The experience has been smooth and the results are excellent.",
     img: "https://img.freepik.com/free-photo/smiling-asian-woman_23-2147766303.jpg",
     rating: 5,
   },
   {
-    name: "Brew Merchant Café",
-    role: "Owner, Brew Merchant Café & Bar",
+    name: "Rohit",
+    role: "Founder, Wallora",
     description:
-      "Vishishta just gets it — she brings clarity, creativity, and structure to every campaign. Everything feels intentional and aligned with our brand.",
+      "The content was consistent, on brand, and actually got noticed. Working with the team felt seamless and the quality never dropped.",
     img: "https://img.freepik.com/free-photo/portrait-modern-man_23-2147960990.jpg",
     rating: 5,
   },
   {
-    name: "Echo Bowl",
-    role: "Founder, Echo Bowl",
+    name: "Minakshi",
+    role: "Founder, The Sacred Nook",
     description:
-      "The Social Moodboard team has helped us show up with consistency, edge, and style. Vishishta leads with insight and never delivers anything mediocre.",
+      "The team understood the soul of the brand before they created a single piece of content. Everything felt intentional and completely aligned with what we were building.",
     img: "https://img.freepik.com/free-photo/portrait-smiling-blonde-woman_23-2148316635.jpg",
     rating: 4,
   },
   {
-    name: "Chill House Interiors",
-    role: "Owner, Chill House Interiors",
+    name: "Reena",
+    role: "Owner, Claw Nails",
     description:
-      "We came for content support and stayed for the energy, professionalism, and genuine passion. Vishishta's strategies are sharp and rooted in what actually works.",
+      "We went from inconsistent posting to a feed people actually stop and look at. The aesthetic is exactly what we wanted and the strategy behind it makes the whole thing work.",
     img: "https://img.freepik.com/premium-photo/woman-wearing-glasses-yellow-shirt_911060-133057.jpg",
     rating: 5,
   },
   {
-    name: "Chill House Interiors",
-    role: "Owner, Chill House Interiors",
+    name: "Punitta Trikha",
+    role: "Jewellery Designer and Craftswoman",
     description:
-      "We came for content support and stayed for the energy, professionalism, and genuine passion. Vishishta's strategies are sharp and rooted in what actually works.",
+      "The reels capture the craft in a way I never thought content could. Every shoot feels considered, every edit feels right. The work speaks for the jewellery the way it deserves to be spoken for.",
     img: "https://img.freepik.com/premium-photo/woman-wearing-glasses-yellow-shirt_911060-133057.jpg",
     rating: 5,
   },
 ];
 
-// ── Star rating component ──
-const Stars = ({ count }: { count: number }) => (
-  <div className="flex gap-1 mb-4">
-    {[1, 2, 3, 4, 5].map((i) => (
-      <span
-        key={i}
-        className={`text-lg ${i <= count ? "text-yellow-400" : "text-[#f7f2e6]/20"}`}
-      >
-        ★
-      </span>
-    ))}
-  </div>
-);
 
 // ── Single card ──
 const ReviewCard = ({ name, role, description, img, rating }: any) => (
-  <figure className="w-80 h-80 flex-shrink-0 rounded-2xl bg-[#fdf8ee] border border-[#e8dfc8] p-8 flex flex-col justify-between shadow-2xl">
+  <figure className="w-80 h-[420px] flex-shrink-0 rounded-2xl bg-[#fdf8ee] border border-[#e8dfc8] p-8 flex flex-col justify-between shadow-2xl">
     <div>
-      <Stars count={rating} />
       <blockquote className="text-[#526855]/85 text-sm leading-relaxed font-['Gilda_Display']">
         &ldquo;{description}&rdquo;
       </blockquote>
@@ -136,8 +122,8 @@ const RowCard = ({ item, index, total, progress, windowWidth }: any) => {
   );
 };
 
-// ── Main component ──
-export default function Clients() {
+// ─── Main component ───
+export default function Clients({ isServicesPage = false }: { isServicesPage?: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
   
   // Track scroll progress within the container
@@ -208,79 +194,165 @@ export default function Clients() {
     );
   };
 
+  const cards = [
+    // Row 1
+    <BrandCard key={0}>
+      <div className="flex items-center gap-2">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+          <path d="M12 2l8 5v10l-8 5-8-5V7z" />
+          <path d="M12 22V12M12 12L4 7M12 12l8-5" />
+        </svg>
+        <span className="text-xl md:text-2xl font-medium tracking-tight text-black">acme</span>
+      </div>
+    </BrandCard>,
+    <BrandCard key={1}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <rect x="2" y="6" width="20" height="12" rx="6" />
+        <rect x="6" y="9" width="12" height="6" rx="3" />
+      </svg>
+    </BrandCard>,
+    <BrandCard key={2}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <path d="M12 15a3 3 0 0 0 3-3H9a3 3 0 0 0 3 3z" fill="currentColor" />
+        <path d="M12 9V4M9 9V5M15 9V5M6 9V6M18 9V6" strokeLinecap="round" />
+      </svg>
+    </BrandCard>,
+    <BrandCard key={3}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-black">
+        <path d="M4 7h12l4-2M4 12h14l4-2M4 17h16l4-2" strokeLinecap="round" />
+      </svg>
+    </BrandCard>,
+    
+    // Row 2
+    <BrandCard key={4}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-black">
+        <path d="M8 8c-2.2 0-4 1.8-4 4s1.8 4 4 4c2.2 0 3-2 4-4s1.8-4 4-4c2.2 0 4 1.8 4 4s-1.8 4-4 4c-2.2 0-3-2-4-4s-1.8-4-4-4z" />
+      </svg>
+    </BrandCard>,
+    <BrandCard key={5}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    </BrandCard>,
+    <BrandCard key={6}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M6 12c2-2 4 2 6 0s4-2 6 0M8 8c1.5-1.5 3 1.5 4.5 0s3-1.5 4.5 0M8 16c1.5-1.5 3 1.5 4.5 0s3-1.5 4.5 0" strokeLinecap="round" />
+      </svg>
+    </BrandCard>,
+    <BrandCard key={7}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      </svg>
+    </BrandCard>,
+
+    // Row 3
+    <BrandCard key={8}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" />
+        <path d="M12 2v20M2 8.5h20M2 15.5h20" />
+      </svg>
+    </BrandCard>,
+    <BrandCard key={9}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="12" r="6" />
+        <circle cx="12" cy="12" r="2" />
+      </svg>
+    </BrandCard>,
+    <BrandCard key={10}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <path d="M12 2L2 22h20L12 2z" />
+        <path d="M12 2v20M7 12h10" />
+      </svg>
+    </BrandCard>,
+    <BrandCard key={11}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <path d="M12 2l10 10-10 10L2 12z" />
+        <path d="M12 2v20M2 12h20" />
+      </svg>
+    </BrandCard>,
+
+    // Row 4
+    <BrandCard key={12}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <rect x="8" y="8" width="8" height="8" rx="1" />
+      </svg>
+    </BrandCard>,
+    <BrandCard key={13}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <path d="M17.5 19A3.5 3.5 0 0 0 21 15.5c0-2.79-2.54-4.5-5-4.5-.42-1.76-1.91-3-4-3-2.6 0-4.6 2.05-4.6 4.6 0 .4.04.8.1 1.2A3.5 3.5 0 0 0 4 17.5c0 1.93 1.57 3.5 3.5 3.5h10z" />
+      </svg>
+    </BrandCard>,
+    <BrandCard key={14}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+      </svg>
+    </BrandCard>,
+    <BrandCard key={15}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <path d="M16 18l6-6-6-6M8 6L2 12l6 6" />
+      </svg>
+    </BrandCard>,
+
+    // Row 5
+    <BrandCard key={16}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+        <circle cx="12" cy="12" r="3" />
+      </svg>
+    </BrandCard>,
+    <BrandCard key={17}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+      </svg>
+    </BrandCard>,
+    <BrandCard key={18}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <circle cx="12" cy="12" r="2" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" transform="rotate(90 12 12)" />
+      </svg>
+    </BrandCard>,
+    <BrandCard key={19}>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+      </svg>
+    </BrandCard>,
+
+    // Row 6 (Centered box on Services Page)
+    <BrandCard key={20} className="w-full">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
+        <polygon points="12 2 2 7 12 12 22 7 12 2" />
+        <polyline points="2 17 12 22 22 17" />
+        <polyline points="2 12 12 17 22 12" />
+      </svg>
+    </BrandCard>,
+  ];
+
   return (
     <>
       {/* Logo Grid Section */}
       <section className="bg-[#f7f2e6] pt-24 pb-12 px-4 md:px-10 lg:px-20">
         <div className="relative z-10 mb-12 w-full">
           <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">
-            Clients
+            Brands we have worked with
           </h2>
-          <div className="mt-4 max-w-xl mx-auto px-6">
-            <p className="text-[#526855]/85 text-center text-sm md:text-base">
-              Partnering with visionary brands to create impactful experiences.
-            </p>
-          </div>
         </div>
         <div className="max-w-[1400px] mx-auto">
           <div className={`grid gap-1 md:gap-[6px] ${isMobilePhone ? "grid-cols-2" : "grid-cols-4"}`}>
-            <BrandCard>
-              <div className="flex items-center gap-2">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-                  <path d="M12 2l8 5v10l-8 5-8-5V7z" />
-                  <path d="M12 22V12M12 12L4 7M12 12l8-5" />
-                </svg>
-                <span className="text-xl md:text-2xl font-medium tracking-tight text-black">acme</span>
-              </div>
-            </BrandCard>
-            
-            <BrandCard>
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-                <rect x="2" y="6" width="20" height="12" rx="6" />
-                <rect x="6" y="9" width="12" height="6" rx="3" />
-              </svg>
-            </BrandCard>
-            
-            <BrandCard>
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-                <path d="M12 15a3 3 0 0 0 3-3H9a3 3 0 0 0 3 3z" fill="currentColor" />
-                <path d="M12 9V4M9 9V5M15 9V5M6 9V6M18 9V6" strokeLinecap="round" />
-              </svg>
-            </BrandCard>
-            
-            <BrandCard>
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-black">
-                <path d="M4 7h12l4-2M4 12h14l4-2M4 17h16l4-2" strokeLinecap="round" />
-              </svg>
-            </BrandCard>
-            
-            <BrandCard>
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-black">
-                <path d="M8 8c-2.2 0-4 1.8-4 4s1.8 4 4 4c2.2 0 3-2 4-4s1.8-4 4-4c2.2 0 4 1.8 4 4s-1.8 4-4 4c-2.2 0-3-2-4-4s-1.8-4-4-4z" />
-              </svg>
-            </BrandCard>
-
-            <BrandCard isText className="col-span-1">
-              <span className="text-[#526855] font-['Gilda_Display'] text-sm md:text-base font-semibold leading-snug w-full text-center md:text-left md:pl-6">
-                Trusted by<br/>clients worldwide
-              </span>
-            </BrandCard>
-
-            <BrandCard>
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M6 12c2-2 4 2 6 0s4-2 6 0M8 8c1.5-1.5 3 1.5 4.5 0s3-1.5 4.5 0M8 16c1.5-1.5 3 1.5 4.5 0s3-1.5 4.5 0" strokeLinecap="round" />
-              </svg>
-            </BrandCard>
-
-            <BrandCard isText className="col-span-1">
-              <span className="text-[#526855] font-['Gilda_Display'] text-sm md:text-base font-semibold leading-snug w-full text-center md:text-left md:pl-6">
-                Testimonials
-              </span>
-            </BrandCard>
-
-
+            {cards.slice(0, isServicesPage ? 20 : 8)}
           </div>
+          
+          {isServicesPage && (
+            <div className="flex justify-center w-full mt-1 md:mt-[6px]">
+              <div className={isMobilePhone ? "w-1/2 pr-[2px]" : "w-1/4 pr-[4px]"}>
+                {cards[20]}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -290,19 +362,19 @@ export default function Clients() {
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden">
         
         {/* Header */}
-        <div className="text-center px-4 z-50 absolute top-20 w-full">
+        <div className="text-center px-4 z-50 absolute top-28 w-full">
           <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#f7f2e6]">
-            Testimonials
+            Straight from the chat
           </h2>
           <div className="mt-4 max-w-xl mx-auto px-6">
             <p className="text-[#f7f2e6]/85 text-center text-sm md:text-base">
-              Trusted by teams who value quality.
+              Real words. No edits. No five star theatre.
             </p>
           </div>
         </div>
 
         {/* Carousel Area */}
-        <div className="relative w-full h-[400px] flex items-center mt-10">
+        <div className="relative w-full h-[400px] flex items-center mt-24">
           <motion.div 
             style={{ x: containerX }}
             className="flex gap-8 px-8 md:px-16 w-max items-center"

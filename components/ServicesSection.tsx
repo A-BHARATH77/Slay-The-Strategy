@@ -1,41 +1,120 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
 const serviceItems = [
   {
     num: "(001)",
-    title: "Web Design",
-    desc: "Modern, responsive, and user-friendly websites designed to engage visitors and drive conversions.",
+    title: "Social Media Management",
+    desc: "We run your social so you do not have to.",
+    extendedDesc: "Your Instagram is not a nice to have anymore. It is your storefront, your first impression, and your most visited sales page. We handle it end to end so it actually reflects what your brand is worth.",
+    included: [
+      "Monthly content strategy and calendar",
+      "Caption writing and copy",
+      "Hashtag and SEO research",
+      "Scheduling and posting",
+      "Community management and DM handling",
+      "Monthly performance report"
+    ],
+    bestFor: "Founders who are done figuring out what to post and want it handled by people who actually understand brand.",
     img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4fa1_Scene%20%239.webp",
   },
   {
     num: "(002)",
-    title: "Social Media",
-    desc: "We create scroll-stopping social content designed to build brand presence and drive engagement.",
+    title: "Performance Marketing",
+    desc: "Ads that are built to convert. Not just run.",
+    extendedDesc: "Anyone can boost a post. We build actual campaigns. Audience research, creative strategy, ad copy, testing, and optimisation based on what the data says. Every rupee tracked. Every result owned.",
+    included: [
+      "Meta Ads (Facebook and Instagram)",
+      "Google Ads (Search and Display)",
+      "Audience research and targeting",
+      "Ad creative direction and copy",
+      "A/B testing and optimisation",
+      "Weekly and monthly reporting"
+    ],
+    bestFor:"Brands ready to put money behind content that is built to perform.",
     img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4f9b_Scene%20%235.webp",
   },
   {
     num: "(003)",
-    title: "Development",
-    desc: "Modern, responsive, and user-friendly websites designed to engage visitors and drive conversions.",
+    title: "UGC and Content Shoots",
+    desc: "Content that makes people stop mid scroll.",
+    extendedDesc: "We plan the shoot, direct the creative, and coordinate production from concept to final edit. Every piece of content is built around your brand aesthetic and what your specific audience actually responds to. Not what worked for someone else six months ago.",
+    included: [
+      "Shoot concept and creative direction",
+      "Photography coordination",
+      "Reel and short form video editing",
+      "Product and lifestyle content",
+      "Graphic design and static creatives"
+    ],
+    bestFor:"Brands that need a content library that looks intentional, aesthetic, and completely theirs.",
     img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4f99_Scene%20%2310%20(Light).webp",
   },
   {
     num: "(004)",
-    title: "Brand Identity",
-    desc: "We craft cohesive brand identities that communicate purpose, personality, and credibility.",
+    title: "AI Generated Videos",
+    desc: "High quality video. Without the production timeline.",
+    extendedDesc: "AI video is not the future. It is right now. We create AI based videos for brand storytelling, product showcases, and social first content. The quality is real. The turnaround is fast. The content performs.",
+    included: [
+      "AI video concept and scripting",
+      "Brand aligned visual direction",
+      "Social ready edits for Reels, Shorts, and Stories",
+      "Product and campaign video content",
+      "Multiple format outputs"
+    ],
+    bestFor:"Brands that want video content at scale without the time and cost of traditional production.",
     img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4fbf_Scene%20%238.webp",
   },
   {
     num: "(005)",
-    title: "Marketing",
-    desc: "We develop strategic marketing assets that amplify brand reach and support growth.",
+    title: "Web Design and Development",
+    desc: "Your website should work as hard as you do.",
+    extendedDesc: "A beautiful brand with a slow, confusing website loses sales every single day. We design and build sites that are clean, fast, mobile first, and built to convert. Designed to reflect your brand and do the selling while you are off the clock.",
+    included: [
+      "UX planning and site architecture",
+      "Website design",
+      "Frontend development",
+      "Mobile optimisation",
+      "Post launch support"
+    ],
+    bestFor:" Founders who need a site that looks sharp, loads fast, and actually performs.",
     img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4f9a_Scene%2018.webp",
+  },
+  {
+    num: "(006)",
+    title: "Brand Identity",
+    desc: "Before you can show up consistently, you need to know exactly what you look like.",
+    extendedDesc: "We build brand identities that are distinctive, purposeful, and built to last. Not a logo picked in an afternoon. A proper system that you and your team can use across every platform and every touchpoint.",
+    included: [
+      "Logo design and brand mark",
+      "Colour palette and typography system",
+      "Brand tone of voice guide",
+      "Brand guidelines document",
+      "Social media visual templates"
+    ],
+    bestFor: "New brands launching properly or existing brands ready for a real glow up.",
+    img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4f99_Scene%20%2310%20(Light).webp",
+  },
+  {
+    num: "(007)",
+    title: "Founder Led Marketing",
+    desc: "You are not just the CEO. You are the brand.",
+    extendedDesc: "The most underused marketing asset at any founder led company is the founder. Your story, your perspective, your presence on LinkedIn and Instagram builds trust faster than any ad campaign. We write, we post, we position. You grow.",
+    included: [
+      "Monthly LinkedIn content strategy",
+      "Caption writing and post scheduling",
+      "Instagram content support",
+      "Personal positioning and narrative development",
+      "Monthly performance review"
+    ],
+    bestFor:"Founders who want to be known and not just their company.",
+    img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4f9b_Scene%20%235.webp",
   },
 ];
 
 export const ServicesSection = () => {
   const [activeIdx, setActiveIdx] = useState<number>(0);
+  const [expandedIdx, setExpandedIdx] = useState<number | null>(null);
   const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -118,10 +197,10 @@ export const ServicesSection = () => {
           display: inline-flex;
           align-items: center;
           overflow: hidden;
-          padding: 0.7rem 2rem;
+          padding: 0.5rem 1.5rem;
           border-radius: 999px;
           font-family: "PP Neue Montreal", sans-serif;
-          font-size: 0.85rem;
+          font-size: 0.75rem;
           font-weight: 500;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -157,16 +236,19 @@ export const ServicesSection = () => {
           flex-shrink: 0;
           position: sticky;
           top: 12vh;
-          padding-top: 10rem;
+          padding-top: var(--svc-pad-top, 2rem);
           padding-left: 6%;
           box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          transition: padding-top 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .svc-media-img-wrap {
           width: 100%;
           aspect-ratio: 4/3;
           border-radius: 1rem;
           overflow: hidden;
-          background: rgba(87,110,71,0.08);
+          position: relative;
         }
         .svc-media-img-wrap img {
           width: 100%;
@@ -197,7 +279,8 @@ export const ServicesSection = () => {
         /* Each service row */
         .svc-row {
           display: flex;
-          align-items: center;
+          flex-direction: column;
+          align-items: flex-start;
           padding: 2rem 0;
           border-bottom: 1px solid rgba(87,110,71,0.2);
           cursor: pointer;
@@ -260,7 +343,7 @@ export const ServicesSection = () => {
             position: relative;
             top: auto;
             padding-left: 0;
-            padding-top: 2rem;
+            padding-top: 2rem !important;
             order: -1;
           }
           .svc-row-title {
@@ -271,16 +354,32 @@ export const ServicesSection = () => {
             padding-bottom: 40px;
           }
         }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.35s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
       `}</style>
 
       <div className="svc-section">
-        {/* Top bar */}
-        <div className="svc-top-bar flex flex-col items-center">
-          <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855] mt-12">Services</h2>
-          <div className="mt-4 max-w-xl mx-auto px-6">
-            <p className="text-[#526855]/85 text-center text-sm md:text-base">
-              Thoughtful strategies. Creative execution. Meaningful results.
+        {/* Top bar containing label, heading, and button in a single row */}
+        <div className="svc-top-bar flex flex-row items-center justify-between w-full">
+          <div className="flex-1"></div>
+          
+          <div className="flex flex-col items-center shrink-0">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl text-center font-['Gilda_Display'] text-[#526855]">Here is what we do</h2>
+            <p className="text-[#526855]/85 text-center text-sm md:text-base mt-2">
+              Sharp work. Real results. No filler.
             </p>
+          </div>
+
+          <div className="flex-1 flex justify-end">
+            <Link href="/services" className="svc-cta-btn">
+              See All Services
+            </Link>
           </div>
         </div>
 
@@ -288,21 +387,87 @@ export const ServicesSection = () => {
         <div className="svc-grid">
           {/* LEFT — service rows */}
           <div className="svc-list">
-            {serviceItems.map((item, idx) => (
-              <div
-                key={idx}
-                ref={(el) => { rowRefs.current[idx] = el; }}
-                className={`svc-row${activeIdx === idx ? " svc-row--active" : ""}`}
-              >
-                <span className="svc-row-num">{item.num}</span>
-                <span className="svc-row-title">{item.title}</span>
+            {serviceItems.map((item, idx) => {
+              const isExpanded = expandedIdx === idx;
+              return (
+                <div
+                  key={idx}
+                  ref={(el) => { rowRefs.current[idx] = el; }}
+                  className={`svc-row flex flex-col items-start ${activeIdx === idx ? "svc-row--active" : ""}`}
+                  onClick={() => setActiveIdx(idx)}
+                >
+                  <div className="flex items-center w-full justify-between">
+                    <div className="flex items-center flex-1">
+                      <span className="svc-row-num">{item.num}</span>
+                      <span className="svc-row-title">{item.title}</span>
+                    </div>
+                    {/* Expand Button */}
+                    <button
+                      type="button"
+                      className="relative z-30 ml-4 p-2 flex items-center justify-center rounded-full border border-[#576E47]/20 hover:border-[#576E47]/60 hover:bg-[#576E47]/5 transition-all duration-300 pointer-events-auto"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setExpandedIdx((prev) => (prev === idx ? null : idx));
+                      }}
+                      aria-label={isExpanded ? "Collapse" : "Expand"}
+                    >
+                      <svg
+                        className={`w-4 h-4 text-[#576E47] transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                  </div>
 
-              </div>
-            ))}
+                  {/* Expanded Content */}
+                  {isExpanded && item.extendedDesc && (
+                    <div className="mt-6 text-[#576E47] text-sm md:text-base leading-relaxed pl-[4.5rem] w-full font-sans font-normal animate-fadeIn">
+                      <p className="mb-6 opacity-90 text-justify max-w-2xl">
+                        {item.extendedDesc}
+                      </p>
+                      
+                      {item.included && item.included.length > 0 && (
+                        <>
+                          <div className="mb-4 font-semibold text-xs tracking-wider uppercase opacity-75 font-['PP_Neue_Montreal']">
+                            What is Included
+                          </div>
+                          
+                          <ul className="space-y-3 font-light text-[#576E47]/90 max-w-2xl">
+                            {item.included.map((inc, i) => (
+                              <li key={i} className="flex items-start gap-3">
+                                <span className="opacity-60">—</span>
+                                <span>{inc}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      )}
+
+                      {item.bestFor && (
+                        <div className="mt-6 p-4 bg-[#576E47]/5 border-l-2 border-[#576E47] rounded-r text-sm font-medium italic text-[#576E47]/90 max-w-2xl">
+                          <span className="font-semibold not-italic">Best for:</span> {item.bestFor}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           {/* RIGHT — sticky image + desc */}
-          <div className="svc-media" style={{ display: "flex", flexDirection: "column" }}>
+          <div 
+            className="svc-media" 
+            style={{ 
+              display: "flex", 
+              flexDirection: "column",
+              "--svc-pad-top": `${activeIdx * 4.5 + 2}rem`
+            } as React.CSSProperties}
+          >
             <div className="svc-media-img-wrap" style={{ order: activeIdx === 0 ? 2 : 1 }}>
               {serviceItems.map((item, idx) => (
                 <img
@@ -320,6 +485,8 @@ export const ServicesSection = () => {
                     transition: "opacity 0.45s ease, transform 0.55s cubic-bezier(0.25,1,0.5,1)",
                     opacity: activeIdx === idx ? 1 : 0,
                     transform: activeIdx === idx ? (idx === 0 ? "scale(1)" : "scale(0.85)") : "scale(1.08)",
+                    paddingBottom: idx === 0 ? "1.5rem" : undefined,
+                    paddingTop: (idx === 5 || idx === 6) ? "2rem" : undefined,
                   }}
                 />
               ))}

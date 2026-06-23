@@ -12,8 +12,8 @@ import { cn } from "@/lib/utils";
 
 // ─── WorksSection: inline stacking cards (no ReactLenis root) ───────────────
 const worksProjects = [
-  {
-    title: 'Matthias Leidinger',
+   {
+    title: 'Aavarna',
     description:
       'Originally hailing from Austria, Berlin-based photographer Matthias Leindinger is a young creative brimming with talent and ideas.',
     src: 'rock.jpg',
@@ -21,7 +21,7 @@ const worksProjects = [
     color: '#f7f2e6',
   },
   {
-    title: 'Clément Chapillon',
+    title: 'Anvi Jain / Law in Heels ',
     description:
       'This is a story on the border between reality and imaginary, about the contradictory feelings that the insularity of a rocky, arid, and wild territory provokes—so French photographer Clément.',
     src: 'tree.jpg',
@@ -29,27 +29,11 @@ const worksProjects = [
     color: '#f7f2e6',
   },
   {
-    title: 'Zissou',
+    title: 'Mahru',
     description:
       "Though he views photography as a medium for storytelling, Zissou's images don't insist on a narrative. Both crisp and ethereal.",
     src: 'water.jpg',
     link: 'https://images.unsplash.com/photo-1605106901227-991bd663255c?w=500&auto=format&fit=crop',
-    color: '#f7f2e6',
-  },
-  {
-    title: 'Mathias Svold and Ulrik Hasemann',
-    description:
-      'The coastlines of Denmark are documented in tonal colors in a pensive new series by Danish photographers Ulrik Hasemann and Mathias Svold; an ongoing project investigating how humans interact with and disrupt the Danish coast.',
-    src: 'house.jpg',
-    link: 'https://images.unsplash.com/photo-1605106715994-18d3fecffb98?w=500&auto=format&fit=crop&q=60',
-    color: '#f7f2e6',
-  },
-  {
-    title: 'Mark Rammers',
-    description:
-      "Dutch photographer Mark Rammers has shared with IGNANT the first chapter of his latest photographic project, 'all over again'—captured while in residency at Hektor, an old farm in Los Valles, Lanzarote.",
-    src: 'cactus.jpg',
-    link: 'https://images.unsplash.com/photo-1506792006437-256b665541e2?w=500&auto=format&fit=crop',
     color: '#f7f2e6',
   },
 ];
@@ -104,14 +88,26 @@ const WorksSection = () => {
   });
   return (
     <div className='bg-[#f7f2e6]' ref={container}>
-      <div className="relative z-10 mb-0 pt-20">
-        <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">
-          Works
-        </h2>
-        <div className="mt-4 max-w-xl mx-auto px-6">
-          <p className="text-[#526855]/85 text-center text-sm md:text-base">
-            Real work, real impact—discover how we help brands stand out and grow.
-          </p>
+      <div className="relative z-10 mb-0 pt-20 flex flex-col items-center w-full px-8 sm:px-12 lg:px-16">
+        <div className="flex flex-col items-center">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">
+            A few things we have built
+          </h2>
+          <div className="mt-4 max-w-xl mx-auto px-6">
+            <p className="text-[#526855]/85 text-center text-sm md:text-base">
+              Real brands. Real results.
+            </p>
+          </div>
+        </div>
+
+        {/* Right aligned See All Work button */}
+        <div className="absolute right-[6%] top-1/2 -translate-y-1/2 mt-4">
+          <Link 
+            href="/works" 
+            className="relative inline-flex items-center overflow-hidden px-5 py-2 rounded-full font-sans text-xs font-medium tracking-wider uppercase text-[#f7f2e6] bg-[#576E47] hover:bg-[#3d5234] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(87,110,71,0.3)] transition-all duration-300 cursor-pointer whitespace-nowrap"
+          >
+            See All Work
+          </Link>
         </div>
       </div>
       <section className='w-full'>
@@ -209,16 +205,18 @@ export default function About() {
   const isMobilePhone = safeWindowWidth < 768;
 
   const nicheData = [
-    { id: 1, title: "Automation", imageUrl: "/i1.jpg" },
-    { id: 2, title: "Interior Design Houses", imageUrl: "/i2.jpg" },
-    { id: 3, title: "Events", imageUrl: "/i3.jpg" },
-    { id: 4, title: "D2C", imageUrl: "/i4.jpg" },
-    { id: 5, title: "Food & Beverage Brands", imageUrl: "/i5.jpg" },
-    { id: 6, title: "Education", imageUrl: "/ch.png" },
-    { id: 7, title: "Fashion", imageUrl: "/i1.jpg" },
-    { id: 8, title: "Technology", imageUrl: "/i2.jpg" },
-    { id: 9, title: "Corporate", imageUrl: "/i3.jpg" },
-    { id: 10, title: "Influencer", imageUrl: "/i4.jpg" }
+    { id: 1, title: "Fashion and Lifestyle", imageUrl: "/i1.jpg", subline: "Aesthetic first content that sells the feeling before the product." },
+    { id: 2, title: "Wellness and D2C", imageUrl: "/i2.jpg", subline: "Full funnel strategy for brands selling direct. Awareness to repeat purchase." },
+    { id: 3, title: "Education", imageUrl: "/i3.jpg", subline: "Trust building content for schools and ed brands that need credibility before conversion." },
+    { id: 4, title: "Events and Culture", imageUrl: "/i4.jpg", subline: "Pre event energy, real time coverage, post event momentum." },
+    { id: 5, title: "Legal and Professional", imageUrl: "/i5.jpg", subline: "Making expertise feel human, interesting, and worth following." },
+    { id: 6, title: "Luxury and Automotive", imageUrl: "/ch.png", subline: "We understand what premium looks and sounds like." },
+    { id: 7, title: "Corporate and B2B", imageUrl: "/i1.jpg", subline: "LinkedIn strategy and personal branding for leaders who want to be known." },
+    { id: 8, title: "Media and Entertainment", imageUrl: "/i2.jpg", subline: "Podcast brands, creator accounts, and content ecosystems built to grow communities." },
+    { id: 9, title: "Food and Beverage", imageUrl: "/i3.jpg", subline: "Content that makes people hungry and keeps them loyal." },
+    { id: 10, title: "Technology", imageUrl: "/i4.jpg", subline: "Clear, compelling content for complex products." },
+    { id: 11, title: "Jewellery and Luxury Lifestyle", imageUrl: "/i5.jpg", subline: "Visual storytelling for brands where craft is the whole point." },
+    { id: 12, title: "Nightlife and Events", imageUrl: "/ch.png", subline: "Content that makes people feel like they are missing out if they are not there." }
   ];
 
 
@@ -229,39 +227,99 @@ export default function About() {
           <div className="w-full">
             <div className="w-full">
               <div className="relative z-10 bg-[#f7f2e6] lg:py-32 overflow-clip">
-                {/* Decorative elements */}
-                <div className="absolute inset-0 opacity-10 pointer-events-none">
-                  <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-red-600 blur-3xl"></div>
-                  <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-red-800 blur-3xl"></div>
-                </div>
+
 
                 <div className="container mx-auto px-6 relative">
                   {/* About the Founder Section Header */}
                   <div className="relative z-10 bg-transparent pt-40 pb-0">
-                    <div className="container mx-auto px-6 relative">
-                      <h2 className="text-4xl md:text-5xl lg:text-7xl mb-10 text-center font-['Gilda_Display'] text-[#526855]">
-                        Behind <span className="text-[#526855] relative italic">
-                          Slay the Strategy
-                        </span>
+                    <div className="container mx-auto px-6 relative flex flex-col items-center">
+                      <h2 className="text-4xl md:text-5xl lg:text-7xl mb-4 text-center font-['Gilda_Display'] text-[#526855]">
+                        The people behind the strategy
                       </h2>
+                      <p className="text-[#526855]/85 text-center text-sm md:text-base max-w-xl mx-auto mb-10">
+                        We were tired of marketing that looked fine and did nothing. So we built something that actually works.
+                      </p>
                     </div>
                   </div>
 
-                  {/* Founder Section — text left, image right */}
+                  {/* Founder Section — image left, text right */}
                   <div className="relative z-10 py-10">
-                    <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row lg:flex-row xl:flex-row items-start justify-between md:gap-32 lg:gap-48 xl:gap-64">
+                    <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row lg:flex-row xl:flex-row items-start justify-between md:gap-12 lg:gap-16 xl:gap-24">
 
-                      {/* Left — text content */}
+                      {/* Left — image */}
+                      <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96">
+                        <img
+                          src="/founder.webp"
+                          alt="Dipani"
+                          className="w-full h-auto object-cover rounded-2xl shadow-xl"
+                        />
+                      </div>
+
+                       {/* Right — text content */}
                       <div className="flex flex-col gap-6 max-w-xl items-center text-center md:items-start md:text-left lg:items-start lg:text-left xl:items-start xl:text-left">
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal font-['Gilda_Display'] text-[#526855] leading-tight">
-                          I am Dipani, a<br /><span className="italic">brand strategist</span>
+                          Dipani Tibrewala
                         </h2>
+                        
+                        <p className="text-[#526855]/90 text-base md:text-lg leading-[1.8] font-sans font-normal text-justify">
+                          Hi, I am Dipani. Before Slay the Strategy, I spent 7.5 years in corporate marketing working with Plan.Net TechNest India, Accenture, and Edelman. I have worked on campaigns for Jaguar, BMW, Microsoft, HPE, and Infosys. I know what brand building looks like at scale, and I know exactly what goes wrong when strategy turns into safe, recycled, forgettable content. That is what I left behind in 2024.
+                        </p>
+                        
+                        <p className="text-[#526855]/90 text-base md:text-lg leading-[1.8] font-sans font-normal text-justify">
+                          Slay the Strategy is built for founders and brands who are done blending in. We work with D2C brands, creators, luxury names, professional service businesses, schools, and everyone in between who wants a presence that actually reflects how good what they have built really is.
+                        </p>
+
+                        <p className="text-[#526855]/90 text-base md:text-lg leading-[1.8] font-sans font-normal text-justify">
+                          I oversee strategy personally on every account. We move fast, communicate like real people, and do not deliver work we are not proud to put our name on. If you are here, you already know you want more than what you have been getting. Let us talk.
+                        </p>
 
                         {/* Social links */}
                         <div className="flex flex-wrap gap-6 pt-2 justify-center md:justify-start lg:justify-start xl:justify-start">
                           {socialLinks.map((item) => (
                             <a
                               key={item.id}
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center text-[#526855]/60 hover:text-[#526855] font-light transition-all duration-300 gap-2 font-['Gilda_Display']"
+                            >
+                              {item.icon}
+                              <span>{item.title}</span>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  {/* Second Founder Section (Duplicate) */}
+                  <div className="relative z-10 py-10">
+                    <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row lg:flex-row xl:flex-row items-start justify-between md:gap-12 lg:gap-16 xl:gap-24">
+
+                       {/* Left — text content */}
+                      <div className="flex flex-col gap-6 max-w-xl items-center text-center md:items-start md:text-left lg:items-start lg:text-left xl:items-start xl:text-left">
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal font-['Gilda_Display'] text-[#526855] leading-tight">
+                          Srivats Tibrewala
+                        </h2>
+                        
+                        <p className="text-[#526855]/90 text-base md:text-lg leading-[1.8] font-sans font-normal text-justify">
+                          Every great creative operation needs someone who makes sure the whole thing actually runs. That is Srivats.
+                        </p>
+                        
+                        <p className="text-[#526855]/90 text-base md:text-lg leading-[1.8] font-sans font-normal text-justify">
+                          Srivats Tibrewala is the Co-Founder of Slay the Strategy and the person responsible for keeping the agency financially sharp and operationally tight. While strategy and creative work happens at the front, Srivats makes sure everything behind it—the numbers, the processes, the structure—is solid enough to scale.
+                        </p>
+
+                        <p className="text-[#526855]/90 text-base md:text-lg leading-[1.8] font-sans font-normal text-justify">
+                          He is the reason we move fast without things falling apart. The backbone of everything we build here.
+                        </p>
+
+                        {/* Social links */}
+                        <div className="flex flex-wrap gap-6 pt-2 justify-center md:justify-start lg:justify-start xl:justify-start">
+                          {socialLinks.map((item) => (
+                            <a
+                              key={`dup-${item.id}`}
                               href={item.href}
                               target="_blank"
                               rel="noopener noreferrer"
@@ -296,15 +354,8 @@ export default function About() {
                 <div className="max-w-7xl mx-auto">
                   <div className="relative z-10 mb-20 pt-10">
                     <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">
-                      Niches<span className="relative inline-block">
-                        <span className="text-[#526855] italic">Worked In</span>
-                      </span>
+                      Industries we have built in
                     </h2>
-                    <div className="mt-4 max-w-xl mx-auto">
-                      <p className="text-[#526855]/85 text-center text-sm md:text-base">
-                        Specialized expertise across multiple industries with proven results
-                      </p>
-                    </div>
                   </div>
 
                   {/* Improved Grid Layout */}
@@ -336,17 +387,9 @@ export default function About() {
                           <h3 className="text-2xl font-bold text-[#f7f2e6] font-['Gilda_Display'] group-hover:text-[#f7f2e6]/90 transition-colors duration-300">
                             {niche.title}
                           </h3>
-
-                          <div className="mt-6 flex items-center justify-between">
-                            <div className="flex items-center space-x-1">
-                              <span className="text-xs text-[#f7f2e6]/70">Results-driven approach</span>
-                            </div>
-                            <div className="inline-flex items-center justify-center size-8 rounded-full bg-[#f7f2e6] text-[#526855] shadow-lg shadow-[#f7f2e6]/20">
-                              <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                              </svg>
-                            </div>
-                          </div>
+                          <p className="text-[#f7f2e6]/70 text-sm mt-2 font-sans font-light">
+                            {niche.subline}
+                          </p>
                         </div>
                       </div>
                     ))}
@@ -365,43 +408,43 @@ export default function About() {
 
                     <div className="flex flex-col gap-12 lg:gap-40">
                       {/* Stat Row 1 */}
-                      <div className="flex flex-row items-center gap-6 md:gap-12">
-                        <div className="w-40 md:w-64 flex-shrink-0">
+                      <div className="flex flex-row items-center gap-12 md:gap-20">
+                        <div className="w-48 md:w-72 flex-shrink-0">
                           <span className="text-[6rem] md:text-[9rem] lg:text-[10rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
-                            30
+                            20+
                           </span>
                         </div>
                         <div className="flex items-start pt-2 sm:pt-4">
                           <p className="text-[15px] font-medium leading-relaxed text-[#526855] max-w-[280px] font-sans">
-                            A multidisciplinary team of designers, strategists, and developers dedicated to crafting exceptional digital experiences.
+                            Brands worked with across social media, content, performance marketing, and brand identity since 2024
                           </p>
                         </div>
                       </div>
 
                       {/* Stat Row 2 */}
-                      <div className="flex flex-row items-center gap-6 md:gap-12">
-                        <div className="w-40 md:w-64 flex-shrink-0">
+                      <div className="flex flex-row items-center gap-12 md:gap-20">
+                        <div className="w-48 md:w-72 flex-shrink-0">
                           <span className="text-[6rem] md:text-[9rem] lg:text-[10rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
-                            80
+                            7.5
                           </span>
                         </div>
                         <div className="flex items-start pt-2 sm:pt-4">
                           <p className="text-[15px] font-medium leading-relaxed text-[#526855] max-w-[280px] font-sans">
-                            From startups to established brands, we've delivered transformative projects across industries and markets worldwide.
+                            Years of marketing experience across agency and corporate backgrounds before building this
                           </p>
                         </div>
                       </div>
 
                       {/* Stat Row 3 */}
-                      <div className="flex flex-row items-center gap-6 md:gap-12">
-                        <div className="w-40 md:w-64 flex-shrink-0">
+                      <div className="flex flex-row items-center gap-12 md:gap-20">
+                        <div className="w-48 md:w-72 flex-shrink-0">
                           <span className="text-[6rem] md:text-[9rem] lg:text-[10rem] font-bold leading-none tracking-tighter text-[#526855] font-sans" style={{ lineHeight: '0.85' }}>
-                            +7
+                            NCR
                           </span>
                         </div>
                         <div className="flex items-start pt-2 sm:pt-4">
                           <p className="text-[15px] font-medium leading-relaxed text-[#526855] max-w-[280px] font-sans">
-                            Industry recognition for creativity, innovation, and performance-driven design that pushes boundaries.
+                            Delhi NCR based. Working with clients across India. Time zones have not stopped us yet.
                           </p>
                         </div>
                       </div>

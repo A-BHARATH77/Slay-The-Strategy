@@ -19,21 +19,18 @@ interface ScrollRevealParagraphProps {
   disablePin?: boolean;
 }
 
-const DEFAULT_TEXT = "Cassian Films specializes in strategic storytelling. We craft cinematic narratives designed to convert audiences, raise awareness, and build unshakeable trust for organizations that mean business.";
+const DEFAULT_TEXT = "Most brands show up online looking like everyone else. Same formats, same captions, same energy. We are the agency that fixes that. Slay the Strategy is a full service social media and digital marketing agency for founders and brands who want to be aesthetic, intentional, and impossible to scroll past. We do not do average. We do not do forgettable. We build things worth looking at";
 
 const HIGHLIGHT_WORDS = [
-  "strategic", "storytelling.",
-  "cinematic", "narratives",
-  "convert", "audiences,",
-  "raise", "awareness,",
-  "unshakeable", "trust"
+  "aesthetic,", "intentional,", "impossible", "scroll", "past.",
+  "average.", "forgettable.", "worth", "looking"
 ];
 
 // Chips inserted AFTER these specific words
 const CHIP_AFTER: Record<string, string> = {
-  "specializes": "/about_section1.png",
-  "narratives":  "/about_section2.png",
-  "trust":       "/about_section3.png",
+  "energy.": "/about_section1.png",
+  "fixes":  "/about_section2.png",
+  "forgettable.":       "/about_section3.png",
 };
 
 function InlineChip({ src }: { src: string }) {
@@ -142,7 +139,7 @@ export default function ScrollRevealParagraph({
           scrollTrigger: {
             trigger: containerRef.current,
             start: 'top top',
-            end: '+=130%',
+            end: '+=250%',
             pin: true,
             scrub: 1,
             anticipatePin: 1,
