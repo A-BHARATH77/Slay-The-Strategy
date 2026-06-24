@@ -359,11 +359,11 @@ export default function About() {
       {/* About the Founder Section Header */}
       <div className="relative z-10 bg-transparent pb-0 flex flex-col items-center w-full px-0 sm:px-12 lg:px-16">
         <div className="container mx-auto px-4 sm:px-6 relative flex flex-col items-center">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl mb-4 text-center font-['Gilda_Display'] text-[#526855] leading-tight">
-            <span className="block md:inline whitespace-nowrap">The people behind</span> <span className="block md:inline whitespace-nowrap">the strategy</span>
+          <h2 className="text-4xl md:text-5xl lg:text-7xl mb-4 text-center font-['Gilda_Display'] text-[#526855]">
+            The people behind the strategy
           </h2>
           <p className="text-[#526855]/85 text-center text-sm md:text-base max-w-xl mx-auto mb-10">
-            <span className="block md:inline">We were tired of marketing that looked fine and did nothing.</span> <span className="block md:inline">So we built something that actually works.</span>
+            We were tired of marketing that looked fine and did nothing. So we built something that actually works.
           </p>
         </div>
 
