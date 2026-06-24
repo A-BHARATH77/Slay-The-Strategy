@@ -14,7 +14,7 @@ const testimonials = [
   },
   {
     name: "Binod Kumar",
-    role: "Manager,Orient Polyfilms",
+    role: "Manager, Orient Polyfilms",
     description:
       "Dipani supported us with social media planning and execution including content direction, posting, and performance tracking. Her approach was structured and thoughtful with a clear understanding of brand positioning and audience behaviour. Communication was smooth, timelines were respected, and the work consistently reflected what we were aiming to build.",
     img: "https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg",
@@ -364,10 +364,10 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
       {/* Height determines how much scrolling is required to finish the animation */}
       <section ref={containerRef} className="bg-[#526855] relative h-[300vh]">
         {/* Sticky wrapper so the view stays pinned while scrolling down */}
-      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center gap-10 md:gap-14 overflow-hidden">
         
         {/* Header */}
-        <div className="text-center px-4 z-50 absolute top-28 w-full">
+        <div className="text-center px-4 z-50 w-full">
           <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#f7f2e6]">
             Straight from the chat
           </h2>
@@ -379,7 +379,7 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
         </div>
 
         {/* Carousel Area */}
-        <div className="relative w-full h-[400px] flex items-center mt-24">
+        <div className="relative w-full h-[420px] flex items-center">
           <motion.div 
             style={{ x: containerX }}
             className="flex gap-8 px-8 md:px-16 w-max items-center"

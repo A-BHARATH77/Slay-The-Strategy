@@ -45,12 +45,6 @@ export default function Footer() {
 
           {/* New Business email */}
           <div>
-            <p
-              className="text-[#e8e0c8] text-xs font-semibold mb-1"
-              style={{ fontFamily: "sans-serif" }}
-            >
-              New Business:
-            </p>
             <Link
               href="mailto:hello@slaystrategy.com"
               className="text-[#e8e0c8] text-sm font-medium hover:underline"

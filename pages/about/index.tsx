@@ -308,7 +308,7 @@ export default function About() {
                         </p>
                         
                         <p className="text-[#526855]/90 text-base md:text-lg leading-[1.8] font-sans font-normal text-justify">
-                          Srivats Tibrewala is the Co-Founder of Slay the Strategy and the person responsible for keeping the agency financially sharp and operationally tight. While strategy and creative work happens at the front, Srivats makes sure everything behind it—the numbers, the processes, the structure—is solid enough to scale.
+                          Srivats Tibrewala is the Co-Founder of Slay the Strategy and the person responsible for keeping the agency financially sharp and operationally tight. While strategy and creative work happens at the front, Srivats makes sure everything behind it the numbers, the processes, the structure is solid enough to scale.
                         </p>
 
                         <p className="text-[#526855]/90 text-base md:text-lg leading-[1.8] font-sans font-normal text-justify">
