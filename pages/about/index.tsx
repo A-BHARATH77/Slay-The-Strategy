@@ -237,7 +237,9 @@ export default function About() {
                         The people behind the strategy
                       </h2>
                       <p className="text-[#526855]/85 text-center text-sm md:text-base max-w-xl mx-auto mb-10">
-                        We were tired of marketing that looked fine and did nothing. So we built something that actually works.
+                        We were tired of marketing that looked fine and did nothing.
+                        <br />
+                        So we built something that actually works.
                       </p>
                     </div>
                   </div>
