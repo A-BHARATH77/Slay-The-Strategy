@@ -101,7 +101,7 @@ const WorksSection = () => {
         </div>
 
         {/* Right aligned See All Work button */}
-        <div className="absolute right-[6%] top-1/2 -translate-y-1/2 mt-4">
+        <div className="mt-6 md:absolute md:right-[6%] md:top-1/2 md:-translate-y-1/2 md:mt-4 lg:absolute lg:right-[6%] lg:top-1/2 lg:-translate-y-1/2 lg:mt-4 xl:absolute xl:right-[6%] xl:top-1/2 xl:-translate-y-1/2 xl:mt-4">
           <Link 
             href="/works" 
             className="relative inline-flex items-center overflow-hidden px-5 py-2 rounded-full font-sans text-xs font-medium tracking-wider uppercase text-[#f7f2e6] bg-[#576E47] hover:bg-[#3d5234] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(87,110,71,0.3)] transition-all duration-300 cursor-pointer whitespace-nowrap"
@@ -231,7 +231,7 @@ export default function About() {
 
                 <div className="container mx-auto px-6 relative">
                   {/* About the Founder Section Header */}
-                  <div className="relative z-10 bg-transparent pt-40 pb-0">
+                  <div className="relative z-10 bg-transparent pt-28 pb-0">
                     <div className="container mx-auto px-6 relative flex flex-col items-center">
                       <h2 className="text-4xl md:text-5xl lg:text-7xl mb-4 text-center font-['Gilda_Display'] text-[#526855]">
                         The people behind the strategy
@@ -247,7 +247,7 @@ export default function About() {
                     <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row lg:flex-row xl:flex-row items-start justify-between md:gap-12 lg:gap-16 xl:gap-24">
 
                       {/* Left — image */}
-                      <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96">
+                      <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96 mx-auto md:mx-0 mb-8 md:mb-0">
                         <img
                           src="/founder.webp"
                           alt="Dipani"
@@ -333,7 +333,7 @@ export default function About() {
                       </div>
 
                       {/* Right — image */}
-                      <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96">
+                      <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96 mx-auto md:mx-0 mt-8 md:mt-0">
                         <img
                           src="/founder.webp"
                           alt="Dipani"

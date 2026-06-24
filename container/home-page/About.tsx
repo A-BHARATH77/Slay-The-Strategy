@@ -252,7 +252,7 @@ const WorksSection = () => {
         </div>
 
         {/* Right aligned See All Work button */}
-        <div className="absolute right-[6%] top-1/2 -translate-y-1/2 mt-4">
+        <div className="mt-6 md:absolute md:right-[6%] md:top-1/2 md:-translate-y-1/2 md:mt-4 lg:absolute lg:right-[6%] lg:top-1/2 lg:-translate-y-1/2 lg:mt-4 xl:absolute xl:right-[6%] xl:top-1/2 xl:-translate-y-1/2 xl:mt-4">
           <Link 
             href="/works" 
             className="relative inline-flex items-center overflow-hidden px-5 py-2 rounded-full font-sans text-xs font-medium tracking-wider uppercase text-[#f7f2e6] bg-[#576E47] hover:bg-[#3d5234] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(87,110,71,0.3)] transition-all duration-300 cursor-pointer whitespace-nowrap"
@@ -357,28 +357,55 @@ export default function About() {
 
 
       {/* About the Founder Section Header */}
-      <div className="relative z-10 bg-transparent pt-0 pb-0">
-        <div className="container mx-auto px-6 relative">
-          <h2 className="text-4xl md:text-5xl lg:text-7xl mb-10 text-center font-['Gilda_Display'] text-[#526855] -mt-10">
-            Behind <span className="text-[#526855] relative italic">
-              Slay the Strategy
-            </span>
+      <div className="relative z-10 bg-transparent pb-0 flex flex-col items-center w-full px-0 sm:px-12 lg:px-16">
+        <div className="container mx-auto px-4 sm:px-6 relative flex flex-col items-center">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl mb-4 text-center font-['Gilda_Display'] text-[#526855] leading-tight">
+            <span className="block md:inline whitespace-nowrap">The people behind</span> <span className="block md:inline whitespace-nowrap">the strategy</span>
           </h2>
+          <p className="text-[#526855]/85 text-center text-sm md:text-base max-w-xl mx-auto mb-10">
+            <span className="block md:inline">We were tired of marketing that looked fine and did nothing.</span> <span className="block md:inline">So we built something that actually works.</span>
+          </p>
+        </div>
+
+        {/* Right aligned About Us button */}
+        <div className="mt-6 md:absolute md:right-[6%] md:top-1/2 md:-translate-y-1/2 md:mt-4 lg:absolute lg:right-[6%] lg:top-1/2 lg:-translate-y-1/2 lg:mt-4 xl:absolute xl:right-[6%] xl:top-1/2 xl:-translate-y-1/2 xl:mt-4">
+          <Link 
+            href="/about" 
+            className="relative inline-flex items-center overflow-hidden px-5 py-2 rounded-full font-sans text-xs font-medium tracking-wider uppercase text-[#f7f2e6] bg-[#576E47] hover:bg-[#3d5234] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(87,110,71,0.3)] transition-all duration-300 cursor-pointer whitespace-nowrap"
+          >
+            About Us
+          </Link>
         </div>
       </div>
 
-      {/* Founder Section — text left, image right */}
+      {/* Founder Section — image left, text right */}
       <div className="relative z-10 py-10">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row lg:flex-row xl:flex-row items-start justify-between md:gap-32 lg:gap-48 xl:gap-64">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row lg:flex-row xl:flex-row items-start justify-between md:gap-12 lg:gap-16 xl:gap-24">
 
-          {/* Left — text content */}
-          <div className="flex flex-col gap-6 max-w-xl items-center text-center md:items-start md:text-left lg:items-start lg:text-left xl:items-start xl:text-left">
+          {/* Left — image */}
+          <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96 mx-auto md:mx-0 mb-8 md:mb-0">
+            <img
+              src="/founder.webp"
+              alt="Dipani"
+              className="w-full h-auto object-cover rounded-2xl shadow-xl"
+            />
+          </div>
+
+          {/* Right — text content */}
+          <div className="flex flex-col gap-4 max-w-xl items-center text-center md:items-start md:text-left lg:items-start lg:text-left xl:items-start xl:text-left">
+            <span className="text-[#BCA374] text-xs font-semibold uppercase tracking-[0.2em] font-sans">
+              Founder and CEO
+            </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal font-['Gilda_Display'] text-[#526855] leading-tight">
-              I am Dipani, a<br /><span className="italic">brand strategist</span>
+              Dipani Tibrewala
             </h2>
+            
+            <p className="text-[#526855]/90 text-base md:text-lg leading-[1.8] font-sans font-normal text-justify">
+              7.5 years in corporate marketing across Plan.Net TechNest India, Accenture, and Edelman. Campaigns for Jaguar, BMW, Microsoft, HPE, and Infosys. Left all of that to build the agency she always wished existed. Oversees strategy and creative on every single account personally.
+            </p>
 
             {/* Social links */}
-            <div className="flex flex-wrap gap-6 pt-2 justify-center md:justify-start lg:justify-start xl:justify-start">
+            {/* <div className="flex flex-wrap gap-6 pt-2 justify-center md:justify-start lg:justify-start xl:justify-start">
               {socialLinks.map((item) => (
                 <a
                   key={item.id}
@@ -391,11 +418,48 @@ export default function About() {
                   <span>{item.title}</span>
                 </a>
               ))}
-            </div>
+            </div> */}
+          </div>
+
+        </div>
+      </div>
+
+      {/* Second Founder Section (Duplicate) */}
+      <div className="relative z-10 py-10">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row lg:flex-row xl:flex-row items-start justify-between md:gap-12 lg:gap-16 xl:gap-24">
+
+           {/* Left — text content */}
+          <div className="flex flex-col gap-4 max-w-xl items-center text-center md:items-start md:text-left lg:items-start lg:text-left xl:items-start xl:text-left">
+            <span className="text-[#BCA374] text-xs font-semibold uppercase tracking-[0.2em] font-sans">
+              Co-Founder
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal font-['Gilda_Display'] text-[#526855] leading-tight">
+              Srivats Tibrewala
+            </h2>
+            
+            <p className="text-[#526855]/90 text-base md:text-lg leading-[1.8] font-sans font-normal text-justify">
+              The backbone of Slay the Strategy. Handles finance, operations, and everything that keeps the agency running sharp. The reason we can move fast without things falling apart.
+            </p>
+
+            {/* Social links */}
+            {/* <div className="flex flex-wrap gap-6 pt-2 justify-center md:justify-start lg:justify-start xl:justify-start">
+              {socialLinks.map((item) => (
+                <a
+                  key={`dup-${item.id}`}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center text-[#526855]/60 hover:text-[#526855] font-light transition-all duration-300 gap-2 font-['Gilda_Display']"
+                >
+                  {item.icon}
+                  <span>{item.title}</span>
+                </a>
+              ))}
+            </div> */}
           </div>
 
           {/* Right — image */}
-          <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96">
+          <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96 mx-auto md:mx-0 mt-8 md:mt-0">
             <img
               src="/founder.webp"
               alt="Dipani"

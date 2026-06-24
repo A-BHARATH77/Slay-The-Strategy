@@ -9,7 +9,7 @@ export default function Hero() {
         title="Hero content"
         scrolling="no" // Prevents scrolling within the iframe
         style={{
-          pointerEvents: "none" // Prevents the iframe from capturing scroll events
+          pointerEvents: "auto" // Allows clicking the button while body lets scroll pass through
         }}
       />
     </div>

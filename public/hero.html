@@ -232,6 +232,37 @@
         white-space: normal;
       }
     }
+
+    body {
+      pointer-events: none;
+    }
+
+    .see-all-works-btn {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      background-color: #f7f2e6;
+      color: #526855;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: 1px solid #526855;
+      cursor: pointer;
+      z-index: 99;
+      pointer-events: auto;
+      transition: all 0.3s ease;
+      font-family: "Gilda Display", serif;
+    }
+
+    .see-all-works-btn:hover {
+      background-color: #526855;
+      color: #f7f2e6;
+      border-color: #f7f2e6;
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 
@@ -274,10 +305,10 @@
       <div class="hero">
         <div class="h1">
           <h3>
-            Slay The Strategy
+            #not so HAYWIRE
           </h3>
           <p class="subheading">
-            #not So Haywire
+            We build brands that make people stop and actually look.
           </p>
         </div>
       </div>
@@ -437,6 +468,7 @@
           </div>
         </div>
       </footer>
+      <a href="/works" target="_parent" class="see-all-works-btn">See all works</a>
     </div>
   </div>
 
@@ -445,8 +477,8 @@
     document.addEventListener("DOMContentLoaded", function () {
       gsap.set(".img", { y: 500 });
       gsap.set(".loader-imgs", { x: 500 });
-      gsap.set(".nav-item", { y: 25, opacity: 0 });
-      gsap.set("h1, .item, footer", { y: 200 });
+       gsap.set(".nav-item", { y: 25, opacity: 0 });
+      gsap.set("h1, .item, footer, .see-all-works-btn", { y: 200 });
 
       const tl = gsap.timeline({ delay: 1 });
 
@@ -485,7 +517,7 @@
           "-=0.5"
         )
         .to(
-          ".nav-item, h1, footer, .item",
+          ".nav-item, h1, footer, .item, .see-all-works-btn",
           {
             y: 0,
             opacity: 1,

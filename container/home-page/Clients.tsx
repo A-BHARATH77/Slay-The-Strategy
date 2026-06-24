@@ -164,10 +164,15 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
         
         while (isMounted) {
           // Perform the flip
-          await controls.start({ 
-            rotateY: [0, 360], 
-            transition: { duration: 1.2, ease: "easeInOut" } 
-          });
+          try {
+            if (!isMounted) break;
+            await controls.start({ 
+              rotateY: [0, 360], 
+              transition: { duration: 1.2, ease: "easeInOut" } 
+            });
+          } catch (error) {
+            break;
+          }
           
           // Wait before the next flip (2 to 6 seconds)
           const waitTime = Math.random() * 4 + 2;
