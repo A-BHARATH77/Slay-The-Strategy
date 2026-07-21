@@ -17,7 +17,7 @@ const worksProjects = [
     description:
       'Originally hailing from Austria, Berlin-based photographer Matthias Leindinger is a young creative brimming with talent and ideas.',
     src: 'rock.jpg',
-    link: 'https://images.unsplash.com/photo-1605106702842-01a887a31122?q=80&w=500&auto=format&fit=crop',
+    link: '/project1.webp',
     color: '#f7f2e6',
   },
   {
@@ -25,7 +25,7 @@ const worksProjects = [
     description:
       'This is a story on the border between reality and imaginary, about the contradictory feelings that the insularity of a rocky, arid, and wild territory provokes—so French photographer Clément.',
     src: 'tree.jpg',
-    link: 'https://images.unsplash.com/photo-1605106250963-ffda6d2a4b32?w=500&auto=format&fit=crop&q=60',
+    link: '/project2.webp',
     color: '#f7f2e6',
   },
   {
@@ -33,7 +33,7 @@ const worksProjects = [
     description:
       "Though he views photography as a medium for storytelling, Zissou's images don't insist on a narrative. Both crisp and ethereal.",
     src: 'water.jpg',
-    link: 'https://images.unsplash.com/photo-1605106901227-991bd663255c?w=500&auto=format&fit=crop',
+    link: '/project3.webp',
     color: '#f7f2e6',
   },
 ];
