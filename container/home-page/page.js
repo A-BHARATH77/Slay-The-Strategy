@@ -5,23 +5,18 @@ import Image from 'next/image';
 import Lenis from '@studio-freight/lenis';
 import { useTransform, useScroll, motion } from 'framer-motion';
 
-const col1 = [
-  'vertical%20marquee/Heading%20(16).png',
-  'vertical%20marquee/Mahru%20Stories-18.png',
-  'vertical%20marquee/aavarna%20(2).png'
-];
-const col2 = [
+const images = [
+  'h1.jpeg',
+  '2.png',
+  '20.png',
   '23.png',
   '3.png',
-  'img1.jpg'
-];
-const col3 = [
-  'vertical%20marquee/hos%20(4).png',
-  'vertical%20marquee/jsk%20(2).png'
-];
-const col4 = [
+  'img1.jpg',
+  '9.png',
+  'h9.jpeg',
+  '18.png',
   '17.webp',
-  '7.png'
+  '7.png',
 ];
 
 export default function Home() {
@@ -70,10 +65,10 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div ref={gallery} className={styles.gallery}>
-        <Column images={col1} y={y} />
-        <Column images={col2} y={y2} />
-        <Column images={col3} y={y3} />
-        <Column images={col4} y={y4} />
+        <Column images={images.slice(0, 3)} y={y} />
+        <Column images={images.slice(3, 6)} y={y2} />
+        <Column images={images.slice(6, 9)} y={y3} />
+        <Column images={images.slice(9, 12)} y={y4} />
       </div>
     </main>
   );
