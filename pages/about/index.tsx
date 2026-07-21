@@ -17,7 +17,7 @@ const worksProjects = [
     description:
       'Originally hailing from Austria, Berlin-based photographer Matthias Leindinger is a young creative brimming with talent and ideas.',
     src: 'rock.jpg',
-    link: '/project1.webp',
+    link: '/Works/aavarna .png',
     color: '#f7f2e6',
   },
   {
@@ -25,7 +25,7 @@ const worksProjects = [
     description:
       'This is a story on the border between reality and imaginary, about the contradictory feelings that the insularity of a rocky, arid, and wild territory provokes—so French photographer Clément.',
     src: 'tree.jpg',
-    link: '/project2.webp',
+    link: '/Works/anvi.png',
     color: '#f7f2e6',
   },
   {
@@ -33,7 +33,7 @@ const worksProjects = [
     description:
       "Though he views photography as a medium for storytelling, Zissou's images don't insist on a narrative. Both crisp and ethereal.",
     src: 'water.jpg',
-    link: '/project3.webp',
+    link: '/Works/mahri.jpeg',
     color: '#f7f2e6',
   },
 ];
@@ -71,7 +71,7 @@ const WorksCard: React.FC<WorksCardProps> = ({ i, title, description, src, url, 
           </div>
           <div className='relative w-[60%] h-full rounded-lg overflow-hidden'>
             <motion.div className='w-full h-full' style={{ scale: imageScale }}>
-              <Image fill src={url} alt='image' className='object-cover' />
+              <Image fill src={url} alt='image' className='object-contain' />
             </motion.div>
           </div>
         </div>
@@ -209,13 +209,13 @@ export default function About() {
     { id: 2, title: "Wellness and D2C", imageUrl: "/niches/d2c.jpg", subline: "Full funnel strategy for brands selling direct. Awareness to repeat purchase." },
     { id: 3, title: "Education", imageUrl: "/niches/educaion .jpg", subline: "Trust building content for schools and ed brands that need credibility before conversion." },
     { id: 4, title: "Events and Culture", imageUrl: "/niches/event .jpg", subline: "Pre event energy, real time coverage, post event momentum." },
-    { id: 5, title: "Legal and Professional", imageUrl: "/niches/corporate .jpg", subline: "Making expertise feel human, interesting, and worth following." },
+    { id: 5, title: "Legal and Professional", imageUrl: "/niches/legal and business.jpg", subline: "Making expertise feel human, interesting, and worth following." },
     { id: 6, title: "Luxury and Automotive", imageUrl: "/niches/automobile .jpg", subline: "We understand what premium looks and sounds like." },
     { id: 7, title: "Corporate and B2B", imageUrl: "/niches/corporate .jpg", subline: "LinkedIn strategy and personal branding for leaders who want to be known." },
     { id: 8, title: "Media and Entertainment", imageUrl: "/niches/influencer.jpg", subline: "Podcast brands, creator accounts, and content ecosystems built to grow communities." },
     { id: 9, title: "Food and Beverage", imageUrl: "/niches/f&b.jpg", subline: "Content that makes people hungry and keeps them loyal." },
     { id: 10, title: "Technology", imageUrl: "/niches/technology .jpg", subline: "Clear, compelling content for complex products." },
-    { id: 11, title: "Jewellery and Luxury Lifestyle", imageUrl: "/niches/interior .jpg", subline: "Visual storytelling for brands where craft is the whole point." },
+    { id: 11, title: "Jewellery and Luxury Lifestyle", imageUrl: "/niches/jewelleyr .jpg", subline: "Visual storytelling for brands where craft is the whole point." },
     { id: 12, title: "Nightlife and Events", imageUrl: "/niches/event .jpg", subline: "Content that makes people feel like they are missing out if they are not there." }
   ];
 
@@ -357,6 +357,11 @@ export default function About() {
                     <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">
                       Industries we have built in
                     </h2>
+                    <div className="mt-4 max-w-xl mx-auto px-6">
+                      <p className="text-[#526855]/85 text-center text-sm md:text-base">
+                        Real growth requires understanding the specific nuances of your market.
+                      </p>
+                    </div>
                   </div>
 
                   {/* Improved Grid Layout */}

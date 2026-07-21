@@ -102,26 +102,22 @@ const nicheData = [
   {
     id: 1,
     title: "Automation",
-
-    imageUrl: "/i1.jpg"
+    imageUrl: "/Four/IMG_6769.webp"
   },
   {
     id: 2,
     title: "Interior Design Houses",
-
-    imageUrl: "/i2.jpg"
+    imageUrl: "/Four/IMG_6773.webp"
   },
   {
     id: 3,
     title: "Events",
-
-    imageUrl: "/i3.jpg"
+    imageUrl: "/Four/IMG_6775.webp"
   },
   {
     id: 4,
     title: "D2C",
-
-    imageUrl: "/i4.jpg"
+    imageUrl: "/Four/_DSC6551.webp"
   },
   {
     id: 5,
@@ -168,7 +164,7 @@ const worksProjects = [
     description:
       'Originally hailing from Austria, Berlin-based photographer Matthias Leindinger is a young creative brimming with talent and ideas.',
     src: 'rock.jpg',
-    link: 'https://images.unsplash.com/photo-1605106702842-01a887a31122?q=80&w=500&auto=format&fit=crop',
+    link: '/Works/aavarna .png',
     color: '#f7f2e6',
   },
   {
@@ -176,7 +172,7 @@ const worksProjects = [
     description:
       'This is a story on the border between reality and imaginary, about the contradictory feelings that the insularity of a rocky, arid, and wild territory provokes—so French photographer Clément.',
     src: 'tree.jpg',
-    link: 'https://images.unsplash.com/photo-1605106250963-ffda6d2a4b32?w=500&auto=format&fit=crop&q=60',
+    link: '/Works/anvi.png',
     color: '#f7f2e6',
   },
   {
@@ -184,7 +180,7 @@ const worksProjects = [
     description:
       "Though he views photography as a medium for storytelling, Zissou's images don't insist on a narrative. Both crisp and ethereal.",
     src: 'water.jpg',
-    link: 'https://images.unsplash.com/photo-1605106901227-991bd663255c?w=500&auto=format&fit=crop',
+    link: '/Works/mahri.jpeg',
     color: '#f7f2e6',
   },
 ];
@@ -222,7 +218,7 @@ const WorksCard: React.FC<WorksCardProps> = ({ i, title, description, src, url, 
           </div>
           <div className='relative w-[60%] h-full rounded-lg overflow-hidden'>
             <motion.div className='w-full h-full' style={{ scale: imageScale }}>
-              <Image fill src={url} alt='image' className='object-cover' />
+              <Image fill src={url} alt='image' className='object-contain' />
             </motion.div>
           </div>
         </div>
@@ -340,15 +336,15 @@ export default function About() {
       {/* ScrollRevealParagraph Intro Header */}
       <ScrollRevealParagraph
         theme="light"
-        text="Most brands show up online looking like everyone else. Same formats, same captions, same energy. We are the agency that fixes that. Slay the Strategy is a full service social media and digital marketing agency for founders and brands who want to be aesthetic, intentional, and impossible to scroll past. We do not do average. We do not do forgettable. We build things worth looking at."
+        text="Stop posting. Start positioning. Your audience doesn't need more content. They need a reason to remember your brand. We work with ambitious brands that want more than likes. From brand strategy and content creation to Meta Ads and consulting, we build marketing systems that attract attention and drive revenue. Because real growth starts long before you hit &quot;Post.&quot;"
         sectionLabel="/ Elevate Your Digital Presence"
         floatingImageSrc="/aboutImg.webp"
         floatingImageAlt="About Slay the Strategy"
         highlightWords={[]}
         chipAfter={{
-          "energy.": "/sms.png",
-          "fixes": "/vid.png",
-          "forgettable.": "/opt.png"
+          "positioning.": "/sms.png",
+          "likes.": "/vid.png",
+          "revenue.": "/opt.png"
         }}
       />
 

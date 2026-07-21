@@ -38,15 +38,15 @@ export default function About() {
         {/* ScrollRevealParagraph Intro Header */}
         <ScrollRevealParagraph
           theme="light"
-          text="Most brands show up online looking like everyone else. Same formats, same captions, same energy. We are the agency that fixes that. Slay the Strategy is a full service social media and digital marketing agency for founders and brands who want to be aesthetic, intentional, and impossible to scroll past. We do not do average. We do not do forgettable. We build things worth looking at."
+          text="Stop posting. Start positioning. Your audience doesn't need more content. They need a reason to remember your brand. We work with ambitious brands that want more than likes. From brand strategy and content creation to Meta Ads and consulting, we build marketing systems that attract attention and drive revenue. Because real growth starts long before you hit &quot;Post.&quot;"
           sectionLabel="/ Elevate Your Digital Presence"
           floatingImageSrc="/aboutImg.webp"
           floatingImageAlt="About Slay the Strategy"
           highlightWords={[]}
           chipAfter={{
-            "energy.": "/sms.png",
-            "fixes": "/vid.png",
-            "forgettable.": "/opt.png"
+            "positioning.": "/sms.png",
+            "likes.": "/vid.png",
+            "revenue.": "/opt.png"
           }}
         />
 

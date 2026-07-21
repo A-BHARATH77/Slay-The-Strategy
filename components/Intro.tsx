@@ -19,18 +19,18 @@ interface ScrollRevealParagraphProps {
   disablePin?: boolean;
 }
 
-const DEFAULT_TEXT = "Most brands show up online looking like everyone else. Same formats, same captions, same energy. We are the agency that fixes that. Slay the Strategy is a full service social media and digital marketing agency for founders and brands who want to be aesthetic, intentional, and impossible to scroll past. We do not do average. We do not do forgettable. We build things worth looking at.";
+const DEFAULT_TEXT = "Stop posting. Start positioning. Your audience doesn't need more content. They need a reason to remember your brand. We work with ambitious brands that want more than likes. From brand strategy and content creation to Meta Ads and consulting, we build marketing systems that attract attention and drive revenue. Because real growth starts long before you hit \"Post.\"";
 
 const HIGHLIGHT_WORDS = [
-  "aesthetic,", "intentional,", "impossible", "scroll", "past.",
-  "average.", "forgettable.", "worth", "looking"
+  "positioning.", "content.", "remember", "ambitious", "likes.",
+  "strategy", "attention", "revenue.", "growth"
 ];
 
 // Chips inserted AFTER these specific words
 const CHIP_AFTER: Record<string, string> = {
-  "energy.": "/about_section1.png",
-  "fixes":  "/about_section2.png",
-  "forgettable.":       "/about_section3.png",
+  "positioning.": "/about_section1.png",
+  "likes.": "/about_section2.png",
+  "revenue.": "/about_section3.png",
 };
 
 function InlineChip({ src }: { src: string }) {
@@ -43,8 +43,8 @@ function InlineChip({ src }: { src: string }) {
   );
 }
 
-export default function ScrollRevealParagraph({ 
-  text = DEFAULT_TEXT, 
+export default function ScrollRevealParagraph({
+  text = DEFAULT_TEXT,
   theme = 'dark',
   highlightWords = HIGHLIGHT_WORDS,
   chipAfter = CHIP_AFTER,
@@ -76,34 +76,34 @@ export default function ScrollRevealParagraph({
       { opacity: 0, x: -30 },
       { opacity: 1, x: 0, duration: 1.1, ease: 'power3.out' }
     )
-    .fromTo(imgRef.current,
-      { scale: 1.1 },
-      { scale: 1, duration: 1.1, ease: 'power3.out' },
-      '<'
-    );
+      .fromTo(imgRef.current,
+        { scale: 1.1 },
+        { scale: 1, duration: 1.1, ease: 'power3.out' },
+        '<'
+      );
 
     if (chipImgs.length > 0) {
       tl.fromTo(chipImgs,
-        { 
-          opacity: 0, 
-          y: 60, 
-          scale: 0.85, 
-          rotationX: 20, 
-          rotationY: -20, 
-          rotationZ: -10, 
-          transformPerspective: 500 
+        {
+          opacity: 0,
+          y: 60,
+          scale: 0.85,
+          rotationX: 20,
+          rotationY: -20,
+          rotationZ: -10,
+          transformPerspective: 500
         },
-        { 
-          opacity: 1, 
-          y: 0, 
-          scale: 1, 
-          rotationX: 6, 
-          rotationY: -8, 
-          rotationZ: -2, 
-          duration: 1.4, 
-          ease: 'power3.out', 
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          rotationX: 6,
+          rotationY: -8,
+          rotationZ: -2,
+          duration: 1.4,
+          ease: 'power3.out',
           stagger: 0.15,
-          clearProps: 'transform' 
+          clearProps: 'transform'
         },
         '<'
       );
@@ -213,7 +213,8 @@ export default function ScrollRevealParagraph({
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .sr-container {
           position: relative;
           background-color: transparent;
@@ -246,9 +247,9 @@ export default function ScrollRevealParagraph({
 
         .sr-floatingImageWrapper {
           float: left;
-          width: 170px;
-          height: 220px;
-          margin: 1rem 2rem 1rem 0;
+          width: 140px;
+          height: 180px;
+          margin: 0.5rem 1.5rem 0.5rem 0;
           border-radius: 12px;
           overflow: hidden;
           position: relative;
@@ -277,8 +278,8 @@ export default function ScrollRevealParagraph({
 
         .sr-paragraph {
           font-family: var(--font-gilda), "Gilda Display", serif;
-          font-size: clamp(2rem, 3.8vw, 3.2rem);
-          line-height: 1.25;
+          font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+          line-height: 1.45;
           font-weight: 400;
           display: block;
         }
@@ -312,8 +313,8 @@ export default function ScrollRevealParagraph({
 
         .sr-chipCard {
           display: block;
-          width: 120px;
-          height: 80px;
+          width: 85px;
+          height: 56px;
           border-radius: 12px;
           background: rgba(17, 17, 17, 0.9);
           border: 1px solid rgba(0, 0, 0, 0.6);
@@ -349,19 +350,19 @@ export default function ScrollRevealParagraph({
             min-height: auto;
           }
           .sr-floatingImageWrapper {
-            width: 80px;
-            height: 100px;
+            width: 75px;
+            height: 90px;
             margin: 0 1rem 0.5rem 0;
           }
           .sr-paragraph {
-            font-size: clamp(1.5rem, 5vw, 1.8rem);
-            line-height: 1.25;
+            font-size: clamp(1.3rem, 4.2vw, 1.6rem);
+            line-height: 1.4;
           }
           .sr-chipCard {
-            width: 80px;
-            height: 54px;
+            width: 65px;
+            height: 44px;
             padding: 2px;
-            border-radius: 8px;
+            border-radius: 6px;
           }
           .sr-chipInnerImg {
             border-radius: 6px;

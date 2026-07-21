@@ -33,7 +33,7 @@ const serviceItems = [
       "Weekly and monthly reporting"
     ],
     bestFor:"Brands ready to put money behind content that is built to perform.",
-    img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4f9b_Scene%20%235.webp",
+    img: "/services/performance marketing .webp",
   },
   {
     num: "(003)",
@@ -78,7 +78,7 @@ const serviceItems = [
       "Post launch support"
     ],
     bestFor:" Founders who need a site that looks sharp, loads fast, and actually performs.",
-    img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4f9a_Scene%2018.webp",
+    img: "/services/web design and development .webp",
   },
   {
     num: "(006)",
@@ -93,7 +93,7 @@ const serviceItems = [
       "Social media visual templates"
     ],
     bestFor: "New brands launching properly or existing brands ready for a real glow up.",
-    img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4f99_Scene%20%2310%20(Light).webp",
+    img: "/services/brand identity .webp",
   },
   {
     num: "(007)",
@@ -108,7 +108,7 @@ const serviceItems = [
       "Monthly performance review"
     ],
     bestFor:"Founders who want to be known and not just their company.",
-    img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4f9b_Scene%20%235.webp",
+    video: "/services/founder led .MP4",
   },
 ];
 
@@ -479,9 +479,9 @@ export const ServicesSection = () => {
                     objectFit: idx === 0 ? "cover" : "contain",
                     transition: "opacity 0.45s ease, transform 0.55s cubic-bezier(0.25,1,0.5,1)",
                     opacity: activeIdx === idx ? 1 : 0,
-                    transform: activeIdx === idx ? (idx === 0 ? "scale(1)" : "scale(0.85)") : "scale(1.08)",
+                    transform: activeIdx === idx ? (idx === 0 ? "scale(1)" : (idx === 6 ? "scale(0.95)" : "scale(0.85)")) : "scale(1.08)",
                     paddingBottom: idx === 0 ? "1.5rem" : undefined,
-                    paddingTop: (idx === 5 || idx === 6) ? "2rem" : undefined,
+                    paddingTop: (idx === 5) ? "2rem" : (idx === 6 ? "1rem" : undefined),
                 };
 
                 if (item.video) {

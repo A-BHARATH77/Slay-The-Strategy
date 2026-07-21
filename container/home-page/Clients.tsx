@@ -40,7 +40,7 @@ const testimonials = [
     role: "Founder, The Sacred Nook",
     description:
       "The team understood the soul of the brand before they created a single piece of content. Everything felt intentional and completely aligned with what we were building.",
-    img: "https://img.freepik.com/free-photo/portrait-smiling-blonde-woman_23-2148316635.jpg",
+    img: "/Testimonial%20Logos/sacred%20nook.jpg",
     rating: 4,
   },
   {
@@ -56,7 +56,7 @@ const testimonials = [
     role: "Jewellery Designer and Craftswoman",
     description:
       "The reels capture the craft in a way I never thought content could. Every shoot feels considered, every edit feels right. The work speaks for the jewellery the way it deserves to be spoken for.",
-    img: "https://img.freepik.com/premium-photo/woman-wearing-glasses-yellow-shirt_911060-133057.jpg",
+    img: "/Testimonial%20Logos/Punita%20Trikha%20final%20logo%20.PNG",
     rating: 5,
   },
 ];
@@ -201,30 +201,30 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
   const cards = [
     // Row 1
     <BrandCard key={0}>
-      <img src="/Clients/AVARNA%20(3).png" alt="AVARNA" className="w-full h-full object-contain" />
+      <img src="/home%20testimonials/AVARNA%20(3).png" alt="AVARNA" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={1}>
-      <img src="/Clients/Acyuta%20Logo.png" alt="Acyuta Logo" className="w-full h-full object-contain" />
+      <img src="/home%20testimonials/Blue%20Modern%20Health%20Care%20Center%20Retractable%20Banner.png" alt="Blue Modern Health Care Center" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={2}>
-      <img src="/Clients/Add%20a%20little%20bit%20of%20body%20text%20(11).png" alt="Body text" className="w-full h-full object-contain" />
+      <img src="/home%20testimonials/MAPLE%20LOGO.png" alt="Maple Logo" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={3}>
-      <img src="/Clients/Blue%20Modern%20Health%20Care%20Center%20Retractable%20Banner.png" alt="Modern Health Care Center" className="w-full h-full object-contain" />
+      <img src="/home%20testimonials/Mahru%20Stories%20(2).png" alt="Mahru Stories" className="w-full h-full object-contain" />
     </BrandCard>,
     
     // Row 2
     <BrandCard key={4}>
-      <img src="/Clients/Cellexa%20(2).png" alt="Cellexa" className="w-full h-full object-contain" />
+      <img src="/home%20testimonials/Punita%20Trikha%20final%20logo%20.PNG" alt="Punita Trikha" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={5}>
-      <img src="/Clients/GINNI PARMAR .png" alt="Ginni Parmar Tailor" className="w-full h-full object-contain" />
+      <img src="/home%20testimonials/claw%20nails%20.png" alt="Claw Nails" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={6}>
-      <img src="/Clients/Infamous%20Talents%20Black.png" alt="Infamous Talents" className="w-full h-full object-contain" />
+      <img src="/home%20testimonials/house%20of%20sodesii.webp" alt="House of Sodesii" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={7}>
-      <img src="/Clients/MAPLE%20LOGO.png" alt="Maple Logo" className="w-full h-full object-contain" />
+      <img src="/home%20testimonials/sleuth%20.jpg" alt="Sleuth" className="w-full h-full object-contain" />
     </BrandCard>,
 
     // Row 3
