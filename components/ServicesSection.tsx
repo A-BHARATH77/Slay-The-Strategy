@@ -48,7 +48,7 @@ const serviceItems = [
       "Graphic design and static creatives"
     ],
     bestFor:"Brands that need a content library that looks intentional, aesthetic, and completely theirs.",
-    img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4f99_Scene%20%2310%20(Light).webp",
+    video: "/services/IMG_5331.webm",
   },
   {
     num: "(004)",
@@ -108,7 +108,7 @@ const serviceItems = [
       "Monthly performance review"
     ],
     bestFor:"Founders who want to be known and not just their company.",
-    video: "/services/founder led .MP4",
+    video: "/services/founder-led.webm",
   },
 ];
 
