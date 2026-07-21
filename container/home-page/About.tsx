@@ -335,7 +335,8 @@ export default function About() {
   // State for controlling which service popup is showing
   const [activePopup, setActivePopup] = useState<string | null>(null);
   return (
-    <section className="w-full bg-[#f7f2e6] py-32 px-0 sm:px-12 lg:px-16 relative overflow-clip">
+    <>
+      <section className="w-full bg-[#f7f2e6] py-32 px-0 sm:px-12 lg:px-16 relative overflow-clip">
 
       {/* ScrollRevealParagraph Intro Header */}
       <ScrollRevealParagraph
@@ -472,8 +473,10 @@ export default function About() {
         </div>
       </div>
 
-      {/* Works Section — inline stacking cards (no ReactLenis root, uses window scroll) */}
-      <WorksSection />
     </section>
+
+      {/* Works Section — outside overflow-clip so position:sticky works correctly */}
+      <WorksSection />
+    </>
   );
 }
