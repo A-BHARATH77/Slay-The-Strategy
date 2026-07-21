@@ -63,7 +63,7 @@ const serviceItems = [
       "Multiple format outputs"
     ],
     bestFor:"Brands that want video content at scale without the time and cost of traditional production.",
-    video: "/services/ai-gen.mp4",
+    video: "/services/ai-gen.webm",
   },
   {
     num: "(005)",

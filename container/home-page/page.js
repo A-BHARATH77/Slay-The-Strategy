@@ -23,8 +23,8 @@ const col3Images = [
 ];
 
 const col4Images = [
-  'vertical marquee/RANGVERSE LOGO UPDATED PENGUIN REEL .mp4',
-  'vertical marquee/SaveGram.App_AQPvSeyBQO37u3aYmT6vF1ChgQyOlOMcYj-5fFwcl7bR3BFBFERXrLBdmrmyJnT1SxMknmdH5CripghYh33avQ2GCHr4RkHF3AjKw78.mp4'
+  'vertical marquee/firstvideo.webm',
+  'vertical marquee/secondvideo.webm'
 ];
 
 export default function Home() {
@@ -85,7 +85,7 @@ export default function Home() {
 const Column = ({ images, y }) => (
   <motion.div className={styles.column} style={{ y }}>
     {images.map((src) => {
-      const isVideo = src.toLowerCase().endsWith('.mp4');
+      const isVideo = src.toLowerCase().endsWith('.mp4') || src.toLowerCase().endsWith('.webm');
       return (
         <div key={src} className={styles.imageContainer}>
           {isVideo ? (
