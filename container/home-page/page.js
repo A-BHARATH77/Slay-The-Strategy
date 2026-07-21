@@ -23,8 +23,8 @@ const col3Images = [
 ];
 
 const col4Images = [
-  'vertical marquee/firstvideo.webm',
-  'vertical marquee/secondvideo.webm'
+  '23.png',
+  'img1.jpg'
 ];
 
 export default function Home() {
@@ -87,31 +87,17 @@ export default function Home() {
 
 const Column = ({ images, y }) => (
   <motion.div className={styles.column} style={{ y }}>
-    {images.map((src) => {
-      const isVideo = src.toLowerCase().endsWith('.mp4') || src.toLowerCase().endsWith('.webm');
-      return (
-        <div key={src} className={styles.imageContainer}>
-          {isVideo ? (
-            <video
-              src={`/${src}`}
-              autoPlay
-              loop
-              muted
-              playsInline
-              style={{ objectFit: "cover", width: "100%", height: "100%" }}
-            />
-          ) : (
-            <Image
-              src={`/${src}`}
-              alt={src}
-              fill
-              sizes="(max-width: 767px) 25vw, 25vw"
-              style={{ objectFit: "cover" }}
-              priority
-            />
-          )}
-        </div>
-      );
-    })}
+    {images.map((src) => (
+      <div key={src} className={styles.imageContainer}>
+        <Image
+          src={`/${src}`}
+          alt={src}
+          fill
+          sizes="(max-width: 767px) 25vw, 25vw"
+          style={{ objectFit: "cover" }}
+          priority
+        />
+      </div>
+    ))}
   </motion.div>
 );
