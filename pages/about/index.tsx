@@ -6,7 +6,7 @@ import { Target, TrendingUp, Users, Zap, Instagram, Linkedin, Facebook } from "l
 import Image from "next/image";
 import Link from "next/link";
 import { Curve } from "@/components";
-import { ReactLenis } from 'lenis/react';
+
 
 import { cn } from "@/lib/utils";
 
@@ -221,8 +221,7 @@ export default function About() {
 
 
   return (
-    <ReactLenis root>
-      <Curve backgroundColor={"#f7f2e6"}>
+    <Curve backgroundColor={"#f7f2e6"}>
         <div className="bg-[#f7f2e6]">
           <div className="w-full">
             <div className="w-full">
@@ -452,6 +451,5 @@ export default function About() {
           </div>
         </div>
       </Curve>
-    </ReactLenis>
   );
 }
