@@ -49,12 +49,13 @@ export default function Home() {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
     
+    let rafId;
     function raf(time) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
     
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
     
     const resize = () => {
       requestAnimationFrame(() => {
@@ -67,6 +68,8 @@ export default function Home() {
     
     return () => {
       window.removeEventListener('resize', resize);
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
     };
   }, []);
   

@@ -25,7 +25,7 @@ export default function About() {
         {/* Iframe taking full remaining height */}
         <div className="relative w-full h-full">
           <iframe
-            src="/works.html"
+            src="/works-gallery.html"
             title="Works Page"
             className="w-full h-full border-none"
           />
