@@ -1,6 +1,5 @@
 // thanks to oliver: https://www.youtube.com/@olivierlarose1
 'use client';
-import { ReactLenis } from 'lenis/react';
 import { useTransform, motion, useScroll, MotionValue } from 'motion/react';
 import { useRef } from 'react';
 import Image from 'next/image';
@@ -53,30 +52,28 @@ export default function index(): JSX.Element {
     offset: ['start start', 'end end'],
   });
   return (
-    <ReactLenis root>
-      <main className='bg-[#f7f2e6]' ref={container}>
-                <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">Works</h2>
-        <section className='w-full'>
-          {projects.map((project, i) => {
-            const targetScale = 1 - (projects.length - i) * 0.05;
-            return (
-              <Card
-                key={`p_${i}`}
-                i={i}
-                url={project?.link}
-                src={project?.src}
-                title={project?.title}
-                color={project?.color}
-                description={project?.description}
-                progress={scrollYProgress}
-                range={[i * 0.25, 1]}
-                targetScale={targetScale}
-              />
-            );
-          })}
-        </section>
-      </main>
-    </ReactLenis>
+    <main className='bg-[#f7f2e6]' ref={container}>
+      <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">Works</h2>
+      <section className='w-full'>
+        {projects.map((project, i) => {
+          const targetScale = 1 - (projects.length - i) * 0.05;
+          return (
+            <Card
+              key={`p_${i}`}
+              i={i}
+              url={project?.link}
+              src={project?.src}
+              title={project?.title}
+              color={project?.color}
+              description={project?.description}
+              progress={scrollYProgress}
+              range={[i * 0.25, 1]}
+              targetScale={targetScale}
+            />
+          );
+        })}
+      </section>
+    </main>
   );
 }
 interface CardProps {
