@@ -17,7 +17,7 @@ const serviceItems = [
       "Monthly performance report"
     ],
     bestFor: "Founders who are done figuring out what to post and want it handled by people who actually understand brand.",
-    img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4fa1_Scene%20%239.webp",
+    img: "/services/socialmedia.png",
   },
   {
     num: "(002)",
@@ -63,7 +63,7 @@ const serviceItems = [
       "Multiple format outputs"
     ],
     bestFor:"Brands that want video content at scale without the time and cost of traditional production.",
-    img: "https://cdn.prod.website-files.com/699b6466d5f19893993a4bf2/699b6466d5f19893993a4fbf_Scene%20%238.webp",
+    video: "/services/ai-gen.mp4",
   },
   {
     num: "(005)",
@@ -469,13 +469,8 @@ export const ServicesSection = () => {
             } as React.CSSProperties}
           >
             <div className="svc-media-img-wrap" style={{ order: activeIdx === 0 ? 2 : 1 }}>
-              {serviceItems.map((item, idx) => (
-                <img
-                  key={idx}
-                  src={item.img}
-                  alt={item.title}
-                  className={activeIdx === idx ? "svc-img-in" : "svc-img-out"}
-                  style={{
+              {serviceItems.map((item, idx) => {
+                const commonStyle: React.CSSProperties = {
                     position: idx === 0 ? "relative" : "absolute",
                     top: 0,
                     left: 0,
@@ -487,9 +482,33 @@ export const ServicesSection = () => {
                     transform: activeIdx === idx ? (idx === 0 ? "scale(1)" : "scale(0.85)") : "scale(1.08)",
                     paddingBottom: idx === 0 ? "1.5rem" : undefined,
                     paddingTop: (idx === 5 || idx === 6) ? "2rem" : undefined,
-                  }}
-                />
-              ))}
+                };
+
+                if (item.video) {
+                  return (
+                    <video
+                      key={idx}
+                      src={item.video}
+                      className={activeIdx === idx ? "svc-img-in" : "svc-img-out"}
+                      style={commonStyle}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
+                  );
+                }
+
+                return (
+                  <img
+                    key={idx}
+                    src={item.img}
+                    alt={item.title}
+                    className={activeIdx === idx ? "svc-img-in" : "svc-img-out"}
+                    style={commonStyle}
+                  />
+                );
+              })}
             </div>
             <p
               className="svc-media-desc"

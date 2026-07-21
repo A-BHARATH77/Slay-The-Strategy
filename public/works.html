@@ -4,7 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Social Moodboard</title>
+<link rel="stylesheet" href="main.css" />
 <style>
+:root {
+  --color-accent: rgb(115, 115, 115);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,19 +19,25 @@
 html,
 body {
   width: 100%;
-  height: 100%;
-  background-color: #494949;
+  background-color: #f7f2e6;
+  overflow-x: hidden;
+}
+
+#works-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
   overflow: hidden;
 }
     
-canvas {
-  position: fixed;
+#works-section canvas {
+  position: absolute;
   top: 0;
   left: 0;
 }
     
 nav {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
@@ -47,42 +58,8 @@ nav p {
   -moz-osx-font-smoothing: grayscale;
 }
     
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 2em;
-  display: flex;
-  justify-content: space-between;
-  z-index: 2;
-}
-    
-.bottom-nav button {
-  text-transform: uppercase;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 8px 20px;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-    
-.bottom-nav button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-    
-.bottom-nav button.active {
-  background-color: #d4f70c;
-  color: #000;
-}
-    
 .header {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -109,18 +86,267 @@ h2 {
   color: white;
   font-size: 50px;
 }
+
+.slide-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.graphics-text {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-family: "Basis Grotesque Pro";
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+footer {
+  width: 100%;
+  padding: 1.5em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer p {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-family: "Basis Grotesque Pro";
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.container {
+  width: 100%;
+  position: relative;
+  background: #f7f2e6;
+}
+
+.slider {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  transform-style: preserve-3d;
+  perspective: 750px;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 400px;
+  height: 500px;
+  overflow: hidden;
+}
+
+.slide-copy p {
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "PP Monument Extended";
+  font-size: 13px;
+  font-weight: bolder;
+  line-height: 150%;
+  color: var(--color-accent);
+}
+
+.slide-copy p#index {
+  font-family: "Basis Grotesque Pro";
+  font-size: 11px;
+  font-weight: 400;
+  margin-bottom: 0.75em;
+}
+
+#slide-1 {
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translateX(-50%) translateY(-50%) translateZ(-22500px);
+  opacity: 0;
+}
+
+#slide-2 {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translateX(-50%) translateY(-50%) translateZ(-20000px);
+  opacity: 0;
+}
+
+#slide-3 {
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translateX(-50%) translateY(-50%) translateZ(-17500px);
+  opacity: 0;
+}
+
+#slide-4 {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translateX(-50%) translateY(-50%) translateZ(-15000px);
+  opacity: 0;
+}
+
+#slide-5 {
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translateX(-50%) translateY(-50%) translateZ(-12500px);
+  opacity: 0;
+}
+
+#slide-6 {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translateX(-50%) translateY(-50%) translateZ(-10000px);
+  opacity: 0;
+}
+
+#slide-7 {
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translateX(-50%) translateY(-50%) translateZ(-7500px);
+  opacity: 0;
+}
+
+#slide-8 {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translateX(-50%) translateY(-50%) translateZ(-5000px);
+  opacity: 0;
+}
+
+#slide-9 {
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translateX(-50%) translateY(-50%) translateZ(-2500px);
+  opacity: 0.5;
+}
+
+#slide-10 {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translateX(-50%) translateY(-50%) translateZ(0px);
+  opacity: 1;
+}
 </style>
 </head>
 <body>
-<nav>
-</nav>
-<div class="header">
-  <h2>MOOD. ENERGY. IMPACT.</h2>
+<div id="works-section">
+  <nav>
+  </nav>
+  <div class="header">
+    <h2>MOOD. ENERGY. IMPACT.</h2>
+  </div>
 </div>
+
+<div class="container">
+  <div class="slider">
+      <div class="slide" id="slide-1">
+          <div class="slide-copy">
+          </div>
+          <div class="slide-img">
+              <img src="./g25.jpg" alt="" />
+          </div>
+      </div>
+      <div class="slide" id="slide-2">
+          <div class="slide-copy">
+          </div>
+          <div class="slide-img">
+              <img src="./g24.jpg" alt="" />
+          </div>
+      </div>
+      <div class="slide" id="slide-3">
+          <div class="slide-copy">
+          </div>
+          <div class="slide-img">
+              <img src="./g15.jpg" alt="" />
+          </div>
+      </div>
+      <div class="slide" id="slide-4">
+          <div class="slide-copy">
+          </div>
+          <div class="slide-img">
+              <img src="./g22.jpg" alt="" />
+          </div>
+      </div>
+      <div class="slide" id="slide-5">
+          <div class="slide-copy">
+          </div>
+          <div class="slide-img">
+              <img src="./g21.png" alt="" />
+          </div>
+      </div>
+      <div class="slide" id="slide-6">
+          <div class="slide-copy">
+          </div>
+          <div class="slide-img">
+              <img src="./g6.png" alt="" />
+          </div>
+      </div>
+      <div class="slide" id="slide-7">
+          <div class="slide-copy">
+          </div>
+          <div class="slide-img">
+              <img src="./g1.jpg" alt="" />
+          </div>
+      </div>
+      <div class="slide" id="slide-8">
+          <div class="slide-copy">
+          </div>
+          <div class="slide-img">
+              <img src="./g3.jpg" alt="" />
+          </div>
+      </div>
+      <div class="slide" id="slide-9">
+          <div class="slide-copy">
+          </div>
+          <div class="slide-img">
+              <img src="./g2.png" alt="" />
+          </div>
+      </div>
+      <div class="slide" id="slide-10">
+          <div class="slide-copy">
+          </div>
+          <div class="slide-img">
+              <img src="./g11.jpg" alt="" />
+          </div>
+      </div>
+      <div class="slide" id="slide-10">
+          <div class="slide-copy">
+          </div>
+          <div class="slide-img">
+              <img src="./g20.jpg" alt="" />
+          </div>
+      </div>
+      <div class="slide" id="slide-10">
+          <div class="slide-copy">
+          </div>
+          <div class="slide-img">
+              <img src="./g20.png" alt="" />
+          </div>
+      </div>
+  </div>
+</div>
+
+<footer>
+  <p>We don't do Ordinary</p>
+  <p>Est. 2025</p>
+</footer>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
 <script>
-// Using actual image files from the public folder
+// THREE.JS WORKS SCRIPT
 const allImages = [
   { url: "/w1.webp" },
   { url: "/w2.webp" },
@@ -130,7 +356,7 @@ const allImages = [
   { url: "/w6.webp" },
   { url: "/w14.webp" },
   { url: "/w8.webp" },
-  { url: "/w9.webp" }, // This might be one of the red juice images
+  { url: "/w9.webp" }, 
   { url: "/w10.webp" },
   { url: "/w11.webp" },
   { url: "/w12.webp" },
@@ -141,7 +367,7 @@ const allImages = [
   { url: "/w18.webp" },
   { url: "/p1.webp" },
   { url: "/p2.webp" },
-  { url: "/p3.webp" }, // This might be one of the red juice images
+  { url: "/p3.webp" }, 
   { url: "/p4.webp" },
   { url: "/p5.webp" },
   { url: "/p6.webp" },
@@ -161,14 +387,9 @@ const allImages = [
   { url: "/p20.webp" }
 ];
 
-// Comment out duplicates or visually similar images here
-// For example: if w9.webp and p3.webp are visually similar red juice images
-const excludedImages = ["/p3.webp"]; // Exclude one of the red juice images
-
-// Filter out any excluded images
+const excludedImages = ["/p3.webp"]; 
 const images = allImages.filter(img => !excludedImages.includes(img.url));
 
-// Remove any duplicates from the images array
 const uniqueUrls = new Set();
 const uniqueImages = images.filter(img => {
   if (uniqueUrls.has(img.url)) {
@@ -178,24 +399,20 @@ const uniqueImages = images.filter(img => {
   return true;
 });
 
-// configuration parameters
 const params = {
-  // Adjust rows and columns based on available unique images
-  // With ~37 unique images, we can use a 6x6 grid (36 images)
   rows: 6,
   columns: 6,
   curvature: 5,
-  spacing: 10, // Adjusted spacing for the larger grid
-  imageWidth: 6, // Slightly reduced size for better fit
-  imageHeight: 8, // Slightly reduced size for better fit
+  spacing: 10, 
+  imageWidth: 6, 
+  imageHeight: 8, 
   depth: 7.5,
   elevation: 0,
   lookAtRange: 20,
   verticalCurvature: 0.5,
-  anisotropy: 16, // Added for better image quality
+  anisotropy: 16, 
 };
 
-// scene setup
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
   25,
@@ -207,21 +424,18 @@ camera.position.set(0, 0, 40);
 
 const renderer = new THREE.WebGLRenderer({
   antialias: true,
-  powerPreference: "high-performance" // Added for better performance
+  powerPreference: "high-performance" 
 });
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0x494949);
-renderer.setPixelRatio(window.devicePixelRatio); // Match device pixel ratio
-document.body.appendChild(renderer.domElement);
+renderer.setClearColor(0xf7f2e6);
+renderer.setPixelRatio(window.devicePixelRatio); 
+// Append to works-section
+document.getElementById('works-section').appendChild(renderer.domElement);
 
-// Create a texture loader with improved settings
 const textureLoader = new THREE.TextureLoader();
-
-// Enable anisotropic filtering for all textures
 const maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
 params.anisotropy = Math.min(params.anisotropy, maxAnisotropy);
 
-// Load all textures in advance with high quality settings
 const textureCache = {};
 uniqueImages.forEach(image => {
   const texture = textureLoader.load(image.url);
@@ -232,7 +446,6 @@ uniqueImages.forEach(image => {
   textureCache[image.url] = texture;
 });
 
-// debug mode setup
 const DEBUG_MODE = false;
 let gui;
 if (DEBUG_MODE) {
@@ -257,20 +470,17 @@ function updateTextureQuality() {
   });
 }
 
-// header animation setup
 const header = document.querySelector(".header");
 let headerRotationX = 0;
 let headerRotationY = 0;
 let headerTranslateZ = 0;
 
-// mouse movement variables
 let mouseX = 0;
 let mouseY = 0;
 let targetX = 0;
 let targetY = 0;
 const lookAtTarget = new THREE.Vector3(0, 0, 0);
 
-// gallery mathematics functions
 function calculateRotations(x, y) {
   const a = 1 / (params.depth * params.curvature);
   const slopeY = -2 * a * x;
@@ -300,21 +510,17 @@ function calculatePosition(row, col) {
   return { x, y, z, rotationX, rotationY };
 }
 
-// gallery creation functions
 let galleryImages = [];
-let usedImageIndices = new Set(); // Track which images have been used
+let usedImageIndices = new Set(); 
 
 function createImagePlane(row, col) {
-  // Calculate total images needed and check against available unique images
   const totalImagesNeeded = params.rows * params.columns;
   
-  // Get a random unused image index
   let imageIndex;
   do {
     imageIndex = Math.floor(Math.random() * images.length);
   } while (usedImageIndices.has(imageIndex) && usedImageIndices.size < images.length);
   
-  // Add this index to used set
   usedImageIndices.add(imageIndex);
   
   const imageData = images[imageIndex];
@@ -323,7 +529,6 @@ function createImagePlane(row, col) {
     params.imageHeight
   );
 
-  // Use cached texture with higher quality settings
   const texture = textureCache[imageData.url];
   
   const material = new THREE.MeshBasicMaterial({
@@ -363,14 +568,11 @@ function updateGallery() {
 
   galleryImages = [];
   
-  // Reset used images tracking
   usedImageIndices = new Set();
   
-  // Ensure we're not trying to display more unique images than we have
   const totalImagesNeeded = params.rows * params.columns;
   if (totalImagesNeeded > images.length) {
     console.warn(`Gallery needs ${totalImagesNeeded} images but only ${images.length} unique images are available. Adjusting rows/columns.`);
-    // Adjust rows/columns to match available images
     const sqrtImages = Math.floor(Math.sqrt(images.length));
     params.rows = sqrtImages;
     params.columns = Math.ceil(images.length / sqrtImages);
@@ -385,7 +587,6 @@ function updateGallery() {
   }
 }
 
-// event listeners
 document.addEventListener("mousemove", (event) => {
   mouseX = (event.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
   mouseY = (event.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
@@ -402,11 +603,9 @@ window.addEventListener("resize", () => {
   renderer.setPixelRatio(window.devicePixelRatio);
 });
 
-// animation loop
 function animate() {
   requestAnimationFrame(animate);
 
-  // update header transform
   const targetTransform = `
     translate(-50%, -50%)
     perspective(1000px)
@@ -419,7 +618,6 @@ function animate() {
   header.style.transition =
     "transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)";
 
-  // update camera target
   targetX += (mouseX - targetX) * 0.05;
   targetY += (mouseY - targetY) * 0.05;
 
@@ -430,7 +628,6 @@ function animate() {
 
   const time = performance.now() * 0.001;
 
-  // update each plane
   galleryImages.forEach((plane) => {
     const {
       basePosition,
@@ -446,7 +643,6 @@ function animate() {
     const parallaxY = targetY * parallaxFactor * 3 * randomOffset.y;
     const oscillation = Math.sin(time + phaseOffset) * mouseDistance * 0.1;
 
-    // update position
     plane.position.x =
       basePosition.x + parallaxX + oscillation * randomOffset.x;
     plane.position.y =
@@ -454,7 +650,6 @@ function animate() {
     plane.position.z =
       basePosition.z + oscillation * randomOffset.z * parallaxFactor;
 
-    // update rotation
     plane.rotation.x =
       baseRotation.x +
       targetY * rotationModifier.x * mouseDistance +
@@ -475,29 +670,56 @@ function animate() {
   renderer.render(scene, camera);
 }
 
-// No bottom navigation
-
-// Add functionality to buttons
-const buttons = document.querySelectorAll('.bottom-nav button');
-buttons.forEach(button => {
-  button.addEventListener('click', function() {
-    // Remove active class from all buttons
-    buttons.forEach(btn => btn.classList.remove('active'));
-    // Add active class to clicked button
-    this.classList.add('active');
-    
-    // Filter images by selected category
-    const contentType = this.textContent.toLowerCase();
-    console.log(`Switching to ${contentType}`);
-    
-    // Update gallery with filtered images
-    updateGallery(contentType);
-  });
-});
-
-// initialize gallery and start animation
 updateGallery();
 animate();
+
+// GSAP SCROLL TRIGGER SCRIPT
+gsap.registerPlugin(ScrollTrigger);
+window.addEventListener("load", function () {
+    const slides = gsap.utils.toArray(".slide");
+
+    function getInitialTranslateZ(slide) {
+        const style = window.getComputedStyle(slide);
+        const matrix = style.transform.match(/matrix3d\((.+)\)/);
+        if (matrix) {
+            const values = matrix[1].split(", ");
+            return parseFloat(values[14]) || 0;
+        }
+        return 0;
+    }
+
+    function mapRange(value, inMin, inMax, outMin, outMax) {
+        return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+    }
+
+    const initialZs = slides.map(slide => getInitialTranslateZ(slide));
+
+    ScrollTrigger.create({
+        trigger: ".slider",
+        start: "top top",
+        end: "+=4000",
+        scrub: true,
+        pin: true,
+        onUpdate: (self) => {
+            const progress = self.progress;
+            const zIncrement = progress * 22500;
+            
+            slides.forEach((slide, index) => {
+                const currentZ = initialZs[index] + zIncrement;
+                let opacity;
+
+                if (currentZ >= -2500) {
+                    opacity = mapRange(currentZ, -2500, 0, 0.5, 1);
+                } else {
+                    opacity = mapRange(currentZ, -5000, -2500, 0, 0.5);
+                }
+
+                slide.style.opacity = opacity;
+                slide.style.transform = `translateX(-50%) translateY(-50%) translateZ(${currentZ}px)`;
+            });
+        },
+    });
+});
 </script>
 </body>
 </html>

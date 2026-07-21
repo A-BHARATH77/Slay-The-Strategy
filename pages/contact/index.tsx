@@ -181,19 +181,6 @@ export default function Contact() {
                 >
                   Submit
                 </button>
-
-                {/* Quick chat link */}
-                <p className="text-center text-xs text-[#516856]/60 font-['Gilda_Display']">
-                  Prefer quick chat?{" "}
-                  <a
-                    href="https://cal.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#516856] underline underline-offset-2 hover:text-[#516856] transition-colors"
-                  >
-                    Book a Call
-                  </a>
-                </p>
               </form>
             )}
           </div>

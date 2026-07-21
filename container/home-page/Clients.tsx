@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 
 const testimonials = [
   {
@@ -9,7 +8,7 @@ const testimonials = [
     role: "Founder, Mahru",
     description:
       "Dipani is hands-on and hardworking. I chose to work with her because of her clear vision and strong knowledge. Within just one month she understood the deliverables and went beyond the initial requirements by continuously improving on the ask. She is easy to work with, proactive, and brings a thoughtful approach to her work.",
-    img: "https://img.freepik.com/free-photo/brunette-girl-posing_23-2148108748.jpg",
+    img: "/Testimonial%20Logos/Mahru%20Stories%20(2).png",
     rating: 5,
   },
   {
@@ -17,7 +16,7 @@ const testimonials = [
     role: "Manager, Orient Polyfilms",
     description:
       "Dipani supported us with social media planning and execution including content direction, posting, and performance tracking. Her approach was structured and thoughtful with a clear understanding of brand positioning and audience behaviour. Communication was smooth, timelines were respected, and the work consistently reflected what we were aiming to build.",
-    img: "https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg",
+    img: "/Testimonial%20Logos/orient%20.png",
     rating: 5,
   },
   {
@@ -25,7 +24,7 @@ const testimonials = [
     role: "Maple Bear Canadian Preschool",
     description:
       "You handled our work with professionalism and clear understanding. The experience has been smooth and the results are excellent.",
-    img: "https://img.freepik.com/free-photo/smiling-asian-woman_23-2147766303.jpg",
+    img: "/Testimonial%20Logos/MAPLE%20LOGO.png",
     rating: 5,
   },
   {
@@ -33,7 +32,7 @@ const testimonials = [
     role: "Founder, Wallora",
     description:
       "The content was consistent, on brand, and actually got noticed. Working with the team felt seamless and the quality never dropped.",
-    img: "https://img.freepik.com/free-photo/portrait-modern-man_23-2147960990.jpg",
+    img: "/Testimonial%20Logos/Add%20a%20little%20bit%20of%20body%20text%20(11).png",
     rating: 5,
   },
   {
@@ -49,7 +48,7 @@ const testimonials = [
     role: "Owner, Claw Nails",
     description:
       "We went from inconsistent posting to a feed people actually stop and look at. The aesthetic is exactly what we wanted and the strategy behind it makes the whole thing work.",
-    img: "https://img.freepik.com/premium-photo/woman-wearing-glasses-yellow-shirt_911060-133057.jpg",
+    img: "/Testimonial%20Logos/claw%20nails%20.png",
     rating: 5,
   },
   {
@@ -202,93 +201,52 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
   const cards = [
     // Row 1
     <BrandCard key={0}>
-      <div className="flex items-center gap-2">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-          <path d="M12 2l8 5v10l-8 5-8-5V7z" />
-          <path d="M12 22V12M12 12L4 7M12 12l8-5" />
-        </svg>
-        <span className="text-xl md:text-2xl font-medium tracking-tight text-black">acme</span>
-      </div>
+      <img src="/Clients/AVARNA%20(3).png" alt="AVARNA" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={1}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <rect x="2" y="6" width="20" height="12" rx="6" />
-        <rect x="6" y="9" width="12" height="6" rx="3" />
-      </svg>
+      <img src="/Clients/Acyuta%20Logo.png" alt="Acyuta Logo" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={2}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <path d="M12 15a3 3 0 0 0 3-3H9a3 3 0 0 0 3 3z" fill="currentColor" />
-        <path d="M12 9V4M9 9V5M15 9V5M6 9V6M18 9V6" strokeLinecap="round" />
-      </svg>
+      <img src="/Clients/Add%20a%20little%20bit%20of%20body%20text%20(11).png" alt="Body text" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={3}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-black">
-        <path d="M4 7h12l4-2M4 12h14l4-2M4 17h16l4-2" strokeLinecap="round" />
-      </svg>
+      <img src="/Clients/Blue%20Modern%20Health%20Care%20Center%20Retractable%20Banner.png" alt="Modern Health Care Center" className="w-full h-full object-contain" />
     </BrandCard>,
     
     // Row 2
     <BrandCard key={4}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-black">
-        <path d="M8 8c-2.2 0-4 1.8-4 4s1.8 4 4 4c2.2 0 3-2 4-4s1.8-4 4-4c2.2 0 4 1.8 4 4s-1.8 4-4 4c-2.2 0-3-2-4-4s-1.8-4-4-4z" />
-      </svg>
+      <img src="/Clients/Cellexa%20(2).png" alt="Cellexa" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={5}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      </svg>
+      <img src="/Clients/GINNI PARMAR .png" alt="Ginni Parmar Tailor" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={6}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M6 12c2-2 4 2 6 0s4-2 6 0M8 8c1.5-1.5 3 1.5 4.5 0s3-1.5 4.5 0M8 16c1.5-1.5 3 1.5 4.5 0s3-1.5 4.5 0" strokeLinecap="round" />
-      </svg>
+      <img src="/Clients/Infamous%20Talents%20Black.png" alt="Infamous Talents" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={7}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-      </svg>
+      <img src="/Clients/MAPLE%20LOGO.png" alt="Maple Logo" className="w-full h-full object-contain" />
     </BrandCard>,
 
     // Row 3
     <BrandCard key={8}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" />
-        <path d="M12 2v20M2 8.5h20M2 15.5h20" />
-      </svg>
+      <img src="/Clients/Mahru%20Stories%20(2).png" alt="Mahru Stories" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={9}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <circle cx="12" cy="12" r="10" />
-        <circle cx="12" cy="12" r="6" />
-        <circle cx="12" cy="12" r="2" />
-      </svg>
+      <img src="/Clients/Perspective%20Studio%20Posts!%20(1).png" alt="Perspective Studio" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={10}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <path d="M12 2L2 22h20L12 2z" />
-        <path d="M12 2v20M7 12h10" />
-      </svg>
+      <img src="/Clients/claw%20nails%20.png" alt="Claw Nails" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={11}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <path d="M12 2l10 10-10 10L2 12z" />
-        <path d="M12 2v20M2 12h20" />
-      </svg>
+      <img src="/Clients/kapoma.jpeg" alt="Kapoma" className="w-full h-full object-contain" />
     </BrandCard>,
 
     // Row 4
     <BrandCard key={12}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <rect x="8" y="8" width="8" height="8" rx="1" />
-      </svg>
+      <img src="/Clients/luxx-spas-langley-logo%20(1).png" alt="Luxx Spas" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={13}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <path d="M17.5 19A3.5 3.5 0 0 0 21 15.5c0-2.79-2.54-4.5-5-4.5-.42-1.76-1.91-3-4-3-2.6 0-4.6 2.05-4.6 4.6 0 .4.04.8.1 1.2A3.5 3.5 0 0 0 4 17.5c0 1.93 1.57 3.5 3.5 3.5h10z" />
-      </svg>
+      <img src="/Clients/orange%20(2).png" alt="Orange" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={14}>
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">

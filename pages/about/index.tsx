@@ -205,18 +205,18 @@ export default function About() {
   const isMobilePhone = safeWindowWidth < 768;
 
   const nicheData = [
-    { id: 1, title: "Fashion and Lifestyle", imageUrl: "/i1.jpg", subline: "Aesthetic first content that sells the feeling before the product." },
-    { id: 2, title: "Wellness and D2C", imageUrl: "/i2.jpg", subline: "Full funnel strategy for brands selling direct. Awareness to repeat purchase." },
-    { id: 3, title: "Education", imageUrl: "/i3.jpg", subline: "Trust building content for schools and ed brands that need credibility before conversion." },
-    { id: 4, title: "Events and Culture", imageUrl: "/i4.jpg", subline: "Pre event energy, real time coverage, post event momentum." },
-    { id: 5, title: "Legal and Professional", imageUrl: "/i5.jpg", subline: "Making expertise feel human, interesting, and worth following." },
-    { id: 6, title: "Luxury and Automotive", imageUrl: "/ch.png", subline: "We understand what premium looks and sounds like." },
-    { id: 7, title: "Corporate and B2B", imageUrl: "/i1.jpg", subline: "LinkedIn strategy and personal branding for leaders who want to be known." },
-    { id: 8, title: "Media and Entertainment", imageUrl: "/i2.jpg", subline: "Podcast brands, creator accounts, and content ecosystems built to grow communities." },
-    { id: 9, title: "Food and Beverage", imageUrl: "/i3.jpg", subline: "Content that makes people hungry and keeps them loyal." },
-    { id: 10, title: "Technology", imageUrl: "/i4.jpg", subline: "Clear, compelling content for complex products." },
-    { id: 11, title: "Jewellery and Luxury Lifestyle", imageUrl: "/i5.jpg", subline: "Visual storytelling for brands where craft is the whole point." },
-    { id: 12, title: "Nightlife and Events", imageUrl: "/ch.png", subline: "Content that makes people feel like they are missing out if they are not there." }
+    { id: 1, title: "Fashion and Lifestyle", imageUrl: "/niches/fashion .jpg", subline: "Aesthetic first content that sells the feeling before the product." },
+    { id: 2, title: "Wellness and D2C", imageUrl: "/niches/d2c.jpg", subline: "Full funnel strategy for brands selling direct. Awareness to repeat purchase." },
+    { id: 3, title: "Education", imageUrl: "/niches/educaion .jpg", subline: "Trust building content for schools and ed brands that need credibility before conversion." },
+    { id: 4, title: "Events and Culture", imageUrl: "/niches/event .jpg", subline: "Pre event energy, real time coverage, post event momentum." },
+    { id: 5, title: "Legal and Professional", imageUrl: "/niches/corporate .jpg", subline: "Making expertise feel human, interesting, and worth following." },
+    { id: 6, title: "Luxury and Automotive", imageUrl: "/niches/automobile .jpg", subline: "We understand what premium looks and sounds like." },
+    { id: 7, title: "Corporate and B2B", imageUrl: "/niches/corporate .jpg", subline: "LinkedIn strategy and personal branding for leaders who want to be known." },
+    { id: 8, title: "Media and Entertainment", imageUrl: "/niches/influencer.jpg", subline: "Podcast brands, creator accounts, and content ecosystems built to grow communities." },
+    { id: 9, title: "Food and Beverage", imageUrl: "/niches/f&b.jpg", subline: "Content that makes people hungry and keeps them loyal." },
+    { id: 10, title: "Technology", imageUrl: "/niches/technology .jpg", subline: "Clear, compelling content for complex products." },
+    { id: 11, title: "Jewellery and Luxury Lifestyle", imageUrl: "/niches/interior .jpg", subline: "Visual storytelling for brands where craft is the whole point." },
+    { id: 12, title: "Nightlife and Events", imageUrl: "/niches/event .jpg", subline: "Content that makes people feel like they are missing out if they are not there." }
   ];
 
 
@@ -361,7 +361,7 @@ export default function About() {
                   </div>
 
                   {/* Improved Grid Layout */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 md:gap-8 max-w-7xl mx-auto">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 md:gap-12 max-w-7xl mx-auto">
                     {nicheData.map((niche) => (
                       <div
                         key={niche.id}
@@ -377,12 +377,6 @@ export default function About() {
                           />
                           <div className="absolute inset-0 group-hover:opacity-60 transition-opacity duration-300"></div>
 
-                          {/* Hover indicator */}
-                          <div className="absolute top-4 right-4 bg-[#f7f2e6] rounded-full p-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                            <svg className="w-4 h-4 text-[#526855]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                            </svg>
-                          </div>
                         </div>
 
                         <div className="p-6">
