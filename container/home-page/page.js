@@ -5,26 +5,18 @@ import Image from 'next/image';
 import Lenis from '@studio-freight/lenis';
 import { useTransform, useScroll, motion } from 'framer-motion';
 
-const col1Images = [
-  'vertical marquee/Heading (16).png',
-  'vertical marquee/Mahru Stories-18.png'
-];
-
-const col2Images = [
+const images = [
+  'h1.jpeg',
+  '2.png',
+  '20.png',
   '23.png',
   '3.png',
-  'img1.jpg'
-];
-
-const col3Images = [
-  'vertical marquee/aavarna (2).png',
-  'vertical marquee/hos (4).png',
-  'vertical marquee/jsk (2).png'
-];
-
-const col4Images = [
-  '23.png',
-  'img1.jpg'
+  'img1.jpg',
+  '9.png',
+  'h9.jpeg',
+  '18.png',
+  '17.webp',
+  '7.png',
 ];
 
 export default function Home() {
@@ -49,13 +41,12 @@ export default function Home() {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
     
-    let rafId;
     function raf(time) {
       lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
+      requestAnimationFrame(raf);
     }
     
-    rafId = requestAnimationFrame(raf);
+    requestAnimationFrame(raf);
     
     const resize = () => {
       requestAnimationFrame(() => {
@@ -68,18 +59,16 @@ export default function Home() {
     
     return () => {
       window.removeEventListener('resize', resize);
-      cancelAnimationFrame(rafId);
-      lenis.destroy();
     };
   }, []);
   
   return (
     <main className={styles.main}>
       <div ref={gallery} className={styles.gallery}>
-        <Column images={col1Images} y={y} />
-        <Column images={col2Images} y={y2} />
-        <Column images={col3Images} y={y3} />
-        <Column images={col4Images} y={y4} />
+        <Column images={images.slice(0, 3)} y={y} />
+        <Column images={images.slice(3, 6)} y={y2} />
+        <Column images={images.slice(6, 9)} y={y3} />
+        <Column images={images.slice(9, 12)} y={y4} />
       </div>
     </main>
   );

@@ -168,7 +168,7 @@ const worksProjects = [
     description:
       'Originally hailing from Austria, Berlin-based photographer Matthias Leindinger is a young creative brimming with talent and ideas.',
     src: 'rock.jpg',
-    link: '/project1.webp',
+    link: 'https://images.unsplash.com/photo-1605106702842-01a887a31122?q=80&w=500&auto=format&fit=crop',
     color: '#f7f2e6',
   },
   {
@@ -176,7 +176,7 @@ const worksProjects = [
     description:
       'This is a story on the border between reality and imaginary, about the contradictory feelings that the insularity of a rocky, arid, and wild territory provokes—so French photographer Clément.',
     src: 'tree.jpg',
-    link: '/project2.webp',
+    link: 'https://images.unsplash.com/photo-1605106250963-ffda6d2a4b32?w=500&auto=format&fit=crop&q=60',
     color: '#f7f2e6',
   },
   {
@@ -184,7 +184,7 @@ const worksProjects = [
     description:
       "Though he views photography as a medium for storytelling, Zissou's images don't insist on a narrative. Both crisp and ethereal.",
     src: 'water.jpg',
-    link: '/project3.webp',
+    link: 'https://images.unsplash.com/photo-1605106901227-991bd663255c?w=500&auto=format&fit=crop',
     color: '#f7f2e6',
   },
 ];
@@ -335,8 +335,7 @@ export default function About() {
   // State for controlling which service popup is showing
   const [activePopup, setActivePopup] = useState<string | null>(null);
   return (
-    <>
-      <section className="w-full bg-[#f7f2e6] py-32 px-0 sm:px-12 lg:px-16 relative overflow-clip">
+    <section className="w-full bg-[#f7f2e6] py-32 px-0 sm:px-12 lg:px-16 relative overflow-clip">
 
       {/* ScrollRevealParagraph Intro Header */}
       <ScrollRevealParagraph
@@ -473,10 +472,8 @@ export default function About() {
         </div>
       </div>
 
-    </section>
-
-      {/* Works Section — outside overflow-clip so position:sticky works correctly */}
+      {/* Works Section — inline stacking cards (no ReactLenis root, uses window scroll) */}
       <WorksSection />
-    </>
+    </section>
   );
 }
