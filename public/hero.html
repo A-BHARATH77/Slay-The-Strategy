@@ -170,7 +170,7 @@
     footer {
       width: 100%;
       position: absolute;
-      bottom: 80px; /* Changed from 30px to 80px to move it up */
+      bottom: 80px;
       right: 0;
       overflow: hidden;
       clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
@@ -183,12 +183,14 @@
       position: relative;
       display: flex;
       align-items: center;
-      transform: translateY(-20px); /* Added this to move up by 20px */
+      transform: translateY(-20px);
     }
 
     .marquee-track {
       display: flex;
       gap: 20px;
+      flex-shrink: 0;
+      padding-right: 20px;
       animation: scroll 20s linear infinite;
       top: 50%;
     }
@@ -199,7 +201,7 @@
       }
 
       100% {
-        transform: translateX(-50%);
+        transform: translateX(-100%);
       }
     }
 
@@ -313,156 +315,148 @@
       </div>
 
       <footer>
-        <div class="marquee-container">
+                <div class="marquee-container">
           <div class="marquee-track">
             <div class="item">
-              <img src="/1.png" alt="" />
+              <img src="/Hero Images/1eb2084c-7e57-46aa-aeb9-6fc103caf964.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/2.png" alt="" />
+              <img src="/Hero Images/3c48ef64-82f2-4257-8aa7-30bbf139ebe3.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/3.png" alt="" />
+              <img src="/Hero Images/555a7150-41d8-4e2f-9d92-71c40c9333f6.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/4.png" alt="" />
+              <img src="/Hero Images/56.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/5.png" alt="" />
+              <img src="/Hero Images/57.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/23.png" alt="" />
+              <img src="/Hero Images/6.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/7.png" alt="" />
+              <img src="/Hero Images/73651a40-037c-4434-b303-f83ff9700ad9.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/8.png" alt="" />
+              <img src="/Hero Images/Copy of 3 .webp" alt="" />
             </div>
             <div class="item">
-              <img src="/9.png" alt="" />
+              <img src="/Hero Images/Copy of _DSC6382.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/10.webp" alt="" />
+              <img src="/Hero Images/hf_20260317_214719_dc3f2bde-6050-4539-8183-6059d73b502b.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/11.png" alt="" />
+              <img src="/Hero Images/hf_20260418_211952_4a228ec4-b02c-44b5-91ff-676a0f5e2541 (1).webp" alt="" />
             </div>
             <div class="item">
-              <img src="/12.png" alt="" />
-            </div>
-            <!-- Duplicate items for seamless loop -->
-            <div class="item">
-              <img src="/13.png" alt="" />
+              <img src="/Hero Images/hf_20260418_214213_76d61e90-4dbf-4741-80df-6caa0d8fdc3d (1).webp" alt="" />
             </div>
             <div class="item">
-              <img src="/14.webp" alt="" />
+              <img src="/Hero Images/hf_20260422_185356_4d15f09b-4561-4a49-9544-2943e8d8a9cc.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/15.webp" alt="" />
+              <img src="/Hero Images/hf_20260427_180508_0d7f92d7-7195-4e61-befa-f749e376b1cb.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/16.webp" alt="" />
+              <img src="/Hero Images/hf_20260430_093524_04492e3c-68fb-4861-85b0-2da2360dc332.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/17.webp" alt="" />
+              <img src="/Hero Images/hf_20260430_093725_77d2c8b7-14f8-4fc6-89cd-090ace456450.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/18.png" alt="" />
+              <img src="/Hero Images/hf_20260430_102016_7cb3f909-f5fc-4263-b2c0-91e8293fb5dd.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/19.png" alt="" />
+              <img src="/Hero Images/hf_20260430_102806_4e7e12f6-d093-4290-a367-5ff2bf34766c.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/20.webp" alt="" />
+              <img src="/Hero Images/hf_20260430_121822_58dab9ac-f43a-4c6b-a2d3-d6a78c540cd1.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/22.png" alt="" />
+              <img src="/Hero Images/hf_20260430_121943_89b35131-6f63-498e-936b-8152e8abf795.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/23.png" alt="" />
+              <img src="/Hero Images/hf_20260501_091314_c816a2e1-15e1-4c9f-addc-0f6e50535b42.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/24.png" alt="" />
+              <img src="/Hero Images/hf_20260512_051146_78f666bd-5656-4a07-b74a-d17fa5bd0b5c (1).webp" alt="" />
             </div>
             <div class="item">
-              <img src="/12.png" alt="" />
+              <img src="/Hero Images/hf_20260521_094857_607fdde9-bbb8-417a-b6fa-47075d1808f6.webp" alt="" />
             </div>
           </div>
 
           <div class="marquee-track">
             <div class="item">
-              <img src="/1.png" alt="" />
+              <img src="/Hero Images/1eb2084c-7e57-46aa-aeb9-6fc103caf964.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/2.png" alt="" />
+              <img src="/Hero Images/3c48ef64-82f2-4257-8aa7-30bbf139ebe3.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/3.png" alt="" />
+              <img src="/Hero Images/555a7150-41d8-4e2f-9d92-71c40c9333f6.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/4.png" alt="" />
+              <img src="/Hero Images/56.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/5.png" alt="" />
+              <img src="/Hero Images/57.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/23.png" alt="" />
+              <img src="/Hero Images/6.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/7.png" alt="" />
+              <img src="/Hero Images/73651a40-037c-4434-b303-f83ff9700ad9.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/8.png" alt="" />
+              <img src="/Hero Images/Copy of 3 .webp" alt="" />
             </div>
             <div class="item">
-              <img src="/9.png" alt="" />
+              <img src="/Hero Images/Copy of _DSC6382.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/10.webp" alt="" />
+              <img src="/Hero Images/hf_20260317_214719_dc3f2bde-6050-4539-8183-6059d73b502b.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/11.png" alt="" />
+              <img src="/Hero Images/hf_20260418_211952_4a228ec4-b02c-44b5-91ff-676a0f5e2541 (1).webp" alt="" />
             </div>
             <div class="item">
-              <img src="/12.png" alt="" />
-            </div>
-            <!-- More duplicate items -->
-            <div class="item">
-              <img src="/13.png" alt="" />
+              <img src="/Hero Images/hf_20260418_214213_76d61e90-4dbf-4741-80df-6caa0d8fdc3d (1).webp" alt="" />
             </div>
             <div class="item">
-              <img src="/14.webp" alt="" />
+              <img src="/Hero Images/hf_20260422_185356_4d15f09b-4561-4a49-9544-2943e8d8a9cc.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/15.webp" alt="" />
+              <img src="/Hero Images/hf_20260427_180508_0d7f92d7-7195-4e61-befa-f749e376b1cb.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/16.webp" alt="" />
+              <img src="/Hero Images/hf_20260430_093524_04492e3c-68fb-4861-85b0-2da2360dc332.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/17.webp" alt="" />
+              <img src="/Hero Images/hf_20260430_093725_77d2c8b7-14f8-4fc6-89cd-090ace456450.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/18.png" alt="" />
+              <img src="/Hero Images/hf_20260430_102016_7cb3f909-f5fc-4263-b2c0-91e8293fb5dd.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/19.png" alt="" />
+              <img src="/Hero Images/hf_20260430_102806_4e7e12f6-d093-4290-a367-5ff2bf34766c.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/20.webp" alt="" />
+              <img src="/Hero Images/hf_20260430_121822_58dab9ac-f43a-4c6b-a2d3-d6a78c540cd1.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/22.png" alt="" />
+              <img src="/Hero Images/hf_20260430_121943_89b35131-6f63-498e-936b-8152e8abf795.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/23.png" alt="" />
+              <img src="/Hero Images/hf_20260501_091314_c816a2e1-15e1-4c9f-addc-0f6e50535b42.webp" alt="" />
             </div>
             <div class="item">
-              <img src="/24.png" alt="" />
+              <img src="/Hero Images/hf_20260512_051146_78f666bd-5656-4a07-b74a-d17fa5bd0b5c (1).webp" alt="" />
             </div>
             <div class="item">
-              <img src="/12.png" alt="" />
+              <img src="/Hero Images/hf_20260521_094857_607fdde9-bbb8-417a-b6fa-47075d1808f6.webp" alt="" />
             </div>
           </div>
         </div>
