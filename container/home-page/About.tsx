@@ -350,6 +350,14 @@ const FounderRevealSection = ({
   bio,
 }: FounderRevealProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // scrollYProgress: 0→1 as the 200vh container scrolls through the viewport
   const { scrollYProgress } = useScroll({
@@ -407,10 +415,10 @@ const FounderRevealSection = ({
   );
 
   const textBlock = (
-    <div className="flex flex-col gap-4 max-w-xl items-center text-center md:items-start md:text-left lg:items-start lg:text-left xl:items-start xl:text-left">
+    <div className="flex flex-col gap-4 w-full max-w-full md:max-w-xl items-center text-center md:items-start md:text-left lg:items-start lg:text-left xl:items-start xl:text-left">
       <span className="text-[#BCA374] text-xs font-semibold uppercase tracking-[0.2em] font-sans">{label}</span>
-      <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal font-['Gilda_Display'] text-[#526855] leading-tight">{name}</h2>
-      <p className="text-[#526855]/90 text-base md:text-lg leading-[1.8] font-sans font-normal text-justify">{bio}</p>
+      <h2 className="w-full text-4xl md:text-5xl lg:text-6xl font-normal font-['Gilda_Display'] text-[#526855] leading-tight">{name}</h2>
+      <p className="w-full text-[#526855]/90 text-base md:text-lg leading-[1.8] font-sans font-normal text-justify">{bio}</p>
     </div>
   );
 
@@ -419,11 +427,16 @@ const FounderRevealSection = ({
     <div ref={containerRef} className="relative h-[200vh]">
       {/* Sticky panel — pins to viewport top while reveal plays, then releases */}
       <div className="sticky top-0 h-screen flex items-center bg-[#f7f2e6]">
-        <div className="max-w-6xl w-full mx-auto px-6 flex flex-col md:flex-row lg:flex-row xl:flex-row items-start justify-between md:gap-12 lg:gap-16 xl:gap-24">
-          {imagePosition === "left" ? (
+        <div className="max-w-6xl w-full mx-auto px-6 flex flex-col md:flex-row lg:flex-row xl:flex-row items-center md:items-start justify-between md:gap-12 lg:gap-16 xl:gap-24">
+          {isMobile ? (
+            // On mobile, force a standard stack order: image then text
             <>{imageBlock}{textBlock}</>
           ) : (
-            <>{textBlock}{imageBlock}</>
+            imagePosition === "left" ? (
+              <>{imageBlock}{textBlock}</>
+            ) : (
+              <>{textBlock}{imageBlock}</>
+            )
           )}
         </div>
       </div>
@@ -450,12 +463,12 @@ export default function About() {
 
 
       {/* About the Founder Section Header */}
-      <div className="relative z-10 bg-transparent pb-0 flex flex-col items-center w-full px-0 sm:px-12 lg:px-16">
-        <div className="container mx-auto px-4 sm:px-6 relative flex flex-col items-center">
-          <h2 className="text-4xl md:text-5xl lg:text-7xl mb-4 text-center font-['Gilda_Display'] text-[#526855]">
+      <div className="relative z-10 bg-transparent pb-0 flex flex-col items-center w-full px-4 md:px-12 lg:px-16">
+        <div className="w-full max-w-full mx-auto px-2 md:px-6 relative flex flex-col items-center">
+          <h2 className="w-full text-4xl md:text-5xl lg:text-7xl mb-4 text-center font-['Gilda_Display'] text-[#526855]">
             The people behind the strategy
           </h2>
-          <p className="text-[#526855]/85 text-center text-sm md:text-base max-w-xl mx-auto mb-10">
+          <p className="w-full text-[#526855]/85 text-center text-sm md:text-base max-w-2xl mx-auto mb-10 px-2">
             We were tired of marketing that looked fine and did nothing.
             <br />
             So we built something that actually works.

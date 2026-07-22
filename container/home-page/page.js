@@ -24,9 +24,16 @@ const col4 = [
   'vertical%20marquee/secondvideo.webm'
 ];
 
+const mobileCol2 = [
+  'vertical%20marquee/hos%20(4).webp',
+  'vertical%20marquee/jsk%20(2).webp',
+  'vertical%20marquee/Heading%20(16).webp'
+];
+
 export default function Home() {
   const gallery = useRef(null);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
+  const [isMobile, setIsMobile] = useState(false);
   
   const { scrollYProgress } = useScroll({
     target: gallery,
@@ -56,6 +63,7 @@ export default function Home() {
     const resize = () => {
       requestAnimationFrame(() => {
         setDimension({ width: window.innerWidth, height: window.innerHeight });
+        setIsMobile(window.innerWidth <= 768);
       });
     };
     
@@ -71,7 +79,7 @@ export default function Home() {
     <main className={styles.main}>
       <div ref={gallery} className={styles.gallery}>
         <Column images={col1} y={y} />
-        <Column images={col2} y={y2} />
+        <Column images={isMobile ? mobileCol2 : col2} y={y2} />
         <Column images={col3} y={y3} />
         <Column images={col4} y={y4} />
       </div>

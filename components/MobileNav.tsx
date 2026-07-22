@@ -79,12 +79,17 @@ export default function MobileNav() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 + i * 0.1 }}
+                    className="w-full"
                   >
                     <Link
                       href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className={`text-5xl font-['Gilda_Display'] transition-colors ${
-                        isActive ? "text-[#f7f2e6] font-semibold" : "text-[#f7f2e6]/60 hover:text-[#f7f2e6]"
+                      onClick={() => {
+                        // Let Next.js handle the route change, which triggers the useEffect to close.
+                        // But if we are already on this page, force close it immediately.
+                        if (isActive) setIsOpen(false);
+                      }}
+                      className={`block w-full text-center py-4 text-5xl font-['Gilda_Display'] transition-colors ${
+                        isActive ? "text-[#f7f2e6] font-semibold" : "text-[#f7f2e6]/60 active:text-[#f7f2e6] md:hover:text-[#f7f2e6]"
                       }`}
                     >
                       {item.title}

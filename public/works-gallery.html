@@ -282,6 +282,59 @@ footer p {
   .container {
     overflow: visible;
   }
+
+  /* Mobile move hint */
+  #mobile-move-hint {
+    display: flex;
+  }
+}
+
+/* Hidden on desktop by default */
+#mobile-move-hint {
+  display: none;
+  position: absolute;
+  bottom: 28px;
+  right: 20px;
+  z-index: 10;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+#mobile-move-hint.hidden {
+  opacity: 0;
+}
+
+.hint-pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ff4444;
+  box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.7);
+  animation: hint-pulse 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes hint-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.7); }
+  70%  { box-shadow: 0 0 0 10px rgba(255, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 68, 68, 0); }
+}
+
+.hint-text {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #526855;
+  animation: hint-flicker 1.4s ease-in-out infinite;
+}
+
+@keyframes hint-flicker {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
 }
 </style>
 </head>
@@ -291,6 +344,11 @@ footer p {
   </nav>
   <div class="header">
     <h2>MOOD. ENERGY. IMPACT.</h2>
+  </div>
+  <!-- Mobile-only move hint -->
+  <div id="mobile-move-hint" aria-hidden="true">
+    <div class="hint-pulse-dot"></div>
+    <span class="hint-text">Move to explore</span>
   </div>
 </div>
 
@@ -378,6 +436,33 @@ footer p {
 
 <script>
 const isMobile = window.innerWidth < 768;
+
+// ─── Mobile "Move to explore" hint ───────────────────────────────────────────
+if (isMobile) {
+  const hint = document.getElementById('mobile-move-hint');
+  let hintDismissed = false;
+
+  function dismissHint() {
+    if (hintDismissed || !hint) return;
+    hintDismissed = true;
+    hint.classList.add('hidden');
+    // Remove after transition so it doesn't block anything
+    setTimeout(() => { if (hint) hint.style.display = 'none'; }, 700);
+    window.removeEventListener('deviceorientation', onOrientation);
+    window.removeEventListener('touchmove', dismissHint);
+  }
+
+  function onOrientation(e) {
+    // Only dismiss if there is meaningful tilt (beta/gamma > 3deg)
+    if (Math.abs(e.beta) > 3 || Math.abs(e.gamma) > 3) {
+      dismissHint();
+    }
+  }
+
+  window.addEventListener('deviceorientation', onOrientation, { passive: true });
+  window.addEventListener('touchmove', dismissHint, { passive: true });
+}
+// ─────────────────────────────────────────────────────────────────────────────
 
 // THREE.JS WORKS SCRIPT
 const allImages = [
