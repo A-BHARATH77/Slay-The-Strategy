@@ -376,9 +376,11 @@ export const ServicesSection = ({ isHome = false }: { isHome?: boolean }) => {
           </div>
 
           <div className="svc-cta-wrap flex-1 flex justify-end">
-            <Link href="/services" className="svc-cta-btn">
-              See All Services
-            </Link>
+            {isHome && (
+              <Link href="/services" className="svc-cta-btn">
+                See All Services
+              </Link>
+            )}
           </div>
         </div>
 
