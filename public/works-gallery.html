@@ -320,10 +320,7 @@ footer p {
   </div>
 </div>
 
-<footer>
-  <p>We don't do Ordinary</p>
-  <p>Est. 2025</p>
-</footer>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
@@ -678,6 +675,14 @@ window.addEventListener("load", function () {
         end: "+=4000",
         scrub: true,
         pin: true,
+        onToggle: (self) => {
+            if (!self.isActive) {
+                slides.forEach((slide) => {
+                    const video = slide.querySelector("video");
+                    if (video) video.muted = true;
+                });
+            }
+        },
         onUpdate: (self) => {
             const progress = self.progress;
             const zIncrement = progress * 22500;
@@ -694,6 +699,15 @@ window.addEventListener("load", function () {
 
                 slide.style.opacity = opacity;
                 slide.style.transform = `translateX(-50%) translateY(-50%) translateZ(${currentZ}px)`;
+
+                const video = slide.querySelector("video");
+                if (video) {
+                    if (self.isActive && currentZ >= -1250 && currentZ <= 1250) {
+                        if (video.muted) video.muted = false;
+                    } else {
+                        if (!video.muted) video.muted = true;
+                    }
+                }
             });
         },
     });

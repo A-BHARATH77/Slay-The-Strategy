@@ -243,7 +243,7 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
 
     // Services Page - Row 4
     <BrandCard key={12}>
-      <img src="/Clients/AVARNA%20(3).png" alt="AVARNA" className="w-full h-full object-contain" />
+      <img src="/Clients/aerohyre.jpg" alt="Aerohyre" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={13}>
       <img src="/Clients/Acyuta%20Logo.png" alt="Acyuta" className="w-full h-full object-contain" />
@@ -252,7 +252,7 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
       <img src="/Clients/Add%20a%20little%20bit%20of%20body%20text%20(11).png" alt="Wallora" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={15}>
-      <img src="/Clients/Blue%20Modern%20Health%20Care%20Center%20Retractable%20Banner.png" alt="Blue Modern Health Care" className="w-full h-full object-contain" />
+      <img src="/Clients/womenstya.jpg" alt="Womenstya" className="w-full h-full object-contain" />
     </BrandCard>,
 
     // Services Page - Row 5
@@ -297,12 +297,17 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
       <img src="/Clients/safari%20quest.jpg" alt="Safari Quest" className="w-full h-full object-contain" />
     </BrandCard>,
 
-    // Services Page - Row 8 (last two + centered)
+    // Services Page - Row 8
     <BrandCard key={28}>
       <img src="/Clients/sur%20opera%20.jpg" alt="Sur Opera" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={29}>
       <img src="/Clients/womenstya.jpg" alt="Womenstya" className="w-full h-full object-contain" />
+    </BrandCard>,
+    <BrandCard key={30}>
+      <div className="flex items-center justify-center w-full h-full text-2xl md:text-3xl text-[#526855] font-['Gilda_Display'] opacity-80">
+        +more
+      </div>
     </BrandCard>,
   ];
 
@@ -317,16 +322,8 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
         </div>
         <div className="max-w-[1400px] mx-auto">
           <div className={`grid gap-1 md:gap-[6px] ${isMobilePhone ? "grid-cols-2" : "grid-cols-4"}`}>
-            {cards.slice(0, isServicesPage ? 28 : 8)}
+            {cards.slice(0, isServicesPage ? cards.length : 8)}
           </div>
-          
-          {isServicesPage && (
-            <div className="flex justify-center w-full mt-1 md:mt-[6px]">
-              <div className={isMobilePhone ? "w-1/2 pr-[2px]" : "w-1/4 pr-[4px]"}>
-                {cards[28]}
-              </div>
-            </div>
-          )}
         </div>
       </section>
 

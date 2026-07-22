@@ -6,8 +6,6 @@ import Expertise from "@/components/Expertise";
 import { Clients } from "@/container";
 import { ServicesSection } from "@/components/ServicesSection";
 
-import ScrollRevealParagraph from "@/components/Intro";
-
 const socialLinks = [
   { id: 1, title: "Instagram", href: " https://www.instagram.com/slaythestrategy.agency/", icon: <Instagram size={20} /> },
   { id: 2, title: "LinkedIn", href: " https://www.linkedin.com/in/dipani-handa-a7460066/", icon: <Linkedin size={20} /> },
@@ -33,14 +31,7 @@ export default function About() {
 
   return (
     <>
-      <section className="w-full bg-[#f7f2e6] pt-48 pb-32 px-8 sm:px-12 lg:px-16 relative overflow-hidden">
-
-        {/* ScrollRevealParagraph Intro Header */}
-        <ScrollRevealParagraph
-          theme="light"
-          text="Stop posting. Start positioning. Your audience doesn't need more content. They need a reason to remember your brand. We work with ambitious brands that want more than likes. From brand strategy and content creation to Meta Ads and consulting, we build marketing systems that attract attention and drive revenue. Because real growth starts long before you hit &quot;Post.&quot;"
-          sectionLabel="/ Elevate Your Digital Presence"
-        />
+      <section className="w-full bg-[#f7f2e6] pt-8 pb-32 px-8 sm:px-12 lg:px-16 relative overflow-hidden">
 
         {/* Services Section */}
         <ServicesSection />
