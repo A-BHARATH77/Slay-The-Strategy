@@ -67,6 +67,7 @@ nav p {
   perspective: 1000px;
   will-change: transform;
   z-index: 2;
+  width: 90%;
 }
     
 h1 {
@@ -83,7 +84,7 @@ h1 {
 h2 {
   font-family: 'Times New Roman', Times, serif;
   color: #526855;
-  font-size: 50px;
+  font-size: clamp(22px, 7vw, 50px);
 }
 
 .slide-img img {
@@ -234,6 +235,54 @@ footer p {
   transform: translateX(-50%) translateY(-50%) translateZ(0px);
   opacity: 1;
 }
+
+/* ── Mobile overrides ── */
+@media (max-width: 767px) {
+  /* On mobile: slider becomes a vertical scroll-snap carousel */
+  .slider {
+    height: auto;
+    min-height: 0;
+    perspective: none;
+    transform-style: flat;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 16px 40px;
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .slide {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    width: min(82vw, 320px);
+    height: auto;
+    aspect-ratio: 9/16;
+    border-radius: 16px;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .slide video,
+  .slide .slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+
+  /* Make the container scroll naturally on mobile */
+  .container {
+    overflow: visible;
+  }
+}
 </style>
 </head>
 <body>
@@ -328,6 +377,8 @@ footer p {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <script>
+const isMobile = window.innerWidth < 768;
+
 // THREE.JS WORKS SCRIPT
 const allImages = [
   { url: "/Works Images/1.webp" },
@@ -374,9 +425,10 @@ const uniqueImages = images.filter(img => {
   return true;
 });
 
+// Use fewer grid cells on mobile to reduce GPU load
 const params = {
-  rows: 6,
-  columns: 6,
+  rows: isMobile ? 4 : 6,
+  columns: isMobile ? 4 : 6,
   curvature: 5,
   spacing: 10, 
   imageWidth: 6, 
@@ -385,7 +437,7 @@ const params = {
   elevation: 0,
   lookAtRange: 20,
   verticalCurvature: 0.5,
-  anisotropy: 16, 
+  anisotropy: isMobile ? 4 : 16, 
 };
 
 const scene = new THREE.Scene();
@@ -398,12 +450,12 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(0, 0, 40);
 
 const renderer = new THREE.WebGLRenderer({
-  antialias: true,
+  antialias: !isMobile,
   powerPreference: "high-performance" 
 });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor(0xf7f2e6);
-renderer.setPixelRatio(window.devicePixelRatio); 
+renderer.setPixelRatio(isMobile ? Math.min(window.devicePixelRatio, 1.5) : window.devicePixelRatio); 
 // Append to works-section
 document.getElementById('works-section').appendChild(renderer.domElement);
 
@@ -489,8 +541,6 @@ let galleryImages = [];
 let usedImageIndices = new Set(); 
 
 function createImagePlane(row, col) {
-  const totalImagesNeeded = params.rows * params.columns;
-  
   let imageIndex;
   do {
     imageIndex = Math.floor(Math.random() * images.length);
@@ -547,7 +597,6 @@ function updateGallery() {
   
   const totalImagesNeeded = params.rows * params.columns;
   if (totalImagesNeeded > images.length) {
-    console.warn(`Gallery needs ${totalImagesNeeded} images but only ${images.length} unique images are available. Adjusting rows/columns.`);
     const sqrtImages = Math.floor(Math.sqrt(images.length));
     params.rows = sqrtImages;
     params.columns = Math.ceil(images.length / sqrtImages);
@@ -562,6 +611,7 @@ function updateGallery() {
   }
 }
 
+// Mouse interaction (desktop)
 document.addEventListener("mousemove", (event) => {
   mouseX = (event.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
   mouseY = (event.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
@@ -571,11 +621,31 @@ document.addEventListener("mousemove", (event) => {
   headerTranslateZ = Math.abs(mouseX * mouseY) * 50;
 });
 
+// Touch interaction (mobile) - mirrors the mousemove parallax
+document.addEventListener("touchmove", (event) => {
+  const touch = event.touches[0];
+  mouseX = (touch.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+  mouseY = (touch.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+
+  headerRotationX = -mouseY * 15;
+  headerRotationY = mouseX * 15;
+  headerTranslateZ = Math.abs(mouseX * mouseY) * 25;
+}, { passive: true });
+
+// Device orientation (gyroscope) for the THREE.js scene on mobile
+window.addEventListener("deviceorientation", (event) => {
+  if (!isMobile) return;
+  const gamma = event.gamma || 0; // left-right tilt (-90 to 90)
+  const beta  = event.beta  || 0; // front-back tilt
+  mouseX = Math.max(-1, Math.min(1, gamma / 30));
+  mouseY = Math.max(-1, Math.min(1, (beta - 45) / 30));
+}, { passive: true });
+
 window.addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setPixelRatio(isMobile ? Math.min(window.devicePixelRatio, 1.5) : window.devicePixelRatio);
 });
 
 function animate() {
@@ -651,6 +721,9 @@ animate();
 // GSAP SCROLL TRIGGER SCRIPT
 gsap.registerPlugin(ScrollTrigger);
 window.addEventListener("load", function () {
+    // On mobile: slider is a plain flex column — skip GSAP pinning entirely
+    if (isMobile) return;
+
     const slides = gsap.utils.toArray(".slide");
 
     function getInitialTranslateZ(slide) {

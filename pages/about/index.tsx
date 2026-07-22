@@ -471,7 +471,7 @@ export default function About() {
             </section>
 
             {/* Works Section — outside any overflow-hidden so sticky stacking works */}
-            <WorksSection />
+            {/* <WorksSection /> */}
 
             {/* Niches Section */}
             <div className="bg-[#f7f2e6] px-6 pb-20">
