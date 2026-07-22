@@ -348,6 +348,10 @@ export const ServicesSection = ({ isHome = false }: { isHome?: boolean }) => {
             padding-top: 48px;
             padding-bottom: 40px;
           }
+          /* Center the CTA button on mobile */
+          .svc-cta-wrap {
+            justify-content: center !important;
+          }
         }
 
         @keyframes fadeIn {
@@ -371,7 +375,7 @@ export const ServicesSection = ({ isHome = false }: { isHome?: boolean }) => {
             </p>
           </div>
 
-          <div className="flex-1 flex justify-end">
+          <div className="svc-cta-wrap flex-1 flex justify-end">
             <Link href="/services" className="svc-cta-btn">
               See All Services
             </Link>

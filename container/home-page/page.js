@@ -30,6 +30,12 @@ const mobileCol2 = [
   'vertical%20marquee/Heading%20(16).webp'
 ];
 
+// All unique image paths that appear on mobile (no videos)
+const mobilePreloadImages = [...new Set([
+  ...col1,
+  ...mobileCol2,
+])].filter(src => !src.endsWith('.webm') && !src.endsWith('.mp4'));
+
 export default function Home() {
   const gallery = useRef(null);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
@@ -77,17 +83,47 @@ export default function Home() {
   
   return (
     <main className={styles.main}>
+      {/* Mobile-only image preloader: forces browser to fetch & cache all gallery
+          images immediately, before the offset columns scroll them into view.
+          Hidden from users and screen readers. */}
+      {isMobile && (
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            width: 1,
+            height: 1,
+            overflow: 'hidden',
+            opacity: 0,
+            pointerEvents: 'none',
+            top: 0,
+            left: 0,
+          }}
+        >
+          {mobilePreloadImages.map((src) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={src}
+              src={`/${src}`}
+              alt=""
+              loading="eager"
+              fetchPriority="high"
+              style={{ width: 1, height: 1 }}
+            />
+          ))}
+        </div>
+      )}
       <div ref={gallery} className={styles.gallery}>
-        <Column images={col1} y={y} />
-        <Column images={isMobile ? mobileCol2 : col2} y={y2} />
-        <Column images={col3} y={y3} />
-        <Column images={col4} y={y4} />
+        <Column images={col1} y={y} isMobile={isMobile} />
+        <Column images={isMobile ? mobileCol2 : col2} y={y2} isMobile={isMobile} />
+        <Column images={col3} y={y3} isMobile={isMobile} />
+        <Column images={col4} y={y4} isMobile={isMobile} />
       </div>
     </main>
   );
 }
 
-const Column = ({ images, y }) => (
+const Column = ({ images, y, isMobile }) => (
   <motion.div className={styles.column} style={{ y }}>
     {images.map((src) => {
       const isVideo = src.endsWith('.webm') || src.endsWith('.mp4');
@@ -107,8 +143,10 @@ const Column = ({ images, y }) => (
               src={`/${src}`}
               alt={src}
               fill
-              sizes="(max-width: 767px) 25vw, 25vw"
+              // More accurate sizes for mobile (2 cols = ~50vw each)
+              sizes={isMobile ? '50vw' : '25vw'}
               style={{ objectFit: "cover" }}
+              // priority=true disables lazy-loading so Next.js fetches immediately
               priority
             />
           )}
