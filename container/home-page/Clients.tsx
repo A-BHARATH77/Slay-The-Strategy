@@ -302,9 +302,6 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
       <img src="/Clients/sur%20opera%20.jpg" alt="Sur Opera" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={29}>
-      <img src="/Clients/womenstya.jpg" alt="Womenstya" className="w-full h-full object-contain" />
-    </BrandCard>,
-    <BrandCard key={30}>
       <div className="flex items-center justify-center w-full h-full text-2xl md:text-3xl text-[#526855] font-['Gilda_Display'] opacity-80">
         +more
       </div>
@@ -322,8 +319,18 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
         </div>
         <div className="max-w-[1400px] mx-auto">
           <div className={`grid gap-1 md:gap-[6px] ${isMobilePhone ? "grid-cols-2" : "grid-cols-4"}`}>
-            {cards.slice(0, isServicesPage ? cards.length : 8)}
+            {cards.slice(0, isServicesPage ? 28 : 8)}
           </div>
+          {isServicesPage && (
+            <div className="flex justify-center w-full mt-1 md:mt-[6px] gap-1 md:gap-[6px]">
+              <div className={isMobilePhone ? "w-[calc(50%-2px)]" : "w-[calc(25%-4.5px)]"}>
+                {cards[28]}
+              </div>
+              <div className={isMobilePhone ? "w-[calc(50%-2px)]" : "w-[calc(25%-4.5px)]"}>
+                {cards[29]}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
