@@ -204,6 +204,15 @@ interface FounderRevealBlockProps {
 
 const FounderRevealBlock = ({ imageColor, imageBW, imageAlt, imagePosition, children }: FounderRevealBlockProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
@@ -226,20 +235,30 @@ const FounderRevealBlock = ({ imageColor, imageBW, imageAlt, imagePosition, chil
     return `polygon(0% 0%, 100% 0%, ${wavePoints.join(", ")})`;
   });
 
-  const imageBlock = imagePosition === "left" ? (
-    <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96 mx-auto md:mx-0 mb-8 md:mb-0 relative" style={{ WebkitTransform: 'translateZ(0)' } as React.CSSProperties}>
+  const imageBlock = (
+    <div
+      className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96 mx-auto md:mx-0 relative"
+      style={{ WebkitTransform: 'translateZ(0)' } as React.CSSProperties}
+    >
       <img src={imageColor} alt={imageAlt} className="w-full h-auto object-cover rounded-2xl shadow-xl" />
-      <motion.img src={imageBW} alt={imageAlt} style={{ clipPath }}
-        className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-xl" />
-    </div>
-  ) : (
-    <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96 mx-auto md:mx-0 mt-8 md:mt-0 relative" style={{ WebkitTransform: 'translateZ(0)' } as React.CSSProperties}>
-      <img src={imageColor} alt={imageAlt} className="w-full h-auto object-cover rounded-2xl shadow-xl" />
-      <motion.img src={imageBW} alt={imageAlt} style={{ clipPath }}
-        className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-xl" />
+      {!isMobile && (
+        <motion.img src={imageBW} alt={imageAlt} style={{ clipPath }}
+          className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-xl" />
+      )}
     </div>
   );
 
+  // ── Mobile: simple stacked layout, no sticky scroll animation ──
+  if (isMobile) {
+    return (
+      <div className="bg-[#f7f2e6] py-12 px-6 flex flex-col items-center gap-8">
+        {imageBlock}
+        <div className="w-full">{children}</div>
+      </div>
+    );
+  }
+
+  // ── Desktop/Tablet: full scroll-pinned reveal ──
   return (
     <div ref={containerRef} className="relative h-[200vh]">
       <div
@@ -253,6 +272,7 @@ const FounderRevealBlock = ({ imageColor, imageBW, imageAlt, imagePosition, chil
     </div>
   );
 };
+
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Main About Component
