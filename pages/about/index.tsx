@@ -227,13 +227,13 @@ const FounderRevealBlock = ({ imageColor, imageBW, imageAlt, imagePosition, chil
   });
 
   const imageBlock = imagePosition === "left" ? (
-    <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96 mx-auto md:mx-0 mb-8 md:mb-0 relative">
+    <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96 mx-auto md:mx-0 mb-8 md:mb-0 relative" style={{ WebkitTransform: 'translateZ(0)' } as React.CSSProperties}>
       <img src={imageColor} alt={imageAlt} className="w-full h-auto object-cover rounded-2xl shadow-xl" />
       <motion.img src={imageBW} alt={imageAlt} style={{ clipPath }}
         className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-xl" />
     </div>
   ) : (
-    <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96 mx-auto md:mx-0 mt-8 md:mt-0 relative">
+    <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96 mx-auto md:mx-0 mt-8 md:mt-0 relative" style={{ WebkitTransform: 'translateZ(0)' } as React.CSSProperties}>
       <img src={imageColor} alt={imageAlt} className="w-full h-auto object-cover rounded-2xl shadow-xl" />
       <motion.img src={imageBW} alt={imageAlt} style={{ clipPath }}
         className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-xl" />
@@ -242,7 +242,10 @@ const FounderRevealBlock = ({ imageColor, imageBW, imageAlt, imagePosition, chil
 
   return (
     <div ref={containerRef} className="relative h-[200vh]">
-      <div className="sticky top-0 h-screen flex items-center bg-[#f7f2e6]">
+      <div
+        className="sticky top-0 flex items-center bg-[#f7f2e6]"
+        style={{ height: '100dvh' } as React.CSSProperties}
+      >
         <div className="max-w-6xl w-full mx-auto px-6 flex flex-col md:flex-row lg:flex-row xl:flex-row items-start justify-between md:gap-12 lg:gap-16 xl:gap-24">
           {imagePosition === "left" ? <>{imageBlock}{children}</> : <>{children}{imageBlock}</>}
         </div>
@@ -392,57 +395,6 @@ export default function About() {
               </div>
             </div>
 
-            {/* Works Section — outside any overflow-hidden so sticky stacking works */}
-            <WorksSection />
-
-            {/* Niches Section */}
-            <div className="bg-[#f7f2e6] px-6 pb-20">
-              <div className="max-w-7xl mx-auto">
-                <div className="relative z-10 mb-20 pt-10">
-                  <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">
-                    Industries we have built in
-                  </h2>
-                  <div className="mt-4 max-w-xl mx-auto px-6">
-                    <p className="text-[#526855]/85 text-center text-sm md:text-base">
-                      Real growth requires understanding the specific nuances of your market.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Improved Grid Layout */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 md:gap-12 max-w-7xl mx-auto">
-                  {nicheData.map((niche) => (
-                    <div
-                      key={niche.id}
-                      className="group bg-[#526855] rounded-xl overflow-hidden shadow-lg border border-[#526855]/50 hover:border-[#f7f2e6]/50 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
-                    >
-                      <div className="relative h-64 overflow-hidden">
-                        <Image
-                          src={niche.imageUrl}
-                          alt={`${niche.title} niche`}
-                          fill
-                          className="object-cover transition-transform duration-700 group-hover:scale-110"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
-                        <div className="absolute inset-0 group-hover:opacity-60 transition-opacity duration-300"></div>
-
-                      </div>
-
-                      <div className="p-6">
-                        <h3 className="text-2xl font-bold text-[#f7f2e6] font-['Gilda_Display'] group-hover:text-[#f7f2e6]/90 transition-colors duration-300">
-                          {niche.title}
-                        </h3>
-                        <p className="text-[#f7f2e6]/70 text-sm mt-2 font-sans font-light">
-                          {niche.subline}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-            </div>
-
             {/* Horizontal Stats Section with Custom Background */}
             <section data-scroll-section className="pt-16 lg:pt-28 pb-24 lg:pb-24 bg-[#f7f2e6] text-[#526855] flex flex-col justify-start">
               <div className={`w-full flex ${isMobilePhone ? "justify-start" : "justify-end"}`}>
@@ -497,6 +449,57 @@ export default function About() {
                 </div>
               </div>
             </section>
+
+            {/* Works Section — outside any overflow-hidden so sticky stacking works */}
+            <WorksSection />
+
+            {/* Niches Section */}
+            <div className="bg-[#f7f2e6] px-6 pb-20">
+              <div className="max-w-7xl mx-auto">
+                <div className="relative z-10 mb-20 pt-10">
+                  <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-[#526855]">
+                    Industries we have built in
+                  </h2>
+                  <div className="mt-4 max-w-xl mx-auto px-6">
+                    <p className="text-[#526855]/85 text-center text-sm md:text-base">
+                      Real growth requires understanding the specific nuances of your market.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Improved Grid Layout */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 md:gap-12 max-w-7xl mx-auto">
+                  {nicheData.map((niche) => (
+                    <div
+                      key={niche.id}
+                      className="group bg-[#526855] rounded-xl overflow-hidden shadow-lg border border-[#526855]/50 hover:border-[#f7f2e6]/50 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                    >
+                      <div className="relative h-64 overflow-hidden">
+                        <Image
+                          src={niche.imageUrl}
+                          alt={`${niche.title} niche`}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                        <div className="absolute inset-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+
+                      </div>
+
+                      <div className="p-6">
+                        <h3 className="text-2xl font-bold text-[#f7f2e6] font-['Gilda_Display'] group-hover:text-[#f7f2e6]/90 transition-colors duration-300">
+                          {niche.title}
+                        </h3>
+                        <p className="text-[#f7f2e6]/70 text-sm mt-2 font-sans font-light">
+                          {niche.subline}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>

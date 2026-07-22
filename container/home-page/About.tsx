@@ -446,7 +446,7 @@ export default function About() {
       />
 
       {/*Services section here*/}
-      <ServicesSection />
+      <ServicesSection isHome={true} />
 
 
       {/* About the Founder Section Header */}
@@ -485,7 +485,7 @@ export default function About() {
       />
 
       {/* Co-Founder Section — scroll-pinned B&W → colour reveal */}
-      <FounderRevealSection
+      {/* <FounderRevealSection
         imageColor="/Founder/co founder2.webp"
         imageBW="/Founder/co-founder1.webp"
         imageAlt="Srivats Tibrewala"
@@ -493,10 +493,10 @@ export default function About() {
         label="Co-Founder"
         name="Srivats Tibrewala"
         bio="The backbone of Slay the Strategy. Handles finance, operations, and everything that keeps the agency running sharp. The reason we can move fast without things falling apart."
-      />
+      /> */}
 
       {/* Works Section — inline stacking cards (no ReactLenis root, uses window scroll) */}
-      <WorksSection />
+      {/* <WorksSection /> */}
     </section>
   );
 }

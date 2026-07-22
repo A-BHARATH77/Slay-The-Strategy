@@ -232,7 +232,7 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
       <img src="/Clients/Perspective%20Studio%20Posts!%20(1).png" alt="Perspective Studio" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={9}>
-      <img src="/Clients/kapoma.jpeg" alt="Kapoma" className="w-full h-full object-contain" />
+      <img src="/Clients/kapoma.png" alt="Kapoma" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={10}>
       <img src="/Clients/luxx-spas-langley-logo%20(1).png" alt="Luxx Spas" className="w-full h-full object-contain" />
@@ -260,10 +260,10 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
       <img src="/Clients/Cellexa%20(2).png" alt="Cellexa" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={17}>
-      <img src="/Clients/GINNI%20PARMAR%20.png" alt="Ginni Parmar" className="w-full h-full object-contain" />
+      <img src="/Clients/GINNI%20PARMAR.png" alt="Ginni Parmar" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={18}>
-      <img src="/Clients/HPE.jpeg" alt="HPE" className="w-full h-full object-contain" />
+      <img src="/Clients/HPE.png" alt="HPE" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={19}>
       <img src="/Clients/Infamous%20Talents%20Black.png" alt="Infamous Talents" className="w-full h-full object-contain" />
@@ -274,7 +274,7 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
       <img src="/Clients/Infosys_56909713360_2806.png" alt="Infosys" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={21}>
-      <img src="/Clients/PJ'S.jpg" alt="PJ's" className="w-full h-full object-contain" />
+      <img src="/Clients/PJ'S.png" alt="PJ's" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={22}>
       <img src="/Clients/costify.png" alt="Costify" className="w-full h-full object-contain" />

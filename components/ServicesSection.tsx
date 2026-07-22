@@ -112,7 +112,7 @@ const serviceItems = [
   },
 ];
 
-export const ServicesSection = () => {
+export const ServicesSection = ({ isHome = false }: { isHome?: boolean }) => {
   const [activeIdx, setActiveIdx] = useState<number>(0);
   const [expandedIdx, setExpandedIdx] = useState<number | null>(null);
   const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -339,12 +339,7 @@ export const ServicesSection = () => {
             flex-direction: column;
           }
           .svc-media {
-            width: 100%;
-            position: relative;
-            top: auto;
-            padding-left: 0;
-            padding-top: 2rem !important;
-            order: -1;
+            display: none !important;
           }
           .svc-row-title {
             font-size: clamp(1.4rem, 6vw, 2rem);
@@ -377,9 +372,6 @@ export const ServicesSection = () => {
           </div>
 
           <div className="flex-1 flex justify-end">
-            <Link href="/services" className="svc-cta-btn">
-              See All Services
-            </Link>
           </div>
         </div>
 
@@ -402,25 +394,27 @@ export const ServicesSection = () => {
                       <span className="svc-row-title">{item.title}</span>
                     </div>
                     {/* Expand Button */}
-                    <button
-                      type="button"
-                      className="relative z-30 ml-4 p-2 flex items-center justify-center rounded-full border border-[#576E47]/20 hover:border-[#576E47]/60 hover:bg-[#576E47]/5 transition-all duration-300 pointer-events-auto"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setExpandedIdx((prev) => (prev === idx ? null : idx));
-                      }}
-                      aria-label={isExpanded ? "Collapse" : "Expand"}
-                    >
-                      <svg
-                        className={`w-4 h-4 text-[#576E47] transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
+                    {!isHome && (
+                      <button
+                        type="button"
+                        className="relative z-30 ml-4 p-2 flex items-center justify-center rounded-full border border-[#576E47]/20 hover:border-[#576E47]/60 hover:bg-[#576E47]/5 transition-all duration-300 pointer-events-auto"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setExpandedIdx((prev) => (prev === idx ? null : idx));
+                        }}
+                        aria-label={isExpanded ? "Collapse" : "Expand"}
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
+                        <svg
+                          className={`w-4 h-4 text-[#576E47] transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2.5}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                    )}
                   </div>
 
                   {/* Expanded Content */}
