@@ -20,8 +20,8 @@ const col3 = [
   'vertical%20marquee/jsk%20(2).webp'
 ];
 const col4 = [
-  '17.webp',
-  '7.png'
+  'vertical%20marquee/firstvideo.webm',
+  'vertical%20marquee/secondvideo.webm'
 ];
 
 export default function Home() {
@@ -81,17 +81,31 @@ export default function Home() {
 
 const Column = ({ images, y }) => (
   <motion.div className={styles.column} style={{ y }}>
-    {images.map((src) => (
-      <div key={src} className={styles.imageContainer}>
-        <Image
-          src={`/${src}`}
-          alt={src}
-          fill
-          sizes="(max-width: 767px) 25vw, 25vw"
-          style={{ objectFit: "cover" }}
-          priority
-        />
-      </div>
-    ))}
+    {images.map((src) => {
+      const isVideo = src.endsWith('.webm') || src.endsWith('.mp4');
+      return (
+        <div key={src} className={styles.imageContainer}>
+          {isVideo ? (
+            <video
+              src={`/${src}`}
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            />
+          ) : (
+            <Image
+              src={`/${src}`}
+              alt={src}
+              fill
+              sizes="(max-width: 767px) 25vw, 25vw"
+              style={{ objectFit: "cover" }}
+              priority
+            />
+          )}
+        </div>
+      );
+    })}
   </motion.div>
 );

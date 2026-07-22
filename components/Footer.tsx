@@ -82,6 +82,15 @@ export default function Footer() {
               Start a Conversation
             </Link>
           </div>
+
+          <div className="self-start">
+            <span
+              className="inline-flex px-3 py-1 border border-[#c8c0a8] rounded-full text-[#c8c0a8] text-[10px] uppercase tracking-wider"
+              style={{ fontFamily: "sans-serif" }}
+            >
+              Site by Raghav &amp; Bharath
+            </span>
+          </div>
         </div>
 
         {/* ── RIGHT column ── */}
