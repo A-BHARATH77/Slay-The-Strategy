@@ -11,9 +11,9 @@ const col1 = [
   'vertical%20marquee/aavarna%20(2).webp'
 ];
 const col2 = [
-  '23.png',
-  '3.png',
-  'img1.jpg'
+  'vertical%20marquee/BTS%20reel.webm',
+  'vertical%20marquee/claw%20july%2014%201.webm',
+  'vertical%20marquee/Reel%201.webm'
 ];
 const col3 = [
   'vertical%20marquee/hos%20(4).webp',
