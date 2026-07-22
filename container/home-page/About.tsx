@@ -480,6 +480,7 @@ export default function About() {
           <Link
             href="/about"
             className="relative inline-flex items-center overflow-hidden px-5 py-2 rounded-full font-sans text-xs font-medium tracking-wider uppercase text-[#f7f2e6] bg-[#576E47] hover:bg-[#3d5234] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(87,110,71,0.3)] transition-all duration-300 cursor-pointer whitespace-nowrap"
+            onClick={() => window.scrollTo(0, 0)}
           >
             About Us
           </Link>

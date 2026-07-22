@@ -229,7 +229,7 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
 
     // Services Page - Row 3 (from /Clients — no duplicates)
     <BrandCard key={8}>
-      <img src="/Clients/Perspective%20Studio%20Posts!%20(1).png" alt="Perspective Studio" className="w-full h-full object-contain" />
+      <img src="/Clients/Perspective.png" alt="Perspective Studio" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={9}>
       <img src="/Clients/kapoma.png" alt="Kapoma" className="w-full h-full object-contain" />
@@ -243,7 +243,7 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
 
     // Services Page - Row 4
     <BrandCard key={12}>
-      <img src="/Clients/aerohyre.jpg" alt="Aerohyre" className="w-full h-full object-contain" />
+      <img src="/Clients/aerohyre.png" alt="Aerohyre" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={13}>
       <img src="/Clients/Acyuta%20Logo.png" alt="Acyuta" className="w-full h-full object-contain" />
@@ -288,10 +288,10 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
       <img src="/Clients/marshall.avif" alt="Marshall" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={25}>
-      <img src="/Clients/microsoft.avif" alt="Microsoft" className="w-full h-full object-contain" />
+      <img src="/Clients/microsoft.png" alt="Microsoft" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={26}>
-      <img src="/Clients/orovia.jpg" alt="Orovia" className="w-full h-full object-contain" />
+      <img src="/Clients/orovia.png" alt="Orovia" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={27}>
       <img src="/Clients/safari%20quest.png" alt="Safari Quest" className="w-full h-full object-contain" />
@@ -299,7 +299,7 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
 
     // Services Page - Row 8
     <BrandCard key={28}>
-      <img src="/Clients/sur%20opera%20.jpg" alt="Sur Opera" className="w-full h-full object-contain" />
+      <img src="/Clients/sur%20opera.png" alt="Sur Opera" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={29}>
       <div className="flex items-center justify-center w-full h-full text-2xl md:text-3xl text-[#526855] font-['Gilda_Display'] opacity-80">

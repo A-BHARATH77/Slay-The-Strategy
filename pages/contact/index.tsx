@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Curve } from "@/components";
+import { Instagram, Linkedin, Facebook } from "lucide-react";
 
 export default function Contact() {
   const containerRef = useRef(null);
@@ -52,6 +53,22 @@ export default function Contact() {
               <p className="mt-8 md:mt-12 lg:mt-12 xl:mt-12 text-[#516856]/65 text-sm md:text-base lg:text-base xl:text-base font-['Gilda_Display'] max-w-md leading-relaxed">
                 We work with brands that are serious about showing up. If that sounds like you, fill in below or reach out directly. We respond within 24 hours.
               </p>
+
+              {/* Social Links */}
+              <div className="mt-12 flex flex-col gap-4">
+                <a href="https://www.instagram.com/slaythestrategy.agency/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[#516856]/80 hover:text-[#516856] transition-colors group">
+                  <Instagram size={20} className="group-hover:scale-110 transition-transform" />
+                  <span className="font-['Gilda_Display'] text-lg">Instagram</span>
+                </a>
+                <a href="https://www.linkedin.com/company/slay-the-strategy/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[#516856]/80 hover:text-[#516856] transition-colors group">
+                  <Linkedin size={20} className="group-hover:scale-110 transition-transform" />
+                  <span className="font-['Gilda_Display'] text-lg">LinkedIn</span>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61586631632667" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[#516856]/80 hover:text-[#516856] transition-colors group">
+                  <Facebook size={20} className="group-hover:scale-110 transition-transform" />
+                  <span className="font-['Gilda_Display'] text-lg">Facebook</span>
+                </a>
+              </div>
             </div>
 
             {/* Right Column: Form card */}

@@ -377,7 +377,7 @@ export const ServicesSection = ({ isHome = false }: { isHome?: boolean }) => {
 
           <div className="svc-cta-wrap flex-1 flex justify-end">
             {isHome && (
-              <Link href="/services" className="svc-cta-btn">
+              <Link href="/services" className="svc-cta-btn" onClick={() => window.scrollTo(0, 0)}>
                 See All Services
               </Link>
             )}

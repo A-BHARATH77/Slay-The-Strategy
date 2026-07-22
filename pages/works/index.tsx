@@ -28,6 +28,7 @@ export default function About() {
             src="/works-gallery.html"
             title="Works Page"
             className="w-full h-full border-none"
+            allow="autoplay"
           />
 
         </div>

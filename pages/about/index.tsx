@@ -136,10 +136,14 @@ const WorksSection = () => {
 };
 // ─────────────────────────────────────────────────────────────────────────────
 
-const socialLinks = [
-  { id: 1, title: "Instagram", href: " https://www.instagram.com/slaythestrategy.agency/", icon: <Instagram size={20} /> },
-  { id: 2, title: "LinkedIn", href: " https://www.linkedin.com/in/dipani-handa-a7460066/", icon: <Linkedin size={20} /> },
-  { id: 3, title: "Facebook", href: "https://www.facebook.com/profile.php?id=61586631632667", icon: <Facebook size={20} /> },
+const founderSocialLinks = [
+  { id: 1, title: "Instagram", href: "https://www.instagram.com/slaywithdipani?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", icon: <Instagram size={20} /> },
+  { id: 2, title: "LinkedIn", href: "https://www.linkedin.com/in/dipani-handa-a7460066/", icon: <Linkedin size={20} /> },
+  { id: 3, title: "Facebook", href: "https://www.facebook.com/share/1EHmTPB7Zp/?mibextid=wwXIfr", icon: <Facebook size={20} /> },
+];
+
+const cofounderSocialLinks = [
+  { id: 1, title: "LinkedIn", href: "https://www.linkedin.com/in/srivats-tibrewal-529b70179?utm_source=share_via&utm_content=profile&utm_medium=member_ios", icon: <Linkedin size={20} /> },
 ];
 
 // NumberTicker Component
@@ -354,7 +358,7 @@ export default function About() {
 
                     {/* Social links */}
                     <div className="flex flex-wrap gap-6 pt-2 justify-center md:justify-start lg:justify-start xl:justify-start">
-                      {socialLinks.map((item) => (
+                      {founderSocialLinks.map((item) => (
                         <a
                           key={item.id}
                           href={item.href}
@@ -397,7 +401,7 @@ export default function About() {
 
                     {/* Social links */}
                     <div className="flex flex-wrap gap-6 pt-2 justify-center md:justify-start lg:justify-start xl:justify-start">
-                      {socialLinks.map((item) => (
+                      {cofounderSocialLinks.map((item) => (
                         <a
                           key={`dup-${item.id}`}
                           href={item.href}

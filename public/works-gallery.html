@@ -847,6 +847,22 @@ window.addEventListener("load", function () {
         },
     });
 });
+
+// INTERSECTION OBSERVER FOR MOBILE (or fallback) TO UNMUTE VIDEOS IN VIEW
+const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+            video.muted = false;
+        } else {
+            video.muted = true;
+        }
+    });
+}, { threshold: 0.5 }); // Unmute when at least 50% visible
+
+document.querySelectorAll('.slide video').forEach(video => {
+    videoObserver.observe(video);
+});
 </script>
 </body>
 </html>

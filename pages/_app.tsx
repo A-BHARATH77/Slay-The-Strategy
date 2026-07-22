@@ -35,7 +35,7 @@ export default function App({
       </Head>
       {!isMobile && <Navbar />}
       {isMobile && <MobileNav />}
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
         <Component key={router.route} {...pageProps} />
       </AnimatePresence>
       {!hideFooterRoutes.includes(router.route) && <Footer />}
