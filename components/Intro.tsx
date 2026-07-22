@@ -19,18 +19,15 @@ interface ScrollRevealParagraphProps {
   disablePin?: boolean;
 }
 
-const DEFAULT_TEXT = "Stop posting. Start positioning. Your audience doesn't need more content. They need a reason to remember your brand. We work with ambitious brands that want more than likes. From brand strategy and content creation to Meta Ads and consulting, we build marketing systems that attract attention and drive revenue. Because real growth starts long before you hit \"Post.\"";
+const DEFAULT_TEXT = "Stop posting. Start positioning. Your audience doesn't need more content. They need a reason to remember your brand. We work with ambitious brands that want more than likes. From brand strategy and content creation to Meta Ads and consulting, we build marketing systems that attract attention and drive revenue. Because real growth starts long before you even hit \"Post.\"";
 
-const HIGHLIGHT_WORDS = [
-  "positioning.", "content.", "remember", "ambitious", "likes.",
-  "strategy", "attention", "revenue.", "growth"
-];
+const HIGHLIGHT_WORDS: string[] = [];
 
 // Chips inserted AFTER these specific words
 const CHIP_AFTER: Record<string, string> = {
-  "positioning.": "/about_section1.png",
-  "likes.": "/about_section2.png",
-  "revenue.": "/about_section3.png",
+  "positioning.": "/Intro/hf_20260427_180508_0d7f92d7-7195-4e61-befa-f749e376b1cb.webp",
+  "likes.": "/Intro/3.webp",
+  "revenue.": "/Intro/hf_20260422_185356_4d15f09b-4561-4a49-9544-2943e8d8a9cc.webp",
 };
 
 function InlineChip({ src }: { src: string }) {
@@ -49,7 +46,7 @@ export default function ScrollRevealParagraph({
   highlightWords = HIGHLIGHT_WORDS,
   chipAfter = CHIP_AFTER,
   sectionLabel = "/ About Cassian Films",
-  floatingImageSrc = "/cassian_films_about_section.png",
+  floatingImageSrc = "/Intro/4.webp",
   floatingImageAlt = "About Cassian Films",
   disablePin = false
 }: ScrollRevealParagraphProps) {

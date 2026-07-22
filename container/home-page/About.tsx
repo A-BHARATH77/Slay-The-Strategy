@@ -443,14 +443,6 @@ export default function About() {
         theme="light"
         text="Stop posting. Start positioning. Your audience doesn't need more content. They need a reason to remember your brand. We work with ambitious brands that want more than likes. From brand strategy and content creation to Meta Ads and consulting, we build marketing systems that attract attention and drive revenue. Because real growth starts long before you hit &quot;Post.&quot;"
         sectionLabel="/ Elevate Your Digital Presence"
-        floatingImageSrc="/aboutImg.webp"
-        floatingImageAlt="About Slay the Strategy"
-        highlightWords={[]}
-        chipAfter={{
-          "positioning.": "/sms.png",
-          "likes.": "/vid.png",
-          "revenue.": "/opt.png"
-        }}
       />
 
       {/*Services section here*/}
