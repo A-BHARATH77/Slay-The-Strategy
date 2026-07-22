@@ -237,6 +237,23 @@ footer p {
 }
 
 /* ── Mobile overrides ── */
+/* Mobile move hint default (hidden on desktop) */
+#mobile-move-hint {
+  display: none;
+  position: absolute;
+  bottom: 28px;
+  right: 20px;
+  z-index: 10;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+#mobile-move-hint.hidden {
+  opacity: 0;
+}
+
 @media (max-width: 767px) {
   /* On mobile: slider becomes a vertical scroll-snap carousel */
   .slider {
@@ -287,23 +304,6 @@ footer p {
   #mobile-move-hint {
     display: flex;
   }
-}
-
-/* Hidden on desktop by default */
-#mobile-move-hint {
-  display: none;
-  position: absolute;
-  bottom: 28px;
-  right: 20px;
-  z-index: 10;
-  align-items: center;
-  gap: 8px;
-  pointer-events: none;
-  transition: opacity 0.6s ease;
-}
-
-#mobile-move-hint.hidden {
-  opacity: 0;
 }
 
 .hint-pulse-dot {

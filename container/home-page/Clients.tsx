@@ -221,10 +221,10 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
       <img src="/home%20testimonials/claw%20nails%20.png" alt="Claw Nails" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={6}>
-      <img src="/home%20testimonials/house%20of%20sodesii.webp" alt="House of Sodesii" className="w-full h-full object-contain" />
+      <img src="/home%20testimonials/house%20of%20sodesii.png" alt="House of Sodesii" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={7}>
-      <img src="/home%20testimonials/sleuth%20.jpg" alt="Sleuth" className="w-full h-full object-contain" />
+      <img src="/home%20testimonials/sleuth.png" alt="Sleuth" className="w-full h-full object-contain" />
     </BrandCard>,
 
     // Services Page - Row 3 (from /Clients — no duplicates)
@@ -252,7 +252,7 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
       <img src="/Clients/Add%20a%20little%20bit%20of%20body%20text%20(11).png" alt="Wallora" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={15}>
-      <img src="/Clients/womenstya.jpg" alt="Womenstya" className="w-full h-full object-contain" />
+      <img src="/Clients/womenstya.png" alt="Womenstya" className="w-full h-full object-contain" />
     </BrandCard>,
 
     // Services Page - Row 5
@@ -294,7 +294,7 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
       <img src="/Clients/orovia.jpg" alt="Orovia" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={27}>
-      <img src="/Clients/safari%20quest.jpg" alt="Safari Quest" className="w-full h-full object-contain" />
+      <img src="/Clients/safari%20quest.png" alt="Safari Quest" className="w-full h-full object-contain" />
     </BrandCard>,
 
     // Services Page - Row 8
