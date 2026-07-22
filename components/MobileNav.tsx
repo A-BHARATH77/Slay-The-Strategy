@@ -23,12 +23,24 @@ export default function MobileNav() {
     setIsOpen(false);
   }, [pathname]);
 
+  // Lock body scroll when the menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   return (
     <>
       {/* Mobile top bar - visible ONLY on small screens */}
-      <div className="fixed top-0 left-0 right-0 h-20 px-6 flex justify-between items-center z-40 md:hidden">
+      <div className="fixed top-0 left-0 right-0 h-20 px-6 flex justify-between items-center z-40 md:hidden pointer-events-none">
         {/* Logo */}
-        <Link href="/" className="relative flex items-center mt-4">
+        <Link href="/" className="relative flex items-center mt-4 pointer-events-auto">
           <div className="w-14 h-14 relative">
             <Image
               src="/logo.webp"
@@ -43,7 +55,7 @@ export default function MobileNav() {
       {/* Hamburger button - always on top */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-6 right-6 z-[60] p-2 text-[#526855] bg-[#f7f2e6] rounded-full shadow-lg md:hidden"
+        className="fixed top-6 right-6 z-[60] p-2 text-[#526855] bg-[#f7f2e6] rounded-full shadow-lg md:hidden pointer-events-auto"
       >
         {isOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
@@ -56,9 +68,9 @@ export default function MobileNav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 bg-[#526855] z-50 md:hidden flex flex-col items-center justify-center pt-20"
+            className="fixed inset-0 bg-[#526855] z-50 md:hidden flex flex-col items-center justify-center pt-20 overflow-y-auto"
           >
-            <div className="flex flex-col items-center gap-10 w-full px-6">
+            <div className="flex flex-col items-center gap-10 w-full px-6 py-10 my-auto">
               {navItems.map((item, i) => {
                 const isActive = pathname === item.href;
                 return (
@@ -70,6 +82,7 @@ export default function MobileNav() {
                   >
                     <Link
                       href={item.href}
+                      onClick={() => setIsOpen(false)}
                       className={`text-5xl font-['Gilda_Display'] transition-colors ${
                         isActive ? "text-[#f7f2e6] font-semibold" : "text-[#f7f2e6]/60 hover:text-[#f7f2e6]"
                       }`}
