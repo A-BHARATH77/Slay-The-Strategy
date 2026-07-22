@@ -438,30 +438,7 @@ footer p {
 const isMobile = window.innerWidth < 768;
 
 // ─── Mobile "Move to explore" hint ───────────────────────────────────────────
-if (isMobile) {
-  const hint = document.getElementById('mobile-move-hint');
-  let hintDismissed = false;
-
-  function dismissHint() {
-    if (hintDismissed || !hint) return;
-    hintDismissed = true;
-    hint.classList.add('hidden');
-    // Remove after transition so it doesn't block anything
-    setTimeout(() => { if (hint) hint.style.display = 'none'; }, 700);
-    window.removeEventListener('deviceorientation', onOrientation);
-    window.removeEventListener('touchmove', dismissHint);
-  }
-
-  function onOrientation(e) {
-    // Only dismiss if there is meaningful tilt (beta/gamma > 3deg)
-    if (Math.abs(e.beta) > 3 || Math.abs(e.gamma) > 3) {
-      dismissHint();
-    }
-  }
-
-  window.addEventListener('deviceorientation', onOrientation, { passive: true });
-  window.addEventListener('touchmove', dismissHint, { passive: true });
-}
+// The hint element stays visible on mobile as requested by the user
 // ─────────────────────────────────────────────────────────────────────────────
 
 // THREE.JS WORKS SCRIPT

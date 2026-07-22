@@ -53,33 +53,38 @@ export default function Home() {
   const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3]);
 
   useLayoutEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.5,
-      smooth: true,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    });
-    
-    function raf(time) {
-      lenis.raf(time);
+    // Only apply Lenis smooth scroll on desktop.
+    // On mobile the native browser momentum scroll is already smooth;
+    // adding a JS scroll layer on top causes jank and dropped frames.
+    if (!isMobile) {
+      const lenis = new Lenis({
+        duration: 1.5,
+        smooth: true,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
       requestAnimationFrame(raf);
     }
-    
-    requestAnimationFrame(raf);
-    
+
     const resize = () => {
       requestAnimationFrame(() => {
         setDimension({ width: window.innerWidth, height: window.innerHeight });
         setIsMobile(window.innerWidth <= 768);
       });
     };
-    
+
     resize();
     window.addEventListener('resize', resize);
-    
+
     return () => {
       window.removeEventListener('resize', resize);
     };
-  }, []);
+  }, [isMobile]);
   
   return (
     <main className={styles.main}>

@@ -17,6 +17,10 @@
     display: flex;
     flex-direction: column;
     gap: 2vw;
+    /* GPU compositing — prevents repaint on every scroll frame */
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
   
   .imageContainer {
@@ -25,6 +29,10 @@
     position: relative;
     border-radius: 1vw;
     overflow: hidden;
+    /* Promote image containers to their own layer too */
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
   
   .imageContainer img {
@@ -55,6 +63,8 @@
   @media screen and (max-width: 768px) {
     .gallery {
       height: 175vh;
+      /* Enable native momentum scroll feel on mobile */
+      -webkit-overflow-scrolling: touch;
     }
     
     .column {
