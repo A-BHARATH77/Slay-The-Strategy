@@ -161,24 +161,26 @@ const nicheData = [
 const worksProjects = [
   {
     title: 'Aavarna',
-    description:
-      'Originally hailing from Austria, Berlin-based photographer Matthias Leindinger is a young creative brimming with talent and ideas.',
+    description: `Pure scents. Intentional moments.
+Incense designed for stillness, focus, and everyday rituals`,
     src: 'rock.jpg',
     link: '/Works/aavarna .png',
     color: '#f7f2e6',
   },
   {
     title: 'Anvi Jain / Law in Heels ',
-    description:
-      'This is a story on the border between reality and imaginary, about the contradictory feelings that the insularity of a rocky, arid, and wild territory provokes—so French photographer Clément.',
+    description: `More than a lawyer's journey.
+It's about building a life where intelligence, elegance, and ambition coexist.
+The era of a fashionable lawyer.
+With sharp legal minds, elevated fashion, luxury living, and meaningful conversations. `,
     src: 'tree.jpg',
     link: '/Works/anvi.png',
     color: '#f7f2e6',
   },
   {
     title: 'Mahru',
-    description:
-      "Though he views photography as a medium for storytelling, Zissou's images don't insist on a narrative. Both crisp and ethereal.",
+    description: `From Lucknow, with Love
+Premium Chikankari & Kamdani, Delicately crafted for you`,
     src: 'water.jpg',
     link: '/Works/mahri.jpeg',
     color: '#f7f2e6',
@@ -214,7 +216,7 @@ const WorksCard: React.FC<WorksCardProps> = ({ i, title, description, src, url, 
         <h2 className='text-2xl text-left font-semibold text-[#526855] pt-6'>{title}</h2>
         <div className='flex h-full mt-5 gap-10'>
           <div className='w-[40%] relative top-[10%] text-[#526855]'>
-            <p className='text-lg md:text-xl font-medium leading-relaxed'>{description}</p>
+            <p className='text-lg md:text-xl font-medium leading-relaxed whitespace-pre-line'>{description}</p>
           </div>
           <div className='relative w-[60%] h-full rounded-lg overflow-hidden'>
             <motion.div className='w-full h-full' style={{ scale: imageScale }}>
@@ -242,15 +244,15 @@ const WorksSection = () => {
           </h2>
           <div className="mt-4 max-w-xl mx-auto px-6">
             <p className="text-[#526855]/85 text-center text-sm md:text-base">
-             Real brands. Real results.
+              Real brands. Real results.
             </p>
           </div>
         </div>
 
         {/* Right aligned See All Work button */}
         <div className="mt-6 md:absolute md:right-[6%] md:top-1/2 md:-translate-y-1/2 md:mt-4 lg:absolute lg:right-[6%] lg:top-1/2 lg:-translate-y-1/2 lg:mt-4 xl:absolute xl:right-[6%] xl:top-1/2 xl:-translate-y-1/2 xl:mt-4">
-          <Link 
-            href="/works" 
+          <Link
+            href="/works"
             className="relative inline-flex items-center overflow-hidden px-5 py-2 rounded-full font-sans text-xs font-medium tracking-wider uppercase text-[#f7f2e6] bg-[#576E47] hover:bg-[#3d5234] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(87,110,71,0.3)] transition-all duration-300 cursor-pointer whitespace-nowrap"
           >
             See All Work
@@ -327,11 +329,114 @@ const ServicePopup = ({ service, isOpen, onClose }: { service: any, isOpen: bool
   );
 };
 
+// ─── FounderRevealSection: scroll-pinned B&W → colour reveal ─────────────────
+interface FounderRevealProps {
+  imageColor: string;
+  imageBW: string;
+  imageAlt: string;
+  imagePosition: "left" | "right";
+  label: string;
+  name: string;
+  bio: string;
+}
+
+const FounderRevealSection = ({
+  imageColor,
+  imageBW,
+  imageAlt,
+  imagePosition,
+  label,
+  name,
+  bio,
+}: FounderRevealProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // scrollYProgress: 0→1 as the 200vh container scrolls through the viewport
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  // Wavy polygon clip: sine-wave bottom edge travels upward → water-splash reveal
+  const clipPath = useTransform(scrollYProgress, (p: number) => {
+    if (p <= 0) return "polygon(0% 0%, 100% 0%, 100% 110%, 0% 110%)";
+    if (p >= 1) return "polygon(0% 0%, 100% 0%, 100% -10%, 0% -10%)";
+
+    // baseY: wave front travels from 105% (below image) to -25% (above image)
+    const baseY = 105 - p * 130;
+    // Amplitude peaks in the middle of the animation (splash feel)
+    const amp = 14 * Math.sin(p * Math.PI);
+    // Phase shifts as scroll progresses — makes the wave appear to ripple/move
+    const phase = p * Math.PI * 2.5;
+    const numPoints = 20;
+
+    // Build right-to-left wavy bottom edge
+    const wavePoints = Array.from({ length: numPoints + 1 }, (_, i) => {
+      const t = i / numPoints; // 0 → 1, right to left
+      const x = (1 - t) * 100;
+      const waveY = Math.sin(t * Math.PI * 4 + phase) * amp;
+      return `${x.toFixed(2)}% ${(baseY + waveY).toFixed(2)}%`;
+    });
+
+    // Polygon: full top edge + wavy bottom edge
+    return `polygon(0% 0%, 100% 0%, ${wavePoints.join(", ")})`;
+  });
+
+  const imageBlock = imagePosition === "left" ? (
+    <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96 mx-auto md:mx-0 mb-8 md:mb-0 relative">
+      {/* Colour image — base layer */}
+      <img src={imageColor} alt={imageAlt} className="w-full h-auto object-cover rounded-2xl shadow-xl" />
+      {/* B&W overlay — clips away upward on scroll */}
+      <motion.img
+        src={imageBW}
+        alt={imageAlt}
+        style={{ clipPath }}
+        className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-xl"
+      />
+    </div>
+  ) : (
+    <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96 mx-auto md:mx-0 mt-8 md:mt-0 relative">
+      <img src={imageColor} alt={imageAlt} className="w-full h-auto object-cover rounded-2xl shadow-xl" />
+      <motion.img
+        src={imageBW}
+        alt={imageAlt}
+        style={{ clipPath }}
+        className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-xl"
+      />
+    </div>
+  );
+
+  const textBlock = (
+    <div className="flex flex-col gap-4 max-w-xl items-center text-center md:items-start md:text-left lg:items-start lg:text-left xl:items-start xl:text-left">
+      <span className="text-[#BCA374] text-xs font-semibold uppercase tracking-[0.2em] font-sans">{label}</span>
+      <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal font-['Gilda_Display'] text-[#526855] leading-tight">{name}</h2>
+      <p className="text-[#526855]/90 text-base md:text-lg leading-[1.8] font-sans font-normal text-justify">{bio}</p>
+    </div>
+  );
+
+  return (
+    // 200vh tall container — gives scroll room to drive the reveal animation
+    <div ref={containerRef} className="relative h-[200vh]">
+      {/* Sticky panel — pins to viewport top while reveal plays, then releases */}
+      <div className="sticky top-0 h-screen flex items-center bg-[#f7f2e6]">
+        <div className="max-w-6xl w-full mx-auto px-6 flex flex-col md:flex-row lg:flex-row xl:flex-row items-start justify-between md:gap-12 lg:gap-16 xl:gap-24">
+          {imagePosition === "left" ? (
+            <>{imageBlock}{textBlock}</>
+          ) : (
+            <>{textBlock}{imageBlock}</>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+// ─────────────────────────────────────────────────────────────────────────────
+
 export default function About() {
   // State for controlling which service popup is showing
   const [activePopup, setActivePopup] = useState<string | null>(null);
   return (
-    <section className="w-full bg-[#f7f2e6] py-32 px-0 sm:px-12 lg:px-16 relative overflow-clip">
+    <section className="w-full bg-[#f7f2e6] py-32 px-0 sm:px-12 lg:px-16 relative overflow-x-clip">
 
       {/* ScrollRevealParagraph Intro Header */}
       <ScrollRevealParagraph
@@ -367,8 +472,8 @@ export default function About() {
 
         {/* Right aligned About Us button */}
         <div className="mt-6 md:absolute md:right-[6%] md:top-1/2 md:-translate-y-1/2 md:mt-4 lg:absolute lg:right-[6%] lg:top-1/2 lg:-translate-y-1/2 lg:mt-4 xl:absolute xl:right-[6%] xl:top-1/2 xl:-translate-y-1/2 xl:mt-4">
-          <Link 
-            href="/about" 
+          <Link
+            href="/about"
             className="relative inline-flex items-center overflow-hidden px-5 py-2 rounded-full font-sans text-xs font-medium tracking-wider uppercase text-[#f7f2e6] bg-[#576E47] hover:bg-[#3d5234] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(87,110,71,0.3)] transition-all duration-300 cursor-pointer whitespace-nowrap"
           >
             About Us
@@ -376,97 +481,27 @@ export default function About() {
         </div>
       </div>
 
-      {/* Founder Section — image left, text right */}
-      <div className="relative z-10 py-10">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row lg:flex-row xl:flex-row items-start justify-between md:gap-12 lg:gap-16 xl:gap-24">
+      {/* Founder Section — scroll-pinned B&W → colour reveal */}
+      <FounderRevealSection
+        imageColor="/Founder/founder.webp"
+        imageBW="/Founder/founder2.webp"
+        imageAlt="Dipani Tibrewala"
+        imagePosition="left"
+        label="Founder and CEO"
+        name="Dipani Tibrewala"
+        bio="7.5 years in corporate marketing across Plan.Net TechNest India, Accenture, and Edelman. Campaigns for Jaguar, BMW, Microsoft, HPE, and Infosys. Left all of that to build the agency she always wished existed. Oversees strategy and creative on every single account personally."
+      />
 
-          {/* Left — image */}
-          <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96 mx-auto md:mx-0 mb-8 md:mb-0">
-            <img
-              src="/founder.webp"
-              alt="Dipani"
-              className="w-full h-auto object-cover rounded-2xl shadow-xl"
-            />
-          </div>
-
-          {/* Right — text content */}
-          <div className="flex flex-col gap-4 max-w-xl items-center text-center md:items-start md:text-left lg:items-start lg:text-left xl:items-start xl:text-left">
-            <span className="text-[#BCA374] text-xs font-semibold uppercase tracking-[0.2em] font-sans">
-              Founder and CEO
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal font-['Gilda_Display'] text-[#526855] leading-tight">
-              Dipani Tibrewala
-            </h2>
-            
-            <p className="text-[#526855]/90 text-base md:text-lg leading-[1.8] font-sans font-normal text-justify">
-              7.5 years in corporate marketing across Plan.Net TechNest India, Accenture, and Edelman. Campaigns for Jaguar, BMW, Microsoft, HPE, and Infosys. Left all of that to build the agency she always wished existed. Oversees strategy and creative on every single account personally.
-            </p>
-
-            {/* Social links */}
-            {/* <div className="flex flex-wrap gap-6 pt-2 justify-center md:justify-start lg:justify-start xl:justify-start">
-              {socialLinks.map((item) => (
-                <a
-                  key={item.id}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center text-[#526855]/60 hover:text-[#526855] font-light transition-all duration-300 gap-2 font-['Gilda_Display']"
-                >
-                  {item.icon}
-                  <span>{item.title}</span>
-                </a>
-              ))}
-            </div> */}
-          </div>
-
-        </div>
-      </div>
-
-      {/* Second Founder Section (Duplicate) */}
-      <div className="relative z-10 py-10">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row lg:flex-row xl:flex-row items-start justify-between md:gap-12 lg:gap-16 xl:gap-24">
-
-           {/* Left — text content */}
-          <div className="flex flex-col gap-4 max-w-xl items-center text-center md:items-start md:text-left lg:items-start lg:text-left xl:items-start xl:text-left">
-            <span className="text-[#BCA374] text-xs font-semibold uppercase tracking-[0.2em] font-sans">
-              Co-Founder
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal font-['Gilda_Display'] text-[#526855] leading-tight">
-              Srivats Tibrewala
-            </h2>
-            
-            <p className="text-[#526855]/90 text-base md:text-lg leading-[1.8] font-sans font-normal text-justify">
-              The backbone of Slay the Strategy. Handles finance, operations, and everything that keeps the agency running sharp. The reason we can move fast without things falling apart.
-            </p>
-
-            {/* Social links */}
-            {/* <div className="flex flex-wrap gap-6 pt-2 justify-center md:justify-start lg:justify-start xl:justify-start">
-              {socialLinks.map((item) => (
-                <a
-                  key={`dup-${item.id}`}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center text-[#526855]/60 hover:text-[#526855] font-light transition-all duration-300 gap-2 font-['Gilda_Display']"
-                >
-                  {item.icon}
-                  <span>{item.title}</span>
-                </a>
-              ))}
-            </div> */}
-          </div>
-
-          {/* Right — image */}
-          <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96 mx-auto md:mx-0 mt-8 md:mt-0">
-            <img
-              src="/founder.webp"
-              alt="Dipani"
-              className="w-full h-auto object-cover rounded-2xl shadow-xl"
-            />
-          </div>
-
-        </div>
-      </div>
+      {/* Co-Founder Section — scroll-pinned B&W → colour reveal */}
+      <FounderRevealSection
+        imageColor="/Founder/co founder2.webp"
+        imageBW="/Founder/co-founder1.webp"
+        imageAlt="Srivats Tibrewala"
+        imagePosition="right"
+        label="Co-Founder"
+        name="Srivats Tibrewala"
+        bio="The backbone of Slay the Strategy. Handles finance, operations, and everything that keeps the agency running sharp. The reason we can move fast without things falling apart."
+      />
 
       {/* Works Section — inline stacking cards (no ReactLenis root, uses window scroll) */}
       <WorksSection />

@@ -7,7 +7,8 @@ const projects = [
   {
     title: 'Matthias Leidinger',
     description:
-      'Originally hailing from Austria, Berlin-based photographer Matthias Leindinger is a young creative brimming with talent and ideas.',
+      'Pure scents. Intentional moments.
+Incense designed for stillness, focus, and everyday rituals',
     src: 'rock.jpg',
     link: '/project1.webp',
     color: '#f7f2e6',

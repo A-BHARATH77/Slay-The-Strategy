@@ -227,71 +227,82 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
       <img src="/home%20testimonials/sleuth%20.jpg" alt="Sleuth" className="w-full h-full object-contain" />
     </BrandCard>,
 
-    // Row 3
+    // Services Page - Row 3 (from /Clients — no duplicates)
     <BrandCard key={8}>
-      <img src="/Clients/Mahru%20Stories%20(2).png" alt="Mahru Stories" className="w-full h-full object-contain" />
-    </BrandCard>,
-    <BrandCard key={9}>
       <img src="/Clients/Perspective%20Studio%20Posts!%20(1).png" alt="Perspective Studio" className="w-full h-full object-contain" />
     </BrandCard>,
-    <BrandCard key={10}>
-      <img src="/Clients/claw%20nails%20.png" alt="Claw Nails" className="w-full h-full object-contain" />
-    </BrandCard>,
-    <BrandCard key={11}>
+    <BrandCard key={9}>
       <img src="/Clients/kapoma.jpeg" alt="Kapoma" className="w-full h-full object-contain" />
     </BrandCard>,
-
-    // Row 4
-    <BrandCard key={12}>
+    <BrandCard key={10}>
       <img src="/Clients/luxx-spas-langley-logo%20(1).png" alt="Luxx Spas" className="w-full h-full object-contain" />
     </BrandCard>,
-    <BrandCard key={13}>
+    <BrandCard key={11}>
       <img src="/Clients/orange%20(2).png" alt="Orange" className="w-full h-full object-contain" />
     </BrandCard>,
+
+    // Services Page - Row 4
+    <BrandCard key={12}>
+      <img src="/Clients/AVARNA%20(3).png" alt="AVARNA" className="w-full h-full object-contain" />
+    </BrandCard>,
+    <BrandCard key={13}>
+      <img src="/Clients/Acyuta%20Logo.png" alt="Acyuta" className="w-full h-full object-contain" />
+    </BrandCard>,
     <BrandCard key={14}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-      </svg>
+      <img src="/Clients/Add%20a%20little%20bit%20of%20body%20text%20(11).png" alt="Wallora" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={15}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <path d="M16 18l6-6-6-6M8 6L2 12l6 6" />
-      </svg>
+      <img src="/Clients/Blue%20Modern%20Health%20Care%20Center%20Retractable%20Banner.png" alt="Blue Modern Health Care" className="w-full h-full object-contain" />
     </BrandCard>,
 
-    // Row 5
+    // Services Page - Row 5
     <BrandCard key={16}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-        <circle cx="12" cy="12" r="3" />
-      </svg>
+      <img src="/Clients/Cellexa%20(2).png" alt="Cellexa" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={17}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-      </svg>
+      <img src="/Clients/GINNI%20PARMAR%20.png" alt="Ginni Parmar" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={18}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <circle cx="12" cy="12" r="2" />
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" transform="rotate(90 12 12)" />
-      </svg>
+      <img src="/Clients/HPE.jpeg" alt="HPE" className="w-full h-full object-contain" />
     </BrandCard>,
     <BrandCard key={19}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-      </svg>
+      <img src="/Clients/Infamous%20Talents%20Black.png" alt="Infamous Talents" className="w-full h-full object-contain" />
     </BrandCard>,
 
-    // Row 6 (Centered box on Services Page)
-    <BrandCard key={20} className="w-full">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-black">
-        <polygon points="12 2 2 7 12 12 22 7 12 2" />
-        <polyline points="2 17 12 22 22 17" />
-        <polyline points="2 12 12 17 22 12" />
-      </svg>
+    // Services Page - Row 6
+    <BrandCard key={20}>
+      <img src="/Clients/Infosys_56909713360_2806.png" alt="Infosys" className="w-full h-full object-contain" />
+    </BrandCard>,
+    <BrandCard key={21}>
+      <img src="/Clients/PJ'S.jpg" alt="PJ's" className="w-full h-full object-contain" />
+    </BrandCard>,
+    <BrandCard key={22}>
+      <img src="/Clients/costify.png" alt="Costify" className="w-full h-full object-contain" />
+    </BrandCard>,
+    <BrandCard key={23}>
+      <img src="/Clients/gowide-logo-black.webp" alt="GoWide" className="w-full h-full object-contain" />
+    </BrandCard>,
+
+    // Services Page - Row 7
+    <BrandCard key={24}>
+      <img src="/Clients/marshall.avif" alt="Marshall" className="w-full h-full object-contain" />
+    </BrandCard>,
+    <BrandCard key={25}>
+      <img src="/Clients/microsoft.avif" alt="Microsoft" className="w-full h-full object-contain" />
+    </BrandCard>,
+    <BrandCard key={26}>
+      <img src="/Clients/orovia.jpg" alt="Orovia" className="w-full h-full object-contain" />
+    </BrandCard>,
+    <BrandCard key={27}>
+      <img src="/Clients/safari%20quest.jpg" alt="Safari Quest" className="w-full h-full object-contain" />
+    </BrandCard>,
+
+    // Services Page - Row 8 (last two + centered)
+    <BrandCard key={28}>
+      <img src="/Clients/sur%20opera%20.jpg" alt="Sur Opera" className="w-full h-full object-contain" />
+    </BrandCard>,
+    <BrandCard key={29}>
+      <img src="/Clients/womenstya.jpg" alt="Womenstya" className="w-full h-full object-contain" />
     </BrandCard>,
   ];
 
@@ -306,13 +317,13 @@ export default function Clients({ isServicesPage = false }: { isServicesPage?: b
         </div>
         <div className="max-w-[1400px] mx-auto">
           <div className={`grid gap-1 md:gap-[6px] ${isMobilePhone ? "grid-cols-2" : "grid-cols-4"}`}>
-            {cards.slice(0, isServicesPage ? 20 : 8)}
+            {cards.slice(0, isServicesPage ? 28 : 8)}
           </div>
           
           {isServicesPage && (
             <div className="flex justify-center w-full mt-1 md:mt-[6px]">
               <div className={isMobilePhone ? "w-1/2 pr-[2px]" : "w-1/4 pr-[4px]"}>
-                {cards[20]}
+                {cards[28]}
               </div>
             </div>
           )}
