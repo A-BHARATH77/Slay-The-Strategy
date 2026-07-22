@@ -471,7 +471,8 @@
       gsap.set(".img", { y: 500 });
       gsap.set(".loader-imgs", { x: 500 });
        gsap.set(".nav-item", { y: 25, opacity: 0 });
-      gsap.set("h1, .item, footer, .see-all-works-btn", { y: 200 });
+      gsap.set("h1, .see-all-works-btn", { y: 200, opacity: 0 });
+      gsap.set(".item", { y: 200, opacity: 0 });
 
       const tl = gsap.timeline({ delay: 1 });
 
@@ -510,11 +511,22 @@
           "-=0.5"
         )
         .to(
-          ".nav-item, h1, footer, .item, .see-all-works-btn",
+          ".nav-item, h1, .see-all-works-btn",
           {
             y: 0,
             opacity: 1,
             stagger: 0.1,
+            duration: 1,
+            ease: "power3.inOut",
+          },
+          "-=0.5"
+        )
+        .to(
+          ".item",
+          {
+            y: 0,
+            opacity: 1,
+            stagger: 0.1, 
             duration: 1,
             ease: "power3.inOut",
           },

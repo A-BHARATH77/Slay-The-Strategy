@@ -6,9 +6,8 @@ import Image from 'next/image';
 const projects = [
   {
     title: 'Matthias Leidinger',
-    description:
-      'Pure scents. Intentional moments.
-Incense designed for stillness, focus, and everyday rituals',
+    description: `Pure scents. Intentional moments.
+Incense designed for stillness, focus, and everyday rituals`,
     src: 'rock.jpg',
     link: '/project1.webp',
     color: '#f7f2e6',
@@ -124,7 +123,7 @@ export const Card: React.FC<CardProps> = ({
         <h2 className='text-2xl text-left font-semibold text-[#526855] pt-6'>{title}</h2>
         <div className={`flex h-full mt-5 gap-10`}>
           <div className={`w-[40%] relative top-[10%] text-[#526855]`}>
-            <p className='text-lg md:text-xl font-medium leading-relaxed'>{description}</p>
+            <p className='text-lg md:text-xl font-medium leading-relaxed whitespace-pre-line'>{description}</p>
             <span className='flex items-center gap-2 pt-6'>
               <a
                 href={'#'}
