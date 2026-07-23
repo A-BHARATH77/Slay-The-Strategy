@@ -515,64 +515,106 @@
       gsap.set("h1, .see-all-works-btn", { y: 200, opacity: 0 });
       gsap.set(".item", { y: 200, opacity: 0 });
 
-      const tl = gsap.timeline({ delay: 1 });
+      // ── Wait for critical assets before starting the reveal animation ──────
+      // The loader (green screen) naturally covers everything while we wait.
+      // This prevents blank images/video showing after the Curve exits.
+      function startAnimation() {
+        const tl = gsap.timeline({ delay: 0.2 });
+        tl.to(".img", {
+          y: 0,
+          duration: 1.5,
+          stagger: 0.05,
+          ease: "power3.inOut",
+        })
+          .to(
+            ".loader-imgs",
+            {
+              x: 0,
+              duration: 3,
+              ease: "power3.inOut",
+            },
+            "-=2.5"
+          )
+          .to(
+            ".img:not(#loader-logo)",
+            {
+              clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+              duration: 1,
+              stagger: 0.1,
+              ease: "power3.inOut",
+            },
+            "-=1"
+          )
+          .to(
+            ".loader",
+            {
+              clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+              duration: 1,
+              ease: "power3.inOut",
+            },
+            "-=0.5"
+          )
+          .to(
+            ".nav-item, h1, .see-all-works-btn",
+            {
+              y: 0,
+              opacity: 1,
+              stagger: 0.1,
+              duration: 1,
+              ease: "power3.inOut",
+            },
+            "-=0.5"
+          )
+          .to(
+            ".item",
+            {
+              y: 0,
+              opacity: 1,
+              stagger: 0.1,
+              duration: 1,
+              ease: "power3.inOut",
+            },
+            "-=0.5"
+          );
+      }
 
-      tl.to(".img", {
-        y: 0,
-        duration: 1.5,
-        stagger: 0.05,
-        ease: "power3.inOut",
-      })
-        .to(
-          ".loader-imgs",
-          {
-            x: 0,
-            duration: 3,
-            ease: "power3.inOut",
-          },
-          "-=2.5"
-        )
-        .to(
-          ".img:not(#loader-logo)",
-          {
-            clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
-            duration: 1,
-            stagger: 0.1,
-            ease: "power3.inOut",
-          },
-          "-=1"
-        )
-        .to(
-          ".loader",
-          {
-            clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
-            duration: 1,
-            ease: "power3.inOut",
-          },
-          "-=0.5"
-        )
-        .to(
-          ".nav-item, h1, .see-all-works-btn",
-          {
-            y: 0,
-            opacity: 1,
-            stagger: 0.1,
-            duration: 1,
-            ease: "power3.inOut",
-          },
-          "-=0.5"
-        )
-        .to(
-          ".item",
-          {
-            y: 0,
-            opacity: 1,
-            stagger: 0.1, 
-            duration: 1,
-            ease: "power3.inOut",
-          },
-          "-=0.5"
-        );
+      // ── Asset readiness gate ────────────────────────────────────────────────
+      // Keep the green loader on screen until the video can play AND all
+      // loader images are decoded. Leverages the loader as a natural cover.
+
+      const video = document.getElementById('background-video');
+
+      // Collect all <img> elements inside the loader panels
+      const loaderImgs = Array.from(document.querySelectorAll('.loader-imgs img'));
+
+      // Resolves when the video has enough data to start playing
+      const videoReady = new Promise(resolve => {
+        if (video.readyState >= 3) {
+          resolve();
+        } else {
+          video.addEventListener('canplay', resolve, { once: true });
+          video.addEventListener('error',   resolve, { once: true });
+        }
+      });
+
+      // Resolves when every loader image has loaded (or errored)
+      const imagesReady = Promise.all(
+        loaderImgs.map(img => {
+          if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+          return new Promise(resolve => {
+            img.addEventListener('load',  resolve, { once: true });
+            img.addEventListener('error', resolve, { once: true });
+          });
+        })
+      );
+
+      // Hard cap: if assets take > 6 s on a slow connection, start anyway
+      const timeout = new Promise(resolve => setTimeout(resolve, 6000));
+
+      Promise.race([
+        Promise.all([videoReady, imagesReady]),
+        timeout
+      ]).then(startAnimation);
     });
   </script>
 </body>

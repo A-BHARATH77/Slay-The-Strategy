@@ -323,7 +323,7 @@ footer p {
   </div>
 </div>
 
-<div class="container">
+<div class="container" style="opacity:0; transition: opacity 0.5s ease;">
   <div class="slider">
       <div class="slide" id="slide-1">
           <div class="slide-copy">
@@ -814,11 +814,13 @@ slideVideos.forEach(video => {
 
 // Fallback: if something stalls for > 8 s, just start anyway
 setTimeout(() => {
-  if (overlay.style.display !== 'none') {
+  if (loadedAssets < totalAssets) {
     updateGallery();
     animate();
-    overlay.style.opacity = '0';
-    setTimeout(() => { overlay.style.display = 'none'; }, 650);
+    setTimeout(() => {
+      worksSection.style.opacity  = '1';
+      if (sliderSection) sliderSection.style.opacity = '1';
+    }, 80);
   }
 }, 8000);
 
