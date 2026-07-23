@@ -17,7 +17,7 @@ const serviceItems = [
       "Monthly performance report"
     ],
     bestFor: "Founders who are done figuring out what to post and want it handled by people who actually understand brand.",
-    img: "/services/socialmedia.png",
+    img: "/services/socialmedia.webp",
   },
   {
     num: "(002)",
@@ -33,7 +33,7 @@ const serviceItems = [
       "Weekly and monthly reporting"
     ],
     bestFor:"Brands ready to put money behind content that is built to perform.",
-    img: "/services/performance marketing .webp",
+    img: "/services/performance marketing.webp",
   },
   {
     num: "(003)",
@@ -155,6 +155,8 @@ export const ServicesSection = ({ isHome = false }: { isHome?: boolean }) => {
 
         /* ── Services section wrapper ── */
         .svc-section {
+          --media-scale: 1.15;
+          --media-scale-cover: 1.05;
           background-color: #f7f2e6;
           color: #576E47;
           width: 100%;
@@ -162,6 +164,24 @@ export const ServicesSection = ({ isHome = false }: { isHome?: boolean }) => {
           box-sizing: border-box;
           position: relative;
           z-index: 1;
+        }
+        @media (min-width: 1280px) {
+          .svc-section {
+            --media-scale: 1.25;
+            --media-scale-cover: 1.1;
+          }
+        }
+        @media (min-width: 1536px) {
+          .svc-section {
+            --media-scale: 1.35;
+            --media-scale-cover: 1.15;
+          }
+        }
+        @media (min-width: 1920px) {
+          .svc-section {
+            --media-scale: 1.45;
+            --media-scale-cover: 1.2;
+          }
         }
 
         /* ── Top bar: (Services) label + dot + CTA ── */
@@ -471,7 +491,7 @@ export const ServicesSection = ({ isHome = false }: { isHome?: boolean }) => {
               "--svc-pad-top": `${activeIdx * 4.5 + 2}rem`
             } as React.CSSProperties}
           >
-            <div className="svc-media-img-wrap" style={{ order: activeIdx === 0 ? 2 : 1 }}>
+            <div className="svc-media-img-wrap">
               {serviceItems.map((item, idx) => {
                 const commonStyle: React.CSSProperties = {
                     position: idx === 0 ? "relative" : "absolute",
@@ -479,11 +499,11 @@ export const ServicesSection = ({ isHome = false }: { isHome?: boolean }) => {
                     left: 0,
                     width: "100%",
                     height: "100%",
-                    objectFit: idx === 0 ? "cover" : "contain",
+                    objectFit: "contain",
                     transition: "opacity 0.45s ease, transform 0.55s cubic-bezier(0.25,1,0.5,1)",
                     opacity: activeIdx === idx ? 1 : 0,
-                    transform: activeIdx === idx ? (idx === 0 ? "scale(1)" : (idx === 6 ? "scale(0.95)" : "scale(0.85)")) : "scale(1.08)",
-                    paddingBottom: idx === 0 ? "1.5rem" : undefined,
+                    transform: activeIdx === idx ? ((idx === 0 || idx === 1) ? "scale(1)" : "scale(var(--media-scale))") : "scale(1.08)",
+                    paddingBottom: undefined,
                     paddingTop: (idx === 5) ? "2rem" : (idx === 6 ? "1rem" : undefined),
                 };
 
@@ -513,14 +533,7 @@ export const ServicesSection = ({ isHome = false }: { isHome?: boolean }) => {
                 );
               })}
             </div>
-            <p
-              className="svc-media-desc"
-              style={{
-                order: activeIdx === 0 ? 1 : 2,
-                marginTop: activeIdx === 0 ? 0 : "2.5rem",
-                marginBottom: activeIdx === 0 ? "2.5rem" : 0
-              }}
-            >
+            <p className="svc-media-desc">
               {serviceItems[activeIdx].desc}
             </p>
           </div>
