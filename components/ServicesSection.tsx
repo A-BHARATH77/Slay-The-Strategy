@@ -157,6 +157,9 @@ export const ServicesSection = ({ isHome = false }: { isHome?: boolean }) => {
         .svc-section {
           --media-scale: 1.15;
           --media-scale-cover: 1.05;
+          --vid-w: 140%;
+          --vid-ml: -30%;
+          --vid-mt: -15%;
           background-color: #f7f2e6;
           color: #576E47;
           width: 100%;
@@ -169,18 +172,27 @@ export const ServicesSection = ({ isHome = false }: { isHome?: boolean }) => {
           .svc-section {
             --media-scale: 1.25;
             --media-scale-cover: 1.1;
+            --vid-w: 150%;
+            --vid-ml: -36%;
+            --vid-mt: -18.75%;
           }
         }
         @media (min-width: 1536px) {
           .svc-section {
             --media-scale: 1.35;
             --media-scale-cover: 1.15;
+            --vid-w: 160%;
+            --vid-ml: -42%;
+            --vid-mt: -22.5%;
           }
         }
         @media (min-width: 1920px) {
           .svc-section {
             --media-scale: 1.45;
             --media-scale-cover: 1.2;
+            --vid-w: 175%;
+            --vid-ml: -52%;
+            --vid-mt: -28.125%;
           }
         }
 
@@ -252,7 +264,7 @@ export const ServicesSection = ({ isHome = false }: { isHome?: boolean }) => {
 
         /* RIGHT: sticky image + description panel */
         .svc-media {
-          width: 38%;
+          width: 35%;
           flex-shrink: 0;
           position: sticky;
           top: 12vh;
@@ -488,10 +500,18 @@ export const ServicesSection = ({ isHome = false }: { isHome?: boolean }) => {
             style={{ 
               display: "flex", 
               flexDirection: "column",
-              "--svc-pad-top": `${activeIdx * 4.5 + 2}rem`
+              "--svc-pad-top": `${activeIdx * 4.5 + 2 - (activeIdx === 3 ? 2 : 0)}rem`
             } as React.CSSProperties}
           >
-            <div className="svc-media-img-wrap">
+            <div 
+              className="svc-media-img-wrap"
+              style={{
+                width: "var(--vid-w)",
+                marginLeft: "var(--vid-ml)",
+                marginTop: "var(--vid-mt)",
+                transition: "all 0.5s cubic-bezier(0.25, 1, 0.5, 1)"
+              }}
+            >
               {serviceItems.map((item, idx) => {
                 const commonStyle: React.CSSProperties = {
                     position: idx === 0 ? "relative" : "absolute",
@@ -502,9 +522,7 @@ export const ServicesSection = ({ isHome = false }: { isHome?: boolean }) => {
                     objectFit: "contain",
                     transition: "opacity 0.45s ease, transform 0.55s cubic-bezier(0.25,1,0.5,1)",
                     opacity: activeIdx === idx ? 1 : 0,
-                    transform: activeIdx === idx ? ((idx === 0 || idx === 1) ? "scale(1)" : "scale(var(--media-scale))") : "scale(1.08)",
-                    paddingBottom: undefined,
-                    paddingTop: (idx === 5) ? "2rem" : (idx === 6 ? "1rem" : undefined),
+                    transform: activeIdx === idx ? "scale(1)" : "scale(1.08)"
                 };
 
                 if (item.video) {
