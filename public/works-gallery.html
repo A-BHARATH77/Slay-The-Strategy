@@ -4,6 +4,21 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Social Moodboard</title>
+
+<!-- ═══ VIDEO PRELOADS ═════════════════════════════════════════════════════════════════════
+     Tell the browser to download all slide videos immediately so they
+     are buffered and ready to play by the time the loading screen exits.
+══════════════════════════════════════════════════════════════════════════ -->
+<link rel="preload" as="video" href="/Works Videos/4c408b4a-f07c-4f86-819e-a407c373b0b5.webm" type="video/webm" fetchpriority="high">
+<link rel="preload" as="video" href="/Works Videos/BTS reel.webm" type="video/webm" fetchpriority="high">
+<link rel="preload" as="video" href="/Works Videos/Comp 1_7.webm" type="video/webm" fetchpriority="high">
+<link rel="preload" as="video" href="/Works Videos/RANGVERSE LOGO UPDATED PENGUIN REEL .webm" type="video/webm" fetchpriority="high">
+<link rel="preload" as="video" href="/Works Videos/Reel 1.webm" type="video/webm" fetchpriority="high">
+<link rel="preload" as="video" href="/Works Videos/SaveGram.App_AQPvSeyBQO37u3aYmT6vF1ChgQyOlOMcYj-5fFwcl7bR3BFBFERXrLBdmrmyJnT1SxMknmdH5CripghYh33avQ2GCHr4RkHF3AjKw78.webm" type="video/webm" fetchpriority="high">
+<link rel="preload" as="video" href="/Works Videos/Wallora Shiva Reel (1).webm" type="video/webm" fetchpriority="high">
+<link rel="preload" as="video" href="/Works Videos/WhatsApp Video 2026-06-22 at 4.45.39 PM.webm" type="video/webm" fetchpriority="high">
+<link rel="preload" as="video" href="/Works Videos/claw july- drink .webm" type="video/webm" fetchpriority="high">
+<link rel="preload" as="video" href="/Works Videos/shot -reel (1).webm" type="video/webm" fetchpriority="high">
 <style>
 :root {
   --color-accent: #526855;
@@ -295,7 +310,7 @@ footer p {
 </style>
 </head>
 <body>
-<div id="works-section">
+<div id="works-section" style="opacity:0; transition: opacity 0.5s ease;">
   <nav>
   </nav>
   <div class="header">
@@ -733,8 +748,80 @@ function animate() {
   renderer.render(scene, camera);
 }
 
-updateGallery();
-animate();
+// ═══ WAIT FOR ALL ASSETS THEN START ══════════════════════════════════════════════
+// All image textures + all slide videos must be fully loaded before the gallery
+// starts. The Curve screen from Next.js naturally covers the page during this
+// window — no extra overlay needed. Content fades in once everything is ready.
+// ══════════════════════════════════════════════════════════════════════════════════
+
+const worksSection  = document.getElementById('works-section');
+const sliderSection = document.querySelector('.container');
+
+// Collect all slide videos
+const slideVideos = Array.from(document.querySelectorAll('.slide video'));
+
+const totalAssets  = uniqueImages.length + slideVideos.length;
+let   loadedAssets = 0;
+
+function onAssetLoaded() {
+  loadedAssets++;
+
+  if (loadedAssets >= totalAssets) {
+    // Every asset is cached — start the gallery then reveal the page
+    updateGallery();
+    animate();
+    // Small delay so the first frame is painted before revealing
+    setTimeout(() => {
+      worksSection.style.opacity  = '1';
+      if (sliderSection) sliderSection.style.opacity = '1';
+    }, 80);
+  }
+}
+
+// — Reload textures with onLoad/onError callbacks to track completion
+Object.keys(textureCache).forEach(url => {
+  const existingTexture = textureCache[url];
+  if (existingTexture.image && existingTexture.image.complete) {
+    onAssetLoaded();
+  } else {
+    textureLoader.load(
+      url,
+      (tex) => {
+        tex.anisotropy      = params.anisotropy;
+        tex.minFilter       = THREE.LinearMipMapLinearFilter;
+        tex.magFilter       = THREE.LinearFilter;
+        tex.generateMipmaps = true;
+        textureCache[url]   = tex;
+        onAssetLoaded();
+      },
+      undefined,
+      () => onAssetLoaded() // count errors too so we never hang
+    );
+  }
+});
+
+// — Wait for each slide video to have enough data to play without stalling
+slideVideos.forEach(video => {
+  video.preload = 'auto';
+  if (video.readyState >= 4) { // HAVE_ENOUGH_DATA
+    onAssetLoaded();
+  } else {
+    video.addEventListener('canplaythrough', onAssetLoaded, { once: true });
+    // Safety: if a video fails, don't leave the page stuck
+    video.addEventListener('error', onAssetLoaded, { once: true });
+  }
+});
+
+// Fallback: if something stalls for > 8 s, just start anyway
+setTimeout(() => {
+  if (overlay.style.display !== 'none') {
+    updateGallery();
+    animate();
+    overlay.style.opacity = '0';
+    setTimeout(() => { overlay.style.display = 'none'; }, 650);
+  }
+}, 8000);
+
 
 // GSAP SCROLL TRIGGER SCRIPT
 gsap.registerPlugin(ScrollTrigger);
