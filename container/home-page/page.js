@@ -132,17 +132,22 @@ const Column = ({ images, y, isMobile }) => (
   <motion.div className={styles.column} style={{ y }}>
     {images.map((src) => {
       const isVideo = src.endsWith('.webm') || src.endsWith('.mp4');
+      const videoType = src.endsWith('.mp4') ? 'video/mp4' : 'video/webm';
       return (
         <div key={src} className={styles.imageContainer}>
           {isVideo ? (
-            <video
-              src={`/${src}`}
-              autoPlay
-              loop
-              muted
-              playsInline
-              style={{ objectFit: "cover", width: "100%", height: "100%" }}
-            />
+            <>
+              <link rel="preload" as="video" href={`/${src}`} type={videoType} fetchPriority="high" />
+              <video
+                src={`/${src}`}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                style={{ objectFit: "cover", width: "100%", height: "100%" }}
+              />
+            </>
           ) : (
             <Image
               src={`/${src}`}

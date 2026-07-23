@@ -31,9 +31,31 @@ export default function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        alert("Failed to submit form. Please try again.");
+      }
+    } catch (error) {
+      alert("An error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -194,9 +216,10 @@ export default function Contact() {
                 {/* Submit */}
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-full bg-[#1a1a1a] text-[#f7f2e6] text-sm font-medium font-['Gilda_Display'] hover:bg-[#333] transition-colors duration-200 mt-1"
+                  disabled={isSubmitting}
+                  className="w-full py-3 rounded-full bg-[#1a1a1a] text-[#f7f2e6] text-sm font-medium font-['Gilda_Display'] hover:bg-[#333] transition-colors duration-200 mt-1 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  Submit
+                  {isSubmitting ? "Submitting..." : "Submit"}
                 </button>
               </form>
             )}

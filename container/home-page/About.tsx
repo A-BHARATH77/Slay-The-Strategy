@@ -392,23 +392,30 @@ const FounderRevealSection = ({
 
   const imageBlock = imagePosition === "left" ? (
     <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96 mx-auto md:mx-0 mb-8 md:mb-0 relative">
+      {/* Preload critical images for the scroll reveal */}
+      <link rel="preload" as="image" href={imageColor} />
+      <link rel="preload" as="image" href={imageBW} />
       {/* Colour image — base layer */}
-      <img src={imageColor} alt={imageAlt} className="w-full h-auto object-cover rounded-2xl shadow-xl" />
+      <img src={imageColor} alt={imageAlt} loading="eager" className="w-full h-auto object-cover rounded-2xl shadow-xl" />
       {/* B&W overlay — clips away upward on scroll */}
       <motion.img
         src={imageBW}
         alt={imageAlt}
         style={{ clipPath }}
+        loading="eager"
         className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-xl"
       />
     </div>
   ) : (
     <div className="flex-shrink-0 w-64 md:w-80 lg:w-96 xl:w-96 mx-auto md:mx-0 mt-8 md:mt-0 relative">
-      <img src={imageColor} alt={imageAlt} className="w-full h-auto object-cover rounded-2xl shadow-xl" />
+      <link rel="preload" as="image" href={imageColor} />
+      <link rel="preload" as="image" href={imageBW} />
+      <img src={imageColor} alt={imageAlt} loading="eager" className="w-full h-auto object-cover rounded-2xl shadow-xl" />
       <motion.img
         src={imageBW}
         alt={imageAlt}
         style={{ clipPath }}
+        loading="eager"
         className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-xl"
       />
     </div>
