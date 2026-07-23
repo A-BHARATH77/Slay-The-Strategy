@@ -73,7 +73,7 @@ export const text = {
     enter: {
         opacity: 0,
         top: -100,
-        transition: { duration: .75, delay: .35, ease: [0.76, 0, 0.24, 1] },
+        transition: { duration: .75, delay: 5.6, ease: [0.76, 0, 0.24, 1] },
         transitionEnd: { top: "47.5%" }
     },
     exit: {
@@ -90,7 +90,7 @@ export const curve = (initialPath: string, targetPath: string) => {
         },
         enter: {
             d: targetPath,
-            transition: { duration: .75, delay: .35, ease: [0.76, 0, 0.24, 1] }
+            transition: { duration: .75, delay: 6, ease: [0.76, 0, 0.24, 1] }
         },
         exit: {
             d: initialPath,
@@ -105,7 +105,7 @@ export const translate = {
     },
     enter: {
         top: "-100vh",
-        transition: { duration: .75, delay: .35, ease: [0.76, 0, 0.24, 1] },
+        transition: { duration: .75, delay: 6, ease: [0.76, 0, 0.24, 1] },
         transitionEnd: {
             top: "100vh"
         }

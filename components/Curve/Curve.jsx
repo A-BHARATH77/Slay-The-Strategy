@@ -77,6 +77,17 @@ const SVG = ({ height, width }) => {
         L0 0
     `;
 
+	useEffect(() => {
+		const delayMs = (translate.enter.transition.delay || 0) * 1000;
+		const timer = setTimeout(() => {
+			const iframes = document.querySelectorAll("iframe");
+			iframes.forEach(iframe => {
+				iframe.contentWindow?.postMessage("CURVE_START", "*");
+			});
+		}, delayMs);
+		return () => clearTimeout(timer);
+	}, []);
+
 	return (
 		<motion.svg
 			className="fixed h w-full pointer-events-none

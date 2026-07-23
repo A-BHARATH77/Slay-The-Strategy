@@ -767,7 +767,9 @@ function onAssetLoaded() {
   loadedAssets++;
 
   if (loadedAssets >= totalAssets) {
-    // Every asset is cached — start the gallery then reveal the page
+    // Every asset is cached — signal the Curve screen assets are ready
+    window.parent.postMessage('ASSETS_READY', '*');
+    // Start the gallery then reveal the page
     updateGallery();
     animate();
     // Small delay so the first frame is painted before revealing
@@ -812,9 +814,10 @@ slideVideos.forEach(video => {
   }
 });
 
-// Fallback: if something stalls for > 8 s, just start anyway
+// Fallback: if something stalls for > 6 s, just start anyway
 setTimeout(() => {
   if (loadedAssets < totalAssets) {
+    window.parent.postMessage('ASSETS_READY', '*');
     updateGallery();
     animate();
     setTimeout(() => {
@@ -822,7 +825,7 @@ setTimeout(() => {
       if (sliderSection) sliderSection.style.opacity = '1';
     }, 80);
   }
-}, 8000);
+}, 6000);
 
 
 // GSAP SCROLL TRIGGER SCRIPT
